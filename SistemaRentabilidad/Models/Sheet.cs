@@ -11,6 +11,8 @@ namespace SistemaRentabilidad.Models
 
         public string SheetDescription { get; set; }
 
+        public DateTime Date { get; set; }
+
         public decimal Rode { get; set; }
 
         public bool Type { get; set; }
