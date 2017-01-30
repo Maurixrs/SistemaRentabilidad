@@ -19,7 +19,7 @@ namespace SistemaRentabilidad.Models
 
         public string Comments { get; set; }
 
-        public int idWorkSheet { get; set; } //Clave Foránea
+        public int IdWorkSheet { get; set; } //Clave Foránea
 
         public virtual Worksheet WorkSheet { get; set; }
     }
