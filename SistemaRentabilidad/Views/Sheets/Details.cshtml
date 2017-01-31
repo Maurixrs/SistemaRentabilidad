@@ -1,0 +1,74 @@
+﻿@model SistemaRentabilidad.Models.Sheet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkSheet.WorksheetDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkSheet.WorksheetDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SheetDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SheetDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SheetType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SheetType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSheet }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
