@@ -19,9 +19,12 @@ namespace SistemaRentabilidad.Context
 
             public System.Data.Entity.DbSet<SistemaRentabilidad.Models.Worksheet> Worksheet { get; set; }
 
-            
-        }
-    
+            public System.Data.Entity.DbSet<SistemaRentabilidad.Models.SheetLine> SheetLines { get; set; }
+
+
+
+    }
+
 
 
 

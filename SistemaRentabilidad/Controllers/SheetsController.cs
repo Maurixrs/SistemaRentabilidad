@@ -63,6 +63,11 @@ namespace SistemaRentabilidad.Controllers
             ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription");
             return View();
         }
+        public ActionResult CreateWorksheet()
+        {
+          
+            return View();
+        }
 
         // POST: Sheets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
