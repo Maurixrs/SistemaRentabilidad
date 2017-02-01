@@ -6,19 +6,26 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using SistemaRentabilidad.Context;
 using SistemaRentabilidad.Models;
+using SistemaRentabilidad.Repositories;
+using SistemaRentabilidad.ViewModels;
 
 namespace SistemaRentabilidad.Controllers
 {
     public class WorksheetsController : Controller
     {
-        private ContextSR db = new ContextSR();
+        
+        private WsRepository _repository = new WsRepository();
 
         // GET: Worksheets
         public ActionResult Index()
         {
-            return View(db.Worksheet.ToList());
+            IList<WsVM> WsVMList = new List<WsVM>();
+            IList<Worksheet> WsList = _repository.FindAllE();
+            WsVMList = Mapper.Map<IList<Worksheet>, IList<WsVM>>(WsList);
+            return View(WsVMList);
         }
 
         // GET: Worksheets/Details/5
@@ -28,12 +35,14 @@ namespace SistemaRentabilidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worksheet worksheet = db.Worksheet.Find(id);
+            WsVM wsVm = new WsVM();
+            Worksheet worksheet = _repository.FindE(id);
+            wsVm = Mapper.Map<Worksheet, WsVM>(worksheet);
             if (worksheet == null)
             {
                 return HttpNotFound();
             }
-            return View(worksheet);
+            return View(wsVm);
         }
 
         // GET: Worksheets/Create
@@ -47,16 +56,16 @@ namespace SistemaRentabilidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] Worksheet worksheet)
+        public ActionResult Create([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] WsVM wsVm)
         {
             if (ModelState.IsValid)
             {
-                db.Worksheet.Add(worksheet);
-                db.SaveChanges();
+                Worksheet worksheet = Mapper.Map<WsVM, Worksheet>(wsVm);
+                _repository.AddE(worksheet);
                 return RedirectToAction("Index");
             }
 
-            return View(worksheet);
+            return View(wsVm);
         }
 
         // GET: Worksheets/Edit/5
@@ -66,12 +75,13 @@ namespace SistemaRentabilidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worksheet worksheet = db.Worksheet.Find(id);
+            Worksheet worksheet = _repository.FindE(id);
+            WsVM wsVm = Mapper.Map<Worksheet, WsVM>(worksheet);
             if (worksheet == null)
             {
                 return HttpNotFound();
             }
-            return View(worksheet);
+            return View(wsVm);
         }
 
         // POST: Worksheets/Edit/5
@@ -79,15 +89,15 @@ namespace SistemaRentabilidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] Worksheet worksheet)
+        public ActionResult Edit([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] WsVM wsVm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(worksheet).State = EntityState.Modified;
-                db.SaveChanges();
+                Worksheet worksheet = Mapper.Map<WsVM, Worksheet>(wsVm);
+                _repository.EditE(worksheet);
                 return RedirectToAction("Index");
             }
-            return View(worksheet);
+            return View(wsVm);
         }
 
         // GET: Worksheets/Delete/5
@@ -97,12 +107,13 @@ namespace SistemaRentabilidad.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Worksheet worksheet = db.Worksheet.Find(id);
+            Worksheet worksheet = _repository.FindE(id);
+            WsVM wsVm = Mapper.Map<Worksheet, WsVM>(worksheet);
             if (worksheet == null)
             {
                 return HttpNotFound();
             }
-            return View(worksheet);
+            return View(wsVm);
         }
 
         // POST: Worksheets/Delete/5
@@ -110,9 +121,7 @@ namespace SistemaRentabilidad.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Worksheet worksheet = db.Worksheet.Find(id);
-            db.Worksheet.Remove(worksheet);
-            db.SaveChanges();
+            _repository.DeleteE(id);
             return RedirectToAction("Index");
         }
 
@@ -120,7 +129,7 @@ namespace SistemaRentabilidad.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+               
             }
             base.Dispose(disposing);
         }
