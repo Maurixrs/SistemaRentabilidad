@@ -1,0 +1,530 @@
+﻿
+@{
+    ViewBag.Title = "Nueva Planilla";
+}
+
+<head>
+
+    <link href="/Content/site.css" rel="stylesheet">
+</head>
+@*///////////////////////////*@
+<hr style="margin-top: 10px;
+    margin-bottom: 10px;" />
+
+<legend style="margin-bottom: 2px;">
+    Planilla: @ViewBag.nsheet
+</legend>
+<table class="table table-condensed   table-condensed table-bordered">
+
+    <thead class="tableStyle">
+
+
+        <tr class="text-center">
+            <th class="text-center">
+                Descripción
+            </th>
+            
+            <th class="text-center">
+                Fecha de creación
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+   
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="wdescription"  placeholder=""/>
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="date" class="panel-info form-control-sm inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa" />
+        <span class="error">Requerido</span>
+    </td>
+    </tbody>
+
+</table>
+
+
+
+<legend style="margin-bottom: 2px;">
+    Listado
+</legend>
+<table id="mytable" class="table table-condensed   table-condensed table-bordered">
+    <thead class="tableStyle">
+        <tr class="text-center">
+            <th class="text-center">
+                Descripción
+            </th>
+            <th class="text-center">
+                Observación
+            </th>
+            <th class="text-center">
+                Fecha
+            </th>
+            <th class="text-center">
+                Tipo
+            </th>
+            <th class="text-center">
+                Monto
+            </th>
+            <th class="text-center">
+                IVA
+            </th>
+           
+            <th class="text-center">
+                Total Linea
+            </th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody id="last">
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="sdescription" placeholder=""/>
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="scomment" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="date" class="panel-info form-control-sm inputForm" id="sdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <select class="form-control-sm text-right" id="stype">
+            <option value="0">Ingreso</option>
+            <option value="1">Egreso</option>
+        </select>
+    </td>
+    <td>
+        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="samount" onkeypress="solonumerosptocoma();" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <select class="form-control-sm text-right" id="siva">
+            <option value="0">Si</option>
+            <option value="1">No</option>
+        </select>
+    </td>
+    <td>
+        <input type="text" class="panel-info text-center"  id="stotal" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <button type="button" id="add" class="btn btn-success btn-sm chicle" value="Agregar" />Agregar
+        <span class="glyphicon glyphicon-plus"></span>
+    </td>
+
+    </tbody>
+
+
+</table>
+
+
+<div>
+    <div id="orderItems">
+    </div>
+    <span class="error"></span>
+
+</div>
+
+<legend style="margin-bottom: 2px;">
+    Resumen
+</legend>
+<table class="table table-condensed   table-striped table-bordered table-condensed">
+
+    <thead class="tableStyle">
+        <tr class="text-right">
+            <td class="text-center" style="border-radius: 3px; font-weight: bold">
+                Observaciones
+            </td>
+            <td class="text-center" style="border-radius: 3px; width: 200px; font-weight: bold">
+                Total
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <textarea type="text" class="panel-info form-control-sm" id="wcomments"placeholder=""></textarea>
+
+            </td>
+            <td>
+                <input type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" readonly="readonly" />
+                <span class="error">Requerido</span>
+            </td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+<hr style="color: grey" />
+
+
+<div class="text-center">
+    <button type="button" id="submit" class="btn btn-success btn-md" value="Guardar">
+        Guardar
+        <span class="glyphicon glyphicon-floppy-disk"></span>
+    </button>
+    <button type="button" id="imprimir" class="btn btn-success btn-md" value="Guardar">
+        Guardar e Imprimir
+        <span class="glyphicon glyphicon-floppy-disk"></span>
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<link href="@Url.Content("~/Content/Select2/select2.min.css")" rel="stylesheet" />
+@section Scripts{
+
+
+
+
+    <script src="@Url.Content("~/Content/Select2/select2.js")"></script>
+    <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
+
+
+    <script>
+
+      
+
+        $(document).ready(function() {
+            var orderItems = [];
+            var verifsheets = [];
+            var totgral = [];
+            //Add button click function
+            $('#add').click(function() {
+                //Check validation of order item
+                var isValidItem = true;
+                if ($('#sdescription').val().trim() == '' | $('#sdescription').val().trim() == 0) {
+                    isValidItem = false;
+                    $('#sdescription').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#sdescription').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#sdate').val().trim() == '') {
+                    isValidItem = false;
+                    $('#sdate').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#sdate').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#stype').val().trim() == '') {
+                    isValidItem = false;
+                    $('#stype').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#stype').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#samount').val().trim() == '') {
+                    isValidItem = false;
+                    $('#samount').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#samount').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#siva').val().trim() == '') {
+                    isValidItem = false;
+                    $('#siva').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#siva').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#stotal').val().trim() == '') {
+                    isValidItem = false;
+                    $('#stotal').siblings('span.error').css('visibility', 'visible');
+                } else {
+                    $('#stotal').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (isValidItem) {
+                    ////////////***********//////////
+                    var historial = verifsheets;
+                    var errorsheets = false;
+                    sact = $('#sdescription').val().trim();
+                    $.each(historial, function() {
+                        if (sact == this) {
+                            errorsheets = true;
+
+                        }
+                    });
+                }
+                if (errorsheets) {
+                    isValidItem = false;
+                    bootbox.alert({
+                        title: "Sheet existente",
+                        message: "ya agregaste este hdp ",
+                        backdrop: true
+                    });
+                }
+
+                //Validacion de Stock
+                if (isValidItem) {
+                   
+                            //                    data = data.replace(",",'.');
+
+                            orderItems.push({
+                                SheetDescription: $('#sdescription').val().trim(),
+                                Date: $('#sdate').val().trim(),
+                                Amount: $('#samount').val().trim(),
+                                Iva: $('#siva').val().trim(),
+                                Comments: $('#scomment').val().trim(),
+                                SheetType: $('#stype').val().trim()
+                            });
+                            verifsheets.push(
+                                $('#wdescription').val().trim()
+                            );
+                            totgral.push(
+                               parseFloat($('#stotal').val().trim())
+                           );
+                            
+                    $("#sdescription").val('');
+                    $('#sdate,#samount,#siva,#scomment,#scomment,#stotal').val('');
+                           
+
+                            GeneratedItemsTable();
+
+
+                }
+
+
+                //Add item to list if valid
+
+                //populate order items
+
+            });
+            //Save button click function
+            $('#submit').click(function() {
+                //validation of order
+                var isAllValid = true;
+                if (orderItems.length == 0) {
+                    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
+                    isAllValid = false;
+                }
+
+
+                if ($('#wdescription').val().trim() == '' || $('#customername').val().trim() == '0') {
+                    $('#wdescription').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#wdescription').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#wdate').val().trim() == '') {
+                    $('#wdate').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#wdate').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#wtotal').val().trim() == '') {
+                    $('#wtotal').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#wtotal').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                //Save if valid
+                if (isAllValid) {
+                    var data = {
+                        WorksheetDescription: $('#wdescription').val().trim(),
+                        Date: $('#wdate').val().trim(),
+                        Comments: $('#wcomments').val().trim(),
+                        Sheets: orderItems
+                    }
+
+                    $(this).val('Please wait...');
+
+                    $.ajax({
+                        url: '@Url.Action("CreateWorksheet", "Worksheets")',
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function(d) {
+                            //check is successfully save to database
+                            if (d.status == true) {
+
+                                var url = '@Url.Action("Details","Worksheets", new { ViewBag.nsheet})';
+                                window.location.href = url;
+                            } else {
+                                alert('Failed');
+                            }
+                            $('#submit').val('Save');
+                        },
+                        error: function() {
+                            alert('Error. Please try again.');
+                            $('#submit').val('Save');
+                        }
+                    });
+                }
+
+            });
+
+            //////////////////////////////IMPRIMIR Y GUARDAR
+            //////////////////////////////
+            @*//////////////////////////////
+            $('#imprimir').click(function() {
+                //validation of order
+                var isAllValid = true;
+                if (orderItems.length == 0) {
+                    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
+                    isAllValid = false;
+                }
+
+                if ($('#customername').val().trim() == '' || $('#customername').val().trim() == '0') {
+                    $('#customername').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#customername').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#saledate').val().trim() == '') {
+                    $('#saledate').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#saledate').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#saletotal').val().trim() == '') {
+                    $('#saletotal').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                } else {
+                    $('#saletotal').siblings('span.error').css('visibility', 'hidden');
+                }
+
+
+                //Save if valid
+                if (isAllValid) {
+                    var data = {
+                        CustomerName: $('#customername').val().trim(),
+                        //Sorry forgot to add Description Field
+                        SaleAddress: $('#saleaddress').val().trim(),
+                        CuitCuil: $('#cuitcuil').val().trim(),
+                        SaleDate: $('#saledate').val().trim(),
+                        SaleTotal: $('#saletotal').val().trim(),
+                        Comments: $('#comments').val().trim(),
+                        SaleState: $('#salestate').val().trim(),
+                        SaleLines: orderItems
+                    }
+
+                    $(this).val('Please wait...');
+
+                    $.ajax({
+                        url: '@Url.Action("CreateSale", "Sales")',
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        dataType: "JSON",
+                        contentType: "application/json",
+                        success: function(d) {
+                            u = d.miid;
+                            //check is successfully save to database
+                            if (d.status == true) {
+
+                                var url1 = '@Url.Action("Details","Bills", new { id = ViewBag.nsale,x=1})';
+                                window.open(url1);
+
+                                var url = '@Url.Action("CreateSale","Sales", new { x = 1 })';
+                                window.location.href = url;
+
+                            } else {
+                                alert('Failed');
+                            }
+                            $('#submit').val('Save');
+                        },
+                        error: function() {
+                            alert('Error. Please try again.');
+                            $('#submit').val('Save');
+                        }
+                    });
+                }
+
+            });*@
+
+
+
+            function GeneratedItemsTable() {
+                $('.elim').remove();
+                if (orderItems.length > 0) {
+                    $('#orderItems').html('<span class="text-danger"></span>');
+                $.each(orderItems, function (i, val) {
+                    var $row = $('<tr class="elim"  style="background-color: white"></tr>');
+                    $row.append($('<td></td>').html(val.SheetDescription));
+                    $row.append($('<td></td>').html(val.Comments));
+                    $row.append($('<td></td>').html(val.Date));
+                    $row.append($('<td></td>').html(val.SheetType));
+                    $row.append($('<td></td>').html(val.Amount));
+                    $row.append($('<td></td>').html(val.Iva));
+
+                    var $remove = $('<a href="#">Eliminar</a>');
+                    //CALCULO TOTAL GRAL
+                    wtotal = 0;
+                    $.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                    document.getElementById("wtotal").value = wtotal.toFixed(2);
+                    //FIN CALCULO TOTAL GRAL
+                    $remove.click(function (e) {
+                        e.preventDefault();
+                        orderItems.splice(i, 1);
+                        verifsheets.splice(i, 1);
+                        totgral.splice(i, 1);
+                        GeneratedItemsTable();
+                        wtotal = 0;
+                        $.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                        document.getElementById("wtotal").value = wtotal.toFixed(2);
+
+                    });
+                    $row.append($('<td></td>').append($remove));
+                    $('#mytable > tbody:last').append($row);
+                });
+            } else {
+                $('#orderItems').html('');
+            }
+        }
+
+
+        });
+    </script>
+}
+
+<style>
+    /*Adding some css for looks good*/
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: #b94a48;
+        font-size: 90%;
+    }
+
+
+    /*css for table*/
+    .container td {
+        vertical-align: top;
+    }
+
+    .tablecontainer table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+    }
+
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }
+
+    .ui-widget {
+        font-size: 12px !important;
+    }
+</style>
+

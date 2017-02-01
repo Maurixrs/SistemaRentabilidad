@@ -18,6 +18,7 @@ namespace SistemaRentabilidad.Controllers
     {
         
         private WsRepository _repository = new WsRepository();
+        private ContextSR db = new ContextSR();
 
         // GET: Worksheets
         public ActionResult Index()
@@ -43,6 +44,19 @@ namespace SistemaRentabilidad.Controllers
                 return HttpNotFound();
             }
             return View(wsVm);
+        }
+
+        public ActionResult CreateWorksheet()
+        {
+            var nsheet = 0;
+            if (db.Worksheet != null & db.Worksheet.Count() != 0)
+            {
+                nsheet = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
+            }
+
+            ViewBag.nsheet = nsheet + 1;
+
+            return View();
         }
 
         // GET: Worksheets/Create
