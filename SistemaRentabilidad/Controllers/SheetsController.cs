@@ -56,8 +56,10 @@ namespace SistemaRentabilidad.Controllers
         }
 
         // GET: Sheets/Create
-        public ActionResult Create()
+        public ActionResult Create(int? idws)
         {
+            ViewBag.idws = idws;
+            ViewBag.Name = db.Worksheet.Find(idws).WorksheetDescription;
             ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription");
             return View();
         }
@@ -73,7 +75,7 @@ namespace SistemaRentabilidad.Controllers
             {
                 db.Sheet.Add(sheet);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Worksheets", new { id = sheet.IdWorkSheet });
             }
 
             ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription", sheet.IdWorkSheet);

@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Lista de Planillas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a href="@Url.Action("Create","Worksheets")" class="btn btn-success">Nueva Planilla</a>
+
 <table class="table">
     <tr>
         <th>
@@ -20,32 +19,29 @@
         <th>
             @Html.DisplayNameFor(model => model.TotalAmount)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th></th>
+
+        <th>Opciones</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorksheetDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdWorksheet }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdWorksheet }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdWorksheet })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorksheetDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdWorksheet }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdWorksheet }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdWorksheet })
+            </td>
+        </tr>
+    }
 
 </table>

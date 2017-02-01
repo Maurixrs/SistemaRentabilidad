@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using SistemaRentabilidad.Models;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,8 @@ namespace SistemaRentabilidad.ViewModels
 
         [Display(Name = "Total")]
         public decimal TotalAmount { get; set; }
+
+        public ICollection<Sheet> Sheets { get; set; }
 
         [Display(Name = "Comentarios")]
         public string Comments { get; set; }
