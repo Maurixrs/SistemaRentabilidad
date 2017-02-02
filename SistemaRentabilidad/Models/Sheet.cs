@@ -13,16 +13,16 @@ namespace SistemaRentabilidad.Models
 
         public string SheetDescription { get; set; }
 
-        [Display(Name = "Fecha")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
-        public DateTime Date { get; set; }
+        //[Display(Name = "Fecha")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
+        //public DateTime Date { get; set; }
 
         [Display(Name = "Monto")]
         public decimal Amount { get; set; }
 
-        [Display(Name = "IVA")]
-        public Boolean Iva { get; set; }
+        //[Display(Name = "IVA")]
+        //public Boolean Iva { get; set; }
 
         [Display(Name = "Comentarios")]
         public string Comments { get; set; }

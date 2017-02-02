@@ -42,13 +42,50 @@
     </tbody>
 
 </table>
-
-
-
 <legend style="margin-bottom: 2px;">
-    Listado
+    Ingresos
 </legend>
-<table id="mytable" class="table table-condensed   table-condensed table-bordered">
+<table id="ingresotabla" class="table table-condensed  table-condensed table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th class="text-center">
+                Descripción
+            </th>
+            <th class="text-center">
+                Observación
+            </th>
+
+            <th class="text-center">
+                Monto
+            </th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody id="ingreso">
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="idescription" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="icomment" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="iamount" onkeypress="solonumerosptocoma();" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <button type="button" id="addi" class="btn btn-success btn-sm add" value="ingreso" />Agregar
+        <span class="glyphicon glyphicon-plus"></span>
+    </td>
+    </tbody>
+
+</table>
+<legend style="margin-bottom: 2px;">
+    Costos de las ventas
+</legend>
+<table id="costotabla" class="table table-condensed   table-condensed table-bordered">
     <thead class="tableStyle">
         <tr class="text-center">
             <th class="text-center">
@@ -57,76 +94,140 @@
             <th class="text-center">
                 Observación
             </th>
-            <th class="text-center">
-                Fecha
-            </th>
-            <th class="text-center">
-                Tipo
-            </th>
+
             <th class="text-center">
                 Monto
             </th>
-            <th class="text-center">
-                IVA
-            </th>
-           
-            <th class="text-center">
-                Total Linea
-            </th>
+
             <th>Acción</th>
         </tr>
     </thead>
-    <tbody id="last">
+    <tbody id="costo">
     <td class="text-center">
-        <input type="text" class="panel-info form-control-sm inputForm" id="sdescription" placeholder=""/>
-        <span class="error">Requerido</span>
-    </td>
-    <td class="text-center">
-        <input type="text" class="panel-info form-control-sm inputForm" id="scomment" placeholder="" />
+        <input type="text" class="panel-info form-control-sm inputForm" id="cdescription" placeholder="" />
         <span class="error">Requerido</span>
     </td>
     <td class="text-center">
-        <input type="date" class="panel-info form-control-sm inputForm" id="sdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+        <input type="text" class="panel-info form-control-sm inputForm" id="ccomment" placeholder="" />
         <span class="error">Requerido</span>
     </td>
     <td>
-        <select class="form-control-sm text-right" id="stype">
-            <option value="0">Ingreso</option>
-            <option value="1">Egreso</option>
-        </select>
-    </td>
-    <td>
-        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="samount" onkeypress="solonumerosptocoma();" />
+        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="camount" onkeypress="solonumerosptocoma();" />
         <span class="error">Requerido</span>
     </td>
     <td>
-        <select class="form-control-sm text-right" id="siva">
-            <option value="0">Si</option>
-            <option value="1">No</option>
-        </select>
-    </td>
-    <td>
-        <input type="text" class="panel-info text-center"  id="stotal" />
-        <span class="error">Requerido</span>
-    </td>
-    <td>
-        <button type="button" id="add" class="btn btn-success btn-sm chicle" value="Agregar" />Agregar
+        <button type="button" id="addc" class="btn btn-success btn-sm add" value="costo" />Agregar
         <span class="glyphicon glyphicon-plus"></span>
     </td>
-
     </tbody>
 
+</table>
+<legend style="margin-bottom: 2px;">
+    Gastos
+</legend>
+<table id="gastotabla" class="table table-condensed   table-condensed table-bordered">
+    <thead class="tableStyle">
+        <tr class="text-center">
+            <th class="text-center">
+                Descripción
+            </th>
+            <th class="text-center">
+                Observación
+            </th>
+
+            <th class="text-center">
+                Monto
+            </th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody id="gasto">
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="gdescription" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="gcomment" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="gamount" onkeypress="solonumerosptocoma();" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <button type="button" id="addg" class="btn btn-success btn-sm add" value="gasto" />Agregar
+        <span class="glyphicon glyphicon-plus"></span>
+    </td>
+    </tbody>
+
+</table>
+<legend style="margin-bottom: 2px;">
+    Otros ingresos
+</legend>
+<table id="otrotabla" class="table table-condensed   table-condensed table-bordered">
+    <thead class="tableStyle">
+        <tr class="text-center">
+            <th class="text-center">
+                Descripción
+            </th>
+            <th class="text-center">
+                Observación
+            </th>
+            
+            <th class="text-center">
+                Monto
+            </th>
+           
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody id="otro">
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="odescription" placeholder=""/>
+        <span class="error">Requerido</span>
+    </td>
+    <td class="text-center">
+        <input type="text" class="panel-info form-control-sm inputForm" id="ocomment" placeholder="" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <input type="number" class="panel-info form-control-sm inputForm" value="1" id="oamount" onkeypress="solonumerosptocoma();" />
+        <span class="error">Requerido</span>
+    </td>
+    <td>
+        <button type="button" id="addo" class="btn btn-success btn-sm add" value="otro" />Agregar
+        <span class="glyphicon glyphicon-plus"></span>
+    </td>
+    </tbody>
 
 </table>
 
 
 <div>
-    <div id="orderItems">
+    <div id="orderItemsi">
     </div>
     <span class="error"></span>
 
 </div>
+<div>
+    <div id="orderItemsc">
+    </div>
+    <span class="error"></span>
 
+</div>
+<div>
+    <div id="orderItemsg">
+    </div>
+    <span class="error"></span>
+
+</div>
+<div>
+    <div id="orderItemso">
+    </div>
+    <span class="error"></span>
+
+</div>
 <legend style="margin-bottom: 2px;">
     Resumen
 </legend>
@@ -149,7 +250,7 @@
 
             </td>
             <td>
-                <input type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" readonly="readonly" />
+                <input type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" />
                 <span class="error">Requerido</span>
             </td>
         </tr>
@@ -182,13 +283,13 @@
 
 
 
-<link href="@Url.Content("~/Content/Select2/select2.min.css")" rel="stylesheet" />
+
 @section Scripts{
 
 
 
 
-    <script src="@Url.Content("~/Content/Select2/select2.js")"></script>
+   
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
 
 
@@ -198,118 +299,213 @@
 
         $(document).ready(function() {
             var orderItems = [];
-            var verifsheets = [];
-            var totgral = [];
+            var orderItemsi = [];
+            var orderItemsc = [];
+            var orderItemsg = [];
+            var orderItemso = [];
+
+
+            //////////ADD INGRESO///////////////
+            ///////////////////////////
+            //////////////////////
             //Add button click function
-            $('#add').click(function() {
-                //Check validation of order item
+            $('#addi').click(function () {
                 var isValidItem = true;
-                if ($('#sdescription').val().trim() == '' | $('#sdescription').val().trim() == 0) {
+               
+                //Check validation of order item
+                if ($('#idescription').val().trim() == '') {
                     isValidItem = false;
-                    $('#sdescription').siblings('span.error').css('visibility', 'visible');
+                    $('#idescription').siblings('span.error').css('visibility', 'visible');
                 } else {
-                    $('#sdescription').siblings('span.error').css('visibility', 'hidden');
+                    $('#idescription').siblings('span.error').css('visibility', 'hidden');
                 }
 
-                if ($('#sdate').val().trim() == '') {
+                if ($('#iamount').val().trim() == '') {
                     isValidItem = false;
-                    $('#sdate').siblings('span.error').css('visibility', 'visible');
+                    $('#iamount').siblings('span.error').css('visibility', 'visible');
                 } else {
-                    $('#sdate').siblings('span.error').css('visibility', 'hidden');
+                    $('#iamount').siblings('span.error').css('visibility', 'hidden');
                 }
-
-                if ($('#stype').val().trim() == '') {
-                    isValidItem = false;
-                    $('#stype').siblings('span.error').css('visibility', 'visible');
-                } else {
-                    $('#stype').siblings('span.error').css('visibility', 'hidden');
-                }
-                if ($('#samount').val().trim() == '') {
-                    isValidItem = false;
-                    $('#samount').siblings('span.error').css('visibility', 'visible');
-                } else {
-                    $('#samount').siblings('span.error').css('visibility', 'hidden');
-                }
-                if ($('#siva').val().trim() == '') {
-                    isValidItem = false;
-                    $('#siva').siblings('span.error').css('visibility', 'visible');
-                } else {
-                    $('#siva').siblings('span.error').css('visibility', 'hidden');
-                }
-                if ($('#stotal').val().trim() == '') {
-                    isValidItem = false;
-                    $('#stotal').siblings('span.error').css('visibility', 'visible');
-                } else {
-                    $('#stotal').siblings('span.error').css('visibility', 'hidden');
-                }
+                
 
                 if (isValidItem) {
-                    ////////////***********//////////
-                    var historial = verifsheets;
-                    var errorsheets = false;
-                    sact = $('#sdescription').val().trim();
-                    $.each(historial, function() {
-                        if (sact == this) {
-                            errorsheets = true;
+                
 
-                        }
-                    });
-                }
-                if (errorsheets) {
-                    isValidItem = false;
-                    bootbox.alert({
-                        title: "Sheet existente",
-                        message: "ya agregaste este hdp ",
-                        backdrop: true
-                    });
-                }
-
-                //Validacion de Stock
-                if (isValidItem) {
-                   
-                            //                    data = data.replace(",",'.');
-
-                            orderItems.push({
-                                SheetDescription: $('#sdescription').val().trim(),
-                                Date: $('#sdate').val().trim(),
-                                Amount: $('#samount').val().trim(),
-                                Iva: $('#siva').val().trim(),
-                                Comments: $('#scomment').val().trim(),
-                                SheetType: $('#stype').val().trim()
-                            });
-                            verifsheets.push(
-                                $('#wdescription').val().trim()
-                            );
-                            totgral.push(
-                               parseFloat($('#stotal').val().trim())
-                           );
-                            
-                    $("#sdescription").val('');
-                    $('#sdate,#samount,#siva,#scomment,#scomment,#stotal').val('');
-                           
-
-                            GeneratedItemsTable();
-
-
+                        var SheetDescriptioni = $('#idescription').val().trim();
+                        var Amounti = $('#iamount').val().trim();
+                        var Commentsi = $('#icomment').val().trim();
+                        var SheetTypei = 0;
+                        orderItemsi.push({
+                            SheetDescription: SheetDescriptioni,
+                            Amount: Amounti,
+                            Comments: Commentsi,
+                            SheetType: SheetTypei
+                        });
+                        
+                        $('#idescription,#iamount,#icomment').val('');
+                        ingreso();
                 }
 
 
-                //Add item to list if valid
-
-                //populate order items
+              
 
             });
+            ///////ADD COSTO DE VENTAS///////
+            /////////////////
+            ////////////////
+            ////////////////
+            $('#addc').click(function () {
+                var isValidItem = true; 
+
+                if ($('#cdescription').val().trim() == '') {
+                        isValidItem = false;
+                        $('#cdescription').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                    $('#cdescription').siblings('span.error').css('visibility', 'hidden');
+                    }
+
+                if ($('#camount').val().trim() == '') {
+                        isValidItem = false;
+                        $('#camount').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                    $('#camount').siblings('span.error').css('visibility', 'hidden');
+                    }
+                
+
+               
+
+                if (isValidItem) {
+                        var SheetDescriptionc = $('#cdescription').val().trim();
+                        var Amountc = $('#camount').val().trim();
+                        var Commentsc = $('#ccomment').val().trim();
+                        var SheetTypec = 1;
+                        orderItemsc.push({
+                            SheetDescription: SheetDescriptionc,
+                            Amount: Amountc,
+                            Comments: Commentsc,
+                            SheetType: SheetTypec
+                        });
+                        $('#cdescription,#camount,#ccomment').val('');
+                        costo();
+                }
+
+
+
+
+            });
+            /////////ADD GASTOS/////
+            /////////////////
+            ////////////////
+            ////////////////
+            $('#addg').click(function () {
+                var isValidItem = true;
+              
+               
+
+               
+                    //Check validation of order item
+
+                    if ($('#gdescription').val().trim() == '') {
+                        isValidItem = false;
+                        $('#gdescription').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                        $('#gdescription').siblings('span.error').css('visibility', 'hidden');
+                    }
+
+                    if ($('#gamount').val().trim() == '') {
+                        isValidItem = false;
+                        $('#gamount').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                        $('#gamount').siblings('span.error').css('visibility', 'hidden');
+                   }
+                
+
+              
+
+                if (isValidItem) {
+                  
+                   
+
+                        var SheetDescriptiong = $('#gdescription').val().trim();
+                        var Amountg = $('#gamount').val().trim();
+                        var Commentsg = $('#gcomment').val().trim();
+                        var SheetTypeg = 2;
+                        orderItemsg.push({
+                            SheetDescription: SheetDescriptiong,
+                            Amount: Amountg,
+                            Comments: Commentsg,
+                            SheetType: SheetTypeg
+                        });
+                        $('#gdescription,#gamount,#gcomment').val('');
+                        gasto();}
+
+
+
+
+            });
+            //////////////
+            //////////ADD OTROS INGRESOS///////
+            ////////////////
+            ////////////////
+            $('#addo').click(function () {
+                var isValidItem = true;
+            
+             
+
+             
+                    if ($('#odescription').val().trim() == '') {
+                        isValidItem = false;
+                        $('#odescription').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                        $('#odescription').siblings('span.error').css('visibility', 'hidden');
+                    }
+
+                    if ($('#oamount').val().trim() == '') {
+                        isValidItem = false;
+                        $('#oamount').siblings('span.error').css('visibility', 'visible');
+                    } else {
+                        $('#oamount').siblings('span.error').css('visibility', 'hidden');
+                    }
+                
+
+
+                if (isValidItem) {
+                  
+                  
+                        var SheetDescriptiono = $('#odescription').val().trim();
+                        var Amounto = $('#oamount').val().trim();
+                        var Commentso = $('#ocomment').val().trim();
+                        var SheetTypeo = 3;
+                        orderItemso.push({
+                            SheetDescription: SheetDescriptiono,
+                            Amount: Amounto,
+                            Comments: Commentso,
+                            SheetType: SheetTypeo
+                        });
+                        $('#odescription,#oamount,#ocomment').val('');
+                        otro();
+
+                }
+
+
+
+
+            });
+            //////////////
+            /////////////////
+            ////////////////
+            ////////////////
             //Save button click function
             $('#submit').click(function() {
                 //validation of order
                 var isAllValid = true;
-                if (orderItems.length == 0) {
-                    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
-                    isAllValid = false;
-                }
+                //if (orderItems.length == 0) {
+                //    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
+                //    isAllValid = false;
+                //}
 
 
-                if ($('#wdescription').val().trim() == '' || $('#customername').val().trim() == '0') {
+                if ($('#wdescription').val().trim() == '') {
                     $('#wdescription').siblings('span.error').css('visibility', 'visible');
                     isAllValid = false;
                 } else {
@@ -328,7 +524,10 @@
                 } else {
                     $('#wtotal').siblings('span.error').css('visibility', 'hidden');
                 }
-
+                
+                orderItems = $.merge(orderItemsi,orderItemsc);
+                orderItems = $.merge(orderItems,orderItemsg);
+                orderItems = $.merge(orderItems,orderItemso);
                 //Save if valid
                 if (isAllValid) {
                     var data = {
@@ -350,7 +549,7 @@
                             //check is successfully save to database
                             if (d.status == true) {
 
-                                var url = '@Url.Action("Details","Worksheets", new { ViewBag.nsheet})';
+                                var url = '@Url.Action("Details","Worksheets", new { id=ViewBag.nsheet})';
                                 window.location.href = url;
                             } else {
                                 alert('Failed');
@@ -366,124 +565,120 @@
 
             });
 
-            //////////////////////////////IMPRIMIR Y GUARDAR
-            //////////////////////////////
-            @*//////////////////////////////
-            $('#imprimir').click(function() {
-                //validation of order
-                var isAllValid = true;
-                if (orderItems.length == 0) {
-                    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
-                    isAllValid = false;
-                }
+          
 
-                if ($('#customername').val().trim() == '' || $('#customername').val().trim() == '0') {
-                    $('#customername').siblings('span.error').css('visibility', 'visible');
-                    isAllValid = false;
-                } else {
-                    $('#customername').siblings('span.error').css('visibility', 'hidden');
-                }
-
-                if ($('#saledate').val().trim() == '') {
-                    $('#saledate').siblings('span.error').css('visibility', 'visible');
-                    isAllValid = false;
-                } else {
-                    $('#saledate').siblings('span.error').css('visibility', 'hidden');
-                }
-                if ($('#saletotal').val().trim() == '') {
-                    $('#saletotal').siblings('span.error').css('visibility', 'visible');
-                    isAllValid = false;
-                } else {
-                    $('#saletotal').siblings('span.error').css('visibility', 'hidden');
-                }
-
-
-                //Save if valid
-                if (isAllValid) {
-                    var data = {
-                        CustomerName: $('#customername').val().trim(),
-                        //Sorry forgot to add Description Field
-                        SaleAddress: $('#saleaddress').val().trim(),
-                        CuitCuil: $('#cuitcuil').val().trim(),
-                        SaleDate: $('#saledate').val().trim(),
-                        SaleTotal: $('#saletotal').val().trim(),
-                        Comments: $('#comments').val().trim(),
-                        SaleState: $('#salestate').val().trim(),
-                        SaleLines: orderItems
-                    }
-
-                    $(this).val('Please wait...');
-
-                    $.ajax({
-                        url: '@Url.Action("CreateSale", "Sales")',
-                        type: "POST",
-                        data: JSON.stringify(data),
-                        dataType: "JSON",
-                        contentType: "application/json",
-                        success: function(d) {
-                            u = d.miid;
-                            //check is successfully save to database
-                            if (d.status == true) {
-
-                                var url1 = '@Url.Action("Details","Bills", new { id = ViewBag.nsale,x=1})';
-                                window.open(url1);
-
-                                var url = '@Url.Action("CreateSale","Sales", new { x = 1 })';
-                                window.location.href = url;
-
-                            } else {
-                                alert('Failed');
-                            }
-                            $('#submit').val('Save');
-                        },
-                        error: function() {
-                            alert('Error. Please try again.');
-                            $('#submit').val('Save');
-                        }
-                    });
-                }
-
-            });*@
-
-
-
-            function GeneratedItemsTable() {
-                $('.elim').remove();
-                if (orderItems.length > 0) {
-                    $('#orderItems').html('<span class="text-danger"></span>');
-                $.each(orderItems, function (i, val) {
-                    var $row = $('<tr class="elim"  style="background-color: white"></tr>');
-                    $row.append($('<td></td>').html(val.SheetDescription));
-                    $row.append($('<td></td>').html(val.Comments));
-                    $row.append($('<td></td>').html(val.Date));
-                    $row.append($('<td></td>').html(val.SheetType));
-                    $row.append($('<td></td>').html(val.Amount));
-                    $row.append($('<td></td>').html(val.Iva));
-
-                    var $remove = $('<a href="#">Eliminar</a>');
+            function ingreso() {
+                $('.elimi').remove();
+                if (orderItemsi.length > 0) {
+                    $('#orderItemsi').html('<span class="text-danger"></span>');
+                $.each(orderItemsi, function (i, val) {
+                    var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
+                    $rowi.append($('<td></td>').html(val.SheetDescription));
+                    $rowi.append($('<td></td>').html(val.Comments));
+                    $rowi.append($('<td></td>').html(val.Amount));
+                    var $removei = $('<a href="#">Eliminar</a>');
                     //CALCULO TOTAL GRAL
-                    wtotal = 0;
-                    $.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                    document.getElementById("wtotal").value = wtotal.toFixed(2);
+                    //wtotal = 0;
+                    //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                    //document.getElementById("wtotal").value = wtotal.toFixed(2);
                     //FIN CALCULO TOTAL GRAL
-                    $remove.click(function (e) {
+                    $removei.click(function (e) {
                         e.preventDefault();
-                        orderItems.splice(i, 1);
-                        verifsheets.splice(i, 1);
-                        totgral.splice(i, 1);
-                        GeneratedItemsTable();
-                        wtotal = 0;
-                        $.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                        document.getElementById("wtotal").value = wtotal.toFixed(2);
-
+                        orderItemsi.splice(i, 1);
+                        ingreso();
                     });
-                    $row.append($('<td></td>').append($remove));
-                    $('#mytable > tbody:last').append($row);
+                    $rowi.append($('<td></td>').append($removei));
+                    $('#ingresotabla > tbody:last').append($rowi);
                 });
             } else {
-                $('#orderItems').html('');
+                $('#orderItemsi').html('');
             }
-        }
+            }
+
+            function costo() {
+                $('.elimc').remove();
+                if (orderItemsc.length > 0) {
+                    $('#orderItemsc').html('<span class="text-danger"></span>');
+                    $.each(orderItemsc, function (i, val) {
+                        var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
+                        $rowc.append($('<td></td>').html(val.SheetDescription));
+                        $rowc.append($('<td></td>').html(val.Comments));
+                        $rowc.append($('<td></td>').html(val.Amount));
+                        var $removec = $('<a href="#">Eliminar</a>');
+                        //CALCULO TOTAL GRAL
+                        //wtotal = 0;
+                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
+                        //FIN CALCULO TOTAL GRAL
+                        $removec.click(function (e) {
+                            e.preventDefault();
+                            orderItemsc.splice(i, 1);
+                            costo();
+                        });
+                        $rowc.append($('<td></td>').append($removec));
+                        $('#costotabla > tbody:last').append($rowc);
+                    });
+                } else {
+                    $('#orderItemsc').html('');
+                }
+            }
+
+            function gasto() {
+                $('.elimg').remove();
+                if (orderItemsg.length > 0) {
+                    $('#orderItemsg').html('<span class="text-danger"></span>');
+                    $.each(orderItemsg, function (i, val) {
+                        var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
+                        $rowg.append($('<td></td>').html(val.SheetDescription));
+                        $rowg.append($('<td></td>').html(val.Comments));
+                        $rowg.append($('<td></td>').html(val.Amount));
+                        var $removeg = $('<a href="#">Eliminar</a>');
+                        //CALCULO TOTAL GRAL
+                        //wtotal = 0;
+                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
+                        //FIN CALCULO TOTAL GRAL
+                        $removeg.click(function (e) {
+                            e.preventDefault();
+                            orderItemsg.splice(i, 1);
+                            gasto();
+                        });
+                        $rowg.append($('<td></td>').append($removeg));
+                        $('#gastotabla > tbody:last').append($rowg);
+                    });
+                } else {
+                    $('#orderItemsg').html('');
+                }
+            }
+
+            function otro() {
+                $('.elimo').remove();
+                if (orderItemso.length > 0) {
+                    $('#orderItemso').html('<span class="text-danger"></span>');
+                    $.each(orderItemso, function (i, val) {
+                        var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
+                        $rowo.append($('<td></td>').html(val.SheetDescription));
+                        $rowo.append($('<td></td>').html(val.Comments));
+                        $rowo.append($('<td></td>').html(val.Amount));
+                        var $removeo = $('<a href="#">Eliminar</a>');
+                        //CALCULO TOTAL GRAL
+                        //wtotal = 0;
+                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
+                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
+                        //FIN CALCULO TOTAL GRAL
+                        $removeo.click(function (e) {
+                            e.preventDefault();
+                            orderItemso.splice(i, 1);
+                            otro();
+                        });
+                        $rowo.append($('<td></td>').append($removeo));
+                        $('#otrotabla > tbody:last').append($rowo);
+                    });
+                } else {
+                    $('#orderItemso').html('');
+                }
+            }
+
 
 
         });

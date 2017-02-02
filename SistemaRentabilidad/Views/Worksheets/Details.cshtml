@@ -30,12 +30,10 @@
 <table class="table">
     <thead>
         <tr>
-            <td>N° Cuenta</td>
+           
             <td>Descrición</td>
-            <td>Fecha de Creación</td>
             <td>Tipo</td>
             <td>Monto</td>
-            <td>IVA</td>
             <td>Opciones</td>
         </tr>
     </thead>
@@ -43,12 +41,9 @@
         @foreach (var item in Model.Sheets)
         {
             <tr>
-                <td>@item.IdSheet</td>
                 <td>@item.SheetDescription</td>
-                <td>@item.Date</td>
                 <td>@item.SheetType</td>
                 <td>@item.Amount</td>
-                <td>@item.Iva</td>
                 <td></td>
             </tr>
         }

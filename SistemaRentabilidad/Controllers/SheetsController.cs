@@ -22,23 +22,7 @@ namespace SistemaRentabilidad.Controllers
             return View(sheet.ToList());
         }
 
-        public ActionResult Ingress()
-        {
-            var iSheet = (from s in db.Sheet
-                          where s.SheetType == SheetType.Ingreso
-                          select s);
-
-            return View(iSheet.ToList());
-        }
-
-        public ActionResult Outflow()
-        {
-            var iSheet = (from s in db.Sheet
-                          where s.SheetType == SheetType.Egreso
-                          select s);
-
-            return View(iSheet.ToList());
-        }
+       
 
         // GET: Sheets/Details/5
         public ActionResult Details(int? id)

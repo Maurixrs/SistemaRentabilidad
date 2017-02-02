@@ -59,6 +59,52 @@ namespace SistemaRentabilidad.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult CreateWorksheet(WsVM O)
+        {
+            //CustomerName contiene el id del cliente
+            bool status = false;
+
+
+            Worksheet ws = new Worksheet();
+
+            if (ModelState.IsValid)
+            {
+
+                ws.Date = O.Date;
+                ws.WorksheetDescription = O.WorksheetDescription;
+                ws.Comments = O.Comments;
+                ws.TotalAmount = O.TotalAmount;
+              
+
+                db.Worksheet.Add(ws);
+                db.SaveChanges();
+
+                foreach (var i in O.Sheets)
+                {
+                   
+
+                    Sheet sh = new Sheet();
+                    sh.SheetDescription = i.SheetDescription;
+                    sh.Amount = i.Amount;
+                    sh.Comments = i.Comments;
+                    sh.SheetType = i.SheetType;
+                    sh.IdWorkSheet = ws.IdWorksheet;
+
+                    db.Sheet.Add(sh);
+                    db.SaveChanges();
+                }
+                status = true;
+
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status } };
+        }
+
+
         // GET: Worksheets/Create
         public ActionResult Create()
         {
