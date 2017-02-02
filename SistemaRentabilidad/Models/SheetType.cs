@@ -9,11 +9,16 @@ namespace SistemaRentabilidad.Models
     public enum SheetType
 
     {
-        [Display(Name = "Egreso")]
-        Egreso = 0,
-
         [Display(Name = "Ingreso")]
-        Ingreso = 1,
+        Ingreso = 0,
+
+        [Display(Name = "Costo")]
+        Costo = 1,
+        [Display(Name = "Gasto")]
+        Gasto = 2,
+        [Display(Name = "Otro Ingreso")]
+        OtroIngreso = 3,
+
 
 
     }
