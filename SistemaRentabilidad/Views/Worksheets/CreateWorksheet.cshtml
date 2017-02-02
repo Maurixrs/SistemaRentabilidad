@@ -2,6 +2,16 @@
 @{
     ViewBag.Title = "Nueva Planilla";
 }
+<style>
+    #ingresotabla td{line-height: 10px}
+    #costotabla td{line-height: 10px}
+    #gastotabla td{line-height: 10px}
+    #otrotabla td{line-height: 10px}
+    .table {
+    margin-bottom: 8px;
+}
+
+</style>
 
 <head>
 
@@ -9,12 +19,12 @@
 </head>
 @*///////////////////////////*@
 <hr style="margin-top: 10px;
-    margin-bottom: 10px;" />
+                                       margin-bottom: 10px;" />
 
 <legend style="margin-bottom: 2px;">
     Planilla: @ViewBag.nsheet
 </legend>
-<table class="table table-condensed   table-condensed table-bordered">
+<table id="titulotabla" class="table table-condensed table-bordered chica">
 
     <thead class="tableStyle">
 
@@ -33,11 +43,9 @@
    
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="wdescription"  placeholder=""/>
-        <span class="error">Requerido</span>
     </td>
     <td class="text-center">
         <input type="date" class="panel-info form-control-sm inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa" />
-        <span class="error">Requerido</span>
     </td>
     </tbody>
 
@@ -45,7 +53,7 @@
 <legend style="margin-bottom: 2px;">
     Ingresos
 </legend>
-<table id="ingresotabla" class="table table-condensed  table-condensed table-bordered">
+<table id="ingresotabla" class="table table-condensed table-bordered chica">
     <thead>
         <tr class="text-center">
             <th class="text-center">
@@ -63,20 +71,20 @@
         </tr>
     </thead>
     <tbody id="ingreso">
-    <td class="text-center">
+    <td class="text-center fina">
         <input type="text" class="panel-info form-control-sm inputForm" id="idescription" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
-    <td class="text-center">
+    <td class="text-center fina">
         <input type="text" class="panel-info form-control-sm inputForm" id="icomment" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
-    <td>
+    <td class="fina">
         <input type="number" class="panel-info form-control-sm inputForm" value="1" id="iamount" onkeypress="solonumerosptocoma();" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
-    <td>
-        <button type="button" id="addi" class="btn btn-success btn-sm add" value="ingreso" />Agregar
+    <td class="fina">
+        <button type="button" id="addi" class="btn btn-success btn-xs add" value="ingreso" />Agregar
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -85,7 +93,7 @@
 <legend style="margin-bottom: 2px;">
     Costos de las ventas
 </legend>
-<table id="costotabla" class="table table-condensed   table-condensed table-bordered">
+<table id="costotabla" class="table table-condensed table-bordered chica">
     <thead class="tableStyle">
         <tr class="text-center">
             <th class="text-center">
@@ -105,18 +113,18 @@
     <tbody id="costo">
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="cdescription" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="ccomment" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
         <input type="number" class="panel-info form-control-sm inputForm" value="1" id="camount" onkeypress="solonumerosptocoma();" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
-        <button type="button" id="addc" class="btn btn-success btn-sm add" value="costo" />Agregar
+        <button type="button" id="addc" class="btn btn-success btn-xs add" value="costo" />Agregar
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -125,7 +133,7 @@
 <legend style="margin-bottom: 2px;">
     Gastos
 </legend>
-<table id="gastotabla" class="table table-condensed   table-condensed table-bordered">
+<table id="gastotabla" class="table table-condensed table-bordered chica">
     <thead class="tableStyle">
         <tr class="text-center">
             <th class="text-center">
@@ -145,18 +153,18 @@
     <tbody id="gasto">
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="gdescription" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="gcomment" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
         <input type="number" class="panel-info form-control-sm inputForm" value="1" id="gamount" onkeypress="solonumerosptocoma();" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
-        <button type="button" id="addg" class="btn btn-success btn-sm add" value="gasto" />Agregar
+        <button type="button" id="addg" class="btn btn-success btn-xs add" value="gasto" />Agregar
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -165,7 +173,7 @@
 <legend style="margin-bottom: 2px;">
     Otros ingresos
 </legend>
-<table id="otrotabla" class="table table-condensed   table-condensed table-bordered">
+<table id="otrotabla" class="table table-condensed table-bordered chica">
     <thead class="tableStyle">
         <tr class="text-center">
             <th class="text-center">
@@ -185,18 +193,18 @@
     <tbody id="otro">
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="odescription" placeholder=""/>
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="ocomment" placeholder="" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
         <input type="number" class="panel-info form-control-sm inputForm" value="1" id="oamount" onkeypress="solonumerosptocoma();" />
-        <span class="error">Requerido</span>
+        <span class="text-danger" style="display: block"></span>
     </td>
     <td>
-        <button type="button" id="addo" class="btn btn-success btn-sm add" value="otro" />Agregar
+        <button type="button" id="addo" class="btn btn-success btn-xs add" value="otro" />Agregar
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -207,31 +215,31 @@
 <div>
     <div id="orderItemsi">
     </div>
-    <span class="error"></span>
+    <span class="text-danger" style="display: block"></span>
 
 </div>
 <div>
     <div id="orderItemsc">
     </div>
-    <span class="error"></span>
+    <span class="text-danger" style="display: block"></span>
 
 </div>
 <div>
     <div id="orderItemsg">
     </div>
-    <span class="error"></span>
+    <span class="text-danger" style="display: block"></span>
 
 </div>
 <div>
     <div id="orderItemso">
     </div>
-    <span class="error"></span>
+    <span class="text-danger" style="display: block"></span>
 
 </div>
 <legend style="margin-bottom: 2px;">
     Resumen
 </legend>
-<table class="table table-condensed   table-striped table-bordered table-condensed">
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
 
     <thead class="tableStyle">
         <tr class="text-right">
@@ -251,7 +259,7 @@
             </td>
             <td>
                 <input type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" />
-                <span class="error">Requerido</span>
+                <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
 
@@ -315,16 +323,16 @@
                 //Check validation of order item
                 if ($('#idescription').val().trim() == '') {
                     isValidItem = false;
-                    $('#idescription').siblings('span.error').css('visibility', 'visible');
+                    $('#idescription').siblings('span.text-danger').html('Requerido');
                 } else {
-                    $('#idescription').siblings('span.error').css('visibility', 'hidden');
+                    $('#idescription').siblings('span.text-danger').html('');
                 }
 
                 if ($('#iamount').val().trim() == '') {
                     isValidItem = false;
-                    $('#iamount').siblings('span.error').css('visibility', 'visible');
+                    $('#iamount').siblings('span.text-danger').html('Requerido');
                 } else {
-                    $('#iamount').siblings('span.error').css('visibility', 'hidden');
+                    $('#iamount').siblings('span.text-danger').html('');
                 }
                 
 
@@ -359,16 +367,16 @@
 
                 if ($('#cdescription').val().trim() == '') {
                         isValidItem = false;
-                        $('#cdescription').siblings('span.error').css('visibility', 'visible');
+                        $('#cdescription').siblings('span.text-danger').html('Requerido');
                     } else {
-                    $('#cdescription').siblings('span.error').css('visibility', 'hidden');
+                    $('#cdescription').siblings('span.text-danger').html('');
                     }
 
                 if ($('#camount').val().trim() == '') {
                         isValidItem = false;
-                        $('#camount').siblings('span.error').css('visibility', 'visible');
+                        $('#camount').siblings('span.text-danger').html('Requerido');
                     } else {
-                    $('#camount').siblings('span.error').css('visibility', 'hidden');
+                    $('#camount').siblings('span.text-danger').html('');
                     }
                 
 
@@ -407,16 +415,16 @@
 
                     if ($('#gdescription').val().trim() == '') {
                         isValidItem = false;
-                        $('#gdescription').siblings('span.error').css('visibility', 'visible');
+                        $('#gdescription').siblings('span.text-danger').html('Requerido');
                     } else {
-                        $('#gdescription').siblings('span.error').css('visibility', 'hidden');
+                        $('#gdescription').siblings('span.text-danger').html('');
                     }
 
                     if ($('#gamount').val().trim() == '') {
                         isValidItem = false;
-                        $('#gamount').siblings('span.error').css('visibility', 'visible');
+                        $('#gamount').siblings('span.text-danger').html('Requerido');
                     } else {
-                        $('#gamount').siblings('span.error').css('visibility', 'hidden');
+                        $('#gamount').siblings('span.text-danger').html('');
                    }
                 
 
@@ -455,16 +463,16 @@
              
                     if ($('#odescription').val().trim() == '') {
                         isValidItem = false;
-                        $('#odescription').siblings('span.error').css('visibility', 'visible');
+                        $('#odescription').siblings('span.text-danger').html('Requerido');
                     } else {
-                        $('#odescription').siblings('span.error').css('visibility', 'hidden');
+                        $('#odescription').siblings('span.text-danger').html('');
                     }
 
                     if ($('#oamount').val().trim() == '') {
                         isValidItem = false;
-                        $('#oamount').siblings('span.error').css('visibility', 'visible');
+                        $('#oamount').siblings('span.text-danger').html('Requerido');
                     } else {
-                        $('#oamount').siblings('span.error').css('visibility', 'hidden');
+                        $('#oamount').siblings('span.text-danger').html('');
                     }
                 
 
