@@ -4,6 +4,7 @@
 }
 
 <h2 class="text-center">Planilla @Model.WorksheetDescription</h2>
+<hr style="color:grey;border-color:grey" />
 
 <table class="table">
     <thead>
@@ -24,15 +25,110 @@
     </tbody>
 </table>
 
-<h2 class="text-center">Lista de Cuentas</h2>
-<a href="@Url.Action("Create","Sheets", new { idws = Model.IdWorksheet})" class="btn btn-success">Nueva Cuenta</a>
+<h2 class="text-center">Ingresos</h2>
+<hr style="color:grey;border-color:grey" />
+
+<table class="table">
+    <thead>
+        <tr>           
+            <td>Descrición</td>
+            <td>Comentarios</td>
+            <td>Monto</td>
+            <td>Opciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sheets)
+            {
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.Ingreso)
+                {
+                    <tr>
+                        <td>@item.SheetDescription</td>
+                        <td>@item.Comments</td>
+                        <td>@item.Amount</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        <tr>
+            <td style="border-right:hidden;border-left:hidden;border-bottom:hidden;"></td>
+            <td class="text-right">Subtotal</td>
+            <td></td>
+        </tr></tbody>
+</table>
+
+<h2 class="text-center">Costos</h2>
+<hr style="color:grey;border-color:grey" />
 
 <table class="table">
     <thead>
         <tr>
-           
             <td>Descrición</td>
-            <td>Tipo</td>
+            <td>Comentarios</td>
+            <td>Monto</td>
+            <td>Opciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sheets)
+            {
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.Costo)
+                {
+                <tr>
+                    <td>@item.SheetDescription</td>
+                    <td>@item.Comments</td>
+                    <td>@item.Amount</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        <tr>
+            <td style="border-right:hidden;border-left:hidden;border-bottom:hidden;"></td>
+            <td class="text-right">Subtotal</td>
+            <td></td>
+        </tr></tbody>
+</table>
+
+<h2 class="text-center">Gastos</h2>
+<hr style="color:grey;border-color:grey" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Descrición</td>
+            <td>Comentarios</td>
+            <td>Monto</td>
+            <td>Opciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sheets)
+            {
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.Gasto)
+                {
+                <tr>
+                    <td>@item.SheetDescription</td>
+                    <td>@item.Comments</td>
+                    <td>-@item.Amount</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        <tr>
+            <td style="border-right:hidden;border-left:hidden;border-bottom:hidden;"></td>
+            <td class="text-right">Subtotal</td>
+            <td></td>
+        </tr></tbody>
+</table>
+
+<h2 class="text-center">Otros Ingresos</h2>
+<hr style="color:grey;border-color:grey" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Descrición</td>
+            <td>Comentarios</td>
             <td>Monto</td>
             <td>Opciones</td>
         </tr>
@@ -40,54 +136,20 @@
     <tbody>
         @foreach (var item in Model.Sheets)
         {
-            <tr>
-                <td>@item.SheetDescription</td>
-                <td>@item.SheetType</td>
-                <td>@item.Amount</td>
-                <td></td>
-            </tr>
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.OtroIngreso)
+                {
+                <tr>
+                    <td>@item.SheetDescription</td>
+                    <td>@item.Comments</td>
+                    <td>-@item.Amount</td>
+                    <td></td>
+                </tr>
+            }
         }
+        <tr>
+            <td style="border-right:hidden;border-left:hidden;border-bottom:hidden;"></td>
+            <td class="text-right">Subtotal</td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
-@*<div>
-        <h4>Worksheet</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Date)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Date)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.WorksheetDescription)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.WorksheetDescription)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TotalAmount)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TotalAmount)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Comments)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Comments)
-            </dd>
-
-        </dl>
-    </div>*@
-<@*p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdWorksheet }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
