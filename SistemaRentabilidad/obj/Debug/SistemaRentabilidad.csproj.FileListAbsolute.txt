@@ -354,3 +354,5 @@ C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\bin\Microsoft
 C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.csprojResolveAssemblyReference.cache
 C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.dll
 C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.pdb
+E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.dll
+E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.xml
