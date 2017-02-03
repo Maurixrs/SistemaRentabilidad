@@ -18,7 +18,14 @@ namespace SistemaRentabilidad.Models
 
         [Display(Name = "Descripción")]
         public string WorksheetDescription { get; set; }
-
+        [Display(Name = "Total Ingreso")]
+        public decimal Totali { get; set; }
+        [Display(Name = "Total costo de ventas")]
+        public decimal Totalc { get; set; }
+        [Display(Name = "Total gastos")]
+        public decimal Totalg { get; set; }
+        [Display(Name = "Total otros ingresos")]
+        public decimal Totalo { get; set; }
         [Display(Name = "Total")]
         public decimal TotalAmount { get; set; }
 
