@@ -16,7 +16,11 @@ namespace SistemaRentabilidad.ViewModels
       
         public string WorksheetDescription { get; set; }
 
-       public decimal TotalAmount { get; set; }
+        public decimal Totali { get; set; }
+        public decimal Totalc { get; set; }
+        public decimal Totalg { get; set; }
+        public decimal Totalo { get; set; }
+        public decimal TotalAmount { get; set; }
 
         public List<Sheet> Sheets { get; set; }
 
