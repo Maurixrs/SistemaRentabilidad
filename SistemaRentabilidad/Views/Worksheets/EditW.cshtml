@@ -117,10 +117,14 @@
     <tbody>
 
     <td class="text-center">
-        @Html.TextBoxFor(model => model.WorksheetDescription)
+        @Html.TextBoxFor(model => model.WorksheetDescription,new {@onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()" })
+        <span id="wdescription" class="text-danger" style="display: block"></span>
+
    </td>
     <td class="text-center">
-@Html.TextBoxFor(model => model.Date)    </td>
+        @Html.TextBoxFor(model => model.Date, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()"})        <span id="wdate" class="text-danger" style="display: block"></span>
+
+    </td>
     </tbody>
 
 </table>
@@ -222,7 +226,8 @@
 
     <tr>
         <td style="width: 40%;">
-            @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet,Name="ing_SheetDescription"})
+            @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet,Name="ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+            <span class="text-danger" id="@("spaniteming_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
         </td>
@@ -230,7 +235,8 @@
             @Html.TextBoxFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments" })
         </td>
         <td>
-            @Html.TextBoxFor(modelItem => item.Amount, new {@id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount",@onkeyup= "calcing();calculogral();",@oninput ="calcing();calculogral();", @onkeypress = "solonumerosptocoma()" })
+            @Html.TextBoxFor(modelItem => item.Amount, new {@id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount",@onkeyup= "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+            <span class="text-danger" id="@("spaniteming_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
         </td>
@@ -251,7 +257,7 @@
             </th>
 
             <th class="text-left" style="background: lightgray" id="toting">
-                @Html.TextBoxFor(model => model.Totali)
+                @Html.TextBoxFor(model => model.Totali,new {@readonly ="readonly"})
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -280,7 +286,8 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription"})
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                        <span class="text-danger" id="@("spanitemcos_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
@@ -288,7 +295,8 @@
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();", @oninput = "calccos();calculogral();", @onkeypress = "solonumerosptocoma()" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                        <span class="text-danger" id="@("spanitemcos_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
@@ -310,7 +318,7 @@
             </th>
 
             <th class="text-left" style="background: lightgray" id="totcos">
-                @Html.TextBoxFor(model => model.Totalc)
+                @Html.TextBoxFor(model => model.Totalc, new { @readonly = "readonly" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -337,14 +345,16 @@
             if (item.SheetType == SheetType.Gasto) {
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription"})
-                        
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                        <span class="text-danger" id="@("spanitemgas_SheetDescription"+@item.IdSheet)" style="display: block"></span>
+
                     </td>
                     <td style="width: 40%;">
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();", @oninput = "calcgas();calculogral();", @onkeypress = "solonumerosptocoma()" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                        <span class="text-danger" id="@("spanitemgas_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
@@ -366,7 +376,7 @@
             </th>
 
             <th class="text-left" style="background: lightgray" id="totgas">
-                @Html.TextBoxFor(model => model.Totalg)
+                @Html.TextBoxFor(model => model.Totalg, new { @readonly = "readonly" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -394,7 +404,8 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription"})
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new {@id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                        <span class="text-danger" id="@("spanitemotr_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
@@ -402,7 +413,8 @@
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();", @oninput = "calcotr();calculogral();", @onkeypress = "solonumerosptocoma()" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                        <span class="text-danger" id="@("spanitemotr_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
@@ -423,7 +435,7 @@
             </th>
 
             <th class="text-left" style="background: lightgray" id="tototr">
-                @Html.TextBoxFor(model => model.Totalo)
+                @Html.TextBoxFor(model => model.Totalo, new { @readonly = "readonly" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -457,7 +469,7 @@
 
             </td>
             <td>
-                @Html.TextBoxFor(model => model.TotalAmount)
+                @Html.TextBoxFor(model => model.TotalAmount, new { @readonly = "readonly" })
                 <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -476,33 +488,74 @@
 
 </div>
 @section Scripts{
-<script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
+    <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
+        function valwd() {
+            if ($('#WorksheetDescription').val().trim() == '') {
+                $('#wdescription').html('Requerido');
+            } else {
+                $('#wdescription').html('');
+            }
+
+            if ($('#Date').val().trim() == '') {
+                $('#wdate').html('Requerido');
+            } else {
+                $('#wdate').html('');
+            }
+        }
+
+        function valdesc(x) {
+            var a = x.id;
+            if (x.value.trim() == "" || x.value == null) {
+                $('#span' + a).html('Requerido.');
+
+            } else {
+                $('#span' + a).html('');
+            };
+        }
+
+        function valamou(x) {
+            var a = x.id;
+            if (x.value.trim() == "" || x.value == null) {
+                $('#span' + a).html('Requerido.');
+
+            } else {
+                if (x.value.trim() == 0) {
+                    $('#span' + a).html('Debe ser mayor a 0.');
+                } else {
+                    $('#span' + a).html('');
+                }
+            };
+        }
+
         function calcing() {
             ting = 0;
-            $.each(toting, function () { ting += parseFloat(this) || 0; });
-            $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+            $.each(toting, function() { ting += parseFloat(this) || 0; });
+            $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
             document.getElementById("Totali").value = ting.toFixed(2);
         }
 
         function calccos() {
             tcos = 0;
-            $.each(totcos, function () { tcos += parseFloat(this) || 0; });
-            $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+            $.each(totcos, function() { tcos += parseFloat(this) || 0; });
+            $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
             document.getElementById("Totalc").value = tcos.toFixed(2);
         }
+
         function calcgas() {
             tgas = 0;
-            $.each(totgas, function () { tgas += parseFloat(this) || 0; });
-            $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+            $.each(totgas, function() { tgas += parseFloat(this) || 0; });
+            $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
             document.getElementById("Totalg").value = tgas.toFixed(2);
         }
+
         function calcotr() {
             totr = 0;
-            $.each(tototr, function () { totr += parseFloat(this) || 0; });
-            $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+            $.each(tototr, function() { totr += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
             document.getElementById("Totalo").value = totr.toFixed(2);
         }
+
         function arraysamountsedit() {
             itemsi = [];
             itemsiamounts = [];
@@ -512,12 +565,12 @@
             itemsgamounts = [];
             itemso = [];
             itemsoamounts = [];
-          
-            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
-            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
-            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
-            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
-            
+
+            $("input[name='ing_Amount']").map(function() { itemsiamounts.push(parseFloat(this.value)) });
+            $("input[name='cos_Amount']").map(function() { itemscamounts.push(parseFloat(this.value)) });
+            $("input[name='gas_Amount']").map(function() { itemsgamounts.push(parseFloat(this.value)) });
+            $("input[name='otr_Amount']").map(function() { itemsoamounts.push(parseFloat(this.value)) });
+
         }
 
         function arraysedit() {
@@ -540,21 +593,21 @@
             itemsodescriptions = [];
             itemsocomments = [];
             itemsoamounts = [];
-            $("input[name='ing_SheetDescription']").map(function () { itemsidescriptions.push((this.value)) });
-            $("input[name='ing_Comments']").map(function () { itemsicomments.push((this.value)) });
-            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
+            $("input[name='ing_SheetDescription']").map(function() { itemsidescriptions.push((this.value)) });
+            $("input[name='ing_Comments']").map(function() { itemsicomments.push((this.value)) });
+            $("input[name='ing_Amount']").map(function() { itemsiamounts.push(parseFloat(this.value)) });
 
-            $("input[name='cos_SheetDescription']").map(function () { itemscdescriptions.push((this.value)) });
-            $("input[name='cos_Comments']").map(function () { itemsccomments.push((this.value)) });
-            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
+            $("input[name='cos_SheetDescription']").map(function() { itemscdescriptions.push((this.value)) });
+            $("input[name='cos_Comments']").map(function() { itemsccomments.push((this.value)) });
+            $("input[name='cos_Amount']").map(function() { itemscamounts.push(parseFloat(this.value)) });
 
-            $("input[name='gas_SheetDescription']").map(function () { itemsgdescriptions.push((this.value)) });
-            $("input[name='gas_Comments']").map(function () { itemsgcomments.push((this.value)) });
-            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
+            $("input[name='gas_SheetDescription']").map(function() { itemsgdescriptions.push((this.value)) });
+            $("input[name='gas_Comments']").map(function() { itemsgcomments.push((this.value)) });
+            $("input[name='gas_Amount']").map(function() { itemsgamounts.push(parseFloat(this.value)) });
 
-            $("input[name='otr_SheetDescription']").map(function () { itemsodescriptions.push((this.value)) });
-            $("input[name='otr_Comments']").map(function () { itemsocomments.push((this.value)) });
-            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
+            $("input[name='otr_SheetDescription']").map(function() { itemsodescriptions.push((this.value)) });
+            $("input[name='otr_Comments']").map(function() { itemsocomments.push((this.value)) });
+            $("input[name='otr_Amount']").map(function() { itemsoamounts.push(parseFloat(this.value)) });
 
 
             for (i = 0; i < itemsidescriptions.length; i++) {
@@ -603,14 +656,14 @@
         function calculogral() {
             arraysamountsedit();
             tgral = 0;
-            $.each(toting, function () { tgral += parseFloat(this) || 0; });
-            $.each(itemsiamounts, function () { tgral += parseFloat(this) || 0; });
-            $.each(tototr, function () { tgral += parseFloat(this) || 0; });
-            $.each(itemsoamounts, function () { tgral += parseFloat(this) || 0; });
-            $.each(totgas, function () { tgral -= parseFloat(this) || 0; });
-            $.each(itemsgamounts, function () { tgral -= parseFloat(this) || 0; });
-            $.each(totcos, function () { tgral -= parseFloat(this) || 0; });
-            $.each(itemscamounts, function () { tgral -= parseFloat(this) || 0; });
+            $.each(toting, function() { tgral += parseFloat(this) || 0; });
+            $.each(itemsiamounts, function() { tgral += parseFloat(this) || 0; });
+            $.each(tototr, function() { tgral += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function() { tgral += parseFloat(this) || 0; });
+            $.each(totgas, function() { tgral -= parseFloat(this) || 0; });
+            $.each(itemsgamounts, function() { tgral -= parseFloat(this) || 0; });
+            $.each(totcos, function() { tgral -= parseFloat(this) || 0; });
+            $.each(itemscamounts, function() { tgral -= parseFloat(this) || 0; });
             document.getElementById("TotalAmount").value = tgral.toFixed(2);
         }
 
@@ -624,22 +677,26 @@
             calcotr();
             calculogral();
         }
-        $( "#ocultar" ).click(function() {
+
+        $("#ocultar").click(function() {
             $(this).text(function(i, text) {
                 return text === "Ocultar" ? "Nueva linea" : "Ocultar";
             });
 
-            $( "#nuevalinea" ).toggle( "slow" );
+            $("#nuevalinea").toggle("slow");
         });
 
 
         function acting(a) { tipo = "ing"; }
+
         function actcos(a) { tipo = "cos"; }
+
         function actgas(a) { tipo = "gas"; }
+
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function () {
-          
+        $(document).ready(function() {
+
             tipo = "ing";
 
             orderItems = [];
@@ -660,7 +717,7 @@
 
         /////ADD click ////////
         ///////////////////////
-        $('#addn').click(function () {
+        $('#addn').click(function() {
             arraysamountsedit();
 
 
@@ -677,12 +734,13 @@
             if ($('#namount').val().trim() == '') {
                 isValidItem = false;
                 $('#namount').siblings('span.text-danger').html('Requerido');
-            }else{if($('#namount').val().trim() == 0) {
-                isValidItem = false;
-                $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
             } else {
-                $('#namount').siblings('span.text-danger').html('');
-            }
+                if ($('#namount').val().trim() == 0) {
+                    isValidItem = false;
+                    $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
+                } else {
+                    $('#namount').siblings('span.text-danger').html('');
+                }
             }
 
 
@@ -759,11 +817,11 @@
 
         /////Fin ADD click/////
         ///////////////////////
-      
+
         //functiones agregar ing cos gas otr/////////////
         /////////////////////
         function ingreso() {
-               
+
             $('.elimi').remove();
             if (orderItemsi.length > 0) {
                 $('#orderItemsi').html('<span class="text-danger"></span>');
@@ -775,14 +833,14 @@
                     var $removei = $('<a style="color:red" href="#">X</a>');
                     //CALCULO TOTAL ing
                     ting = 0;
-                    $.each(toting, function () { ting += parseFloat(this) || 0; });
-                    $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+                    $.each(toting, function() { ting += parseFloat(this) || 0; });
+                    $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
                     document.getElementById("Totali").value = ting.toFixed(2);
                     //FIN CALCULO TOTAL ing
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
-                    $removei.click(function (e) {
+                    $removei.click(function(e) {
                         toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Ingreso:");
                         e.preventDefault();
                         orderItemsi.splice(i, 1);
@@ -790,8 +848,8 @@
                         ingreso();
                         //CALCULO TOTAL ing
                         ting = 0;
-                        $.each(toting, function () { ting += parseFloat(this) || 0; });
-                        $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+                        $.each(toting, function() { ting += parseFloat(this) || 0; });
+                        $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
                         document.getElementById("Totali").value = ting.toFixed(2);
                         //FIN CALCULO TOTAL ing
                         //calculo total gral
@@ -807,7 +865,7 @@
         }
 
         function costo() {
-               
+
             $('.elimc').remove();
             if (orderItemsc.length > 0) {
                 $('#orderItemsc').html('<span class="text-danger"></span>');
@@ -819,14 +877,14 @@
                     var $removec = $('<a style="color:red" href="#">X</a>');
                     //CALCULO TOTAL cos
                     tcos = 0;
-                    $.each(totcos, function () { tcos += parseFloat(this) || 0; });
-                    $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+                    $.each(totcos, function() { tcos += parseFloat(this) || 0; });
+                    $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
                     document.getElementById("Totalc").value = tcos.toFixed(2);
                     //FIN CALCULO TOTAL cos
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
-                    $removec.click(function (e) {
+                    $removec.click(function(e) {
                         toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Costo:");
                         e.preventDefault();
                         orderItemsc.splice(i, 1);
@@ -834,8 +892,8 @@
                         costo();
                         //CALCULO TOTAL cos
                         tcos = 0;
-                        $.each(totcos, function () { tcos += parseFloat(this) || 0; });
-                        $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+                        $.each(totcos, function() { tcos += parseFloat(this) || 0; });
+                        $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
                         document.getElementById("Totalc").value = tcos.toFixed(2);
                         //FIN CALCULO TOTAL cos
                         //calculo total gral
@@ -851,7 +909,7 @@
         }
 
         function gasto() {
-           
+
             $('.elimg').remove();
             if (orderItemsg.length > 0) {
                 $('#orderItemsg').html('<span class="text-danger"></span>');
@@ -863,14 +921,14 @@
                     var $removeg = $('<a style="color:red" href="#">X</a>');
                     //CALCULO TOTAL gas
                     tgas = 0;
-                    $.each(totgas, function () { tgas += parseFloat(this) || 0; });
-                    $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+                    $.each(totgas, function() { tgas += parseFloat(this) || 0; });
+                    $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
                     document.getElementById("Totalg").value = tgas.toFixed(2);
                     //FIN CALCULO TOTAL gas
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
-                    $removeg.click(function (e) {
+                    $removeg.click(function(e) {
                         toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Gasto:");
                         e.preventDefault();
                         orderItemsg.splice(i, 1);
@@ -878,8 +936,8 @@
                         gasto();
                         //CALCULO TOTAL gas
                         tgas = 0;
-                        $.each(totgas, function () { tgas += parseFloat(this) || 0; });
-                        $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+                        $.each(totgas, function() { tgas += parseFloat(this) || 0; });
+                        $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
                         document.getElementById("Totalg").value = tgas.toFixed(2);
                         //FIN CALCULO TOTAL gas
                         //calculo total gral
@@ -895,7 +953,7 @@
         }
 
         function otro() {
-                
+
             $('.elimo').remove();
             if (orderItemso.length > 0) {
                 $('#orderItemso').html('<span class="text-danger"></span>');
@@ -907,24 +965,24 @@
                     var $removeo = $('<a style="color:red" href="#">X</a>');
                     //CALCULO TOTAL otr
                     totr = 0;
-                    $.each(tototr, function () { totr += parseFloat(this) || 0; });
-                    $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+                    $.each(tototr, function() { totr += parseFloat(this) || 0; });
+                    $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
                     document.getElementById("Totalo").value = totr.toFixed(2);
                     //FIN CALCULO TOTAL otr
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
-                     
-                    $removeo.click(function (e) {
-                        toastr.warning("-"+val.SheetDescription+"-<br/>Eliminado.","Otro ingreso:");
+
+                    $removeo.click(function(e) {
+                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Otro ingreso:");
                         e.preventDefault();
                         orderItemso.splice(i, 1);
                         tototr.splice(i, 1);
                         otro();
                         //CALCULO TOTAL otr
                         totr = 0;
-                        $.each(tototr, function () { totr += parseFloat(this) || 0; });
-                        $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+                        $.each(tototr, function() { totr += parseFloat(this) || 0; });
+                        $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
                         document.getElementById("Totalo").value = totr.toFixed(2);
                         //FIN CALCULO TOTAL otr
                         //calculo total gral
@@ -933,75 +991,218 @@
                     });
                     $rowo.append($('<td style="width: 2%"></td>').append($removeo));
                     $('#otrotabla > tbody:last').append($rowo);
-                      
+
                 });
             } else {
                 $('#orderItemso').html('');
             }
         }
-        
+
         //////fin funciones agregar ing cos gas otr///////
         //////////////////////////
 
-
+        ////spaniteming_SheetDescription
 
         $('#guardar').click(function() {
-            bootbox.confirm("** Está por confirmar la edición, ¿Desea continuar?", function(result1) {
 
-                if (result1) {
+            var required = false;
 
-                    arraysedit();
+            $("input[name='ing_SheetDescription']").map(function() {
+                var a = this.id;
 
-                 
-                    orderItems = $.merge(itemsi, orderItemsi);
-                    orderItems = $.merge(orderItems, itemsc);
-                    orderItems = $.merge(orderItems, orderItemsc);
-                    orderItems = $.merge(orderItems, itemsg);
-                    orderItems = $.merge(orderItems, orderItemsg);
-                    orderItems = $.merge(orderItems, itemso);
-                    orderItems = $.merge(orderItems, orderItemso);
-
-
-                    var data = {
-                        IdWorkSheet: @Model.IdWorksheet,
-                        WorksheetDescription: $('#WorksheetDescription').val().trim(),
-                        Date: $('#Date').val().trim(),
-                        Comments: $('#Comments').val().trim(),
-                        Sheets: orderItems,
-                        Totali: $('#Totali').val().trim(),
-                        Totalc: $('#Totalc').val().trim(),
-                        Totalg: $('#Totalg').val().trim(),
-                        Totalo: $('#Totalo').val().trim(),
-                        TotalAmount: $('#TotalAmount').val().trim()
-                    }
-                    $.ajax({
-                        url: '@Url.Action("EditW", "Worksheets")',
-                        type: "POST",
-                        data: JSON.stringify(data),
-                        dataType: "JSON",
-                        contentType: "application/json",
-                        success: function(d) {
-                            //check is successfully save to database
-                            if (d.status == true) {
-
-                                var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
-                                window.location.href = url;
-                            } else {
-                                alert('Failed');
-                            }
-                            $('#submit').val('Save');
-                        },
-                        error: function() {
-                            alert('Error. Please try again.');
-                            $('#submit').val('Save');
-                        }
-                    });
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spaniteming_SheetDescription' + b).html('Requerido');
+                    required = true;
+                } else {
+                    $('#spaniteming_SheetDescription' + b).html('');
                 }
-
 
             });
 
-           
+            $("input[name='cos_SheetDescription']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemcos_SheetDescription' + b).html('Requerido');
+                    required = true;
+                } else {
+                    $('#spanitemcos_SheetDescription' + b).html('');
+                }
+
+            });
+
+            $("input[name='gas_SheetDescription']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemgas_SheetDescription' + b).html('Requerido');
+                    required = true;
+                } else {
+                    $('#spanitemgas_SheetDescription' + b).html('');
+                }
+
+            });
+
+            $("input[name='otr_SheetDescription']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemotr_SheetDescription' + b).html('Requerido');
+                    required = true;
+                } else {
+                    $('#spanitemotr_SheetDescription' + b).html('');
+                }
+
+            });
+            $("input[name='ing_Amount']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spaniteming_Amount' + b).html('Requerido');
+                    required = true;
+                } else {
+                    if (this.value.trim() == 0) {
+                        $('#spaniteming_Amount' + b).html('Debe ser mayor a 0');
+                        required = true;
+                    } else {
+                        $('#spaniteming_Amount' + b).html('');
+                    }
+                }
+            });
+            $("input[name='cos_Amount']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemcos_Amount' + b).html('Requerido');
+                    required = true;
+                } else {
+                    if (this.value.trim() == 0) {
+                        $('#spanitemcos_Amount' + b).html('Debe ser mayor a 0');
+                        required = true;
+                    } else {
+                        $('#spanitemcos_Amount' + b).html('');
+                    }
+                }
+            });
+            $("input[name='gas_Amount']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemgas_Amount' + b).html('Requerido');
+                    required = true;
+                } else {
+                    if (this.value.trim() == 0) {
+                        $('#spanitemgas_Amount' + b).html('Debe ser mayor a 0');
+                        required = true;
+                    } else {
+                        $('#spanitemgas_Amount' + b).html('');
+                    }
+                }
+            });
+            $("input[name='otr_Amount']").map(function() {
+                var a = this.id;
+
+                var b = a.replace(/\D/g, '');
+                if (this.value.trim() == "" || this.value == null) {
+                    $('#spanitemotr_Amount' + b).html('Requerido');
+                    required = true;
+                } else {
+                    if (this.value.trim() == 0) {
+                        $('#spanitemotr_Amount' + b).html('Debe ser mayor a 0');
+                        required = true;
+                    } else {
+                        $('#spanitemotr_Amount' + b).html('');
+                    }
+                }
+            });
+            if ($('#WorksheetDescription').val().trim() == '') {
+                $('#wdescription').html('Requerido');
+                required = true;
+            } else {
+                $('#wdescription').html('');
+            }
+
+            if ($('#Date').val().trim() == '') {
+                $('#wdate').html('Requerido');
+                required = true;
+            } else {
+                $('#wdate').html('');
+            }
+
+            if (required) {
+
+                bootbox.alert({
+                    title: "Aviso",
+                    message: "Por favor complete todos los campos requeridos. ",
+                    backdrop: true
+                });
+            } else {
+
+
+                bootbox.confirm("** Está por confirmar la edición, ¿Desea continuar?", function(result1) {
+
+                    if (result1) {
+
+                        arraysedit();
+
+
+                        orderItems = $.merge(itemsi, orderItemsi);
+                        orderItems = $.merge(orderItems, itemsc);
+                        orderItems = $.merge(orderItems, orderItemsc);
+                        orderItems = $.merge(orderItems, itemsg);
+                        orderItems = $.merge(orderItems, orderItemsg);
+                        orderItems = $.merge(orderItems, itemso);
+                        orderItems = $.merge(orderItems, orderItemso);
+
+
+                        var data = {
+                            IdWorkSheet: @Model.IdWorksheet,
+                            WorksheetDescription: $('#WorksheetDescription').val().trim(),
+                            Date: $('#Date').val().trim(),
+                            Comments: $('#Comments').val().trim(),
+                            Sheets: orderItems,
+                            Totali: $('#Totali').val().trim(),
+                            Totalc: $('#Totalc').val().trim(),
+                            Totalg: $('#Totalg').val().trim(),
+                            Totalo: $('#Totalo').val().trim(),
+                            TotalAmount: $('#TotalAmount').val().trim()
+                        }
+                        $.ajax({
+                            url: '@Url.Action("EditW", "Worksheets")',
+                            type: "POST",
+                            data: JSON.stringify(data),
+                            dataType: "JSON",
+                            contentType: "application/json",
+                            success: function(d) {
+                                //check is successfully save to database
+                                if (d.status == true) {
+
+                                    var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
+                                    window.location.href = url;
+                                } else {
+                                    alert('Failed');
+                                }
+                                $('#submit').val('Save');
+                            },
+                            error: function() {
+                                alert('Error. Please try again.');
+                                $('#submit').val('Save');
+                            }
+                        });
+                    }
+
+
+                });
+            }
+
+
         });
 
 
