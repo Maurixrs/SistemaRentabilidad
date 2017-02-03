@@ -90,9 +90,9 @@
 
 <head>
 
-    <link href="/Content/site.css" rel="stylesheet">
+    
 </head>
-<input id="idw" value="@Model.IdWorksheet"/>
+
 @*///////////////////////////*@
 <hr style="margin-top: 10px;margin-bottom: 10px;" />
 
@@ -677,8 +677,12 @@
             if ($('#namount').val().trim() == '') {
                 isValidItem = false;
                 $('#namount').siblings('span.text-danger').html('Requerido');
+            }else{if($('#namount').val().trim() == 0) {
+                isValidItem = false;
+                $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
             } else {
                 $('#namount').siblings('span.text-danger').html('');
+            }
             }
 
 
@@ -959,7 +963,7 @@
 
 
                     var data = {
-                        IdWorkSheet: $('#idw').val().trim(),
+                        IdWorkSheet: @Model.IdWorksheet,
                         WorksheetDescription: $('#WorksheetDescription').val().trim(),
                         Date: $('#Date').val().trim(),
                         Comments: $('#Comments').val().trim(),
@@ -980,7 +984,7 @@
                             //check is successfully save to database
                             if (d.status == true) {
 
-                                var url = '@Url.Action("Details", "Worksheets", new {id = ViewBag.nuevo})';
+                                var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
                                 window.location.href = url;
                             } else {
                                 alert('Failed');
