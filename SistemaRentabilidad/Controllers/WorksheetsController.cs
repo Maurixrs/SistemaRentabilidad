@@ -45,6 +45,77 @@ namespace SistemaRentabilidad.Controllers
             }
             return View(wsVm);
         }
+        public ActionResult EditW(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Worksheet worksheet = _repository.FindE(id);
+            WsVM wsVm = Mapper.Map<Worksheet, WsVM>(worksheet);
+            if (worksheet == null)
+            {
+                return HttpNotFound();
+            }
+            var nuevo = 0;
+            if (db.Worksheet != null & db.Worksheet.Count() != 0)
+            {
+                nuevo = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
+            }
+            ViewBag.nuevo = nuevo + 1;
+
+            return View(wsVm);
+        }
+
+        [HttpPost]
+        public JsonResult EditW(WsVM O)
+        {
+            //CustomerName contiene el id del cliente
+            bool status = false;
+
+
+            Worksheet wx = db.Worksheet.Find(O.IdWorksheet);
+            
+            db.Worksheet.Remove(wx);
+            db.SaveChanges();
+            Worksheet ws = new Worksheet();
+            if (ModelState.IsValid)
+            {
+               
+                ws.Date = O.Date;
+                ws.WorksheetDescription = O.WorksheetDescription;
+                ws.Comments = O.Comments;
+                ws.TotalAmount = O.TotalAmount;
+                ws.Totali = O.Totali;
+                ws.Totalc = O.Totalc;
+                ws.Totalg = O.Totalg;
+                ws.Totalo = O.Totalo;
+                db.Worksheet.Add(ws);
+                db.SaveChanges();
+
+                foreach (var i in O.Sheets)
+                {
+                    Sheet sh = new Sheet();
+                    sh.SheetDescription = i.SheetDescription;
+                    sh.Amount = i.Amount;
+                    sh.Comments = i.Comments;
+                    sh.SheetType = i.SheetType;
+                    sh.IdWorkSheet = ws.IdWorksheet;
+
+                    db.Sheet.Add(sh);
+                    db.SaveChanges();
+                }
+                status = true;
+
+            }
+            else
+            {
+                status = false;
+            }
+            return new JsonResult { Data = new { status = status,num=ws.IdWorksheet } };
+        }
+
+
 
         public ActionResult CreateWorksheet()
         {
@@ -67,7 +138,7 @@ namespace SistemaRentabilidad.Controllers
 
 
             Worksheet ws = new Worksheet();
-
+           
             if (ModelState.IsValid)
             {
 

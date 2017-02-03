@@ -637,6 +637,7 @@
     <Content Include="Views\SheetLines\Edit.cshtml" />
     <Content Include="Views\SheetLines\Index.cshtml" />
     <Content Include="Views\Worksheets\CreateWorksheet.cshtml" />
+    <Content Include="Views\Worksheets\EditW.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
