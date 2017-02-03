@@ -64,7 +64,7 @@ namespace SistemaRentabilidad.Controllers
                 return HttpNotFound();
             }
          
-            ViewBag.nuevo = id;
+            
 
             return View(wsVm);
         }

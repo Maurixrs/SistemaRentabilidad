@@ -34,7 +34,7 @@
 
 <head>
 
-    <link href="/Content/site.css" rel="stylesheet">
+   
 </head>
 @*///////////////////////////*@
 <hr style="margin-top: 10px;margin-bottom: 10px;" />
@@ -61,9 +61,13 @@
 
     <td class="text-center">
         <input type="text" class="panel-info form-control-sm inputForm" id="wdescription" placeholder=""/>
+        <span class="text-danger" style="display: block"></span>
+
     </td>
     <td class="text-center">
         <input type="date" class="panel-info form-control-sm inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+        <span class="text-danger" style="display: block"></span>
+
     </td>
     </tbody>
 
@@ -430,9 +434,17 @@
                 if ($('#namount').val().trim() == '') {
                     isValidItem = false;
                     $('#namount').siblings('span.text-danger').html('Requerido');
+                }else{if($('#namount').val().trim() == 0) {
+                    isValidItem = false;
+                    $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
                 } else {
                     $('#namount').siblings('span.text-danger').html('');
                 }
+            }
+
+
+
+               
 
 
                 if (isValidItem) {
@@ -516,28 +528,34 @@
 
 
                 if ($('#wdescription').val().trim() == '') {
-                    $('#wdescription').siblings('span.error').css('visibility', 'visible');
+                    $('#wdescription').siblings('span.text-danger').html('Requerido');
                     isAllValid = false;
                 } else {
-                    $('#wdescription').siblings('span.error').css('visibility', 'hidden');
+                    $('#wdescription').siblings('span.text-danger').html('');
                 }
 
                 if ($('#wdate').val().trim() == '') {
-                    $('#wdate').siblings('span.error').css('visibility', 'visible');
+                    $('#wdate').siblings('span.text-danger').html('Requerido');
                     isAllValid = false;
                 } else {
-                    $('#wdate').siblings('span.error').css('visibility', 'hidden');
+                    $('#wdate').siblings('span.text-danger').html('');
                 }
-                if ($('#wtotal').val().trim() == '') {
-                    $('#wtotal').siblings('span.error').css('visibility', 'visible');
-                    isAllValid = false;
-                } else {
-                    $('#wtotal').siblings('span.error').css('visibility', 'hidden');
-                }
+              
 
                 orderItems = $.merge(orderItemsi, orderItemsc);
                 orderItems = $.merge(orderItems, orderItemsg);
                 orderItems = $.merge(orderItems, orderItemso);
+
+                if (orderItems.length == 0) {
+                    bootbox.alert({
+                        title: "Aviso",
+                        message: "Por favor, es necesario agregar al menos una línea para guardar la planilla. ",
+                        backdrop: true
+                    });
+                  
+                    isAllValid = false;
+                    
+                }
                 //Save if valid
                 if (isAllValid) {
                     var data = {
