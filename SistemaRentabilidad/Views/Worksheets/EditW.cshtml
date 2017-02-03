@@ -99,7 +99,7 @@
 <legend style="margin-bottom: 2px;">
     Planilla: @Html.DisplayFor(model => model.IdWorksheet)
 </legend>
-<table id="titulotabla" class="table table-condensed table-bordered chica">
+<table id="titulotabla" class="table table-condensed table-bordered ">
 
     <thead class="tableStyle">
 
@@ -125,66 +125,68 @@
 
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
+<button id="ocultar" class="hidden-print btn btn-default btn-sm">Nueva linea</button>
+<div id="nuevalinea" >
+    <legend style="margin-bottom: 2px;background: cadetblue">
+        Linea
+    </legend>
+    <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+        <thead>
+            <tr class="text-center" style="background: gainsboro">
+                <th class="text-left" style="width: 40%">
+                    Descripción
+                </th>
+                <th class="text-left" style="width: 40%">
+                    Observación
+                </th>
 
-<legend style="margin-bottom: 2px;background: cadetblue">
-    Linea
-</legend>
-<table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
-    <thead>
-        <tr class="text-center" style="background: gainsboro">
-            <th class="text-left" style="width: 40%">
-                Descripción
-            </th>
-            <th class="text-left" style="width: 40%">
-                Observación
-            </th>
+                <th class="text-left">
+                    Monto
+                </th>
+                <th class="text-center">
+                    Tipo
+                </th>
+            </tr>
+        </thead>
+        <tbody id="nueva">
+        <td class="text-center ">
+            <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder="" />
+            <span class="text-danger" style="display: block"></span>
+        </td>
+        <td class="text-center ">
+            <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder="" />
+            <span class="text-danger" style="display: block"></span>
+        </td>
+        <td class="">
+            <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+            <span class="text-danger" style="display: block"></span>
+        </td>
+        <td>
+            <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
+                <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
+                    <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                </label>
+                <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
+                    <input type="radio" name="options" value="cos" autocomplete="off">Costo
+                </label>
+                <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
+                    <input type="radio" name="options" value="gas" autocomplete="off">Gasto
+                </label>
+                <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
+                    <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
+                </label>
+            </div>
+        </td>
+        <td class="">
+            <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
+            <span class="glyphicon glyphicon-plus"></span>
+        </td>
+        </tbody>
 
-            <th class="text-left">
-                Monto
-            </th>
-            <th class="text-center">
-                Tipo
-            </th>
-        </tr>
-    </thead>
-    <tbody id="nueva">
-    <td class="text-center fina">
-        <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder="" />
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="text-center fina">
-        <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder="" />
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="fina">
-        <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td>
-        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
-            <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
-                <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
-            </label>
-            <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
-                <input type="radio" name="options" value="cos" autocomplete="off">Costo
-            </label>
-            <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
-                <input type="radio" name="options" value="gas" autocomplete="off">Gasto
-            </label>
-            <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
-                <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
-            </label>
-        </div>
-    </td>
-    <td class="fina">
-        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
-        <span class="glyphicon glyphicon-plus"></span>
-    </td>
-    </tbody>
-
-</table>
+    </table>
+</div>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;"/>
-<table id="encabezadostabla" class="table table-condensed table-bordered chica" style="margin-bottom: 2px">
+<table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
         <tr class="text-center" style="background: khaki">
             <th class="text-left" style="width: 40%">
@@ -206,7 +208,7 @@
     Ingresos
 </legend>
 
-<table id="ingresotabla" class="table table-condensed table-bordered chica">
+<table id="ingresotabla" class="table table-condensed table-bordered ">
 
     <tbody id="ingreso">
     <tr>
@@ -228,16 +230,17 @@
             @Html.TextBoxFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments" })
         </td>
         <td>
-            @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount" })
+            @Html.TextBoxFor(modelItem => item.Amount, new {@id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount",@onkeyup= "calcing();calculogral();",@oninput ="calcing();calculogral();", @onkeypress = "solonumerosptocoma()" })
 
 
         </td>
+        <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
     </tr>}
 }
     </tbody>
 
 </table>
-<table id="totalingresotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -262,7 +265,7 @@
 <legend style="margin-bottom: 2px;background: darkkhaki">
     Costos de las ventas
 </legend>
-<table id="costotabla" class="table table-condensed table-bordered chica">
+<table id="costotabla" class="table table-condensed table-bordered ">
 
     <tbody id="costo">
     <tr>
@@ -285,17 +288,18 @@
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount"})
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();", @oninput = "calccos();calculogral();", @onkeypress = "solonumerosptocoma()" })
 
 
                     </td>
+                    <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
                 </tr>
             }
         }
     </tbody>
 
 </table>
-<table id="totalcostotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -320,7 +324,7 @@
 <legend style="margin-bottom: 2px;background: darkkhaki">
     Gastos
 </legend>
-<table id="gastotabla" class="table table-condensed table-bordered chica">
+<table id="gastotabla" class="table table-condensed table-bordered ">
 
     <tbody id="gasto">
     <tr>
@@ -340,17 +344,18 @@
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount"})
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();", @oninput = "calcgas();calculogral();", @onkeypress = "solonumerosptocoma()" })
 
 
                     </td>
+                    <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
                 </tr>
             }
         }
     </tbody>
 
 </table>
-<table id="totalgastotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -374,7 +379,7 @@
 <legend style="margin-bottom: 2px;background: darkkhaki">
     Otros ingresos
 </legend>
-<table id="otrotabla" class="table table-condensed table-bordered chica">
+<table id="otrotabla" class="table table-condensed table-bordered ">
 
     <tbody id="otro">
     <tr>
@@ -397,16 +402,17 @@
                         @Html.TextBoxFor(modelItem => item.Comments, new {@id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments"})
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount"})
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();", @oninput = "calcotr();calculogral();", @onkeypress = "solonumerosptocoma()" })
 
 
                     </td>
+                    <td style="width:2%"><a style="color:red" href="#" onclick ="borrarfila($(this))" >X</a></td>
                 </tr>
             }
         }
     </tbody>
 </table>
-<table id="totalotrotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalotrotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -431,7 +437,7 @@
 <legend style="margin-bottom: 2px;background: darkkhaki">
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
 
     <thead class="tableStyle">
         <tr class="text-center" style="background: khaki">
@@ -470,95 +476,487 @@
 
 </div>
 @section Scripts{
+<script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
+        function calcing() {
+            ting = 0;
+            $.each(toting, function () { ting += parseFloat(this) || 0; });
+            $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+            document.getElementById("Totali").value = ting.toFixed(2);
+        }
+
+        function calccos() {
+            tcos = 0;
+            $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+            $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+            document.getElementById("Totalc").value = tcos.toFixed(2);
+        }
+        function calcgas() {
+            tgas = 0;
+            $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+            $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+            document.getElementById("Totalg").value = tgas.toFixed(2);
+        }
+        function calcotr() {
+            totr = 0;
+            $.each(tototr, function () { totr += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+            document.getElementById("Totalo").value = totr.toFixed(2);
+        }
+        function arraysamountsedit() {
+            itemsi = [];
+            itemsiamounts = [];
+            itemsc = [];
+            itemscamounts = [];
+            itemsg = [];
+            itemsgamounts = [];
+            itemso = [];
+            itemsoamounts = [];
+          
+            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
+            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
+            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
+            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
+            
+        }
+
+        function arraysedit() {
+            itemsi = [];
+            itemsidescriptions = [];
+            itemsicomments = [];
+            itemsiamounts = [];
+
+            itemsc = [];
+            itemscdescriptions = [];
+            itemsccomments = [];
+            itemscamounts = [];
+
+            itemsg = [];
+            itemsgdescriptions = [];
+            itemsgcomments = [];
+            itemsgamounts = [];
+
+            itemso = [];
+            itemsodescriptions = [];
+            itemsocomments = [];
+            itemsoamounts = [];
+            $("input[name='ing_SheetDescription']").map(function () { itemsidescriptions.push((this.value)) });
+            $("input[name='ing_Comments']").map(function () { itemsicomments.push((this.value)) });
+            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
+
+            $("input[name='cos_SheetDescription']").map(function () { itemscdescriptions.push((this.value)) });
+            $("input[name='cos_Comments']").map(function () { itemsccomments.push((this.value)) });
+            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
+
+            $("input[name='gas_SheetDescription']").map(function () { itemsgdescriptions.push((this.value)) });
+            $("input[name='gas_Comments']").map(function () { itemsgcomments.push((this.value)) });
+            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
+
+            $("input[name='otr_SheetDescription']").map(function () { itemsodescriptions.push((this.value)) });
+            $("input[name='otr_Comments']").map(function () { itemsocomments.push((this.value)) });
+            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
+
+
+            for (i = 0; i < itemsidescriptions.length; i++) {
+
+                itemsi.push({
+                    SheetDescription: itemsidescriptions[i],
+                    Comments: itemsicomments[i],
+                    Amount: itemsiamounts[i],
+                    SheetType: 0
+
+                });
+            }
+
+            for (i = 0; i < itemscdescriptions.length; i++) {
+
+                itemsc.push({
+                    SheetDescription: itemscdescriptions[i],
+                    Comments: itemsccomments[i],
+                    Amount: itemscamounts[i],
+                    SheetType: 1
+
+                });
+            }
+            for (i = 0; i < itemsgdescriptions.length; i++) {
+
+                itemsg.push({
+                    SheetDescription: itemsgdescriptions[i],
+                    Comments: itemsgcomments[i],
+                    Amount: itemsgamounts[i],
+                    SheetType: 2
+
+                });
+            }
+            for (i = 0; i < itemsodescriptions.length; i++) {
+
+                itemso.push({
+                    SheetDescription: itemsodescriptions[i],
+                    Comments: itemsocomments[i],
+                    Amount: itemsoamounts[i],
+                    SheetType: 3
+
+                });
+            }
+        }
+
+        function calculogral() {
+            arraysamountsedit();
+            tgral = 0;
+            $.each(toting, function () { tgral += parseFloat(this) || 0; });
+            $.each(itemsiamounts, function () { tgral += parseFloat(this) || 0; });
+            $.each(tototr, function () { tgral += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function () { tgral += parseFloat(this) || 0; });
+            $.each(totgas, function () { tgral -= parseFloat(this) || 0; });
+            $.each(itemsgamounts, function () { tgral -= parseFloat(this) || 0; });
+            $.each(totcos, function () { tgral -= parseFloat(this) || 0; });
+            $.each(itemscamounts, function () { tgral -= parseFloat(this) || 0; });
+            document.getElementById("TotalAmount").value = tgral.toFixed(2);
+        }
+
+
+        function borrarfila(row) {
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+        $( "#ocultar" ).click(function() {
+            $(this).text(function(i, text) {
+                return text === "Ocultar" ? "Nueva linea" : "Ocultar";
+            });
+
+            $( "#nuevalinea" ).toggle( "slow" );
+        });
+
+
+        function acting(a) { tipo = "ing"; }
+        function actcos(a) { tipo = "cos"; }
+        function actgas(a) { tipo = "gas"; }
+        function actotr(a) { tipo = "otr"; }
+
+        $(document).ready(function () {
+          
+            tipo = "ing";
+
+            orderItems = [];
+            orderItemsi = [];
+            orderItemsc = [];
+            orderItemsg = [];
+            orderItemso = [];
+
+            toting = [];
+            totcos = [];
+            totgas = [];
+            tototr = [];
+            arraysamountsedit();
+
+
+        });
+
+
+        /////ADD click ////////
+        ///////////////////////
+        $('#addn').click(function () {
+            arraysamountsedit();
+
+
+            var isValidItem = true;
+
+            //Check validation of order item
+            if ($('#ndescription').val().trim() == '') {
+                isValidItem = false;
+                $('#ndescription').siblings('span.text-danger').html('Requerido');
+            } else {
+                $('#ndescription').siblings('span.text-danger').html('');
+            }
+
+            if ($('#namount').val().trim() == '') {
+                isValidItem = false;
+                $('#namount').siblings('span.text-danger').html('Requerido');
+            } else {
+                $('#namount').siblings('span.text-danger').html('');
+            }
+
+
+            if (isValidItem) {
+
+
+                var SheetDescription = $('#ndescription').val().trim();
+                var Amount = $('#namount').val().trim();
+                var Comments = $('#ncomment').val().trim();
+
+                if (tipo == "ing") {
+                    var SheetType = 0;
+                    orderItemsi.push({
+                        SheetDescription: SheetDescription,
+                        Amount: Amount,
+                        Comments: Comments,
+                        SheetType: SheetType
+                    });
+                    toting.push(
+                        parseFloat(Amount)
+                    );
+                    toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Ingreso:");
+                    ingreso();
+                };
+                if (tipo == "cos") {
+                    var SheetType = 1;
+                    orderItemsc.push({
+                        SheetDescription: SheetDescription,
+                        Amount: Amount,
+                        Comments: Comments,
+                        SheetType: SheetType
+                    });
+                    totcos.push(
+                        parseFloat(Amount)
+                    );
+                    toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Costo:");
+                    costo();
+                };
+                if (tipo == "gas") {
+                    var SheetType = 2;
+                    orderItemsg.push({
+                        SheetDescription: SheetDescription,
+                        Amount: Amount,
+                        Comments: Comments,
+                        SheetType: SheetType
+                    });
+                    totgas.push(
+                        parseFloat(Amount)
+                    );
+                    toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Gasto:");
+                    gasto();
+                };
+                if (tipo == "otr") {
+                    var SheetType = 3;
+                    orderItemso.push({
+                        SheetDescription: SheetDescription,
+                        Amount: Amount,
+                        Comments: Comments,
+                        SheetType: SheetType
+                    });
+                    tototr.push(
+                        parseFloat(Amount)
+                    );
+                    toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Otro ingreso:");
+                    otro();
+                };
+                $('#ndescription,#namount,#ncomment').val('');
+
+            }
+
+
+        });
+
+
+        /////Fin ADD click/////
+        ///////////////////////
+      
+        //functiones agregar ing cos gas otr/////////////
+        /////////////////////
+        function ingreso() {
+               
+            $('.elimi').remove();
+            if (orderItemsi.length > 0) {
+                $('#orderItemsi').html('<span class="text-danger"></span>');
+                $.each(orderItemsi, function(i, val) {
+                    var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
+                    $rowi.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
+                    $rowi.append($('<td style="width: 40%"></td>').html(val.Comments));
+                    $rowi.append($('<td></td>').html(val.Amount));
+                    var $removei = $('<a style="color:red" href="#">X</a>');
+                    //CALCULO TOTAL ing
+                    ting = 0;
+                    $.each(toting, function () { ting += parseFloat(this) || 0; });
+                    $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+                    document.getElementById("Totali").value = ting.toFixed(2);
+                    //FIN CALCULO TOTAL ing
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
+                    $removei.click(function (e) {
+                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Ingreso:");
+                        e.preventDefault();
+                        orderItemsi.splice(i, 1);
+                        toting.splice(i, 1);
+                        ingreso();
+                        //CALCULO TOTAL ing
+                        ting = 0;
+                        $.each(toting, function () { ting += parseFloat(this) || 0; });
+                        $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+                        document.getElementById("Totali").value = ting.toFixed(2);
+                        //FIN CALCULO TOTAL ing
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
+                    });
+                    $rowi.append($('<td style="width:2%"></td>').append($removei));
+                    $('#ingresotabla > tbody:last').append($rowi);
+                });
+            } else {
+                $('#orderItemsi').html('');
+            }
+        }
+
+        function costo() {
+               
+            $('.elimc').remove();
+            if (orderItemsc.length > 0) {
+                $('#orderItemsc').html('<span class="text-danger"></span>');
+                $.each(orderItemsc, function(i, val) {
+                    var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
+                    $rowc.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
+                    $rowc.append($('<td style="width: 40%"></td>').html(val.Comments));
+                    $rowc.append($('<td></td>').html(val.Amount));
+                    var $removec = $('<a style="color:red" href="#">X</a>');
+                    //CALCULO TOTAL cos
+                    tcos = 0;
+                    $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                    $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+                    document.getElementById("Totalc").value = tcos.toFixed(2);
+                    //FIN CALCULO TOTAL cos
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
+                    $removec.click(function (e) {
+                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Costo:");
+                        e.preventDefault();
+                        orderItemsc.splice(i, 1);
+                        totcos.splice(i, 1);
+                        costo();
+                        //CALCULO TOTAL cos
+                        tcos = 0;
+                        $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                        $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+                        document.getElementById("Totalc").value = tcos.toFixed(2);
+                        //FIN CALCULO TOTAL cos
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
+                    });
+                    $rowc.append($('<td style="width: 2%"></td>').append($removec));
+                    $('#costotabla > tbody:last').append($rowc);
+                });
+            } else {
+                $('#orderItemsc').html('');
+            }
+        }
+
+        function gasto() {
+           
+            $('.elimg').remove();
+            if (orderItemsg.length > 0) {
+                $('#orderItemsg').html('<span class="text-danger"></span>');
+                $.each(orderItemsg, function(i, val) {
+                    var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
+                    $rowg.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
+                    $rowg.append($('<td style="width: 40%"></td>').html(val.Comments));
+                    $rowg.append($('<td></td>').html(val.Amount));
+                    var $removeg = $('<a style="color:red" href="#">X</a>');
+                    //CALCULO TOTAL gas
+                    tgas = 0;
+                    $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                    $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+                    document.getElementById("Totalg").value = tgas.toFixed(2);
+                    //FIN CALCULO TOTAL gas
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
+                    $removeg.click(function (e) {
+                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Gasto:");
+                        e.preventDefault();
+                        orderItemsg.splice(i, 1);
+                        totgas.splice(i, 1);
+                        gasto();
+                        //CALCULO TOTAL gas
+                        tgas = 0;
+                        $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                        $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+                        document.getElementById("Totalg").value = tgas.toFixed(2);
+                        //FIN CALCULO TOTAL gas
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
+                    });
+                    $rowg.append($('<td style="width: 2%"></td>').append($removeg));
+                    $('#gastotabla > tbody:last').append($rowg);
+                });
+            } else {
+                $('#orderItemsg').html('');
+            }
+        }
+
+        function otro() {
+                
+            $('.elimo').remove();
+            if (orderItemso.length > 0) {
+                $('#orderItemso').html('<span class="text-danger"></span>');
+                $.each(orderItemso, function(i, val) {
+                    var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
+                    $rowo.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
+                    $rowo.append($('<td style="width: 40%"></td>').html(val.Comments));
+                    $rowo.append($('<td></td>').html(val.Amount));
+                    var $removeo = $('<a style="color:red" href="#">X</a>');
+                    //CALCULO TOTAL otr
+                    totr = 0;
+                    $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                    $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+                    document.getElementById("Totalo").value = totr.toFixed(2);
+                    //FIN CALCULO TOTAL otr
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
+                     
+                    $removeo.click(function (e) {
+                        toastr.warning("-"+val.SheetDescription+"-<br/>Eliminado.","Otro ingreso:");
+                        e.preventDefault();
+                        orderItemso.splice(i, 1);
+                        tototr.splice(i, 1);
+                        otro();
+                        //CALCULO TOTAL otr
+                        totr = 0;
+                        $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                        $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+                        document.getElementById("Totalo").value = totr.toFixed(2);
+                        //FIN CALCULO TOTAL otr
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
+                    });
+                    $rowo.append($('<td style="width: 2%"></td>').append($removeo));
+                    $('#otrotabla > tbody:last').append($rowo);
+                      
+                });
+            } else {
+                $('#orderItemso').html('');
+            }
+        }
+        
+        //////fin funciones agregar ing cos gas otr///////
+        //////////////////////////
+
+
 
         $('#guardar').click(function() {
             bootbox.confirm("** Está por confirmar la edición, ¿Desea continuar?", function(result1) {
 
                 if (result1) {
-                    orderItems = [];
 
-                    itemsi = [];
-                    itemsidescriptions = [];
-                    itemsicomments = [];
-                    itemsiamounts = [];
+                    arraysedit();
 
-                    itemsc = [];
-                    itemscdescriptions = [];
-                    itemsccomments = [];
-                    itemscamounts = [];
-
-                    itemsg = [];
-                    itemsgdescriptions = [];
-                    itemsgcomments = [];
-                    itemsgamounts = [];
-
-                    itemso = [];
-                    itemsodescriptions = [];
-                    itemsocomments = [];
-                    itemsoamounts = [];
-
-                    $("input[name='ing_SheetDescription']").map(function () { itemsidescriptions.push((this.value)) });
-                    $("input[name='ing_Comments']").map(function () { itemsicomments.push((this.value)) });
-                    $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
-
-                    $("input[name='cos_SheetDescription']").map(function () { itemscdescriptions.push((this.value)) });
-                    $("input[name='cos_Comments']").map(function () { itemsccomments.push((this.value)) });
-                    $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
-
-                    $("input[name='gas_SheetDescription']").map(function () { itemsgdescriptions.push((this.value)) });
-                    $("input[name='gas_Comments']").map(function () { itemsgcomments.push((this.value)) });
-                    $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
-
-                    $("input[name='otr_SheetDescription']").map(function () { itemsodescriptions.push((this.value)) });
-                    $("input[name='otr_Comments']").map(function () { itemsocomments.push((this.value)) });
-                    $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
-
-
-                    for (i = 0; i < itemsidescriptions.length; i++) {
-
-                        itemsi.push({
-                            SheetDescription: itemsidescriptions[i],
-                            Comments: itemsicomments[i],
-                            Amount: itemsiamounts[i],
-                            SheetType: 0
-                            
-                        });
-                    }
-
-                    for (i = 0; i < itemscdescriptions.length; i++) {
-
-                        itemsc.push({
-                            SheetDescription: itemscdescriptions[i],
-                            Comments: itemsccomments[i],
-                            Amount: itemscamounts[i],
-                            SheetType: 1
-
-                        });
-                    }
-                    for (i = 0; i < itemsgdescriptions.length; i++) {
-
-                        itemsg.push({
-                            SheetDescription: itemsgdescriptions[i],
-                            Comments: itemsgcomments[i],
-                            Amount: itemsgamounts[i],
-                            SheetType: 2
-
-                        });
-                    }
-                    for (i = 0; i < itemsodescriptions.length; i++) {
-
-                        itemso.push({
-                            SheetDescription: itemsodescriptions[i],
-                            Comments: itemsocomments[i],
-                            Amount: itemsoamounts[i],
-                            SheetType: 3
-
-                        });
-                    }
-                    orderItems = $.merge(itemsi, itemsc);
+                 
+                    orderItems = $.merge(itemsi, orderItemsi);
+                    orderItems = $.merge(orderItems, itemsc);
+                    orderItems = $.merge(orderItems, orderItemsc);
                     orderItems = $.merge(orderItems, itemsg);
+                    orderItems = $.merge(orderItems, orderItemsg);
                     orderItems = $.merge(orderItems, itemso);
+                    orderItems = $.merge(orderItems, orderItemso);
+
 
                     var data = {
                         IdWorkSheet: $('#idw').val().trim(),
@@ -578,10 +976,10 @@
                         data: JSON.stringify(data),
                         dataType: "JSON",
                         contentType: "application/json",
-                        success: function (d) {
+                        success: function(d) {
                             //check is successfully save to database
                             if (d.status == true) {
-                            
+
                                 var url = '@Url.Action("Details", "Worksheets", new {id = ViewBag.nuevo})';
                                 window.location.href = url;
                             } else {
@@ -589,7 +987,7 @@
                             }
                             $('#submit').val('Save');
                         },
-                        error: function () {
+                        error: function() {
                             alert('Error. Please try again.');
                             $('#submit').val('Save');
                         }
@@ -599,7 +997,7 @@
 
             });
 
-
+           
         });
 
 
