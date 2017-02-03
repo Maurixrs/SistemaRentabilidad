@@ -381,6 +381,7 @@
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
 
 
+
     <script>
         function calculogral() {
             tgral = 0;
@@ -563,7 +564,7 @@
                             //check is successfully save to database
                             if (d.status == true) {
 
-                                var url = '@Url.Action("Details", "Worksheets", new {id = ViewBag.nsheet})';
+                                var url = '@Url.Action("DetailsLast", "Worksheets")';
                                 window.location.href = url;
                             } else {
                                 alert('Failed');

@@ -45,6 +45,12 @@ namespace SistemaRentabilidad.Controllers
             }
             return View(wsVm);
         }
+        public ActionResult DetailsLast()
+        {
+            var id=db.Worksheet.ToList().LastOrDefault().IdWorksheet;
+
+            return RedirectToAction("Details", new { id = id });
+        }
         public ActionResult EditW(int? id)
         {
             if (id == null)
@@ -57,12 +63,8 @@ namespace SistemaRentabilidad.Controllers
             {
                 return HttpNotFound();
             }
-            var nuevo = 0;
-            if (db.Worksheet != null & db.Worksheet.Count() != 0)
-            {
-                nuevo = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
-            }
-            ViewBag.nuevo = nuevo + 1;
+         
+            ViewBag.nuevo = id;
 
             return View(wsVm);
         }
@@ -75,10 +77,21 @@ namespace SistemaRentabilidad.Controllers
 
 
             Worksheet wx = db.Worksheet.Find(O.IdWorksheet);
-            
-            db.Worksheet.Remove(wx);
-            db.SaveChanges();
-            Worksheet ws = new Worksheet();
+            List<int> sheetsid=new List<int>();
+            foreach (var item in wx.Sheets.ToList())
+            {
+                sheetsid.Add(item.IdSheet);
+            }
+            foreach (var elim in sheetsid)
+            {
+                Sheet sheet=new Sheet();
+                sheet = db.Sheet.Find(elim);
+                db.Sheet.Remove(sheet);
+                db.SaveChanges();
+                
+            }
+           
+            Worksheet ws = db.Worksheet.Find(O.IdWorksheet);
             if (ModelState.IsValid)
             {
                
@@ -90,7 +103,7 @@ namespace SistemaRentabilidad.Controllers
                 ws.Totalc = O.Totalc;
                 ws.Totalg = O.Totalg;
                 ws.Totalo = O.Totalo;
-                db.Worksheet.Add(ws);
+                db.Entry(ws).State = EntityState.Modified;
                 db.SaveChanges();
 
                 foreach (var i in O.Sheets)
