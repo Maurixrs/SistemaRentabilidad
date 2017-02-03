@@ -18,13 +18,17 @@
     #otrotabla th{line-height: 12px}
     #nueva th{line-height: 12px}
     #resumentabla th{line-height: 12px}
-      #otrosub th{line-height: 12px}
-            #encabezadostabla th{line-height: 12px}
+    #otrosub th{line-height: 12px}
+    #encabezadostabla th{line-height: 12px}
+    #totalingresotabla th{line-height: 12px}
+      #totalgastotabla th{line-height: 12px}
+        #totalcostotabla th{line-height: 12px}
+          #totalotrotabla th{line-height: 12px}
 
 
 
     .table {
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 </style>
 
@@ -69,7 +73,7 @@
 <legend style="margin-bottom: 2px;background: cadetblue">
     Linea
 </legend>
-<table id="nueva" class="table table-condensed table-bordered chica">
+<table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
     <tr class="text-center" style="background: gainsboro">
         <th class="text-left" style="width: 40%">
@@ -146,16 +150,36 @@
     Ingresos
 </legend>
 
-<table id="ingresotabla" class="table table-condensed table-bordered chica" >
-  
+<table id="ingresotabla" class="table table-condensed table-bordered chica">
+
     <tbody id="ingreso">
-        <tr>
-            <td style="width: 40%">-</td>
-            <td style="width: 40%">-</td>
-            <td>-</td>
-        </tr>
+    <tr>
+        <td style="width: 40%">-</td>
+        <td style="width: 40%">-</td>
+        <td>-</td>
+    </tr>
     </tbody>
 
+</table>
+<table id="totalingresotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+    <thead>
+        <tr class="text-center" style="background: none">
+            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+                
+            </th>
+            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                Subtotal
+            </th>
+
+            <th class="text-left" style="background: lightgray" id="toting">
+                0.00
+            </th>
+            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+                
+            </th>
+
+        </tr>
+    </thead>
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
@@ -163,15 +187,35 @@
     Costos de las ventas
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered chica">
-   
+
     <tbody id="costo">
-        <tr>
-            <td style="width: 40%">-</td>
-            <td style="width: 40%">-</td>
-            <td>-</td>
-        </tr>
+    <tr>
+        <td style="width: 40%">-</td>
+        <td style="width: 40%">-</td>
+        <td>-</td>
+    </tr>
     </tbody>
 
+</table>
+<table id="totalcostotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+    <thead>
+        <tr class="text-center" style="background: none">
+            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+
+            </th>
+            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                Subtotal
+            </th>
+
+            <th class="text-left" style="background: lightgray"  id="totcos">
+                0.00
+            </th>
+            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+
+            </th>
+
+        </tr>
+    </thead>
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
@@ -179,15 +223,35 @@
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered chica">
-   
+
     <tbody id="gasto">
-        <tr>
-            <td style="width: 40%">-</td>
-            <td style="width: 40%">-</td>
-            <td>-</td>
-        </tr>
+    <tr>
+        <td style="width: 40%">-</td>
+        <td style="width: 40%">-</td>
+        <td>-</td>
+    </tr>
     </tbody>
 
+</table>
+<table id="totalgastotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+    <thead>
+        <tr class="text-center" style="background: none">
+            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+
+            </th>
+            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                Subtotal
+            </th>
+
+            <th class="text-left" style="background: lightgray"  id="totgas">
+                0.00
+            </th>
+            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+
+            </th>
+
+        </tr>
+    </thead>
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
@@ -195,7 +259,7 @@
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered chica">
-   
+
     <tbody id="otro">
     <tr>
         <td style="width: 40%">-</td>
@@ -203,6 +267,26 @@
         <td>-</td>
     </tr>
     </tbody>
+</table>
+<table id="totalotrotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+    <thead>
+        <tr class="text-center" style="background: none">
+            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+
+            </th>
+            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                Subtotal
+            </th>
+
+            <th class="text-left" style="background: lightgray"  id="tototr">
+                0.00
+            </th>
+            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+
+            </th>
+
+        </tr>
+    </thead>
 </table>
 
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
@@ -298,7 +382,14 @@
 
 
     <script>
-
+        function calculogral() {
+            tgral = 0;
+            $.each(toting, function () { tgral += parseFloat(this) || 0; });
+            $.each(tototr, function () { tgral += parseFloat(this) || 0; });
+            $.each(totgas, function () { tgral -= parseFloat(this) || 0; });
+            $.each(totcos, function () { tgral -= parseFloat(this) || 0; });
+            document.getElementById("wtotal").value = tgral.toFixed(2);
+        }
         function acting(a) { tipo = "ing"; }
         function actcos(a) { tipo = "cos"; }
         function actgas(a) { tipo = "gas"; }
@@ -306,18 +397,25 @@
 
         $(document).ready(function () {
             tipo = "ing";
-            
+         
             var orderItems = [];
             var orderItemsi = [];
             var orderItemsc = [];
             var orderItemsg = [];
             var orderItemso = [];
+            toting = [];
+            totcos = [];
+            totgas = [];
+            tototr = [];
             //////////ADD INGRESO///////////////
             ///////////////////////////
             //////////////////////
             //Add button click function
             
             $('#addn').click(function () {
+             
+
+
                 var isValidItem = true;
 
                 //Check validation of order item
@@ -351,6 +449,9 @@
                             Comments: Comments,
                             SheetType: SheetType
                         });
+                        toting.push(
+                              parseFloat(Amount)
+                          );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Ingreso:");
                         ingreso();
                     };
@@ -362,6 +463,9 @@
                             Comments: Comments,
                             SheetType: SheetType
                         });
+                        totcos.push(
+                             parseFloat(Amount)
+                         );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Costo:");
                         costo();
                     };
@@ -373,6 +477,9 @@
                             Comments: Comments,
                             SheetType: SheetType
                         });
+                        totgas.push(
+                             parseFloat(Amount)
+                         );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Gasto:");
                         gasto();
                     };
@@ -384,6 +491,9 @@
                             Comments: Comments,
                             SheetType: SheetType
                         });
+                        tototr.push(
+                             parseFloat(Amount)
+                         );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Otro ingreso:");
                         otro();
                     };
@@ -433,7 +543,12 @@
                         WorksheetDescription: $('#wdescription').val().trim(),
                         Date: $('#wdate').val().trim(),
                         Comments: $('#wcomments').val().trim(),
-                        Sheets: orderItems
+                        Sheets: orderItems,
+                        Totali: $('#toting').html().trim(),
+                        Totalc: $('#totcos').html().trim(),
+                        Totalg: $('#totgas').html().trim(),
+                        Totalo: $('#tototr').html().trim(),
+                        TotalAmount: $('#wtotal').val().trim()
                     }
 
                     $(this).val('Please wait...');
@@ -476,16 +591,28 @@
                         $rowi.append($('<td style="width: 40%"></td>').html(val.Comments));
                         $rowi.append($('<td></td>').html(val.Amount));
                         var $removei = $('<a style="color:red" href="#">X</a>');
-                        //CALCULO TOTAL GRAL
-                        //wtotal = 0;
-                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
-                        //FIN CALCULO TOTAL GRAL
+                        //CALCULO TOTAL ing
+                        ting = 0;
+                        $.each(toting, function () { ting += parseFloat(this) || 0; });
+                        $('#toting').html(ting.toFixed(2));
+                        //FIN CALCULO TOTAL ing
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
                         $removei.click(function (e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Ingreso:");
                             e.preventDefault();
                             orderItemsi.splice(i, 1);
+                            toting.splice(i, 1);
                             ingreso();
+                            //CALCULO TOTAL ing
+                            ting = 0;
+                            $.each(toting, function () { ting += parseFloat(this) || 0; });
+                            $('#toting').html(ting.toFixed(2));
+                            //FIN CALCULO TOTAL ing
+                            //calculo total gral
+                            calculogral();
+                            //fin calculo total gral
                         });
                         $rowi.append($('<td style="width:2%"></td>').append($removei));
                         $('#ingresotabla > tbody:last').append($rowi);
@@ -506,17 +633,28 @@
                         $rowc.append($('<td style="width: 40%"></td>').html(val.Comments));
                         $rowc.append($('<td></td>').html(val.Amount));
                         var $removec = $('<a style="color:red" href="#">X</a>');
-                        //CALCULO TOTAL GRAL
-                        //wtotal = 0;
-                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
-                        //FIN CALCULO TOTAL GRAL
+                        //CALCULO TOTAL cos
+                        tcos = 0;
+                        $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                        $('#totcos').html(tcos.toFixed(2));
+                        //FIN CALCULO TOTAL cos
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
                         $removec.click(function (e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Costo:");
-
                             e.preventDefault();
                             orderItemsc.splice(i, 1);
+                            totcos.splice(i, 1);
                             costo();
+                            //CALCULO TOTAL cos
+                            tcos = 0;
+                            $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                            $('#totcos').html(tcos.toFixed(2));
+                            //FIN CALCULO TOTAL cos
+                            //calculo total gral
+                            calculogral();
+                            //fin calculo total gral
                         });
                         $rowc.append($('<td style="width: 2%"></td>').append($removec));
                         $('#costotabla > tbody:last').append($rowc);
@@ -537,17 +675,28 @@
                         $rowg.append($('<td style="width: 40%"></td>').html(val.Comments));
                         $rowg.append($('<td></td>').html(val.Amount));
                         var $removeg = $('<a style="color:red" href="#">X</a>');
-                        //CALCULO TOTAL GRAL
-                        //wtotal = 0;
-                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
-                        //FIN CALCULO TOTAL GRAL
+                        //CALCULO TOTAL gas
+                        tgas = 0;
+                        $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                        $('#totgas').html(tgas.toFixed(2));
+                        //FIN CALCULO TOTAL gas
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
                         $removeg.click(function (e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Gasto:");
-
                             e.preventDefault();
                             orderItemsg.splice(i, 1);
+                            totgas.splice(i, 1);
                             gasto();
+                            //CALCULO TOTAL gas
+                            tgas = 0;
+                            $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                            $('#totgas').html(tgas.toFixed(2));
+                            //FIN CALCULO TOTAL gas
+                            //calculo total gral
+                            calculogral();
+                            //fin calculo total gral
                         });
                         $rowg.append($('<td style="width: 2%"></td>').append($removeg));
                         $('#gastotabla > tbody:last').append($rowg);
@@ -568,16 +717,29 @@
                         $rowo.append($('<td style="width: 40%"></td>').html(val.Comments));
                         $rowo.append($('<td></td>').html(val.Amount));
                         var $removeo = $('<a style="color:red" href="#">X</a>');
-                        //CALCULO TOTAL GRAL
-                        //wtotal = 0;
-                        //$.each(totgral, function () { wtotal += parseFloat(this) || 0; });
-                        //document.getElementById("wtotal").value = wtotal.toFixed(2);
-                        //FIN CALCULO TOTAL GRAL
+                        //CALCULO TOTAL otr
+                        totr = 0;
+                        $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                        $('#tototr').html(totr.toFixed(2));
+                        //FIN CALCULO TOTAL otr
+                        //calculo total gral
+                        calculogral();
+                        //fin calculo total gral
+                     
                         $removeo.click(function (e) {
                             toastr.warning("-"+val.SheetDescription+"-<br/>Eliminado.","Otro ingreso:");
                             e.preventDefault();
                             orderItemso.splice(i, 1);
+                            tototr.splice(i, 1);
                             otro();
+                            //CALCULO TOTAL otr
+                            totr = 0;
+                            $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                            $('#tototr').html(totr.toFixed(2));
+                            //FIN CALCULO TOTAL otr
+                            //calculo total gral
+                            calculogral();
+                            //fin calculo total gral
                         });
                         $rowo.append($('<td style="width: 2%"></td>').append($removeo));
                         $('#otrotabla > tbody:last').append($rowo);

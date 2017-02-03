@@ -75,7 +75,11 @@ namespace SistemaRentabilidad.Controllers
                 ws.WorksheetDescription = O.WorksheetDescription;
                 ws.Comments = O.Comments;
                 ws.TotalAmount = O.TotalAmount;
-              
+                ws.Totali = O.Totali;
+                ws.Totalc = O.Totalc;
+                ws.Totalg = O.Totalg;
+                ws.Totalo = O.Totalo;
+
 
                 db.Worksheet.Add(ws);
                 db.SaveChanges();
