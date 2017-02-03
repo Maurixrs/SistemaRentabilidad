@@ -261,8 +261,6 @@ namespace SistemaRentabilidad.Controllers
             {
                 return HttpNotFound();
             }
-            if (worksheet.Sheets.Count() > 0)
-                ViewBag.eliminar = "No es posible eliminar una Planilla con cuentas relacionadas.";
 
             return View(wsVm);
         }
