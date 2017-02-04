@@ -4,421 +4,424 @@
     Layout=null;
 }
 
-<h3 class="text-center text-danger">¿Está seguro de eliminar la siguiente Planilla?</h3>
+<h3 class="text-center text-danger">¿Está seguro de eliminar esta Planilla?</h3>
 <h4 class="text-center">Esta acción no podrá deshacerse.</h4>
 
+@if (ViewBag.details == null)
+{
+    <style>
+        #resumentabla td {
+            line-height: 15px;
+        }
 
-<style>
-    #resumentabla td {
-        line-height: 15px;
-    }
+        #nueva td {
+            line-height: 15px;
+        }
 
-    #nueva td {
-        line-height: 15px;
-    }
+        #ingresotabla td {
+            line-height: 15px;
+        }
 
-    #ingresotabla td {
-        line-height: 15px;
-    }
+        #encabezadostabla td {
+            line-height: 15px;
+        }
 
-    #encabezadostabla td {
-        line-height: 15px;
-    }
+        #costotabla td {
+            line-height: 15px;
+        }
 
-    #costotabla td {
-        line-height: 15px;
-    }
+        #gastotabla td {
+            line-height: 15px;
+        }
 
-    #gastotabla td {
-        line-height: 15px;
-    }
+        #otrotabla td {
+            line-height: 15px;
+        }
 
-    #otrotabla td {
-        line-height: 15px;
-    }
+        #ingresotabla th {
+            line-height: 15px;
+        }
 
-    #ingresotabla th {
-        line-height: 15px;
-    }
+        #costotabla th {
+            line-height: 15px;
+        }
 
-    #costotabla th {
-        line-height: 15px;
-    }
+        #gastotabla th {
+            line-height: 15px;
+        }
 
-    #gastotabla th {
-        line-height: 15px;
-    }
+        #otrotabla th {
+            line-height: 15px;
+        }
 
-    #otrotabla th {
-        line-height: 15px;
-    }
+        #nueva th {
+            line-height: 15px;
+        }
 
-    #nueva th {
-        line-height: 15px;
-    }
+        #resumentabla th {
+            line-height: 15px;
+        }
 
-    #resumentabla th {
-        line-height: 15px;
-    }
+        #otrosub th {
+            line-height: 15px;
+        }
 
-    #otrosub th {
-        line-height: 15px;
-    }
+        #encabezadostabla th {
+            line-height: 15px;
+        }
 
-    #encabezadostabla th {
-        line-height: 15px;
-    }
+        #totalingresotabla th {
+            line-height: 15px;
+        }
 
-    #totalingresotabla th {
-        line-height: 15px;
-    }
+        #totalgastotabla th {
+            line-height: 15px;
+        }
 
-    #totalgastotabla th {
-        line-height: 15px;
-    }
+        #totalcostotabla th {
+            line-height: 15px;
+        }
 
-    #totalcostotabla th {
-        line-height: 15px;
-    }
-
-    #totalotrotabla th {
-        line-height: 15px;
-    }
-
-
-
-    .table {
-        margin-bottom: 0px;
-    }
-</style>
-
-<head>
-
-    <link href="/Content/site.css" rel="stylesheet">
-</head>
+        #totalotrotabla th {
+            line-height: 15px;
+        }
 
 
-<hr style="margin-top: 10px;margin-bottom: 10px;" />
 
-<legend style="margin-bottom: 2px;">
-    Planilla: @Html.DisplayFor(model => model.IdWorksheet)
-</legend>
-<table id="titulotabla" class="table table-condensed table-bordered ">
+        .table {
+            margin-bottom: 0px;
+        }
+    </style>
 
-    <thead class="tableStyle">
-        <tr class="text-center">
-            <th class="text-center">
-                Descripción
-            </th>
+    <head>
 
-            <th class="text-center">
-                Fecha de creación
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(model => model.WorksheetDescription)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(model => model.Date)
-            </td>
-        </tr>
-    </tbody>
-
-</table>
+        <link href="/Content/site.css" rel="stylesheet">
+    </head>
 
 
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
-<table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
-    <thead>
-        <tr class="text-center" style="background: khaki">
-            <th class="text-left" style="width: 40%">
-                Descripción
-            </th>
-            <th class="text-left" style="width: 40%">
-                Observación
-            </th>
+    <hr style="margin-top: 10px;margin-bottom: 10px;" />
 
-            <th class="text-left" style="width: 20%">
-                Monto
-            </th>
+    <legend style="margin-bottom: 2px;">
+        Planilla: @Html.DisplayFor(model => model.IdWorksheet)
+    </legend>
+    <table id="titulotabla" class="table table-condensed table-bordered ">
 
-        </tr>
-    </thead>
-</table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
-<legend style="margin-bottom: 2px; background: darkkhaki">
-    Ingresos
-</legend>
+        <thead class="tableStyle">
+            <tr class="text-center">
+                <th class="text-center">
+                    Descripción
+                </th>
 
-<table id="ingresotabla" class="table table-condensed table-bordered ">
+                <th class="text-center">
+                    Fecha de creación
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(model => model.WorksheetDescription)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(model => model.Date)
+                </td>
+            </tr>
+        </tbody>
 
-    <tbody id="ingreso">
+    </table>
 
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
 
-        @foreach (var item in Model.Sheets)
+    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
+    <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
+        <thead>
+            <tr class="text-center" style="background: khaki">
+                <th class="text-left" style="width: 40%">
+                    Descripción
+                </th>
+                <th class="text-left" style="width: 40%">
+                    Observación
+                </th>
+
+                <th class="text-left" style="width: 20%">
+                    Monto
+                </th>
+
+            </tr>
+        </thead>
+    </table>
+    <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
+    <legend style="margin-bottom: 2px; background: darkkhaki">
+        Ingresos
+    </legend>
+
+    <table id="ingresotabla" class="table table-condensed table-bordered ">
+
+        <tbody id="ingreso">
+
+            <tr>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="line-height: 10px">-</td>
+            </tr>
+
+            @foreach (var item in Model.Sheets)
             {
                 if (item.SheetType == SistemaRentabilidad.Models.SheetType.Ingreso)
                 {
 
-                <tr>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.SheetDescription)
+                    <tr>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
 
-                    </td>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
 
 
-                    </td>
+                        </td>
 
-                </tr>
+                    </tr>
+                }
             }
-        }
-    </tbody>
+        </tbody>
 
-</table>
-<table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
-    <thead>
-        <tr class="text-center" style="background: none">
-            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+    </table>
+    <table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+        <thead>
+            <tr class="text-center" style="background: none">
+                <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
-            </th>
-            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
-                Subtotal
-            </th>
+                </th>
+                <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                    Subtotal
+                </th>
 
-            <th class="text-left" style="background: lightgray" id="toting">
-                @Html.DisplayFor(model => model.Totali)
-            </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+                <th class="text-left" style="background: lightgray" id="toting">
+                    @Html.DisplayFor(model => model.Totali)
+                </th>
+                <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
-            </th>
+                </th>
 
-        </tr>
-    </thead>
-</table>
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
+            </tr>
+        </thead>
+    </table>
+    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Costos de las ventas
-</legend>
-<table id="costotabla" class="table table-condensed table-bordered ">
+    <legend style="margin-bottom: 2px;background: darkkhaki">
+        Costos de las ventas
+    </legend>
+    <table id="costotabla" class="table table-condensed table-bordered ">
 
-    <tbody id="costo">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
-        @foreach (var item in Model.Sheets)
-        {
-            if (item.SheetType == SistemaRentabilidad.Models.SheetType.Costo)
+        <tbody id="costo">
+            <tr>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="line-height: 10px">-</td>
+            </tr>
+            @foreach (var item in Model.Sheets)
             {
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.Costo)
+                {
 
-                <tr>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.SheetDescription)
-
-
-                    </td>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                    <tr>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
 
-                    </td>
+                        </td>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
 
-                </tr>
+
+                        </td>
+
+                    </tr>
+                }
             }
-        }
-    </tbody>
+        </tbody>
 
-</table>
-<table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
-    <thead>
-        <tr class="text-center" style="background: none">
-            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+    </table>
+    <table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+        <thead>
+            <tr class="text-center" style="background: none">
+                <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
-            </th>
-            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
-                Subtotal
-            </th>
+                </th>
+                <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                    Subtotal
+                </th>
 
-            <th class="text-left" style="background: lightgray" id="totcos">
-                @Html.DisplayFor(model => model.Totalc)
-            </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+                <th class="text-left" style="background: lightgray" id="totcos">
+                    @Html.DisplayFor(model => model.Totalc)
+                </th>
+                <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
-            </th>
+                </th>
 
-        </tr>
-    </thead>
-</table>
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
+            </tr>
+        </thead>
+    </table>
+    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Gastos
-</legend>
-<table id="gastotabla" class="table table-condensed table-bordered ">
+    <legend style="margin-bottom: 2px;background: darkkhaki">
+        Gastos
+    </legend>
+    <table id="gastotabla" class="table table-condensed table-bordered ">
 
-    <tbody id="gasto">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+        <tbody id="gasto">
+            <tr>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="line-height: 10px">-</td>
+            </tr>
 
-        @foreach (var item in Model.Sheets)
-        {
-            if (item.SheetType == SistemaRentabilidad.Models.SheetType.Gasto)
+            @foreach (var item in Model.Sheets)
             {
-                <tr>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.SheetDescription)
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.Gasto)
+                {
+                    <tr>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
-                    </td>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
 
 
-                    </td>
+                        </td>
 
-                </tr>
+                    </tr>
+                }
             }
-        }
-    </tbody>
+        </tbody>
 
-</table>
-<table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
-    <thead>
-        <tr class="text-center" style="background: none">
-            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+    </table>
+    <table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+        <thead>
+            <tr class="text-center" style="background: none">
+                <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
-            </th>
-            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
-                Subtotal
-            </th>
+                </th>
+                <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                    Subtotal
+                </th>
 
-            <th class="text-left" style="background: lightgray" id="totgas">
-                @Html.DisplayFor(model => model.Totalg)
-            </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+                <th class="text-left" style="background: lightgray" id="totgas">
+                    @Html.DisplayFor(model => model.Totalg)
+                </th>
+                <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
-            </th>
+                </th>
 
-        </tr>
-    </thead>
-</table>
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Otros ingresos
-</legend>
-<table id="otrotabla" class="table table-condensed table-bordered ">
+            </tr>
+        </thead>
+    </table>
+    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
+    <legend style="margin-bottom: 2px;background: darkkhaki">
+        Otros ingresos
+    </legend>
+    <table id="otrotabla" class="table table-condensed table-bordered ">
 
-    <tbody id="otro">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+        <tbody id="otro">
+            <tr>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="width: 40%; line-height: 10px">-</td>
+                <td style="line-height: 10px">-</td>
+            </tr>
 
-        @foreach (var item in Model.Sheets)
-        {
-            if (item.SheetType == SistemaRentabilidad.Models.SheetType.OtroIngreso)
+            @foreach (var item in Model.Sheets)
             {
+                if (item.SheetType == SistemaRentabilidad.Models.SheetType.OtroIngreso)
+                {
 
-                <tr>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.SheetDescription)
-
-
-                    </td>
-                    <td style="width: 40%;">
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                    <tr>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
 
-                    </td>
+                        </td>
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.Comments)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
 
-                </tr>
+
+                        </td>
+
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
-<table id="totalotrotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
-    <thead>
-        <tr class="text-center" style="background: none">
-            <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
+        </tbody>
+    </table>
+    <table id="totalotrotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+        <thead>
+            <tr class="text-center" style="background: none">
+                <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
-            </th>
-            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
-                Subtotal
-            </th>
+                </th>
+                <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+                    Subtotal
+                </th>
 
-            <th class="text-left" style="background: lightgray" id="tototr">
-                @Html.DisplayFor(model => model.Totalo)
-            </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+                <th class="text-left" style="background: lightgray" id="tototr">
+                    @Html.DisplayFor(model => model.Totalo)
+                </th>
+                <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
-            </th>
+                </th>
 
-        </tr>
-    </thead>
-</table>
+            </tr>
+        </thead>
+    </table>
 
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Resumen
-</legend>
-<table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
+    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
+    <legend style="margin-bottom: 2px;background: darkkhaki">
+        Resumen
+    </legend>
+    <table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
 
-    <thead class="tableStyle">
-        <tr class="text-center" style="background: khaki">
-            <td class="text-left" style="border-radius: 3px; font-weight: bold">
-                Observaciones
-            </td>
-            <td class="text-left" style="border-radius: 3px; width: 200px; font-weight: bold">
-                Total
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.Comments)
+        <thead class="tableStyle">
+            <tr class="text-center" style="background: khaki">
+                <td class="text-left" style="border-radius: 3px; font-weight: bold">
+                    Observaciones
+                </td>
+                <td class="text-left" style="border-radius: 3px; width: 200px; font-weight: bold">
+                    Total
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Comments)
 
 
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.TotalAmount)
-                <span class="text-danger" style="display: block"></span>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.TotalAmount)
+                    <span class="text-danger" style="display: block"></span>
+                </td>
+            </tr>
 
-    </tbody>
+        </tbody>
 
-</table>
+    </table>
 
-<hr style="color: grey" />
+    <hr style="color: grey" />
+}
+<br />
 
 <div>
     @using (Html.BeginForm())
