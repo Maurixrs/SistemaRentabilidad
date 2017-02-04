@@ -33,14 +33,17 @@
             <tr>
                 <td>
                     <div>
-                        @{
-                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month).ToUpper();
+                        <div class="hidden">@item.Date.Year @item.Date.Month @item.Date.Day</div>
+                        <div>
+                            @{
+                                var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month).ToUpper();
 
 
-                            @Html.DisplayFor(model => month)
-                            <text> &nbsp;</text>; @item.Date.Year;
+                                @Html.DisplayFor(model => month)
+                                <text> &nbsp;</text>; @item.Date.Year;
 
-                        }
+                            }
+                        </div>
 
                     </div>
                 </td>
@@ -96,6 +99,7 @@
 
               ////Grilla automatica//
               $("#tabla").DataTable({
+                  order: [[0, "desc"]],
                   "language": {
                       "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
                   }
