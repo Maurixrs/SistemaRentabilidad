@@ -22,6 +22,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
                     <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
                 </ul>
@@ -38,7 +39,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="text-center hidden-print"> - Sistema de Rentabilidad &copy; @DateTime.Now.Year - Godesa Solutions ®  <a class="hidden-print" style="color:black ">@Html.ActionLink("Contacto", "Contact", "Home")</></a> - </p>
         </footer>
     </div>
 

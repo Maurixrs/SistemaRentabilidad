@@ -25,7 +25,7 @@ namespace SistemaRentabilidad.Controllers
         {
             IList<WsVM> WsVMList = new List<WsVM>();
             IList<Worksheet> WsList = _repository.FindAllE();
-            WsVMList = Mapper.Map<IList<Worksheet>, IList<WsVM>>(WsList);
+            WsVMList = Mapper.Map<IList<Worksheet>, IList<WsVM>>(WsList);            
             return View(WsVMList);
         }
 
@@ -266,11 +266,12 @@ namespace SistemaRentabilidad.Controllers
         }
 
         // POST: Worksheets/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             _repository.DeleteE(id);
+            TempData["mimsg"] = 1;
             return RedirectToAction("Index");
         }
 
