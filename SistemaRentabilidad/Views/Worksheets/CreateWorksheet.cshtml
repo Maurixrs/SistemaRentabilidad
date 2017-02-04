@@ -39,7 +39,7 @@
 @*///////////////////////////*@
 <hr style="margin-top: 10px;margin-bottom: 10px;" />
 
-<legend style="margin-bottom: 2px;">
+<legend>
     Planilla: @ViewBag.nsheet
 </legend>
 <table id="titulotabla" class="table table-condensed table-bordered chica">
@@ -75,7 +75,7 @@
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
 <legend style="margin-bottom: 2px;background: cadetblue">
-    Linea
+    Nueva entrada
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
@@ -150,7 +150,7 @@
     </thead>
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
-<legend style="margin-bottom: 2px; background: darkkhaki">
+<legend>
     Ingresos
 </legend>
 
@@ -187,8 +187,8 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Costos de las ventas
+<legend>
+    Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered chica">
 
@@ -223,7 +223,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered chica">
@@ -259,7 +259,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered chica">
@@ -320,7 +320,7 @@
     <span class="text-danger" style="display: block"></span>
 
 </div>
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Resumen
 </legend>
 <table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
@@ -781,6 +781,12 @@
         visibility: hidden;
         color: #b94a48;
         font-size: 90%;
+    }
+
+    legend {
+        margin-bottom: 2px;
+        background: darkkhaki;
+        
     }
 
 
