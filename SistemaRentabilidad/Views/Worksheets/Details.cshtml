@@ -96,37 +96,41 @@
 @*///////////////////////////*@
 <hr style="margin-top: 10px;margin-bottom: 10px;" />
 
-<legend style="margin-bottom: 2px;">
-    Planilla: @Html.DisplayFor(model => model.IdWorksheet)
-</legend>
+
 <table id="titulotabla" class="table table-condensed table-bordered ">
 
     <thead class="tableStyle">
         <tr class="text-center">
             <th class="text-center">
-                Descripción
+                Planilla
             </th>
 
             <th class="text-center">
-                Fecha de creación
+                Período
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="text-center">
-                @Html.DisplayFor(model => model.WorksheetDescription)
+                @Html.DisplayFor(model => model.IdWorksheet)
             </td>
             <td class="text-center">
-                @Html.DisplayFor(model => model.Date)
+                @{
+                    var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(Model.Date.Month).ToUpper();
+
+
+                    @Html.DisplayFor(model => month)
+                    <text> &nbsp;</text>; @Model.Date.Year;
+
+                }
             </td>
         </tr>    
     </tbody>
 
 </table>
+   
 
-    
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
         <tr class="text-center" style="background: khaki">
@@ -144,8 +148,8 @@
         </tr>
     </thead>
 </table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
-<legend style="margin-bottom: 2px; background: darkkhaki">
+
+<legend>
     Ingresos
 </legend>
 
@@ -153,11 +157,7 @@
 
     <tbody id="ingreso">
 
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+        
 
         @foreach (var item in Model.Sheets)
             {
@@ -207,17 +207,13 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered ">
 
     <tbody id="costo">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+        
         @foreach (var item in Model.Sheets)
         {
             if (item.SheetType == SistemaRentabilidad.Models.SheetType.Costo)
@@ -266,17 +262,12 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered ">
 
     <tbody id="gasto">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
         
         @foreach (var item in Model.Sheets)
         {
@@ -323,17 +314,12 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend>
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered ">
 
     <tbody id="otro">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
         
         @foreach (var item in Model.Sheets)
         {
@@ -462,5 +448,12 @@
     })
 </script>
 }
-    
 
+
+<style>
+    legend {
+        margin-bottom: 2px;
+        background: #6EB3B5;
+        font-size: inherit;
+    }
+</style>

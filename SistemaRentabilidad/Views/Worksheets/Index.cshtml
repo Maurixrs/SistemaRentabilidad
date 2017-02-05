@@ -3,7 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<head>
+    <style>
+    .mes {
+    text-transform:capitalize;
+    background: none;
+   border: none; }
+   </style>
+</head>
 <h2 class="text-center">Lista de Planillas</h2>
 <hr />
 
@@ -16,9 +23,7 @@
             <th style="color:white">
                 Período
             </th>
-            <th style="color:white">
-                Descripción
-            </th>
+           
             <th style="color:white">
                 Monto Total
             </th>
@@ -33,20 +38,15 @@
             <tr>
                 <td>
                     <div>
+                        <div class="hidden">@item.Date.Year @item.Date.Month @item.Date.Day</div>
                         @{
-                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month).ToUpper();
-
-
-                            @Html.DisplayFor(model => month)
-                            <text> &nbsp;</text>; @item.Date.Year;
-
+                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
+                            @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
                         }
 
                     </div>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorksheetDescription)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.TotalAmount)
                 </td>
@@ -96,6 +96,7 @@
 
               ////Grilla automatica//
               $("#tabla").DataTable({
+                  order: [[0, "desc"]],
                   "language": {
                       "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
                   }

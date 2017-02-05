@@ -103,10 +103,7 @@
 
         <tr class="text-center">
             <th>N° Planilla</th>
-            <th class="text-center">
-                Descripción
-            </th>
-
+            
             <th class="text-center">
                 Fecha de creación
             </th>
@@ -116,10 +113,6 @@
         <tr>
             <td>
                 @Model.IdWorksheet
-            </td>
-            <td class="text-center">
-                @Html.TextBoxFor(model => model.WorksheetDescription, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()" })
-                <span id="wdescription" class="text-danger" style="display: block"></span>
             </td>
             <td class="text-center">
                 @Html.TextBoxFor(model => model.Date, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()" })        <span id="wdate" class="text-danger" style="display: block"></span>
@@ -492,12 +485,7 @@
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
         function valwd() {
-            if ($('#WorksheetDescription').val().trim() == '') {
-                $('#wdescription').html('Requerido');
-            } else {
-                $('#wdescription').html('');
-            }
-
+           
             if ($('#Date').val().trim() == '') {
                 $('#wdate').html('Requerido');
             } else {
@@ -1123,13 +1111,7 @@
                     }
                 }
             });
-            if ($('#WorksheetDescription').val().trim() == '') {
-                $('#wdescription').html('Requerido');
-                required = true;
-            } else {
-                $('#wdescription').html('');
-            }
-
+            
             if ($('#Date').val().trim() == '') {
                 $('#wdate').html('Requerido');
                 required = true;
@@ -1165,7 +1147,6 @@
 
                         var data = {
                             IdWorkSheet: @Model.IdWorksheet,
-                            WorksheetDescription: $('#WorksheetDescription').val().trim(),
                             Date: $('#Date').val().trim(),
                             Comments: $('#Comments').val().trim(),
                             Sheets: orderItems,

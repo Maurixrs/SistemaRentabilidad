@@ -13,6 +13,7 @@
     #gastotabla td{line-height: 15px}
     #otrotabla td{line-height: 15px}
     #ingresotabla th{line-height: 15px}
+
     #costotabla th{line-height: 15px}
     #gastotabla th{line-height: 15px}
     #otrotabla th{line-height: 15px}
@@ -39,17 +40,15 @@
 @*///////////////////////////*@
 <hr style="margin-top: 10px;margin-bottom: 10px;" />
 
-<legend>
-    Planilla: @ViewBag.nsheet
-</legend>
+
 <table id="titulotabla" class="table table-condensed table-bordered chica">
 
     <thead class="tableStyle">
 
 
-    <tr class="text-center">
+    <tr class="text-center" style="background-color: khaki;">
         <th class="text-center">
-            Descripción
+            Planilla
         </th>
 
         <th class="text-center">
@@ -60,22 +59,22 @@
     <tbody>
 
     <td class="text-center">
-        <input type="text" class="panel-info form-control-sm inputForm" id="wdescription" placeholder=""/>
+        Creando nuevo documento...
         <span class="text-danger" style="display: block"></span>
 
     </td>
-    <td class="text-center">
-        <input type="date" class="panel-info form-control-sm inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+    <td class="text-center" >
+        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
         <span class="text-danger" style="display: block"></span>
 
     </td>
     </tbody>
 
 </table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: cadetblue">
-    Nueva entrada
+
+<legend style="margin-bottom: 2px;background: gainsboro">
+    <b>Nueva entrada</b>
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
@@ -97,15 +96,15 @@
     </thead>
     <tbody id="nueva">
     <td class="text-center fina">
-        <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder=""/>
+        <textarea type="text" class="panel-info form-control inputForm" id="ndescription" placeholder=""></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center fina">
-        <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder=""/>
+        <textarea type="text" class="panel-info form-control inputForm" id="ncomment" placeholder=""></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <input type="number" class="panel-info form-control inputForm" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
@@ -131,25 +130,8 @@
     </tbody>
 
 </table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: inset;border-width: thin;"/>
-<table id="encabezadostabla" class="table table-condensed table-bordered chica" style="margin-bottom: 2px">
-    <thead>
-        <tr class="text-center" style="background: khaki">
-            <th class="text-left" style="width: 40%">
-                Descripción
-            </th>
-            <th class="text-left" style="width: 40%">
-                Observación
-            </th>
 
-            <th class="text-left" style="width: 20%">
-                Monto
-            </th>
 
-        </tr>
-    </thead>
-</table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
 <legend>
     Ingresos
 </legend>
@@ -157,11 +139,7 @@
 <table id="ingresotabla" class="table table-condensed table-bordered chica">
 
     <tbody id="ingreso">
-        <tr>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+        
     </tbody>
 
 </table>
@@ -194,9 +172,6 @@
 
     <tbody id="costo">
     <tr>
-        <td style="width: 40%;line-height: 10px">-</td>
-        <td style="width: 40%;line-height: 10px">-</td>
-        <td style="line-height: 10px">-</td>
     </tr>
     </tbody>
 
@@ -230,9 +205,6 @@
 
     <tbody id="gasto">
         <tr>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
         </tr>
     </tbody>
 
@@ -266,9 +238,7 @@
 
     <tbody id="otro">
         <tr>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="width: 40%;line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
+          
         </tr>
     </tbody>
 </table>
@@ -326,7 +296,7 @@
 <table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
 
     <thead class="tableStyle">
-        <tr class="text-center" style="background: khaki">
+        <tr class="text-center" style="background: gainsboro">
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
                 Observaciones
             </td>
@@ -338,11 +308,11 @@
     <tbody>
         <tr>
             <td>
-                <textarea type="text" class="panel-info form-control-sm" id="wcomments"placeholder=""></textarea>
+                <textarea type="text" class="panel-info form-control" style="max-width: 500px" id="wcomments" placeholder=""></textarea>
 
             </td>
             <td>
-                <input type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" />
+                <input readonly="readonly" type="text" class="panel-info text-center" value="0.00" id="wtotal" placeholder="" />
                 <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -350,8 +320,6 @@
     </tbody>
 
 </table>
-
-<hr style="color: grey" />
 
 
 <div class="text-center">
@@ -521,18 +489,15 @@
             $('#submit').click(function() {
                 //validation of order
                 var isAllValid = true;
-                //if (orderItems.length == 0) {
-                //    $('#orderItems').html('<span class="text-danger">Por favor, agregue productos.</span>');
+                
+
+
+                //if ($('#wdescription').val().trim() == '') {
+                //    $('#wdescription').siblings('span.text-danger').html('Requerido');
                 //    isAllValid = false;
+                //} else {
+                //    $('#wdescription').siblings('span.text-danger').html('');
                 //}
-
-
-                if ($('#wdescription').val().trim() == '') {
-                    $('#wdescription').siblings('span.text-danger').html('Requerido');
-                    isAllValid = false;
-                } else {
-                    $('#wdescription').siblings('span.text-danger').html('');
-                }
 
                 if ($('#wdate').val().trim() == '') {
                     $('#wdate').siblings('span.text-danger').html('Requerido');
@@ -549,7 +514,7 @@
                 if (orderItems.length == 0) {
                     bootbox.alert({
                         title: "Aviso",
-                        message: "Por favor, es necesario agregar al menos una línea para guardar la planilla. ",
+                        message: "Es necesario agregar al menos una línea para guardar la planilla. ",
                         backdrop: true
                     });
                   
@@ -559,7 +524,7 @@
                 //Save if valid
                 if (isAllValid) {
                     var data = {
-                        WorksheetDescription: $('#wdescription').val().trim(),
+                        
                         Date: $('#wdate').val().trim(),
                         Comments: $('#wcomments').val().trim(),
                         Sheets: orderItems,
@@ -606,10 +571,10 @@
                     $('#orderItemsi').html('<span class="text-danger"></span>');
                     $.each(orderItemsi, function(i, val) {
                         var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
-                        $rowi.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                        $rowi.append($('<td style="width: 40%"></td>').html(val.Comments));
+                        $rowi.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
+                        $rowi.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
                         $rowi.append($('<td></td>').html(val.Amount));
-                        var $removei = $('<a style="color:red" href="#">X</a>');
+                        var $removei = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL ing
                         ting = 0;
                         $.each(toting, function () { ting += parseFloat(this) || 0; });
@@ -633,7 +598,7 @@
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowi.append($('<td style="width:2%"></td>').append($removei));
+                        $rowi.append($('<td style="width:37px"></td>').append($removei));
                         $('#ingresotabla > tbody:last').append($rowi);
                     });
                 } else {
@@ -648,10 +613,10 @@
                     $('#orderItemsc').html('<span class="text-danger"></span>');
                     $.each(orderItemsc, function(i, val) {
                         var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
-                        $rowc.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                        $rowc.append($('<td style="width: 40%"></td>').html(val.Comments));
+                        $rowc.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
+                        $rowc.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
                         $rowc.append($('<td></td>').html(val.Amount));
-                        var $removec = $('<a style="color:red" href="#">X</a>');
+                        var $removec = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL cos
                         tcos = 0;
                         $.each(totcos, function () { tcos += parseFloat(this) || 0; });
@@ -675,7 +640,7 @@
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowc.append($('<td style="width: 2%"></td>').append($removec));
+                        $rowc.append($('<td style="width: 37px"></td>').append($removec));
                         $('#costotabla > tbody:last').append($rowc);
                     });
                 } else {
@@ -690,10 +655,10 @@
                     $('#orderItemsg').html('<span class="text-danger"></span>');
                     $.each(orderItemsg, function(i, val) {
                         var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
-                        $rowg.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                        $rowg.append($('<td style="width: 40%"></td>').html(val.Comments));
+                        $rowg.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
+                        $rowg.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
                         $rowg.append($('<td></td>').html(val.Amount));
-                        var $removeg = $('<a style="color:red" href="#">X</a>');
+                        var $removeg = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL gas
                         tgas = 0;
                         $.each(totgas, function () { tgas += parseFloat(this) || 0; });
@@ -717,7 +682,7 @@
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowg.append($('<td style="width: 2%"></td>').append($removeg));
+                        $rowg.append($('<td style="width: 37px"></td>').append($removeg));
                         $('#gastotabla > tbody:last').append($rowg);
                     });
                 } else {
@@ -732,10 +697,10 @@
                     $('#orderItemso').html('<span class="text-danger"></span>');
                     $.each(orderItemso, function(i, val) {
                         var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
-                        $rowo.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                        $rowo.append($('<td style="width: 40%"></td>').html(val.Comments));
+                        $rowo.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
+                        $rowo.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
                         $rowo.append($('<td></td>').html(val.Amount));
-                        var $removeo = $('<a style="color:red" href="#">X</a>');
+                        var $removeo = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL otr
                         totr = 0;
                         $.each(tototr, function () { totr += parseFloat(this) || 0; });
@@ -760,7 +725,7 @@
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowo.append($('<td style="width: 2%"></td>').append($removeo));
+                        $rowo.append($('<td style="width: 37px"></td>').append($removeo));
                         $('#otrotabla > tbody:last').append($rowo);
                       
                     });
@@ -785,7 +750,9 @@
 
     legend {
         margin-bottom: 2px;
-        background: darkkhaki;
+        background: lightblue;
+        font-size: inherit;
+       
         
     }
 

@@ -96,7 +96,6 @@ namespace SistemaRentabilidad.Controllers
             {
                
                 ws.Date = O.Date;
-                ws.WorksheetDescription = O.WorksheetDescription;
                 ws.Comments = O.Comments;
                 ws.TotalAmount = O.TotalAmount;
                 ws.Totali = O.Totali;
@@ -156,7 +155,6 @@ namespace SistemaRentabilidad.Controllers
             {
 
                 ws.Date = O.Date;
-                ws.WorksheetDescription = O.WorksheetDescription;
                 ws.Comments = O.Comments;
                 ws.TotalAmount = O.TotalAmount;
                 ws.Totali = O.Totali;
@@ -204,7 +202,7 @@ namespace SistemaRentabilidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] WsVM wsVm)
+        public ActionResult Create([Bind(Include = "IdWorksheet,Date,TotalAmount,Comments")] WsVM wsVm)
         {
             if (ModelState.IsValid)
             {
@@ -237,7 +235,7 @@ namespace SistemaRentabilidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdWorksheet,Date,WorksheetDescription,TotalAmount,Comments")] WsVM wsVm)
+        public ActionResult Edit([Bind(Include = "IdWorksheet,Date,TotalAmount,Comments")] WsVM wsVm)
         {
             if (ModelState.IsValid)
             {

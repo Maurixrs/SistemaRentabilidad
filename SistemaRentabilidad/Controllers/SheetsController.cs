@@ -43,8 +43,7 @@ namespace SistemaRentabilidad.Controllers
         public ActionResult Create(int? idws)
         {
             ViewBag.idws = idws;
-            ViewBag.Name = db.Worksheet.Find(idws).WorksheetDescription;
-            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription");
+            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "Date");
             return View();
         }
      
@@ -63,7 +62,7 @@ namespace SistemaRentabilidad.Controllers
                 return RedirectToAction("Details", "Worksheets", new { id = sheet.IdWorkSheet });
             }
 
-            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription", sheet.IdWorkSheet);
+            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "Date", sheet.IdWorkSheet);
             return View(sheet);
         }
 
@@ -79,7 +78,7 @@ namespace SistemaRentabilidad.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription", sheet.IdWorkSheet);
+            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "Date", sheet.IdWorkSheet);
             return View(sheet);
         }
 
@@ -96,7 +95,7 @@ namespace SistemaRentabilidad.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "WorksheetDescription", sheet.IdWorkSheet);
+            ViewBag.IdWorkSheet = new SelectList(db.Worksheet, "IdWorksheet", "Date", sheet.IdWorkSheet);
             return View(sheet);
         }
 

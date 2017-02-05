@@ -259,6 +259,7 @@ th {
   }
   .table {
     border-collapse: collapse !important;
+      
   }
   .table td,
   .table th {
@@ -1103,12 +1104,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #18bc9c;
+  color: #2594ef;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #18bc9c;
+  color: #2594ef;
   text-decoration: underline;
 }
 a:focus {
@@ -2270,6 +2271,7 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 21px;
+  
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,

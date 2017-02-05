@@ -14,8 +14,6 @@ namespace SistemaRentabilidad.ViewModels
 
          public DateTime Date { get; set; }
       
-        public string WorksheetDescription { get; set; }
-
         public decimal Totali { get; set; }
         public decimal Totalc { get; set; }
         public decimal Totalg { get; set; }
