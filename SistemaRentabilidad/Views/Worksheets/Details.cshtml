@@ -3,86 +3,100 @@
     ViewBag.Title = "Detalles de Planilla";
 }
 <style>
-    .full{background-size: contain}
-     #resumentabla td {
-         line-height: 15px;
-     }
-
-    #nueva td {
+     legend {
+        margin-bottom: 2px;
+        background: khaki;
+        font-size: inherit;
+    }
+     .full{background-size: contain}
+    #resumentabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #ingresotabla td {
+    #nueva td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #encabezadostabla td {
+    #ingresotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #costotabla td {
+    #encabezadostabla td {border-color: darkgrey;
         line-height: 15px;
     }
 
-    #gastotabla td {
+    #costotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #otrotabla td {
+    #gastotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #ingresotabla th {
+    #otrotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #costotabla th {
+    #ingresotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #gastotabla th {
+    #costotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #otrotabla th {
+    #gastotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #nueva th {
-        line-height: 15px;
-    }
-
-    #resumentabla th {
-        line-height: 15px;
-    }
-
-    #otrosub th {
-        line-height: 15px;
-    }
-
-    #encabezadostabla th {
-        line-height: 15px;
-    }
-
-    #totalingresotabla th {
-        line-height: 15px;
-    }
-
-    #totalgastotabla th {
-        line-height: 15px;
-    }
-
-    #totalcostotabla th {
-        line-height: 15px;
-    }
-
-    #totalotrotabla th {
+    #otrotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
 
+     #titulotabla th {border-color: darkgrey;background: darkkhaki;
+        
+    }
+       #titulotabla td {border-color: darkgrey;background: snow;
+        
+    }
+    #nueva th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
 
-    .table {
+    #resumentabla th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+
+    #otrosub th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+
+    #encabezadostabla th {border-color: darkgrey;
+        line-height: 15px;
+    }
+
+    #totalingresotabla th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+
+    #totalgastotabla th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+
+    #totalcostotabla th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+
+    #totalotrotabla th {border-color: darkgrey;background: snow;
+        line-height: 15px;
+    }
+    .tipos{    font-size: medium;
+        font-weight: bold;
+        font-style: italic}
+
+
+    .table {border-color: darkgrey;
         margin-bottom: 0px;
     }
 </style>
@@ -101,7 +115,7 @@
 <table id="titulotabla" class="table table-condensed table-bordered ">
 
     <thead class="tableStyle">
-        <tr class="text-center">
+        <tr class="text-center tipos">
             <th class="text-center">
                 Planilla
             </th>
@@ -112,7 +126,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr style="font-weight: bold">
             <td class="text-center">
                 @Html.DisplayFor(model => model.IdWorksheet)
             </td>
@@ -130,12 +144,12 @@
     </tbody>
 
 </table>
-   
+   <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dotted" />
 
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
-        <tr class="text-center" style="background: khaki">
-            <th class="text-left" style="width: 40%">
+        <tr class="text-center" style="background: darkkhaki">
+            <th class="text-left" style="width: 40%;">
                 Descripción
             </th>
             <th class="text-left" style="width: 40%">
@@ -150,7 +164,7 @@
     </thead>
 </table>
 
-<legend>
+<legend class="tipos">
     Ingresos
 </legend>
 
@@ -208,7 +222,7 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend>
+<legend class="tipos">
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered ">
@@ -263,7 +277,7 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend>
+<legend class="tipos">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered ">
@@ -315,7 +329,7 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend>
+<legend class="tipos">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered ">
@@ -369,7 +383,7 @@
 </table>
 
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend class="tipos" style="margin-bottom: 2px;background: darkkhaki">
     Resumen
 </legend>
 <table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
@@ -451,10 +465,3 @@
 }
 
 
-<style>
-    legend {
-        margin-bottom: 2px;
-        background: #6EB3B5;
-        font-size: inherit;
-    }
-</style>
