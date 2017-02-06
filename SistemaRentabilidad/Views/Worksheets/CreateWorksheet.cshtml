@@ -3,11 +3,16 @@
     ViewBag.Title = "Nueva Planilla";
 }
 <style>
-         #resumentabla td{line-height: 15px}
+    .tipos{    font-size: medium;
+    font-weight: bold;
+    font-style: italic}
+     .fc{    padding: 3px;height: 31px}
+     
+     #resumentabla td{line-height: 15px}
 
-     #nueva td{line-height: 15px}
+    #nueva td{line-height: 15px}
     #ingresotabla td{line-height: 15px}
-        #encabezadostabla td{line-height: 15px}
+    #encabezadostabla td{line-height: 15px}
 
     #costotabla td{line-height: 15px}
     #gastotabla td{line-height: 15px}
@@ -22,9 +27,9 @@
     #otrosub th{line-height: 15px}
     #encabezadostabla th{line-height: 15px}
     #totalingresotabla th{line-height: 15px}
-      #totalgastotabla th{line-height: 15px}
-        #totalcostotabla th{line-height: 15px}
-          #totalotrotabla th{line-height: 15px}
+    #totalgastotabla th{line-height: 15px}
+    #totalcostotabla th{line-height: 15px}
+    #totalotrotabla th{line-height: 15px}
 
 
 
@@ -52,7 +57,7 @@
         </th>
 
         <th class="text-center">
-            Fecha de creación
+            Periodo
         </th>
     </tr>
     </thead>
@@ -64,7 +69,7 @@
 
     </td>
     <td class="text-center" >
-        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
         <span class="text-danger" style="display: block"></span>
 
     </td>
@@ -96,15 +101,15 @@
     </thead>
     <tbody id="nueva">
     <td class="text-center fina">
-        <textarea type="text" class="panel-info form-control inputForm" id="ndescription" placeholder=""></textarea>
+        <textarea type="text" rows='1' class="panel-info form-control inputForm fc" id="ndescription" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center fina">
-        <textarea type="text" class="panel-info form-control inputForm" id="ncomment" placeholder=""></textarea>
+        <textarea type="text" rows='1'  class="panel-info form-control inputForm fc" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" class="panel-info form-control inputForm" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <input type="number" class="panel-info form-control inputForm fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
@@ -132,7 +137,7 @@
 </table>
 
 
-<legend>
+<legend class="tipos">
     Ingresos
 </legend>
 
@@ -165,7 +170,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend>
+<legend class="tipos">
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered chica">
@@ -198,7 +203,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend>
+<legend class="tipos">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered chica">
@@ -215,7 +220,7 @@
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
             </th>
-            <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
+            <th class="text-right" style="width: 40%;border-bottom: hidden; border-top: hidden; border-left: hidden; font-weight: bolder;font-style: italic;font-size: medium;">
                 Subtotal
             </th>
 
@@ -231,7 +236,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend>
+<legend class="tipos">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered chica">
@@ -290,7 +295,7 @@
     <span class="text-danger" style="display: block"></span>
 
 </div>
-<legend>
+<legend class="tipos">
     Resumen
 </legend>
 <table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
@@ -308,7 +313,7 @@
     <tbody>
         <tr>
             <td>
-                <textarea type="text" class="panel-info form-control" style="max-width: 500px" id="wcomments" placeholder=""></textarea>
+                <textarea type="text" rows='1'  class="panel-info form-control inputForm fc" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
 
             </td>
             <td>
@@ -357,20 +362,33 @@
     <script>
         function calculogral() {
             tgral = 0;
-            $.each(toting, function () { tgral += parseFloat(this) || 0; });
-            $.each(tototr, function () { tgral += parseFloat(this) || 0; });
-            $.each(totgas, function () { tgral -= parseFloat(this) || 0; });
-            $.each(totcos, function () { tgral -= parseFloat(this) || 0; });
+            $.each(toting, function() { tgral += parseFloat(this) || 0; });
+            $.each(tototr, function() { tgral += parseFloat(this) || 0; });
+            $.each(totgas, function() { tgral -= parseFloat(this) || 0; });
+            $.each(totcos, function() { tgral -= parseFloat(this) || 0; });
             document.getElementById("wtotal").value = tgral.toFixed(2);
         }
+
         function acting(a) { tipo = "ing"; }
+
         function actcos(a) { tipo = "cos"; }
+
         function actgas(a) { tipo = "gas"; }
+
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
+            $('textarea').each(function() {
+                autosize(this);
+                this.style.display = '';
+
+                // Call the update method to recalculate the size:
+                autosize.update(this);
+            });
+
+        
             tipo = "ing";
-         
+
             var orderItems = [];
             var orderItemsi = [];
             var orderItemsc = [];
@@ -384,9 +402,8 @@
             ///////////////////////////
             //////////////////////
             //Add button click function
-            
-            $('#addn').click(function () {
-             
+
+            $('#addn').click(function() {
 
 
                 var isValidItem = true;
@@ -402,17 +419,14 @@
                 if ($('#namount').val().trim() == '') {
                     isValidItem = false;
                     $('#namount').siblings('span.text-danger').html('Requerido');
-                }else{if($('#namount').val().trim() == 0) {
-                    isValidItem = false;
-                    $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
                 } else {
-                    $('#namount').siblings('span.text-danger').html('');
+                    if ($('#namount').val().trim() == 0) {
+                        isValidItem = false;
+                        $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
+                    } else {
+                        $('#namount').siblings('span.text-danger').html('');
+                    }
                 }
-            }
-
-
-
-               
 
 
                 if (isValidItem) {
@@ -431,8 +445,8 @@
                             SheetType: SheetType
                         });
                         toting.push(
-                              parseFloat(Amount)
-                          );
+                            parseFloat(Amount)
+                        );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Ingreso:");
                         ingreso();
                     };
@@ -445,8 +459,8 @@
                             SheetType: SheetType
                         });
                         totcos.push(
-                             parseFloat(Amount)
-                         );
+                            parseFloat(Amount)
+                        );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Costo:");
                         costo();
                     };
@@ -459,8 +473,8 @@
                             SheetType: SheetType
                         });
                         totgas.push(
-                             parseFloat(Amount)
-                         );
+                            parseFloat(Amount)
+                        );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Gasto:");
                         gasto();
                     };
@@ -473,26 +487,25 @@
                             SheetType: SheetType
                         });
                         tototr.push(
-                             parseFloat(Amount)
-                         );
+                            parseFloat(Amount)
+                        );
                         toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Otro ingreso:");
                         otro();
                     };
                     $('#ndescription,#namount,#ncomment').val('');
-                  
+
                 }
 
 
             });
-          
+
             //Save button click function
             $('#submit').click(function() {
                 //validation of order
                 var isAllValid = true;
-                
 
 
-                //if ($('#wdescription').val().trim() == '') {
+//if ($('#wdescription').val().trim() == '') {
                 //    $('#wdescription').siblings('span.text-danger').html('Requerido');
                 //    isAllValid = false;
                 //} else {
@@ -505,7 +518,7 @@
                 } else {
                     $('#wdate').siblings('span.text-danger').html('');
                 }
-              
+
 
                 orderItems = $.merge(orderItemsi, orderItemsc);
                 orderItems = $.merge(orderItems, orderItemsg);
@@ -517,14 +530,13 @@
                         message: "Es necesario agregar al menos una línea para guardar la planilla. ",
                         backdrop: true
                     });
-                  
+
                     isAllValid = false;
-                    
+
                 }
                 //Save if valid
                 if (isAllValid) {
                     var data = {
-                        
                         Date: $('#wdate').val().trim(),
                         Comments: $('#wcomments').val().trim(),
                         Sheets: orderItems,
@@ -565,7 +577,7 @@
 
 
             function ingreso() {
-               
+
                 $('.elimi').remove();
                 if (orderItemsi.length > 0) {
                     $('#orderItemsi').html('<span class="text-danger"></span>');
@@ -577,13 +589,13 @@
                         var $removei = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL ing
                         ting = 0;
-                        $.each(toting, function () { ting += parseFloat(this) || 0; });
+                        $.each(toting, function() { ting += parseFloat(this) || 0; });
                         $('#toting').html(ting.toFixed(2));
                         //FIN CALCULO TOTAL ing
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
-                        $removei.click(function (e) {
+                        $removei.click(function(e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Ingreso:");
                             e.preventDefault();
                             orderItemsi.splice(i, 1);
@@ -591,7 +603,7 @@
                             ingreso();
                             //CALCULO TOTAL ing
                             ting = 0;
-                            $.each(toting, function () { ting += parseFloat(this) || 0; });
+                            $.each(toting, function() { ting += parseFloat(this) || 0; });
                             $('#toting').html(ting.toFixed(2));
                             //FIN CALCULO TOTAL ing
                             //calculo total gral
@@ -607,7 +619,7 @@
             }
 
             function costo() {
-               
+
                 $('.elimc').remove();
                 if (orderItemsc.length > 0) {
                     $('#orderItemsc').html('<span class="text-danger"></span>');
@@ -619,13 +631,13 @@
                         var $removec = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL cos
                         tcos = 0;
-                        $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                        $.each(totcos, function() { tcos += parseFloat(this) || 0; });
                         $('#totcos').html(tcos.toFixed(2));
                         //FIN CALCULO TOTAL cos
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
-                        $removec.click(function (e) {
+                        $removec.click(function(e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Costo:");
                             e.preventDefault();
                             orderItemsc.splice(i, 1);
@@ -633,7 +645,7 @@
                             costo();
                             //CALCULO TOTAL cos
                             tcos = 0;
-                            $.each(totcos, function () { tcos += parseFloat(this) || 0; });
+                            $.each(totcos, function() { tcos += parseFloat(this) || 0; });
                             $('#totcos').html(tcos.toFixed(2));
                             //FIN CALCULO TOTAL cos
                             //calculo total gral
@@ -649,7 +661,7 @@
             }
 
             function gasto() {
-           
+
                 $('.elimg').remove();
                 if (orderItemsg.length > 0) {
                     $('#orderItemsg').html('<span class="text-danger"></span>');
@@ -661,13 +673,13 @@
                         var $removeg = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL gas
                         tgas = 0;
-                        $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                        $.each(totgas, function() { tgas += parseFloat(this) || 0; });
                         $('#totgas').html(tgas.toFixed(2));
                         //FIN CALCULO TOTAL gas
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
-                        $removeg.click(function (e) {
+                        $removeg.click(function(e) {
                             toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Gasto:");
                             e.preventDefault();
                             orderItemsg.splice(i, 1);
@@ -675,7 +687,7 @@
                             gasto();
                             //CALCULO TOTAL gas
                             tgas = 0;
-                            $.each(totgas, function () { tgas += parseFloat(this) || 0; });
+                            $.each(totgas, function() { tgas += parseFloat(this) || 0; });
                             $('#totgas').html(tgas.toFixed(2));
                             //FIN CALCULO TOTAL gas
                             //calculo total gral
@@ -691,7 +703,7 @@
             }
 
             function otro() {
-                
+
                 $('.elimo').remove();
                 if (orderItemso.length > 0) {
                     $('#orderItemso').html('<span class="text-danger"></span>');
@@ -703,22 +715,22 @@
                         var $removeo = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL otr
                         totr = 0;
-                        $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                        $.each(tototr, function() { totr += parseFloat(this) || 0; });
                         $('#tototr').html(totr.toFixed(2));
                         //FIN CALCULO TOTAL otr
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
-                     
-                        $removeo.click(function (e) {
-                            toastr.warning("-"+val.SheetDescription+"-<br/>Eliminado.","Otro ingreso:");
+
+                        $removeo.click(function(e) {
+                            toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Otro ingreso:");
                             e.preventDefault();
                             orderItemso.splice(i, 1);
                             tototr.splice(i, 1);
                             otro();
                             //CALCULO TOTAL otr
                             totr = 0;
-                            $.each(tototr, function () { totr += parseFloat(this) || 0; });
+                            $.each(tototr, function() { totr += parseFloat(this) || 0; });
                             $('#tototr').html(totr.toFixed(2));
                             //FIN CALCULO TOTAL otr
                             //calculo total gral
@@ -727,7 +739,7 @@
                         });
                         $rowo.append($('<td style="width: 37px"></td>').append($removeo));
                         $('#otrotabla > tbody:last').append($rowo);
-                      
+
                     });
                 } else {
                     $('#orderItemso').html('');

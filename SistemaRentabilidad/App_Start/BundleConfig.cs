@@ -20,7 +20,9 @@ namespace SistemaRentabilidad
                        "~/Scripts/bootstrap.min.js",
                        "~/Scripts/respond.js",
                        "~/Scripts/bootbox.js",
-                       "~/scripts/toastr.js"));
+                       "~/Scripts/toastr.js",
+                       "~/Scripts/autosize.js"
+));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
