@@ -385,6 +385,15 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Images\BACKGROUND-TOP.jpg" />
+    <Content Include="Content\Images\fon 1.jpg" />
+    <Content Include="Content\Images\fon 2.png" />
+    <Content Include="Content\Images\fon 3.jpg" />
+    <Content Include="Content\Images\fon 4.jpg" />
+    <Content Include="Content\Images\fon 5.jpg" />
+    <Content Include="Content\Images\fon 6.jpg" />
+    <Content Include="Content\Images\fon 7.jpg" />
+    <Content Include="Content\Images\fon 8.jpg" />
+    <Content Include="Content\Images\fon 9.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
