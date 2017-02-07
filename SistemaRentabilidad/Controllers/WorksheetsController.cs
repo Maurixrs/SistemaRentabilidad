@@ -247,7 +247,7 @@ namespace SistemaRentabilidad.Controllers
         }
 
         // GET: Worksheets/Delete/5
-        public ActionResult Delete(int? id, bool? details)
+        public ActionResult Delete(int? id, bool details)
         {
             if (id == null)
             {
@@ -260,10 +260,16 @@ namespace SistemaRentabilidad.Controllers
                 return HttpNotFound();
             }
 
-            if (details != null)
-                ViewBag.details = details;
+            if (details)
+            {
+                return View(wsVm);
+            }
+            else
+            {
+                return View("DeleteIndex", wsVm);
+            }
 
-            return View(wsVm);
+            
         }
 
         // POST: Worksheets/Delete/5

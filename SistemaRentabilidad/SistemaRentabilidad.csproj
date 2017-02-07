@@ -651,6 +651,7 @@
     <Content Include="Views\SheetLines\Index.cshtml" />
     <Content Include="Views\Worksheets\CreateWorksheet.cshtml" />
     <Content Include="Views\Worksheets\EditW.cshtml" />
+    <Content Include="Views\Worksheets\DeleteIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
