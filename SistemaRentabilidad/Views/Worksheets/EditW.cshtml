@@ -153,38 +153,40 @@
                 </tr>
             </thead>
             <tbody id="nueva">
-            <td class="text-center ">
-                <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder="" />
-                <span class="text-danger" style="display: block"></span>
-            </td>
-            <td class="text-center ">
-                <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder="" />
-                <span class="text-danger" style="display: block"></span>
-            </td>
-            <td class="">
-                <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
-                <span class="text-danger" style="display: block"></span>
-            </td>
-            <td>
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
-                    <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
-                        <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
-                    </label>
-                    <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
-                        <input type="radio" name="options" value="cos" autocomplete="off">Costo
-                    </label>
-                    <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
-                        <input type="radio" name="options" value="gas" autocomplete="off">Gasto
-                    </label>
-                    <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
-                        <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
-                    </label>
-                </div>
-            </td>
-            <td class="">
-                <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
-                <span class="glyphicon glyphicon-plus"></span>
-            </td>
+                <tr>
+                    <td class="text-center ">
+                        <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder="" />
+                        <span class="text-danger" style="display: block"></span>
+                    </td>
+                    <td class="text-center ">
+                        <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder="" />
+                        <span class="text-danger" style="display: block"></span>
+                    </td>
+                    <td class="">
+                        <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+                        <span class="text-danger" style="display: block"></span>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
+                            <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
+                                <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                            </label>
+                            <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
+                                <input type="radio" name="options" value="cos" autocomplete="off">Costo
+                            </label>
+                            <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
+                                <input type="radio" name="options" value="gas" autocomplete="off">Gasto
+                            </label>
+                            <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
+                                <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
+                            </label>
+                        </div>
+                    </td>
+                    <td class="">
+                        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </td>
+                </tr>
             </tbody>
 
         </table>
@@ -483,6 +485,7 @@
 
 <hr style="color: grey" />
 <div class="text-center">
+    <a href="@Url.Action("Index","Worksheets")" class="btn btn-primary"><span class="glyphicon glyphicon-hand-left" aria-hidden="true">&nbsp;Volver</span></a>
     <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
