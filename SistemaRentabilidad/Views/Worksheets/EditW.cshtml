@@ -235,7 +235,7 @@
 
 
         </td>
-        <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
+        <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
     </tr>}
 }
     </tbody>
@@ -295,7 +295,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
+                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilacos(this)">X</a></td>
                 </tr>
             }
         }
@@ -353,7 +353,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" onclick="borrarfila($(this))">X</a></td>
+                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilagas(this)">X</a></td>
                 </tr>
             }
         }
@@ -413,7 +413,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" onclick ="borrarfila($(this))" >X</a></td>
+                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilaotr(this)" >X</a></td>
                 </tr>
             }
         }
@@ -658,7 +658,9 @@
         }
 
 
-        function borrarfila(row) {
+        function borrarfilaing(row) {
+            var a = row.id;
+            toastr.warning("-" + $('#iteming_SheetDescription'+a).val()+ "-<br/>Eliminado.", "Ingreso:");
             row.closest('tr').remove();
             arraysamountsedit();
             calcing();
@@ -667,6 +669,41 @@
             calcotr();
             calculogral();
         }
+        function borrarfilacos(row) {
+            var a = row.id;
+            toastr.warning("-" + $('#itemcos_SheetDescription'+a).val()+ "-<br/>Eliminado.", "Costo:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+        function borrarfilagas(row) {
+            var a = row.id;
+            toastr.warning("-" + $('#itemgas_SheetDescription'+a).val()+ "-<br/>Eliminado.", "Gasto:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+        function borrarfilaotr(row) {
+            var a = row.id;
+            toastr.warning("-" + $('#itemotr_SheetDescription'+a).val()+ "-<br/>Eliminado.", "Otro ingreso:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+
+
 
         $("#ocultar").click(function() {
             $(this).text(function(i, text) {
