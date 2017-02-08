@@ -2256,7 +2256,7 @@ pre code {
   }
 }
 table {
-  background-color: transparent;
+  background-color: snow;
 }
 caption {
   padding-top: 8px;
@@ -2311,7 +2311,7 @@ th {
   padding: 5px;
 }
 .table-bordered {
-  border: 1px solid #ecf0f1;
+  border: 1px solid darkgrey;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -6874,7 +6874,7 @@ table-bordered > tbody > tr > td,
 .table-bordered > tbody > tr > td,
 table-bordered > tfoot > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ecf0f1;
+  border: 1px solid darkgrey;
 }
 .form-control,
 input {
