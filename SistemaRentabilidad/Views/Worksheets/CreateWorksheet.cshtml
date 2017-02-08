@@ -69,8 +69,8 @@
 
     </td>
     <td class="text-center" >
-        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
-        <span class="text-danger" style="display: block"></span>
+        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa" onchange="valfecha()"/>
+        <span class="text-danger" id="spanwdate" style="display: block"></span>
 
     </td>
     </tbody>
@@ -360,6 +360,30 @@
 
 
     <script>
+        function valfecha() {
+            if ($('#wdate').val().trim() == '') {
+                $('#wdate').siblings('span.text-danger').html('Requerido');
+            } else {
+                //$('#wdate').siblings('span.text-danger').html('');
+                var options3 = {};
+                options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+                options3.type = "GET";
+                options3.data = { "fecha": $("#wdate").val() };
+                options3.dataType = "json";
+                options3.success = function (data) {
+                    if (data) {
+                        $('#wdate').siblings('span.text-danger').html('Período existente.');
+
+                    } else {
+                        $('#wdate').siblings('span.text-danger').html('');
+
+                    };
+
+                };
+                $.ajax(options3);
+            }
+        }
+
         function calculogral() {
             tgral = 0;
             $.each(toting, function() { tgral += parseFloat(this) || 0; });
@@ -377,7 +401,8 @@
 
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
+            valfecha();
             $('textarea').each(function() {
                 autosize(this);
                 this.style.display = '';
@@ -503,38 +528,10 @@
             $('#submit').click(function() {
                 //validation of order
                 var isAllValid = true;
-                
-                if ($('#wdate').val().trim() == '') {
-                    $('#wdate').siblings('span.text-danger').html('Requerido');
-                    isAllValid = false;
-                } else {
-                    //$('#wdate').siblings('span.text-danger').html('');
-                    var options = {};
-                    options.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-                    options.type = "GET";
-                    options.data = { "fecha": $("#wdate").val()};
-                    options.dataType = "json";
-                    options.success = function (data) {
-                        if (data) {
-                            $('#wdate').siblings('span.text-danger').html('Período existente.');
-                            isAllValid = false;
-                            alert(isAllValid);
-
-                        } else {
-                            $('#wdate').siblings('span.text-danger').html('');
-                            
-                        };
-
-                    };
-                    $.ajax(options);
-                }
-
 
                 orderItems = $.merge(orderItemsi, orderItemsc);
                 orderItems = $.merge(orderItems, orderItemsg);
                 orderItems = $.merge(orderItems, orderItemso);
-                
-
                 if (orderItems.length == 0) {
                     bootbox.alert({
                         title: "Aviso",
@@ -545,7 +542,7 @@
                     isAllValid = false;
 
                 }
-                if ($('#wdate').siblings('span.text-danger').html() != '') {
+                if ($('#spanwdate').html() != '') {
                     isAllValid = false;
                 }
                 //Save if valid
