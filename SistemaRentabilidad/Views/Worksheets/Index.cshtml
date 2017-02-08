@@ -38,10 +38,17 @@
             <tr>
                 <td>
                     <div>
-                        <div class="hidden">@item.Date.Year @item.Date.Month @item.Date.Day</div>
+                        @{
+                            var ordermonth = item.Date.Month;
+                            if (ordermonth > 9)
+                            {
+                                ordermonth = ordermonth + 81;
+                            }
+                        }
+                        <div class="hidden">@item.Date.Year @ordermonth @item.Date.Day</div>
                         @{
                             var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
-                            @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
+                            @Html.EditorFor(model => month, new {htmlAttributes = new {@class = "mes", @readonly = "readonly"}})
                         }
 
                     </div>
