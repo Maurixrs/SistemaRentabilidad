@@ -214,6 +214,14 @@ namespace SistemaRentabilidad.Controllers
             return View(wsVm);
         }
 
+        public JsonResult ExistePlanilla(DateTime fecha)
+        {
+            
+            var existe = db.Worksheet.ToList().Exists(f => f.Date.Month == fecha.Month);
+
+            return Json(existe, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Worksheets/Edit/5
         public ActionResult Edit(int? id)
         {

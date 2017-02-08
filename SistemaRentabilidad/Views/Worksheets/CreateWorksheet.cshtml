@@ -503,26 +503,37 @@
             $('#submit').click(function() {
                 //validation of order
                 var isAllValid = true;
-
-
-//if ($('#wdescription').val().trim() == '') {
-                //    $('#wdescription').siblings('span.text-danger').html('Requerido');
-                //    isAllValid = false;
-                //} else {
-                //    $('#wdescription').siblings('span.text-danger').html('');
-                //}
-
+                
                 if ($('#wdate').val().trim() == '') {
                     $('#wdate').siblings('span.text-danger').html('Requerido');
                     isAllValid = false;
                 } else {
-                    $('#wdate').siblings('span.text-danger').html('');
+                    //$('#wdate').siblings('span.text-danger').html('');
+                    var options = {};
+                    options.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+                    options.type = "GET";
+                    options.data = { "fecha": $("#wdate").val()};
+                    options.dataType = "json";
+                    options.success = function (data) {
+                        if (data) {
+                            $('#wdate').siblings('span.text-danger').html('Período existente.');
+                            isAllValid = false;
+                            alert(isAllValid);
+
+                        } else {
+                            $('#wdate').siblings('span.text-danger').html('');
+                            
+                        };
+
+                    };
+                    $.ajax(options);
                 }
 
 
                 orderItems = $.merge(orderItemsi, orderItemsc);
                 orderItems = $.merge(orderItems, orderItemsg);
                 orderItems = $.merge(orderItems, orderItemso);
+                
 
                 if (orderItems.length == 0) {
                     bootbox.alert({
@@ -533,6 +544,9 @@
 
                     isAllValid = false;
 
+                }
+                if ($('#wdate').siblings('span.text-danger').html() != '') {
+                    isAllValid = false;
                 }
                 //Save if valid
                 if (isAllValid) {
