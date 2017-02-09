@@ -6,6 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="~/Content/hover.css">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+
    <style>   .full {color: rgba(0, 0, 0, 0.91);
              -webkit-background-size: cover;
              -moz-background-size: cover;
@@ -13,10 +17,13 @@
              -o-background-size: cover;
              height: 100%;
          }</style>
+
+
 </head>
-<body class="full"  background='@Url.Content("~/Content/Images/fon 1.jpg")'>
+
+<body class="full"  background='@Url.Content("~/Content/Images/fon 4.jpg")'>
    
-    <div class="navbar navbar-default navbar-fixed-top" >
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,12 +31,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Rentabilidad", "Index", "Worksheets", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rentabilidad", "Index", "Worksheets", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li class="hvr-underline-from-center">@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
+                    <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
                     <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
                 </ul>

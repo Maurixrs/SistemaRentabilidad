@@ -356,3 +356,5 @@ C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\obj\Debug\Sis
 C:\Users\Kai\ProyectosGit\Sistema Rentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.pdb
 E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.dll
 E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.xml
+E:\Godesa\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.dll
+E:\Godesa\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.xml

@@ -163,14 +163,12 @@
 
 
 <table id="titulotabla" class="table table-condensed table-bordered ">
-
     <thead class="tableStyle">
         <tr class="text-center tipos">
-            <th class="text-center">
+            <th class="text-center" style="background: #77a9f9">
                 Planilla
             </th>
-
-            <th class="text-center">
+            <th class="text-center" style="background: #77a9f9">
                 Período
             </th>
         </tr>
@@ -192,37 +190,29 @@
             </td>
         </tr>
     </tbody>
-
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dotted" />
-
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
-        <tr class="text-center" style="background: darkkhaki">
+        <tr class="text-center" style="background:gainsboro">
             <th class="text-left" style="width: 40%;">
                 Descripción
             </th>
             <th class="text-left" style="width: 40%">
                 Observación
             </th>
-
             <th class="text-left" style="width: 20%">
                 Monto
             </th>
-
         </tr>
     </thead>
 </table>
 
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Ingresos
 </legend>
-
 <table id="ingresotabla" class="table table-condensed table-bordered ">
-
     <tbody id="ingreso">
-
-
 
         @foreach (var item in Model.Sheets)
             {
@@ -233,7 +223,6 @@
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.SheetDescription)
 
-
                     </td>
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.Comments)
@@ -241,42 +230,33 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
 
-
                     </td>
-
                 </tr>
             }
         }
     </tbody>
-
 </table>
 <table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
-
             </th>
             <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
                 Subtotal
             </th>
-
-            <th class="text-left" style="background: lightgray" id="toting">
+            <th class="text-left totalView" id="toting">
                 @Html.DisplayFor(model => model.Totali)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
-
             </th>
-
         </tr>
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered ">
-
     <tbody id="costo">
 
         @foreach (var item in Model.Sheets)
@@ -288,7 +268,6 @@
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.SheetDescription)
 
-
                     </td>
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.Comments)
@@ -296,42 +275,34 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
 
-
                     </td>
 
                 </tr>
             }
         }
     </tbody>
-
 </table>
 <table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
-
             </th>
             <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
                 Subtotal
             </th>
-
-            <th class="text-left" style="background: lightgray" id="totcos">
+            <th class="text-left totalView" id="totcos">
                 @Html.DisplayFor(model => model.Totalc)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
-
             </th>
-
         </tr>
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered ">
-
     <tbody id="gasto">
 
         @foreach (var item in Model.Sheets)
@@ -341,7 +312,6 @@
                 <tr>
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.SheetDescription)
-
                     </td>
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.Comments)
@@ -349,41 +319,34 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
 
-
                     </td>
 
                 </tr>
             }
         }
     </tbody>
-
 </table>
 <table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
-
             </th>
             <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
                 Subtotal
             </th>
-
-            <th class="text-left" style="background: lightgray" id="totgas">
+            <th class="text-left totalView" id="totgas">
                 @Html.DisplayFor(model => model.Totalg)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
-
             </th>
-
         </tr>
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered ">
-
     <tbody id="otro">
 
         @foreach (var item in Model.Sheets)
@@ -395,14 +358,12 @@
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.SheetDescription)
 
-
                     </td>
                     <td style="width: 40%;">
                         @Html.DisplayFor(modelItem => item.Comments)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
-
 
                     </td>
 
@@ -415,35 +376,29 @@
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
-
             </th>
             <th class="text-right" style="width: 40%; font-weight: bolder;border-bottom: hidden; border-top: hidden; border-left: hidden;font-style: italic;font-size: medium;">
                 Subtotal
             </th>
-
-            <th class="text-left" style="background: lightgray" id="tototr">
+            <th class="text-left totalView" id="tototr">
                 @Html.DisplayFor(model => model.Totalo)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
-
             </th>
-
         </tr>
     </thead>
 </table>
-
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="tipos" style="margin-bottom: 2px;background: darkkhaki">
+<legend class="tipos text-center" style="background: #77a9f9">
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed    table-bordered ">
-
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
     <thead class="tableStyle">
-        <tr class="text-center" style="background: khaki">
-            <td class="text-left" style="border-radius: 3px; font-weight: bold">
+        <tr class="text-center" style="background: gainsboro">
+            <td class="text-left" style="border-radius: 3px; font-weight: bold; background:gainsboro">
                 Observaciones
             </td>
-            <td class="text-left" style="border-radius: 3px; width: 200px; font-weight: bold">
+            <td class="text-left" style="border-radius: 3px; width: 200px; font-weight: bold; background:gainsboro">
                 Total
             </td>
         </tr>
@@ -453,16 +408,13 @@
             <td>
                 @Html.DisplayFor(model => model.Comments)
 
-
             </td>
             <td>
                 @Html.DisplayFor(model => model.TotalAmount)
                 <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
-
     </tbody>
-
 </table>
 <br/>
 

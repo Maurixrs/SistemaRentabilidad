@@ -120,9 +120,64 @@ textarea {
 	-webkit-transition-duration:0.3s;
 }
 
+
+.gps_ring {
+    
+    -webkit-border-radius: 0px;
+  
+    position: relative;
+  
+}
+.gps_ring{
+    -webkit-animation-name: pulsate;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite
+}
+@-webkit-keyframes pulsate {
+    0% { opacity: 0.0}
+    10% {  opacity: .20}
+    20% { opacity: .40 }
+    30% {  opacity: .60 }
+    40% {  opacity: .80 } 
+    50% { opacity: 1.0}
+    60% {  opacity: .80}
+    70% {  opacity: .60}
+    80% {  opacity: .40}
+    90% {   opacity: .20}
+    100% { opacity: 0.0}
+ }
+
+.chicle:hover{
+	-webkit-animation: 1s chicle 1;
+}
+
+@-webkit-keyframes chicle {
+
+	30%{
+		-webkit-transform:scaleX(1.25) scaleY(0.75);
+	}
+
+	50%{
+
+		-moz-transform:scaleX(0.75) scaleY(1.25);
+		-webkit-transform:scaleX(0.75) scaleY(1.25);
+	}
+
+	60% {
+		-moz-transform:scaleX(1.15) scaleY(0.85);
+		-webkit-transform:scaleX(1.15) scaleY(0.85);
+	}
+}
+
+
+.positionBtn {
+    margin-left:89%;
+}
+
 .jumbotron {
     align-content: center;
-    margin-top: 10px;
+    margin-top: 20px;
     width: 1110px;
     height: 200px;
     opacity: 1;
@@ -132,3 +187,57 @@ textarea {
 
 }
 
+.thStyle {
+color: white;
+width: 548.889px;
+
+}
+
+td.dataContainer{
+    background-color:rgb(255, 255, 255);
+    /*width:auto;*/
+    font-weight:900;
+    font-family:Arial, Helvetica, sans-serif;
+    border:groove;
+}
+
+.positionOcultar {
+    margin-left:94%;
+    background-color:#ff695b;
+    background:#ff695b;
+    color:beige;
+    
+}
+
+.inputForm {
+    
+    height:25px;
+    text-align:left;
+    width:100%;
+    border-radius:5px;
+    
+}
+
+.inputForm2 {
+
+    height:28px;
+    text-align:center;
+    width:100%;
+}
+
+.panel-info:focus{
+    background-color:beige;
+}
+
+.totalView  {
+    border:double;
+    background-color:beige;
+    text-align:center;
+  
+}
+
+
+.thStyleGradient{
+
+    background:-webkit-linear-gradient(top, rgba(43,43,43,1) 0%, rgba(232,232,232,1) 0%, rgba(201,201,201,1) 2%, rgba(232,232,232,1) 13%, rgba(255,255,255,1) 98%, rgba(186,186,186,1) 100%);
+}

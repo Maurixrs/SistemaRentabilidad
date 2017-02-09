@@ -2,15 +2,19 @@
 @{
     ViewBag.Title = "Nueva Planilla";
 }
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+
 <style>
-    table .table td{border: #b94a48}
-     .tipos{    font-size: medium;
-         font-weight: bold;
-         font-style: italic}
-    .fc{    padding: 3px;height: 31px}
-    textarea{resize: none}
+    .tipos{
+            font-size: medium;
+    font-weight: bold;
+    font-style: italic}
+     .fc{    padding: 3px;height: 31px}
      
-    #resumentabla td{line-height: 15px}
+     #resumentabla td{line-height: 15px}
 
     #nueva td{line-height: 15px}
     #ingresotabla td{line-height: 15px}
@@ -53,7 +57,7 @@
     <thead class="tableStyle">
 
 
-    <tr class="text-center" style="background-color: khaki;">
+    <tr class="text-center" style="background-color: #77a9f9;">
         <th class="text-center">
             Planilla
         </th>
@@ -66,13 +70,13 @@
     <tbody>
 
     <td class="text-center">
-        Creando nuevo documento...
+        <label class="gps_ring">Creando nuevo documento...</label>
         <span class="text-danger" style="display: block"></span>
 
     </td>
     <td class="text-center" >
-        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa" onchange="valfecha()"/>
-        <span class="text-danger" id="spanwdate" style="display: block"></span>
+        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+        <span class="text-danger" style="display: block"></span>
 
     </td>
     </tbody>
@@ -80,20 +84,20 @@
 </table>
 
 
-<legend style="margin-bottom: 2px;background: gainsboro">
-    <b>Nueva entrada</b>
+<legend class="text-center" style="margin-bottom: 2px;background: #77a9f9">
+    <h2><b>Nueva entrada</b></h2>
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
     <tr class="text-center" style="background: gainsboro">
-        <th class="text-left" style="width: 40%">
+        <th class="text-center" style="width: 40%">
             Descripción
         </th>
-        <th class="text-left" style="width: 40%">
+        <th class="text-center" style="width: 40%">
             Observación
         </th>
 
-        <th class="text-left">
+        <th class="text-center">
             Monto
         </th>
         <th class="text-center">
@@ -103,15 +107,15 @@
     </thead>
     <tbody id="nueva">
     <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm fc" id="ndescription" placeholder="" style="max-width: 100%"></textarea>
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc " id="ndescription" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center fina">
-        <textarea type="text" rows='1'  class="panel-info form-control inputForm fc" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
+        <textarea type="text" rows='1'  class="panel-info form-control inputForm2 fc" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" class="panel-info form-control inputForm fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <input type="number" class="panel-info form-control inputForm2 fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
@@ -131,7 +135,7 @@
         </div>
     </td>
     <td class="fina">
-        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva"/>
+        <button type="button" id="addn" class="btn btn-success btn-sm add" value="nueva"/>
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -139,7 +143,7 @@
 </table>
 
 
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Ingresos
 </legend>
 
@@ -160,7 +164,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="toting">
+            <th class="text-left totalView" id="toting">
                 0.00
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -172,7 +176,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos">
+<legend class="tipos thStyleGradient col-lg-12" >
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered chica">
@@ -193,7 +197,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray"  id="totcos">
+            <th class="text-left totalView"   id="totcos">
                 0.00
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -205,7 +209,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos">
+<legend class="tipos thStyleGradient col-lg-12">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered chica">
@@ -226,7 +230,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray"  id="totgas">
+            <th class="text-left totalView"   id="totgas">
                 0.00
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -238,7 +242,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos">
+<legend class="tipos thStyleGradient col-lg-12">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered chica">
@@ -259,7 +263,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray"  id="tototr">
+            <th class="text-left totalView"   id="tototr">
                 0.00
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -292,15 +296,15 @@
 
 </div>
 <div>
-    <div id="orderItemso">
+    <div id="orderItemso" >
     </div>
     <span class="text-danger" style="display: block"></span>
 
 </div>
-<legend class="tipos">
+<legend class="tipos text-center" style="background: #77a9f9">
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed    table-bordered chica">
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
 
     <thead class="tableStyle">
         <tr class="text-center" style="background: gainsboro">
@@ -315,11 +319,11 @@
     <tbody>
         <tr>
             <td>
-                <textarea type="text" rows='1'  class="panel-info form-control inputForm fc" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
+                <textarea type="text" rows='1'  class="panel-info form-control inputForm2 fc" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
 
             </td>
             <td>
-                <input readonly="readonly" type="text" class="panel-info form-control inputForm fc" style="width: 200px; font-weight: bold" value="0.00" id="wtotal" placeholder="" />
+                <input readonly="readonly" type="text" class="panel-info text-center totalView" value="0.00" id="wtotal" placeholder="" />
                 <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -330,11 +334,11 @@
 
 
 <div class="text-center">
-    <button type="button" id="submit" class="btn btn-success btn-md" value="Guardar">
+    <button type="button" id="submit" class="btn btn-success hvr-shadow-radial btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
     </button>
-    <button type="button" id="imprimir" class="btn btn-success btn-md" value="Guardar">
+    <button type="button" id="imprimir" class="btn btn-success btn-md hvr-shadow-radial" value="Guardar">
         Guardar e Imprimir
         <span class="glyphicon glyphicon-floppy-disk"></span>
     </button>
@@ -362,30 +366,6 @@
 
 
     <script>
-        function valfecha() {
-            if ($('#wdate').val().trim() == '') {
-                $('#wdate').siblings('span.text-danger').html('Requerido');
-            } else {
-                //$('#wdate').siblings('span.text-danger').html('');
-                var options3 = {};
-                options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-                options3.type = "GET";
-                options3.data = { "fecha": $("#wdate").val() };
-                options3.dataType = "json";
-                options3.success = function (data) {
-                    if (data) {
-                        $('#wdate').siblings('span.text-danger').html('Período existente.');
-
-                    } else {
-                        $('#wdate').siblings('span.text-danger').html('');
-
-                    };
-
-                };
-                $.ajax(options3);
-            }
-        }
-
         function calculogral() {
             tgral = 0;
             $.each(toting, function() { tgral += parseFloat(this) || 0; });
@@ -403,8 +383,7 @@
 
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function () {
-            valfecha();
+        $(document).ready(function() {
             $('textarea').each(function() {
                 autosize(this);
                 this.style.display = '';
@@ -531,9 +510,26 @@
                 //validation of order
                 var isAllValid = true;
 
+
+//if ($('#wdescription').val().trim() == '') {
+                //    $('#wdescription').siblings('span.text-danger').html('Requerido');
+                //    isAllValid = false;
+                //} else {
+                //    $('#wdescription').siblings('span.text-danger').html('');
+                //}
+
+                if ($('#wdate').val().trim() == '') {
+                    $('#wdate').siblings('span.text-danger').html('Requerido');
+                    isAllValid = false;
+                } else {
+                    $('#wdate').siblings('span.text-danger').html('');
+                }
+
+
                 orderItems = $.merge(orderItemsi, orderItemsc);
                 orderItems = $.merge(orderItems, orderItemsg);
                 orderItems = $.merge(orderItems, orderItemso);
+
                 if (orderItems.length == 0) {
                     bootbox.alert({
                         title: "Aviso",
@@ -543,9 +539,6 @@
 
                     isAllValid = false;
 
-                }
-                if ($('#spanwdate').html() != '') {
-                    isAllValid = false;
                 }
                 //Save if valid
                 if (isAllValid) {

@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Detalles de Planilla";
 }
+
+<head>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="~/Content/hover.css">
+    <LINK REL="stylesheet" TYPE="text/css" HREF="~/Content/Site.css">
+
+
+</head>
 <style>
      legend {
         margin-bottom: 2px;
@@ -9,15 +16,15 @@
         font-size: inherit;
     }
      .full{background-size: contain}
-    #resumentabla td {
+    #resumentabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #nueva td {
+    #nueva td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #ingresotabla td {
+    #ingresotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
@@ -25,31 +32,31 @@
         line-height: 15px;
     }
 
-    #costotabla td {
+    #costotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #gastotabla td {
+    #gastotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #otrotabla td {
+    #otrotabla td {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #ingresotabla th {
+    #ingresotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #costotabla th {
+    #costotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #gastotabla th {
+    #gastotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #otrotabla th {
+    #otrotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
@@ -57,38 +64,38 @@
      #titulotabla th {border-color: darkgrey;background: darkkhaki;
         
     }
-       #titulotabla td {
+       #titulotabla td {border-color: darkgrey;background: snow;
         
     }
-    #nueva th {
+    #nueva th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #resumentabla th {
+    #resumentabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #otrosub th {
+    #otrosub th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #encabezadostabla th {
+    #encabezadostabla th {border-color: darkgrey;
         line-height: 15px;
     }
 
-    #totalingresotabla th {
+    #totalingresotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #totalgastotabla th {
+    #totalgastotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #totalcostotabla th {
+    #totalcostotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
 
-    #totalotrotabla th {
+    #totalotrotabla th {border-color: darkgrey;background: snow;
         line-height: 15px;
     }
     .tipos{    font-size: medium;
@@ -96,7 +103,7 @@
         font-style: italic}
 
 
-    .table {
+    .table {border-color: darkgrey;
         margin-bottom: 0px;
     }
 </style>
@@ -115,12 +122,12 @@
 <table id="titulotabla" class="table table-condensed table-bordered ">
 
     <thead class="tableStyle">
-        <tr class="text-center tipos">
-            <th class="text-center">
+        <tr class="text-center tipos" >
+            <th class="text-center" style="background: #77a9f9" >
                 Planilla
             </th>
 
-            <th class="text-center">
+            <th class="text-center" style="background: #77a9f9">
                 Período
             </th>
         </tr>
@@ -148,7 +155,7 @@
 
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
-        <tr class="text-center" style="background: darkkhaki">
+        <tr class="text-center" style="background:gainsboro">
             <th class="text-left" style="width: 40%;">
                 Descripción
             </th>
@@ -163,8 +170,9 @@
         </tr>
     </thead>
 </table>
+<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Ingresos
 </legend>
 
@@ -210,7 +218,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="toting">
+            <th class="text-left totalView"  id="toting">
                 @Html.DisplayFor(model => model.Totali)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -222,7 +230,7 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered ">
@@ -265,7 +273,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="totcos">
+            <th class="text-left totalView"  id="totcos">
                 @Html.DisplayFor(model => model.Totalc)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -277,7 +285,7 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered ">
@@ -318,7 +326,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="totgas">
+            <th class="text-left totalView"  id="totgas">
                 @Html.DisplayFor(model => model.Totalg)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -329,7 +337,7 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="tipos">
+<legend class="thStyleGradient tipos col-lg-12">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered ">
@@ -371,7 +379,7 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="tototr">
+            <th class="text-left totalView"  id="tototr">
                 @Html.DisplayFor(model => model.Totalo)
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
@@ -383,13 +391,13 @@
 </table>
 
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="tipos" style="margin-bottom: 2px;background: darkkhaki">
+<legend class="tipos text-center" style="background: #77a9f9">
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed    table-bordered ">
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
 
     <thead class="tableStyle">
-        <tr class="text-center" style="background: khaki">
+        <tr class="text-center"  style="background: gainsboro">
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
                 Observaciones
             </td>
@@ -417,8 +425,8 @@
 
 <hr style="color: grey" />
 <div class="text-center">
-    <a href="@Url.Action("Index","Worksheets")" class="btn btn-primary"><span class="glyphicon glyphicon-hand-left" aria-hidden="true">&nbsp;Volver</span></a>
-    <a href="@Url.Action("EditW","Worksheets", new { id = Model.IdWorksheet})" class="btn btn-success">Editar&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+    <a href="@Url.Action("Index","Worksheets")" class="btn btn-success hvr-shadow-radial btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
+    <a href="@Url.Action("EditW","Worksheets", new { id = Model.IdWorksheet})" class="btn btn-default">Editar&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
     <a href="@Url.Action("Delete","Worksheets", new { id = Model.IdWorksheet, details = true})" class="btn btn-danger dialog-window">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 </div>
 @*<a href="@Url.Action("Delete","Worksheets", new { id = Model.IdWorksheet})" data-form-method="post" class="btn btn-danger">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>*@

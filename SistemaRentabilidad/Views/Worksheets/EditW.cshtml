@@ -105,21 +105,21 @@
     <thead class="tableStyle">
 
 
-        <tr class="text-center">
-            <th>N° Planilla</th>
+        <tr class="text-center" style="background: #77a9f9">
+            <th class="col-lg-4 text-center">N° Planilla</th>
 
-            <th class="text-center">
+            <th class="col-lg-8 text-center" >
                 Fecha de creación
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>
+            <td class="dataContainer text-center">
                 @Model.IdWorksheet
             </td>
-            <td class="text-center">
-                @Html.TextBoxFor(model => model.Date, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()" })        <span id="wdate" class="text-danger" style="display: block"></span>
+            <td class="text-center inputForm2 ">
+                @Html.TextBoxFor(model => model.Date, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()", @class = "inputForm2 panel-info" })        <span id="wdate" class="text-danger" style="display: block"></span>
             </td>
         </tr>
 
@@ -128,15 +128,15 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 <div style="display: inline-block">
-    <button id="mostrar" class="hidden-print btn btn-default btn-sm">Nueva linea</button>
+    <button id="mostrar" class="hidden-print btn btn-primary btn-sm hvr-bubble-right hvr-grow">Nueva linea</button>
     <div id="nuevalinea" style="display: none">
-        <legend style="margin-bottom: 2px; background: cadetblue">
-            Linea <button id="ocultar" class="hidden-print btn btn-default btn-sm">Ocultar</button>
+        <a style="margin-bottom: 2px; background: #89bad3">
+            <button id="ocultar" class="hidden-print btn btn-xs hvr-bubble-left positionOcultar">Ocultar</button>
 
-        </legend>
+        </a>
         <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 10px">
             <thead>
-                <tr class="text-center" style="background: gainsboro">
+                <tr class="text-left" style="background: gainsboro">
                     <th class="text-left" style="width: 40%">
                         Descripción
                     </th>
@@ -154,11 +154,11 @@
             </thead>
             <tbody id="nueva">
                 <tr>
-                    <td class="text-center ">
+                    <td class="text-left ">
                         <input type="text" class="panel-info form-control-sm inputForm" id="ndescription" placeholder="" />
                         <span class="text-danger" style="display: block"></span>
                     </td>
-                    <td class="text-center ">
+                    <td class="text-left ">
                         <input type="text" class="panel-info form-control-sm inputForm" id="ncomment" placeholder="" />
                         <span class="text-danger" style="display: block"></span>
                     </td>
@@ -168,7 +168,7 @@
                     </td>
                     <td>
                         <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
-                            <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
+                            <label class="btn btn-info btn-xs active styleButton" value="ing" onclick="acting(this)">
                                 <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
                             </label>
                             <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
@@ -193,58 +193,54 @@
     </div>
 </div>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
+
+
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>
-        <tr class="text-center" style="background: khaki">
-            <th class="text-left" style="width: 40%">
-                Descripción
-            </th>
-            <th class="text-left" style="width: 40%">
-                Observación
-            </th>
-
-            <th class="text-left" style="width: 20%">
-                Monto
-            </th>
-
-        </tr>
-    </thead>
+      
+            <tr class="text-left" style="border-radius: 3px; font-weight: bold; background: gainsboro" >
+                <th class="text-left" style="width: 40%">
+                    Descripción
+                </th>
+                <th class="text-left" style="width: 40%">
+                    Observación
+                </th>
+                <th class="text-left" style="width: 20%">
+                    Monto
+                </th>
+            </tr>
+</thead>
 </table>
-<hr style="margin-top: 2px;margin-bottom: 5px;border-style: dotted" />
-<legend style="margin-bottom: 2px; background: darkkhaki">
-    Ingresos
-</legend>
-
+<hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
+<text class="thStyleGradient tipos col-lg-12">
+    <b>Ingresos</b>
+</text>
 <table id="ingresotabla" class="table table-condensed table-bordered ">
 
     <tbody id="ingreso">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+      
         @foreach (var item in Model.Sheets)
         {
             if (item.SheetType == SheetType.Ingreso)
             {
 
                 <tr>
-                    <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                    <td class="text-left" style="width: 40%;">
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "inputForm panel-info" })
                         <span class="text-danger" id="@("spaniteming_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments" })
+                    <td class="text-left" style="width: 40%;">
+                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "inputForm panel-info" })
                     </td>
-                    <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                    <td class="text-left">
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
                         <span class="text-danger" id="@("spaniteming_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red; Background=yellow" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
                 </tr>}
         }
     </tbody>
@@ -252,7 +248,7 @@
 </table>
 <table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
-        <tr class="text-center" style="background: none">
+        <tr class="text-left" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
             </th>
@@ -260,8 +256,8 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="toting">
-                @Html.TextBoxFor(model => model.Totali, new { @readonly = "readonly" })
+            <th class="text-left" id="toting">
+                @Html.TextBoxFor(model => model.Totali, new { @readonly = "readonly", @class = "totalView" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -272,17 +268,13 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Costos de las ventas
-</legend>
+<text class="thStyleGradient tipos col-lg-12">
+    <b> Costos de las ventas</b>
+</text>
 <table id="costotabla" class="table table-condensed table-bordered ">
 
     <tbody id="costo">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+  
         @foreach (var item in Model.Sheets)
         {
             if (item.SheetType == SheetType.Costo)
@@ -290,16 +282,16 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "inputForm panel-info"})
                         <span class="text-danger" id="@("spanitemcos_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments" })
+                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments", @class = "inputForm panel-info" })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
                         <span class="text-danger" id="@("spanitemcos_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
@@ -313,7 +305,7 @@
 </table>
 <table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
-        <tr class="text-center" style="background: none">
+        <tr class="text-left" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
             </th>
@@ -321,8 +313,8 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="totcos">
-                @Html.TextBoxFor(model => model.Totalc, new { @readonly = "readonly" })
+            <th class="text-left"  id="totcos">
+                @Html.TextBoxFor(model => model.Totalc, new { @readonly = "readonly", @class="totalView" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -333,32 +325,28 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Gastos
-</legend>
+<text class="thStyleGradient tipos col-lg-12">
+    <b>  Gastos</b>
+</text>
 <table id="gastotabla" class="table table-condensed table-bordered ">
 
     <tbody id="gasto">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+
         @foreach (var item in Model.Sheets)
         {
             if (item.SheetType == SheetType.Gasto)
             {
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)" })
+                        @Html.TextBoxFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "inputForm panel-info" })
                         <span class="text-danger" id="@("spanitemgas_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
                     </td>
                     <td style="width: 40%;">
-                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments" })
+                        @Html.TextBoxFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments", @class = "inputForm panel-info" })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
                         <span class="text-danger" id="@("spanitemgas_Amount"+@item.IdSheet)" style="display: block"></span>
 
 
@@ -372,7 +360,7 @@
 </table>
 <table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
-        <tr class="text-center" style="background: none">
+        <tr class="text-left" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
             </th>
@@ -380,8 +368,8 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="totgas">
-                @Html.TextBoxFor(model => model.Totalg, new { @readonly = "readonly" })
+            <th class="text-left"  id="totgas">
+                @Html.TextBoxFor(model => model.Totalg, new { @readonly = "readonly", @class = "totalView" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -391,17 +379,15 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
-    Otros ingresos
-</legend>
+
+<text class="thStyleGradient tipos col-lg-12">
+    <b>   Otros ingresos</b>
+</text>
+
 <table id="otrotabla" class="table table-condensed table-bordered ">
 
     <tbody id="otro">
-        <tr>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="width: 40%; line-height: 10px">-</td>
-            <td style="line-height: 10px">-</td>
-        </tr>
+ 
         @foreach (var item in Model.Sheets)
         {
             if (item.SheetType == SheetType.OtroIngreso)
@@ -431,7 +417,7 @@
 </table>
 <table id="totalotrotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
     <thead>
-        <tr class="text-center" style="background: none">
+        <tr class="text-left" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
 
             </th>
@@ -439,8 +425,8 @@
                 Subtotal
             </th>
 
-            <th class="text-left" style="background: lightgray" id="tototr">
-                @Html.TextBoxFor(model => model.Totalo, new { @readonly = "readonly" })
+            <th class="text-left" id="tototr">
+                @Html.TextBoxFor(model => model.Totalo, new { @readonly = "readonly", @class = "totalView" })
             </th>
             <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
@@ -451,13 +437,13 @@
 </table>
 
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend style="margin-bottom: 2px;background: darkkhaki">
+<legend class="tipos text-center" style="background: #77a9f9">
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed    table-bordered ">
+<table id="resumentabla" class="table table-condensed   table-striped table-bordered ">
 
     <thead class="tableStyle">
-        <tr class="text-center" style="background: khaki">
+        <tr class="text-left" style="background: gainsboro">
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
                 Observaciones
             </td>
@@ -469,12 +455,12 @@
     <tbody>
         <tr>
             <td>
-                @Html.TextBoxFor(model => model.Comments)
+                @Html.TextBoxFor(model => model.Comments, new {@class="inputForm panel-info" })
 
 
             </td>
             <td>
-                @Html.TextBoxFor(model => model.TotalAmount, new { @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.TotalAmount, new { @readonly = "readonly", @class = "totalView" })
                 <span class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -485,8 +471,8 @@
 
 <hr style="color: grey" />
 <div class="text-center">
-    <a href="@Url.Action("Index","Worksheets")" class="btn btn-primary"><span class="glyphicon glyphicon-hand-left" aria-hidden="true">&nbsp;Volver</span></a>
-    <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
+    <a href="@Url.Action("Index","Worksheets")" class="btn btn-success hvr-shadow-radial btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
+    <button type="button" id="guardar" class="btn btn-success hvr-shadow-radial btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
     </button>

@@ -384,6 +384,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\hover.css" />
     <Content Include="Content\Images\BACKGROUND-TOP.jpg" />
     <Content Include="Content\Images\fon 1.jpg" />
     <Content Include="Content\Images\fon 2.png" />
