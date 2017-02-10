@@ -171,9 +171,7 @@ textarea {
 }
 
 
-.positionBtn {
-    margin-left:89%;
-}
+
 
 .jumbotron {
     align-content: center;
@@ -222,7 +220,7 @@ td.dataContainer{
 
     height:28px;
     text-align:center;
-    width:100%;
+    /*width:100%;*/
 }
 
 .panel-info:focus{
