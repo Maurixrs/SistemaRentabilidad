@@ -385,6 +385,7 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\hover.css" />
+    <Content Include="Content\Images\background-black.jpg" />
     <Content Include="Content\Images\BACKGROUND-TOP.jpg" />
     <Content Include="Content\Images\bg_bolt.png" />
     <Content Include="Content\Images\bg_main.jpg" />
@@ -398,7 +399,9 @@
     <Content Include="Content\Images\fon 7.jpg" />
     <Content Include="Content\Images\fon 8.jpg" />
     <Content Include="Content\Images\fon 9.jpg" />
+    <Content Include="Content\Images\IMG_30319.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
+    <Content Include="Content\Images\maxresdefault.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
