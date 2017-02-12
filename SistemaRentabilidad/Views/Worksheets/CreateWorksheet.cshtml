@@ -44,52 +44,54 @@
     }
 </style>
 
-<head>
 
-   
-</head>
 @*///////////////////////////*@
-<hr style="margin-top: 10px;margin-bottom: 10px;" />
+<br/>
 
 
-<table id="titulotabla" class="table table-condensed table-bordered chica">
+<table id="titulotabla" class="table table-bordered chica">
 
     <thead class="tableStyle">
 
 
-    <tr class="text-center" style="background-color: #77a9f9;">
-        <th class="text-center">
+    <tr class="text-center thStyleGradient2 bordesRedond">
+
+     
+        <th class="text-center col-lg-9">
             Planilla
         </th>
 
-        <th class="text-center">
+        <th class="text-center col-lg-3">
             Periodo
         </th>
     </tr>
     </thead>
     <tbody>
 
-    <td class="text-center">
-        <label >Creando nuevo documento <text class="gps_ring">...</text></label>
+
+    <td class="text-center fondoBlanco">
+        <label >Procesando <text class="gps_ring">...</text></label>
         <span class="text-danger" style="display: block"></span>
 
     </td>
-    <td class="text-center" >
-        <input type="date" style="text-align: center; margin-left: 24%;" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
+    <td class="text-center fondoBlanco" >
+        <input type="date" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
         <span class="text-danger" style="display: block"></span>
 
     </td>
+
     </tbody>
 
 </table>
 
+<br/>
 
-<legend class="text-center" style="margin-bottom: 2px;background: #77a9f9">
-    <h2><b>Nueva entrada</b></h2>
+<legend class="text-center thStyleGradient2 bordesRedond" style="margin-bottom: 2px;">
+    <h4><b>Nueva entrada</b></h4>
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
-    <tr class="text-center" style="background: gainsboro">
+    <tr class="text-center thStyleGradient3">
         <th class="text-center" style="width: 40%">
             Descripción
         </th>
@@ -143,7 +145,7 @@
 </table>
 
 
-<legend class="thStyleGradient tipos col-lg-12">
+<legend class="thStyleGradient bordesRedond2 tipos col-lg-12">
     Ingresos
 </legend>
 
@@ -176,7 +178,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos thStyleGradient col-lg-12" >
+<legend class="tipos thStyleGradient bordesRedond2 col-lg-12" >
     Costos
 </legend>
 <table id="costotabla" class="table table-condensed table-bordered chica">
@@ -209,7 +211,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos thStyleGradient col-lg-12">
+<legend class="tipos thStyleGradient col-lg-12 bordesRedond2">
     Gastos
 </legend>
 <table id="gastotabla" class="table table-condensed table-bordered chica">
@@ -242,7 +244,7 @@
 </table>
 <hr style="margin-top: 2px;margin-bottom: 5px;border-style: dashed" />
 
-<legend class="tipos thStyleGradient col-lg-12">
+<legend class="tipos thStyleGradient col-lg-12 bordesRedond2">
     Otros ingresos
 </legend>
 <table id="otrotabla" class="table table-condensed table-bordered chica">
@@ -301,13 +303,13 @@
     <span class="text-danger" style="display: block"></span>
 
 </div>
-<legend class="tipos text-center" style="background: #77a9f9">
+<legend class="tipos text-center thStyleGradient2 bordesRedond" >
     Resumen
 </legend>
-<table id="resumentabla" class="table table-condensed   table-striped table-bordered chica">
+<table id="resumentabla" class="table table-condensed    table-bordered chica">
 
     <thead class="tableStyle">
-        <tr class="text-center" style="background: gainsboro">
+        <tr class="text-center thStyleGradient3" >
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
                 Observaciones
             </td>
@@ -326,13 +328,14 @@
                 <input readonly="readonly" type="text" class="panel-info text-center totalView" value="0.00" id="wtotal" placeholder="" />
                 <span class="text-danger" style="display: block"></span>
             </td>
+
         </tr>
 
     </tbody>
 
 </table>
 
-
+<br/>
 <div class="text-center">
     <button type="button" id="submit" class="btn btn-success  btn-md" value="Guardar">
         Guardar
@@ -343,10 +346,11 @@
         <span class="glyphicon glyphicon-floppy-disk"></span>
     </button>
 
+
 </div>
 
 
-
+<br />
 
 
 

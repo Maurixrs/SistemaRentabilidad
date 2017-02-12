@@ -10,19 +10,11 @@
     <link rel="stylesheet" type="text/css" href="~/Content/hover.css">
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
 
-   <style>   .full {color: rgba(0, 0, 0, 0.91);
-             -webkit-background-size: cover;
-             -moz-background-size: cover;
-             background-size: cover;
-             -o-background-size: cover;
-             height: 100%;
-         }</style>
-
 
 </head>
 
-<body class="full"  background='@Url.Content("~/Content/Images/fon 4.jpg")'>
-   
+<body class="full" background='@Url.Content("~/Content/Images/fon 2.png")'>
+
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,26 +30,26 @@
                     <li class="hvr-underline-from-center">@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
                     <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
-                    <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
+                        <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
 
+    <div class="container body-content backgroundStyle">
 
-
-
-
-    <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p class="text-center hidden-print"> - Sistema de Rentabilidad &copy; @DateTime.Now.Year - Godesa Solutions ®  <a class="hidden-print" style="color:black ">@Html.ActionLink("Contacto", "Contact", "Home")</></a> - </p>
-        </footer>
+
+
     </div>
+
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
+<footer>
+    <p class="text-center hidden-print"> - Sistema de Rentabilidad &copy; @DateTime.Now.Year - Godesa Solutions ®  <a class="hidden-print" style="color:black ">@Html.ActionLink("Contacto", "Contact", "Home")</></a> - </p>
+</footer>

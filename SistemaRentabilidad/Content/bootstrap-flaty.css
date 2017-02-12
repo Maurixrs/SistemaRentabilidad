@@ -2256,7 +2256,7 @@ pre code {
   }
 }
 table {
-  background-color: transparent;
+  background-color: snow;
 }
 caption {
   padding-top: 8px;
@@ -4503,9 +4503,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color:white;
   border-color: aliceblue;
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 66%, rgba(246,246,246,1) 80%, rgba(237,237,237,1) 90%, rgba(237,237,237,1) 96%, rgba(237,237,237,1) 100%);
-  
-  
+  /*background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 66%, rgba(246,246,246,1) 80%, rgba(237,237,237,1) 90%, rgba(237,237,237,1) 96%, rgba(237,237,237,1) 100%);*/
+  background: -webkit-linear-gradient(top, rgba(228,237,241,1) 0%, rgba(171,190,201,1) 0%, rgba(204,216,224,1) 34%, rgba(208,231,246,1) 100%);
 }
 .navbar-default .navbar-brand {
   color: #285091;
@@ -4969,11 +4968,12 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
+  
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #ecf0f1;
+  background-color: aliceblue;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -6879,7 +6879,7 @@ table-bordered > tbody > tr > td,
 .table-bordered > tbody > tr > td,
 table-bordered > tfoot > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ecf0f1;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .form-control,
 input {
