@@ -92,9 +92,15 @@
                     $('#mitabla1_filter').addClass('hidden-print');
                     $('#mitabla1_info').addClass('hidden-print');
                     $('#mitabla1_paginate').addClass('hidden-print');
-
+                    var year1=@ViewBag.initDate;
+                    var year2=@ViewBag.endDate;
                     var final = [];
                     var incomes = @Html.Raw(ViewBag.incomes);
+                    var labels = [];
+                    for (var i = 0; i <=@ViewBag.ys; i++) {
+                        labels.push((year1 + i).toString());
+                    }
+
 
                     $.each(incomes, function(index, value) {
                         if(value==0){incomes[index]=null}
@@ -102,7 +108,7 @@
 
                     var count = 1;
                     var item = [];
-
+                    
 
                     $.each(incomes, function(index, value) {
                         if (count <= 12) {
@@ -119,8 +125,7 @@
                     final.push(item);
                    
 
-                    var year1=@ViewBag.initDate;
-                    var year2=@ViewBag.endDate;
+                   
 
 
                     var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -134,8 +139,9 @@
                             breakOnNull:true
                         }, legend: {
                             show: true,
-                            location: 'e',
-                            placement: 'outside'
+                            placement: 'outsideGrid',
+                            labels: labels,
+                            location: 'ne'
                         },
 
                         axes: {
