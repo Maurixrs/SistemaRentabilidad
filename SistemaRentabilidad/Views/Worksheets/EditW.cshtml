@@ -119,7 +119,9 @@
                 @Model.IdWorksheet
             </td>
             <td class="text-center inputForm2 ">
-                @Html.TextBoxFor(model => model.Date, new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()", @class = "inputForm2 panel-info" })        <span id="wdate" class="text-danger" style="display: block"></span>
+                @*@Html.TextBoxFor(model => model.Date.ToString("Y"), new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()", @class = "inputForm2 panel-info" })*@
+                <input id="Date" name="Date" type="month" onkeyup="valwd()" oninput="valwd()" onkeypress="valwd()" class = "inputForm2 panel-info" value="@Model.Date.ToString("yyyy-MM")" />
+                <span id="wdate" class="text-danger" style="display: block"></span>
             </td>
         </tr>
 
@@ -240,7 +242,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red; Background=yellow" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red;"  href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
                 </tr>}
         }
     </tbody>

@@ -14,6 +14,7 @@ using SistemaRentabilidad.ViewModels;
 
 namespace SistemaRentabilidad.Controllers
 {
+    [Authorize(Users = "urdirom-dist@hotmail.com")]
     public class WorksheetsController : Controller
     {
         

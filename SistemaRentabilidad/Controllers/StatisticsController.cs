@@ -11,6 +11,7 @@ using SistemaRentabilidad.ViewModels;
 
 namespace SistemaRentabilidad.Controllers
 {
+    [Authorize(Users = "urdirom-dist@hotmail.com")]
     public class StatisticsController : Controller
     {
         private WsRepository _repository = new WsRepository();

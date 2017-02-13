@@ -39,19 +39,13 @@
             <tr>
                 <td>
                     
-                       <span style="display: none">@item.Date.ToString("yyyy/MM/dd");</span>
+                       <span style="display: none">@item.Date.ToString("yyyy/MM/dd") + @System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month);</span>
                     @{
                         var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
                         @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
                     }
 
-
-
-
-
-                  
-
-
+                    
                 </td>
                
                 <td>
