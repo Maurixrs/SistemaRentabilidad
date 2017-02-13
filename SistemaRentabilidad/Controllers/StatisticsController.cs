@@ -20,34 +20,38 @@ namespace SistemaRentabilidad.Controllers
             return View();
         }
 
-        public ActionResult _Incomes(DateTime fecha1, DateTime fecha2)
+        public ActionResult _Incomes(int fecha1, int fecha2)
         {
            
            
             IList<Worksheet> WsList = _repository.FindAllE();
 
             var FilteredList = from t in WsList
-                where (t.Date >= fecha1 & t.Date <= fecha2)
+                where (t.Date.Year == fecha1)
                 select t;
-            List<decimal> incomes = FilteredList.Select(item => item.Totali).ToList();
 
-            List<int> months = new List<int>();
-            List<int> years = new List<int>();
+            var incomes= new List<decimal> {0,0,0,0,0,0,0,0,0,0,0,0};
 
-            DateTime initDate = fecha1;
-
-            while (initDate < fecha2)
+            foreach (var item in FilteredList)
             {
-                months.Add(initDate.Month);
-                years.Add(initDate.Year);
-                initDate = initDate.AddMonths(1);
+                incomes[item.Date.Month - 1] = item.Totali;
             }
+           
+            //List<int> years = new List<int>();
+
+            //DateTime initDate = fecha1;
+
+            //while (initDate < fecha2)
+            //{
+            //    months.Add(initDate.Month);
+            //    years.Add(initDate.Year);
+            //    initDate = initDate.AddMonths(1);
+            //}
 
             ViewBag.initDate = fecha1;
             ViewBag.endDate = fecha2;
             ViewBag.incomes = JsonConvert.SerializeObject(incomes);
-            ViewBag.months = JsonConvert.SerializeObject(months);
-            ViewBag.years = JsonConvert.SerializeObject(years);
+            ViewBag.years = fecha1;
 
             return View(FilteredList);
         }

@@ -37,7 +37,7 @@
 
                 <h4>Desde: @ViewBag.initDate.ToString("dd/MM/yyyy")&nbsp;-&nbsp;Hasta: @ViewBag.endDate.ToString("dd/MM/yyyy")&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>
 
-                <div id="grafico2" style="width: 700px; height: 400px; display: inline-block">
+                <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
                 </div>
             </div>
 
@@ -102,22 +102,29 @@
                     $('#mitabla1_info').addClass('hidden-print');
                     $('#mitabla1_paginate').addClass('hidden-print');
 
-                    var months = @Html.Raw(ViewBag.months);
-                    var years = @Html.Raw(ViewBag.years);
+                    
                     var incomes = @Html.Raw(ViewBag.incomes);
 
-                    var s1 = incomes;
-                    var ticks = [];
-                    $.each(months, function(index, value) {
-                        ticks.push([value + " / " + years[index]]);
+                    $.each(incomes, function(index, value) {
+                        if(value==0){incomes[index]=null}   
                     });
-                   
-                    
-         
+
+                    var s1 = incomes;
+                  
+                    var years=@ViewBag.years;
+                    var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+
                     plot2 = $.jqplot('grafico2', [s1], {
+                        title:"Año: "+ years.toString(),
                         seriesDefaults: {
-                            pointLabels: { show: true }
+                           
+                            pointLabels: { show: true,hideZeros: true},
+                            rendererOptions: {
+                        smooth: true
+                            },breakOnNull:true
                         },
+
                         axes: {
                             xaxis: {
                                 renderer: $.jqplot.CategoryAxisRenderer,
