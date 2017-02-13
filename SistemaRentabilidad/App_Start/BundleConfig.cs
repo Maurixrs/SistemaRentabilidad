@@ -21,6 +21,8 @@ namespace SistemaRentabilidad
                        "~/Scripts/respond.js",
                        "~/Scripts/bootbox.js",
                        "~/Scripts/toastr.js",
+                       "~/Scripts/ordenFechas.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/autosize.js"
 ));
 

@@ -18,6 +18,8 @@ namespace SistemaRentabilidad.Repositories
 
         }
 
+        
+
         public T FindE(int? id)
         {
             return db.Set<T>().Find(id);

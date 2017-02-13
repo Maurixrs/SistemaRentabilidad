@@ -1,55 +1,129 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+<!DOCTYPE html>
+
 <html>
+
 <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Sistema Rentabilidad</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
+    <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <link rel="stylesheet" type="text/css" href="~/Content/hover.css">
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
 
-
 </head>
+<body class="full" background='@Url.Content("~/Content/Images/fon 12.jpg")'>
+    <div id="wrap">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="hvr-underline-from-center">@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
+                        <li class="dropdown" style="left: auto">
+                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Estadísticas<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="download">
+                                <li style="font-weight: bold;">@Html.ActionLink("Ingresos", "Incomes", "Statistics")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Gastos", "Expenses", "Statistics")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Costos", "Costs", "Statistics")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Otros Ing", "OIncomes", "Statistics")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Total Ingresos", "TotIncomes", "Statistics")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Total meses", "TotMonthly", "Statistics")</li>
+                            </ul>
+                        </li>
+                        <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
+                            <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content backgroundStyle">
+            @RenderBody()
+            
+        </div>
 
-<body class="full" background='@Url.Content("~/Content/Images/fon 8.jpg")'>
 
-    <div class="navbar navbar-default navbar-fixed-top">
+
+
+        @Scripts.Render("~/bundles/lib")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+
+
+        <div id="push"></div>
+
+    </div>
+    <div id="footer">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="hvr-underline-from-center">@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
-                    <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
-                        <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <p class="text-center hidden-print">
+                - Sistema Rentabilidad &copy; @DateTime.Now.Year - Godesa Solutions ® <a class="hidden-print" style="color: black">@Html.ActionLink("Contacto", "Contact", "Home")</></a> -
+            </p>
         </div>
     </div>
 
-    <div class="container body-content backgroundStyle">
-
-        @RenderBody()
-
-
-    </div>
-
-
-    @Scripts.Render("~/bundles/lib")
-    @RenderSection("scripts", required: false)
 </body>
 
+
+
+
+
 </html>
-<footer>
-    <p class="text-center hidden-print"> - Sistema de Rentabilidad &copy; @DateTime.Now.Year - Godesa Solutions ®  <a class="hidden-print" style="color:black ">@Html.ActionLink("Contacto", "Contact", "Home")</></a> - </p>
-</footer>
+
+<style>
+        /* Sticky footer styles
+    -------------------------------------------------- */
+        html,
+        body {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+        }
+
+        /* Wrapper for page content to push down footer */
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            /* Negative indent footer by it's height */
+            margin: 0 auto -30px;
+        }
+
+        /* Set the fixed height of the footer here */
+        #push,
+        #footer {
+            height: 30px;
+        }
+
+        #footer {
+            background-color: transparent;
+        }
+
+        /* Lastly, apply responsive CSS fixes as necessary */
+        @@media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+</style>
+
