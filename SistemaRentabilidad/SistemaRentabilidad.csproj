@@ -465,6 +465,7 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Scripts\cargar.js" />
     <Content Include="Scripts\DataTables\spanish.json" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -732,6 +733,16 @@
     <Content Include="Views\Worksheets\DeleteIndex.cshtml" />
     <Content Include="Views\Statistics\Incomes.cshtml" />
     <Content Include="Views\Statistics\_Incomes.cshtml" />
+    <Content Include="Views\Statistics\TotMonthly.cshtml" />
+    <Content Include="Views\Statistics\_TotMonthly.cshtml" />
+    <Content Include="Views\Statistics\OIncomes.cshtml" />
+    <Content Include="Views\Statistics\_OIncomes.cshtml" />
+    <Content Include="Views\Statistics\TotIncomes.cshtml" />
+    <Content Include="Views\Statistics\_TotIncomes.cshtml" />
+    <Content Include="Views\Statistics\Expenses.cshtml" />
+    <Content Include="Views\Statistics\_Expenses.cshtml" />
+    <Content Include="Views\Statistics\_Costs.cshtml" />
+    <Content Include="Views\Statistics\Costs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

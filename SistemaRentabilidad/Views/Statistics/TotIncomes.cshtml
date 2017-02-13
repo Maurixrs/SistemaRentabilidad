@@ -1,17 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "Ingresos";
+    ViewBag.Title = "Total ingresos";
 }
+
+
 <head>
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
 </head>
-<h2 class="text-center">Estadística de Ingresos</h2>
+<h2 class="text-center">Estadística de Total Ingresos</h2>
 
 
 @*<div class="text-right">@Html.ActionLink("Ayuda", "_ReferenciasGenerales", new { a = "1" }, new { @class = "dialog-window4 hidden-print btn btn-xs btn-info glyphicon glyphicon-info-sign", @style = "padding-top: 0px" })</div>*@
 
-@using (Ajax.BeginForm("_Incomes", "Statistics", new AjaxOptions
+@using (Ajax.BeginForm("_TotIncomes", "Statistics", new AjaxOptions
 {
     InsertionMode = InsertionMode.Replace,
     UpdateTargetId = "ajaxBeginFormResult",
@@ -30,7 +32,7 @@
             <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="1900" data-rule-menor="true" placeholder="aaaa" />
             <div class="col-lg-1"></div>
             <label class="col-lg-1">Hasta:</label>
-            <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px"  name='fecha2' max="2999" min="1900" placeholder="aaaa" />
+            <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="1900" placeholder="aaaa" />
             <div class="col-lg-1"></div>
             <input type='submit' onclick="ordenFechas()" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1" />
 
@@ -138,6 +140,10 @@
 
     });
 
-   
+
 
 </script>
+
+
+
+

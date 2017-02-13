@@ -1,67 +1,49 @@
 ﻿@using SistemaRentabilidad.Models
 @model IEnumerable<SistemaRentabilidad.Models.Worksheet>
-
 @{
     Layout = null;
 }
-
 <div id="ajaxBeginFormResult">
-
     <head>
-
         <link rel="stylesheet" type="text/css" href="~/Scripts/jqPlot/jquery.jqplot.css" />
-        <link rel="stylesheet" type="text/css" href="~/Content/themes/base/jquery-ui.css"/>
-
+        <link rel="stylesheet" type="text/css" href="~/Content/themes/base/jquery-ui.css" />
         <style>
             .jqplot-table-legend {
                 font-size: large;
             }
         </style>
-
         @*<link rel="stylesheet" type="text/css" ref="@(Url.Content("/Scripts/jqPlot/jquery.jqplot.css"))" />
             <link rel="stylesheet" type="text/css" ref="@(Url.Content("/Content/themes/base/jquery-ui.css"))" />*@
     </head>
-
-        <div id="seleccion">
-
-            <div class="text-center">
-
-                @*<h4>Desde: @ViewBag.initDate&nbsp;-&nbsp;Hasta: @ViewBag.endDate&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>*@
-
-                <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
-                </div>
-            </div>
-
-
-
-
-
-            <div class="hidden-print text-center">
-                <a class="btn btn-sm btn-warning hidden-print" onclick="window.print('#seleccion');">
-                    Imprimir
-                </a>
+    <div id="seleccion">
+        <div class="text-center">
+            @*<h4>Desde: @ViewBag.initDate&nbsp;-&nbsp;Hasta: @ViewBag.endDate&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>*@
+            <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
             </div>
         </div>
 
 
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.min.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.barRenderer.js")'></script>
-        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pieRenderer.js")'></script>
-        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.categoryAxisRenderer.js")'></script>
-        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pointLabels.js")'></script>
+        <div class="hidden-print text-center">
+            <a class="btn btn-sm btn-warning hidden-print" onclick="window.print('#seleccion');">
+                Imprimir
+            </a>
+        </div>
+    </div>
 
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.min.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.barRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pieRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.categoryAxisRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pointLabels.js")'></script>
 
-
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/jquery.datatables.js")'></script>
-        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/datatables.bootstrap.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/jquery.datatables.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/datatables.bootstrap.js")'></script>
     <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")'></script>
 
-       
 
-
-            <script>
+    <script>
 
                 $(document).ready(function() {
 
@@ -108,7 +90,7 @@
 
                     var count = 1;
                     var item = [];
-                    
+
 
                     $.each(incomes, function(index, value) {
                         if (count <= 12) {
@@ -123,9 +105,9 @@
                         count++;
                     });
                     final.push(item);
-                   
 
-                   
+
+
 
 
                     var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -186,11 +168,8 @@
 
                     $("#grafico2").toggle("slow");
                 });
-            </script>
-            
+    </script>
 
 
-        </div>
-
- 
+</div>
 
