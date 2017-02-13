@@ -22,38 +22,73 @@ namespace SistemaRentabilidad.Controllers
 
         public ActionResult _Incomes(int fecha1, int fecha2)
         {
-           
-           
             IList<Worksheet> WsList = _repository.FindAllE();
-
-            var FilteredList = from t in WsList
-                where (t.Date.Year == fecha1)
-                select t;
-
-            var incomes= new List<decimal> {0,0,0,0,0,0,0,0,0,0,0,0};
-
-            foreach (var item in FilteredList)
+            var ys = fecha2 - fecha1;
+            var incomes = new List<decimal> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            if (ys == 0)
             {
-                incomes[item.Date.Month - 1] = item.Totali;
+                var FilteredList = from t in WsList
+                    where (t.Date.Year == fecha1)
+                    select t;
+
+                
+
+                foreach (var item in FilteredList)
+                {
+                    incomes[item.Date.Month - 1] = item.Totali;
+                }
+
+                ViewBag.initDate = fecha1;
+                ViewBag.endDate = fecha2;
+                ViewBag.incomes = JsonConvert.SerializeObject(incomes);
+                ViewBag.years = fecha1;
+
+                return View(FilteredList);
+            }
+            else
+            {
+                for (int i = 0; i < ys; i++)
+                {
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                    incomes.Add(0);
+                }
+
+                var q = 0;
+                for (int i = fecha1; i <= fecha2; i++)
+                {
+                    
+                    var FilteredList = from t in WsList
+                                       where (t.Date.Year == i)
+                                       select t;
+                    foreach (var item in FilteredList)
+                    {
+                        incomes[(item.Date.Month - 1)+(12*q)] = item.Totali;
+                    }
+
+                    q++;
+                }
+
+
+                ViewBag.initDate = fecha1;
+                ViewBag.endDate = fecha2;
+                ViewBag.incomes = JsonConvert.SerializeObject(incomes);
+                ViewBag.years = fecha1;
+                ViewBag.ys = ys;
+                return View();
             }
            
-            //List<int> years = new List<int>();
 
-            //DateTime initDate = fecha1;
-
-            //while (initDate < fecha2)
-            //{
-            //    months.Add(initDate.Month);
-            //    years.Add(initDate.Year);
-            //    initDate = initDate.AddMonths(1);
-            //}
-
-            ViewBag.initDate = fecha1;
-            ViewBag.endDate = fecha2;
-            ViewBag.incomes = JsonConvert.SerializeObject(incomes);
-            ViewBag.years = fecha1;
-
-            return View(FilteredList);
+         
         }
 
         //public ActionResult OIncomes()

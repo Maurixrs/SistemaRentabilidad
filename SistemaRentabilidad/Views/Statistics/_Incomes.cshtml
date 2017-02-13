@@ -22,20 +22,11 @@
             <link rel="stylesheet" type="text/css" ref="@(Url.Content("/Content/themes/base/jquery-ui.css"))" />*@
     </head>
 
-    @if (Model.Count() == 0)
-    {
-        <hr style="color: darkgrey; border-color: darkgrey" />
-        <h3 class="text-danger">-- No hay coincidencias para el rango ingresado. --</h3>
-        <hr style="color: darkgrey; border-color: darkgrey" />
-    }
-    else
-    {
-
         <div id="seleccion">
 
             <div class="text-center">
 
-                <h4>Desde: @ViewBag.initDate.ToString("dd/MM/yyyy")&nbsp;-&nbsp;Hasta: @ViewBag.endDate.ToString("dd/MM/yyyy")&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>
+                @*<h4>Desde: @ViewBag.initDate&nbsp;-&nbsp;Hasta: @ViewBag.endDate&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>*@
 
                 <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
                 </div>
@@ -102,27 +93,49 @@
                     $('#mitabla1_info').addClass('hidden-print');
                     $('#mitabla1_paginate').addClass('hidden-print');
 
-                    
+                    var final = [];
                     var incomes = @Html.Raw(ViewBag.incomes);
 
                     $.each(incomes, function(index, value) {
-                        if(value==0){incomes[index]=null}   
+                        if(value==0){incomes[index]=null}
                     });
 
-                    var s1 = incomes;
-                  
-                    var years=@ViewBag.years;
+                    var count = 1;
+                    var item = [];
+
+
+                    $.each(incomes, function(index, value) {
+                        if (count <= 12) {
+                            item.push(value);
+                        } else {
+                            final.push(item);
+                            item = [];
+                            count = 1;
+                            item.push(value);
+
+                        }
+                        count++;
+                    });
+                    final.push(item);
+                   
+
+                    var year1=@ViewBag.initDate;
+                    var year2=@ViewBag.endDate;
+
+
                     var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
 
-                    plot2 = $.jqplot('grafico2', [s1], {
-                        title:"Año: "+ years.toString(),
+                    plot2 = $.jqplot('grafico2', final, {
+                        title:"Años: "+ year1.toString()+"---"+year2.toString(),
                         seriesDefaults: {
-                           
+
                             pointLabels: { show: true,hideZeros: true},
-                            rendererOptions: {
-                        smooth: true
-                            },breakOnNull:true
+                            breakOnNull:true
+                        }, legend: {
+                            show: true,
+                            location: 'e',
+                            placement: 'outside'
                         },
 
                         axes: {
@@ -133,7 +146,7 @@
                                 formatString: "$%'d"
                             },
                                 min:0
-                                
+
                             }
                         }
                     });

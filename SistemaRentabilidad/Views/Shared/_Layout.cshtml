@@ -35,7 +35,14 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="hvr-underline-from-center">@Html.ActionLink("Planillas", "Index", "Worksheets")</li>
+                        <li class="dropdown" style="left: auto">
+                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Planillas<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="download">
+                                <li style="font-weight: bold;">@Html.ActionLink("Listado", "Index", "Worksheets")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Nueva", "CreateWorksheet", "Worksheets")</li>
+                               
+                            </ul>
+                        </li>
                         <li class="dropdown" style="left: auto">
                             <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Estadísticas<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="download">
