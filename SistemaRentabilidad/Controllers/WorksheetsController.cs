@@ -217,7 +217,7 @@ namespace SistemaRentabilidad.Controllers
         public JsonResult ExistePlanilla(DateTime fecha)
         {
             
-            var existe = db.Worksheet.ToList().Exists(f => f.Date.Month == fecha.Month);
+            var existe = db.Worksheet.ToList().Exists(f => f.Date.Year == fecha.Year & f.Date.Month == fecha.Month);
 
             return Json(existe, JsonRequestBehavior.AllowGet);
         }

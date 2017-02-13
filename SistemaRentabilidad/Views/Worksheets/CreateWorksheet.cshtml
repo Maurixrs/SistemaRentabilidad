@@ -75,9 +75,8 @@
 
     </td>
     <td class="text-center fondoBlanco" >
-        <input type="date" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa"/>
-        <span class="text-danger" style="display: block"></span>
-
+        <input type="date" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM-dd")" placeholder="dd/mm/aaaa" onchange="valfecha()"/>
+        <span class="text-danger" id="spanwdate" style="display: block"></span>
     </td>
 
     </tbody>
@@ -370,6 +369,30 @@
 
 
     <script>
+        function valfecha() {
+                       if ($('#wdate').val().trim() == '') {
+                                $('#wdate').siblings('span.text-danger').html('Requerido');
+                           } else {
+                           //$('#wdate').siblings('span.text-danger').html('');
+                           var options3 = {};
+                           options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+                           options3.type = "GET";
+                           options3.data = { "fecha": $("#wdate").val() };
+                           options3.dataType = "json";
+                            options3.success = function (data) {
+                                    if (data) {
+                                        $('#wdate').siblings('span.text-danger').html('Período existente.');
+                                        valf = 1;
+                                    } else {
+                                        $('#wdate').siblings('span.text-danger').html('');
+                                        valf = 0;
+                                    };
+            
+                            };
+                        $.ajax(options3);
+                    }
+               }
+
         function calculogral() {
             tgral = 0;
             $.each(toting, function() { tgral += parseFloat(this) || 0; });
@@ -387,7 +410,9 @@
 
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
+            valfecha();
+
             $('textarea').each(function() {
                 autosize(this);
                 this.style.display = '';
@@ -535,15 +560,22 @@
                 orderItems = $.merge(orderItems, orderItemso);
 
                 if (orderItems.length == 0) {
-                    bootbox.alert({
-                        title: "Aviso",
-                        message: "Es necesario agregar al menos una línea para guardar la planilla. ",
-                        backdrop: true
-                    });
-
+                    //bootbox.alert({
+                    //    title: "Aviso",
+                    //    message: "Es necesario agregar al menos una línea para guardar la planilla. ",
+                    //    backdrop: true
+                    //});
+                    toastr["error"]("Es necesario agregar al menos una entrada para guardar la planilla. ");
+                    valfecha();
                     isAllValid = false;
 
                 }
+                if (valf == 1) {
+                    isAllValid = false;
+                    toastr["error"]("El período ingresado ya existe.");
+                }
+
+
                 //Save if valid
                 if (isAllValid) {
                     var data = {
