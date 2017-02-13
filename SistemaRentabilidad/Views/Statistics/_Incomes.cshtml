@@ -37,7 +37,7 @@
 
                 <h4>Desde: @ViewBag.initDate.ToString("dd/MM/yyyy")&nbsp;-&nbsp;Hasta: @ViewBag.endDate.ToString("dd/MM/yyyy")&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>
 
-                <div id="grafico2" style="width: 500px; height: 300px; display: inline-block">
+                <div id="grafico2" style="width: 700px; height: 400px; display: inline-block">
                 </div>
             </div>
 
@@ -56,13 +56,20 @@
             <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.js")'></script>
             <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.js")'></script>
             <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.min.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.canvasAxisLabelRenderer.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.canvasTextRenderer.js")'></script>
+            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.barRenderer.js")'></script>
+        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pieRenderer.js")'></script>
+        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.categoryAxisRenderer.js")'></script>
+        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pointLabels.js")'></script>
+
+
 
             <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/jquery.datatables.js")'></script>
-            <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/datatables.bootstrap.js")'></script>
-            <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")'></script>
-           
+        <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/datatables.bootstrap.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")'></script>
+
+       
+
+
             <script>
 
                 $(document).ready(function() {
@@ -107,15 +114,19 @@
                    
                     
          
-                    plot2 = $.jqplot('Gráfico', [s1], {
+                    plot2 = $.jqplot('grafico2', [s1], {
                         seriesDefaults: {
-                            renderer:$.jqplot.BarRenderer,
                             pointLabels: { show: true }
                         },
                         axes: {
                             xaxis: {
                                 renderer: $.jqplot.CategoryAxisRenderer,
                                 ticks: ticks
+                            }, yaxis: {tickOptions: {
+                                formatString: "$%'d"
+                            },
+                                min:0
+                                
                             }
                         }
                     });

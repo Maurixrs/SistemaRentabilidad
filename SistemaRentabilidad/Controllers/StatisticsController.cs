@@ -38,8 +38,8 @@ namespace SistemaRentabilidad.Controllers
 
             while (initDate < fecha2)
             {
-                months.Add(fecha1.Month);
-                years.Add(fecha1.Year);
+                months.Add(initDate.Month);
+                years.Add(initDate.Year);
                 initDate = initDate.AddMonths(1);
             }
 
