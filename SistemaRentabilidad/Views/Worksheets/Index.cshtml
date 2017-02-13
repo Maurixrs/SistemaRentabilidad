@@ -38,14 +38,20 @@
         {
             <tr>
                 <td>
-                    <div>
-                        <div class="hidden">@item.Date.Year @item.Date.Month @item.Date.Day</div>
-                        @{
-                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
-                            @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
-                        }
+                    
+                       <span style="display: none">@item.Date.ToString("yyyy/MM/dd");</span>
+                    @{
+                        var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
+                        @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
+                    }
 
-                    </div>
+
+
+
+
+                  
+
+
                 </td>
                
                 <td>
@@ -94,7 +100,7 @@
 {
       <script>
           $(document).ready(function () {            
-
+              
               ////Grilla automatica//
               $("#tabla").DataTable({
                   order: [[0, "desc"]],
