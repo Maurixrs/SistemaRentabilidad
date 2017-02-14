@@ -2710,13 +2710,13 @@
   top: calc(50% - 10px);
   left: 0;
   border-width: 10px 10px 10px 0;
-  border-color: transparent #ff695b transparent transparent;
+  border-color: transparent maroon transparent transparent;
 }
 .hvr-bubble-left:hover:before, .hvr-bubble-left:focus:before, .hvr-bubble-left:active:before {
   -webkit-transform: translateX(-10px);
   transform: translateX(-10px);
   border-width: 10px 10px 10px 0;
-  border-color: transparent #ff695b transparent transparent;
+  border-color: transparent maroon transparent transparent;
 
 }
 

@@ -256,8 +256,8 @@ td.dataContainer {
 .positionOcultar {
     margin-left: 94%;
     background-color: #ff695b;
-    background: #ff695b;
-    color: beige;
+    background: darkcyan;
+    color: white;
 }
 
 .inputForm {

@@ -8,13 +8,21 @@
 </head>
 
 <style>
-    .tipos{
-            font-size: medium;
-    font-weight: bold;
-    font-style: italic}
-     .fc{    padding: 3px;height: 31px}
+    input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+     .tipos{
+         font-size: medium;
+         font-weight: bold;
+         font-style: italic}
+    .fc{    padding: 3px;height: 31px}
      
-     #resumentabla td{line-height: 15px}
+    #resumentabla td{line-height: 15px}
 
     #nueva td{line-height: 15px}
     #ingresotabla td{line-height: 15px}
@@ -116,7 +124,7 @@
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" class="panel-info form-control inputForm2 fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <input type="number" min="0" class="panel-info form-control inputForm2 fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
