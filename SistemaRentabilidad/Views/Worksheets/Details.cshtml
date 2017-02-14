@@ -113,13 +113,13 @@
 
     <link href="/Content/site.css" rel="stylesheet">
 </head>
-<h2 class="text-center">Detalles de Planilla</h2>
+<h2 class="text-center modalDiv1">Detalles de Planilla</h2>
 @*<input id="idw" value="@Model.IdWorksheet" />*@
 @*///////////////////////////*@
-<hr style="margin-top: 10px;margin-bottom: 10px;" />
+<hr class="modalDiv1" style="margin-top: 10px;margin-bottom: 10px;" />
 
 
-<table class="table table-condensed table-bordered ">
+<table class="table table-condensed table-bordered modalDiv1">
 
     <thead>
         <tr class="text-center tipos thStyleGradient2 bordesRedond" >
@@ -153,7 +153,7 @@
 </table>
    <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dotted" />
 
-<table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
+<table id="encabezadostabla" class="table table-condensed table-bordered modalDiv1" style="margin-bottom: 2px">
     <thead>
         <tr class="text-center thStyleGradient3">
             <th class="text-left" style="width: 40%;">
@@ -171,11 +171,11 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="thStyleGradient bordesRedond3 tipos col-lg-12">
+<legend class="thStyleGradient bordesRedond3 tipos col-lg-12 modalDiv1">
     Ingresos
 </legend>
 
-<table id="ingresotabla" class="table table-condensed table-bordered ">
+<table id="ingresotabla" class="table table-condensed table-bordered modalDiv1">
 
     <tbody id="ingreso">
 
@@ -207,7 +207,7 @@
     </tbody>
 
 </table>
-<table id="totalingresotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+<table id="totalingresotabla" class="table table-condensed table-bordered modalDiv1" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -229,10 +229,10 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend class="thStyleGradient bordesRedond3 tipos col-lg-12">
+<legend class="thStyleGradient bordesRedond3 tipos col-lg-12 modalDiv1">
     Costos
 </legend>
-<table id="costotabla" class="table table-condensed table-bordered ">
+<table id="costotabla" class="table table-condensed table-bordered modalDiv1">
 
     <tbody id="costo">
         
@@ -262,7 +262,7 @@
     </tbody>
 
 </table>
-<table id="totalcostotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+<table id="totalcostotabla" class="table table-condensed table-bordered modalDiv1" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -284,10 +284,10 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 
-<legend class="thStyleGradient bordesRedond3 tipos col-lg-12">
+<legend class="thStyleGradient bordesRedond3 tipos col-lg-12 modalDiv1">
     Gastos
 </legend>
-<table id="gastotabla" class="table table-condensed table-bordered ">
+<table id="gastotabla" class="table table-condensed table-bordered modalDiv1">
 
     <tbody id="gasto">
         
@@ -315,7 +315,7 @@
     </tbody>
 
 </table>
-<table id="totalgastotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+<table id="totalgastotabla" class="table table-condensed table-bordered modalDiv1" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -336,10 +336,10 @@
     </thead>
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="thStyleGradient bordesRedond3 tipos col-lg-12">
+<legend class="thStyleGradient bordesRedond3 tipos col-lg-12 modalDiv1">
     Otros ingresos
 </legend>
-<table id="otrotabla" class="table table-condensed table-bordered ">
+<table id="otrotabla" class="table table-condensed table-bordered modalDiv1">
 
     <tbody id="otro">
         
@@ -368,7 +368,7 @@
         }
     </tbody>
 </table>
-<table id="totalotrotabla" class="table table-condensed table-bordered " style="margin-bottom: 10px">
+<table id="totalotrotabla" class="table table-condensed table-bordered modalDiv1" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -390,10 +390,10 @@
 </table>
 
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
-<legend class="tipos text-center thStyleGradient2 bordesRedond">
+<legend class="tipos text-center thStyleGradient2 bordesRedond modalDiv1">
     Resumen
 </legend>
-<table class="table table-condensed   table-bordered ">
+<table class="table table-condensed   table-bordered modalDiv1">
 
     <thead >
         <tr class="text-center thStyleGradient3 tipos" >
@@ -423,10 +423,14 @@
 </table>
 
 <hr style="color: grey" />
-<div class="text-center">
+<div class="text-center hidden-print">
     <a href="@Url.Action("Index","Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
-    <a href="@Url.Action("EditW","Worksheets", new { id = Model.IdWorksheet})" class="btn btn-success">Editar&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-    <a href="@Url.Action("Delete","Worksheets", new { id = Model.IdWorksheet, details = true})" class="btn btn-danger dialog-window">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+    <a href="@Url.Action("EditW", "Worksheets", new {id = Model.IdWorksheet})" class="btn btn-success">Editar&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+    <a class="btn btn-warning hidden-print" id="impcomprobante" onclick="imprimir1();">
+        Imprimir&nbsp;<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+    </a>
+    <a href="@Url.Action("Delete", "Worksheets", new {id = Model.IdWorksheet, details = true})" class="btn btn-danger dialog-window">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+    
 </div>
 @*<a href="@Url.Action("Delete","Worksheets", new { id = Model.IdWorksheet})" data-form-method="post" class="btn btn-danger">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>*@
 <div class="modal fade" id="myModal" role="dialog"
@@ -447,6 +451,7 @@
 
 </div>
 @section scripts{
+<script src="@Url.Content("~/Scripts/printThis.js")"></script>
     <script>
     $(document).ready(function () {
         $("body").on("click", "a.dialog-window", null, function (e) {
@@ -468,6 +473,12 @@
             }
         });
     })
+
+    function imprimir1() {
+        $(".modalDiv1").printThis({
+
+        });
+    }
 </script>
 }
 
