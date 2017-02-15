@@ -29,7 +29,7 @@
             </div>*@
             <div class="row form-horizontal">
                 <div class="col-lg-3">
-                    <select class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo">
+                    <select  class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo" required="required">
                         <option value="Ingresos">Ingresos</option>
                         <option value="Gastos">Gastos</option>
                         <option value="Costos">Costos</option>
@@ -39,11 +39,11 @@
                     </select>
                 </div>
                 
-                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="1900" data-rule-menor="true" placeholder="año inicio"/>
+                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
                 <div class="col-lg-1"></div>
-                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="1900" placeholder="año fin"/>
+                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
                 <div class="col-lg-1"></div>
-                <input type='submit' onclick="ordenFechas()" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>
+                <input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()"  value='Generar' class="btn btn-success col-lg-1"/>
 
             </div>
             <br/>
@@ -158,6 +158,17 @@
 
 
     });
+
+    function maxTen() {
+        var inicio = parseInt($('#from').val());
+        var fin = parseInt($('#to').val());
+        var dif = fin - inicio;
+       
+        if (dif > 10) {
+            $('#spanOrdenFechas').text("Disculpe, sólo puede haber diez (10) años de diferencia entre el inicio y el fin.");
+            event.preventDefault();
+        } 
+    }
 
 
 </script>
