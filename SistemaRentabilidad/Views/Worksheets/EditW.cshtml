@@ -522,6 +522,12 @@
 @section Scripts{
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
+        function itextarea(){$('textarea').each(function() {
+            autosize(this);
+            this.style.display = '';
+            autosize.update(this);
+        });}
+
         $("body").on("click", "a.dialog-window", null, function (e) {
             e.preventDefault();
 
@@ -544,11 +550,7 @@
         $(document).ready(function() {
 
 
-            $('textarea').each(function() {
-                autosize(this);
-                this.style.display = '';
-                autosize.update(this);
-            });
+            itextarea();
 
         });
 
@@ -1126,6 +1128,7 @@
                     
                     //FIN CALCULO TOTAL ing
                     //calculo total gral
+                    itextarea();
                     calculogral();
                     //fin calculo total gral
                 });
@@ -1171,6 +1174,7 @@
                   
                     //FIN CALCULO TOTAL cos
                     //calculo total gral
+                    itextarea();
                     calculogral();
                     //fin calculo total gral
                 });
@@ -1178,7 +1182,7 @@
                 $('#orderItemsc').html('');
             }
         }
-
+       
         function gasto() {
 
             $('.elimg').remove();
@@ -1223,6 +1227,7 @@
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
+                    itextarea();
                 });
             } else {
                 $('#orderItemsg').html('');
@@ -1265,6 +1270,7 @@
                     $('#otrotabla > tbody:last').append($rowo);
                     //CALCULO TOTAL otr
                     arraysamountsedit();
+                    itextarea();
                  
                     calcotr();
                     //FIN CALCULO TOTAL otr
@@ -1439,45 +1445,47 @@
 
                         var data = {
                             IdWorkSheet: @Model.IdWorksheet,
-                                        Date: $('#Date').val().trim(),
-                                        Comments: $('#Comments').val().trim(),
-                                        Sheets: orderItems,
-                                        Totali: $('#Totali').val().trim(),
-                                        Totalc: $('#Totalc').val().trim(),
-                                        Totalg: $('#Totalg').val().trim(),
-                                        Totalo: $('#Totalo').val().trim(),
-                                        TotalAmount: $('#TotalAmount').val().trim()
-                                    }
-                                    $.ajax({
-                                        url: '@Url.Action("EditW", "Worksheets")',
-                                        type: "POST",
-                                        data: JSON.stringify(data),
-                                        dataType: "JSON",
-                                        contentType: "application/json",
-                                        success: function(d) {
-                                            //check is successfully save to database
-                                            if (d.status == true) {
-
-                                                var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
-                                                window.location.href = url;
-                                            } else {
-                                                alert('Failed');
-                                            }
-                                            $('#submit').val('Save');
-                                        },
-                                        error: function() {
-                                            alert('Error. Please try again.');
-                                            $('#submit').val('Save');
-                                        }
-                                    });
-                                }
-
-
-                            });
+                            Date: $('#Date').val().trim(),
+                            Comments: $('#Comments').val().trim(),
+                            Sheets: orderItems,
+                            Totali: $('#Totali').val().trim(),
+                            Totalc: $('#Totalc').val().trim(),
+                            Totalg: $('#Totalg').val().trim(),
+                            Totalo: $('#Totalo').val().trim(),
+                            TotalAmount: $('#TotalAmount').val().trim()
                         }
+                        $.ajax({
+                            url: '@Url.Action("EditW", "Worksheets")',
+                            type: "POST",
+                            data: JSON.stringify(data),
+                            dataType: "JSON",
+                            contentType: "application/json",
+                            success: function(d) {
+                                //check is successfully save to database
+                             
+                                
+                                if (d.status == true) {
+
+                                    var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
+                                    window.location.href = url;
+                                } else {
+                                    bootbox.alert(d.mensaje);
+                                }
+                                $('#submit').val('Save');
+                            },
+                            error: function() {
+                                alert('Error. Please try again.');
+                                $('#submit').val('Save');
+                            }
+                        });
+                    }
 
 
-                    });
+                });
+            }
+
+
+        });
 
 
     </script>

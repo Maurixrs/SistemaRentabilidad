@@ -75,9 +75,11 @@ namespace SistemaRentabilidad.Controllers
         {
             //CustomerName contiene el id del cliente
             bool status = false;
-
-
+            
             Worksheet wx = db.Worksheet.Find(O.IdWorksheet);
+            var existe = db.Worksheet.ToList().Exists(f => f.Date.Year == O.Date.Year & f.Date.Month == O.Date.Month & f.IdWorksheet != O.IdWorksheet);
+            if (existe) { return new JsonResult { Data = new { status = status, mensaje = "Ya existe una planilla con ese periodo." } }; }
+
             List<int> sheetsid=new List<int>();
             foreach (var item in wx.Sheets.ToList())
             {
@@ -158,7 +160,8 @@ namespace SistemaRentabilidad.Controllers
         {
             //CustomerName contiene el id del cliente
             bool status = false;
-
+            var existe = db.Worksheet.ToList().Exists(f => f.Date.Year == O.Date.Year & f.Date.Month == O.Date.Month);
+            if (existe) { return new JsonResult { Data = new { status = status,mensaje="Ya existe una planilla con ese periodo." } }; }
 
             Worksheet ws = new Worksheet();
            

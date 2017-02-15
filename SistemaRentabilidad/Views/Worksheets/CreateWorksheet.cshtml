@@ -1068,7 +1068,7 @@
                                 var url = '@Url.Action("DetailsLast", "Worksheets")';
                                 window.location.href = url;
                             } else {
-                                alert('Failed');
+                                bootbox.alert(d.mensaje);
                             }
                             $('#submit').val('Save');
                         },
@@ -1117,6 +1117,7 @@
                         });
                         $rowi.append($('<td style="width:2%"></td>').append($removei));
                         $('#ingresotabla > tbody:last').append($rowi);
+                        itextarea();
                         //CALCULO TOTAL ing
                         arraysamountsedit();
                         calcing();
@@ -1161,6 +1162,8 @@
                         });
                         $rowc.append($('<td style="width: 2%"></td>').append($removec));
                         $('#costotabla > tbody:last').append($rowc);
+                        itextarea();
+
                         //CALCULO TOTAL cos
                         arraysamountsedit();
 
@@ -1212,6 +1215,8 @@
                         $rowg.append($('<td style="width: 2%"></td>').append($removeg));
                         $('#gastotabla > tbody:last').append($rowg);
                         //CALCULO TOTAL gas
+                        itextarea();
+
                         arraysamountsedit();
 
                         calcgas();
@@ -1261,6 +1266,8 @@
                         $rowo.append($('<td style="width: 2%"></td>').append($removeo));
                         $('#otrotabla > tbody:last').append($rowo);
                         //CALCULO TOTAL otr
+                        itextarea();
+
                         arraysamountsedit();
 
                         calcotr();
@@ -1283,50 +1290,4 @@
         });
     </script>
 }
-
-<style>
-    /*Adding some css for looks good*/
-    span.error {
-        display: block;
-        visibility: hidden;
-        color: #b94a48;
-        font-size: 90%;
-    }
-
-    legend {
-        margin-bottom: 2px;
-        background: lightblue;
-        font-size: inherit;
-       
-        
-    }
-
-
-    /*css for table*/
-    .container td {
-        vertical-align: top;
-    }
-
-    .tablecontainer table {
-        width: 100%;
-        border-collapse: collapse;
-        border-top: 1px solid #BFAEAE;
-        border-right: 1px solid #BFAEAE;
-    }
-
-    .tablecontainer th {
-        border-bottom: 2px solid #BFAEAE !important;
-    }
-
-    .tablecontainer th, .tablecontainer td {
-        text-align: left;
-        border-left: 1px solid #BFAEAE;
-        padding: 5px;
-        border-bottom: 1px solid #BFAEAE;
-    }
-
-    .ui-widget {
-        font-size: 12px !important;
-    }
-</style>
 
