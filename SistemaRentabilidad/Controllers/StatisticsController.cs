@@ -21,6 +21,11 @@ namespace SistemaRentabilidad.Controllers
             return View();
         }
 
+        public ActionResult HelpStatistics()
+        {
+            return View();
+        }
+
         public ActionResult _Graphic(int fecha1, int fecha2, string selectedStat)
         {
             IList<Worksheet> WsList = _repository.FindAllE();

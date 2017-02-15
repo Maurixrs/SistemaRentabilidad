@@ -144,7 +144,7 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 <div style="display: inline-block">
-    <button id="mostrar" class="hidden-print btn btn-primary btn-sm hvr-bubble-right hvr-grow">Nueva linea</button>
+    <button id="mostrar" class="hidden-print btn btn-primary btn-sm hvr-bubble-right hvr-grow">Nueva línea</button>
     <div id="nuevalinea" style="display: none">
         <a style="margin-bottom: 2px; background: #89bad3">
             <button id="ocultar" class="hidden-print btn btn-xs hvr-bubble-left positionOcultar">&nbsp;&nbsp; Ocultar</button>
@@ -491,7 +491,8 @@
 
 <hr style="color: grey" />
 <div class="text-center">
-    <a href="@Url.Action("Index","Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
+    <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
+    <a href="@Url.Action("HelpEdit", "Worksheets")" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
     <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
@@ -499,9 +500,47 @@
 
 
 </div>
+
+<div class="modal fade" id="myModal" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 180%; left: -40%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 @section Scripts{
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
+        $("body").on("click", "a.dialog-window", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal .te').html(data);
+                    $('#myModal').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
         $(document).ready(function() {
 
 

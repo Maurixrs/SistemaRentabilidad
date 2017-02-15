@@ -393,6 +393,7 @@
     <Content Include="Content\Images\bg_bolt.png" />
     <Content Include="Content\Images\bg_main.jpg" />
     <Content Include="Content\Images\bg_main2.png" />
+    <Content Include="Content\Images\DescIngresos.jpg" />
     <Content Include="Content\Images\Descripción.jpg" />
     <Content Include="Content\Images\fon 1.jpg" />
     <Content Include="Content\Images\fon 12.jpg" />
@@ -404,13 +405,19 @@
     <Content Include="Content\Images\fon 7.jpg" />
     <Content Include="Content\Images\fon 8.jpg" />
     <Content Include="Content\Images\fon 9.jpg" />
+    <Content Include="Content\Images\Generar.jpg" />
     <Content Include="Content\Images\Guardar.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
+    <Content Include="Content\Images\InicioFin.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
     <Content Include="Content\Images\maxresdefault.jpg" />
     <Content Include="Content\Images\Monto.jpg" />
+    <Content Include="Content\Images\MontoIngresos.jpg" />
+    <Content Include="Content\Images\NuevaLínea.jpg" />
     <Content Include="Content\Images\ObservacionesGrales.jpg" />
     <Content Include="Content\Images\Observación.jpg" />
+    <Content Include="Content\Images\ObsIngresos.jpg" />
+    <Content Include="Content\Images\SelectType.jpg" />
     <Content Include="Content\Images\Tipo.jpg" />
     <Content Include="Content\Images\x.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -812,6 +819,8 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Statistics\_Graphic.cshtml" />
     <Content Include="Views\Worksheets\HelpCreate.cshtml" />
+    <Content Include="Views\Worksheets\HelpEdit.cshtml" />
+    <Content Include="Views\Statistics\HelpStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
