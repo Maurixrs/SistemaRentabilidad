@@ -222,6 +222,13 @@ namespace SistemaRentabilidad.Controllers
 
             return Json(existe, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ExistePlanillaEdit(DateTime fecha, int idp)
+        {
+
+            var existe = db.Worksheet.ToList().Exists(f => f.Date.Year == fecha.Year & f.Date.Month == fecha.Month &f.IdWorksheet!=idp);
+
+            return Json(existe, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Worksheets/Edit/5
         public ActionResult Edit(int? id)

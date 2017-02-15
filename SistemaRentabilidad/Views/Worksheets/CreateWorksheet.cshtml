@@ -83,7 +83,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     </td>
     <td class="text-center fondoBlanco" >
-        <input type="month" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()"/>
+        <input type="month" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()" style="text-transform: capitalize"/>
         <span class="text-danger" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -107,7 +107,7 @@ input[type=number]::-webkit-outer-spin-button {
         </th>
 
         <th class="text-center">
-            Monto
+            Monto<i>($)</i>
         </th>
         <th class="text-center">
             Tipo
@@ -124,7 +124,7 @@ input[type=number]::-webkit-outer-spin-button {
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" min="0" class="panel-info form-control inputForm2 fc" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <input type="number" min="0" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller;" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
@@ -144,7 +144,7 @@ input[type=number]::-webkit-outer-spin-button {
         </div>
     </td>
     <td class="fina">
-        <button type="button" id="addn" class="btn btn-success btn-sm add" value="nueva"/>
+        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva"/>
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -163,7 +163,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalingresotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalingresotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden; border-left: hidden;">
@@ -173,10 +173,10 @@ input[type=number]::-webkit-outer-spin-button {
                 Subtotal
             </th>
 
-            <th class="text-left totalView" id="toting">
+            <th class="text-left totalView montocentrado" id="toting">
                 0.00
             </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+            <th style="width: 2.2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
                 
             </th>
 
@@ -196,7 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalcostotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalcostotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -206,10 +206,10 @@ input[type=number]::-webkit-outer-spin-button {
                 Subtotal
             </th>
 
-            <th class="text-left totalView"   id="totcos">
+            <th class="text-left totalView montocentrado"   id="totcos">
                 0.00
             </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+            <th style="width: 2.2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
             </th>
 
@@ -229,7 +229,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalgastotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalgastotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -239,10 +239,10 @@ input[type=number]::-webkit-outer-spin-button {
                 Subtotal
             </th>
 
-            <th class="text-left totalView"   id="totgas">
+            <th class="text-left totalView montocentrado"   id="totgas">
                 0.00
             </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+            <th style="width: 2.2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
             </th>
 
@@ -262,7 +262,7 @@ input[type=number]::-webkit-outer-spin-button {
         </tr>
     </tbody>
 </table>
-<table id="totalotrotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalotrotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -272,10 +272,10 @@ input[type=number]::-webkit-outer-spin-button {
                 Subtotal
             </th>
 
-            <th class="text-left totalView"   id="tototr">
+            <th class="text-left totalView montocentrado"   id="tototr">
                 0.00
             </th>
-            <th style="width: 2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
+            <th style="width: 2.2%;border-bottom: hidden; border-top: hidden;border-right:hidden">
 
             </th>
 
@@ -332,7 +332,7 @@ input[type=number]::-webkit-outer-spin-button {
 
             </td>
             <td>
-                <input readonly="readonly" type="text" class="panel-info text-center totalView" value="0.00" id="wtotal" placeholder="" />
+                <input readonly="readonly" type="text" class="panel-info text-center totalView" value="0.00" id="wtotal" placeholder="" style="font-weight: bold" />
                 <span class="text-danger" style="display: block"></span>
             </td>
 
@@ -635,8 +635,8 @@ input[type=number]::-webkit-outer-spin-button {
                         var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
                         $rowi.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
                         $rowi.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
-                        $rowi.append($('<td></td>').html(val.Amount));
-                        var $removei = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
+                        $rowi.append($('<td class="montocentrado"></td>').html(val.Amount));
+                        var $removei = $('<a style="color:red; width: 20px;text-align:center" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL ing
                         ting = 0;
                         $.each(toting, function() { ting += parseFloat(this) || 0; });
@@ -660,7 +660,7 @@ input[type=number]::-webkit-outer-spin-button {
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowi.append($('<td style="width:37px"></td>').append($removei));
+                        $rowi.append($('<td style="width:20px"></td>').append($removei));
                         $('#ingresotabla > tbody:last').append($rowi);
                     });
                 } else {
@@ -677,8 +677,8 @@ input[type=number]::-webkit-outer-spin-button {
                         var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
                         $rowc.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
                         $rowc.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
-                        $rowc.append($('<td></td>').html(val.Amount));
-                        var $removec = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
+                        $rowc.append($('<td class="montocentrado"></td>').html(val.Amount));
+                        var $removec = $('<a style="color:red;width: 20px;text-align:center" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL cos
                         tcos = 0;
                         $.each(totcos, function() { tcos += parseFloat(this) || 0; });
@@ -702,7 +702,7 @@ input[type=number]::-webkit-outer-spin-button {
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowc.append($('<td style="width: 37px"></td>').append($removec));
+                        $rowc.append($('<td style="width: 20px"></td>').append($removec));
                         $('#costotabla > tbody:last').append($rowc);
                     });
                 } else {
@@ -719,8 +719,8 @@ input[type=number]::-webkit-outer-spin-button {
                         var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
                         $rowg.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
                         $rowg.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
-                        $rowg.append($('<td></td>').html(val.Amount));
-                        var $removeg = $('<a style="color:red; width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
+                        $rowg.append($('<td class="montocentrado"></td>').html(val.Amount));
+                        var $removeg = $('<a style="color:red; width: 20px;text-align:center" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL gas
                         tgas = 0;
                         $.each(totgas, function() { tgas += parseFloat(this) || 0; });
@@ -744,7 +744,7 @@ input[type=number]::-webkit-outer-spin-button {
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowg.append($('<td style="width: 37px"></td>').append($removeg));
+                        $rowg.append($('<td style="width: 20px"></td>').append($removeg));
                         $('#gastotabla > tbody:last').append($rowg);
                     });
                 } else {
@@ -761,8 +761,8 @@ input[type=number]::-webkit-outer-spin-button {
                         var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
                         $rowo.append($('<td style="width: 33.4%;overflow-wrap: break-word"></td>').html(val.SheetDescription));
                         $rowo.append($('<td style="width: 500px;overflow-wrap: break-word"></td>').html(val.Comments));
-                        $rowo.append($('<td></td>').html(val.Amount));
-                        var $removeo = $('<a style="color:red;width: 37px" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
+                        $rowo.append($('<td class="montocentrado"></td>').html(val.Amount));
+                        var $removeo = $('<a style="color:red;width: 20px;text-align:center" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                         //CALCULO TOTAL otr
                         totr = 0;
                         $.each(tototr, function() { totr += parseFloat(this) || 0; });
@@ -787,7 +787,7 @@ input[type=number]::-webkit-outer-spin-button {
                             calculogral();
                             //fin calculo total gral
                         });
-                        $rowo.append($('<td style="width: 37px"></td>').append($removeo));
+                        $rowo.append($('<td style="width: 20px"></td>').append($removeo));
                         $('#otrotabla > tbody:last').append($rowo);
 
                     });
