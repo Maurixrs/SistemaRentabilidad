@@ -30,7 +30,7 @@
             </a>
         </div>
     </div>
-
+    
     <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.js")'></script>
     <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.js")'></script>
     <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.min.js")'></script>
@@ -141,20 +141,35 @@
                                 min:0
 
                             }
+                        },highlighter: { show: true,
+                            // you can have anything here
+                        tooltipFormatString: '<b><i><span style="color:red;">%.2f</span></i></b>',
+                        tooltipContentEditor: function (str, seriesIndex, pointIndex, plot) {
+                            //the str is the ready string from tooltipFormatString
+                            //depending on how do you give the series to the chart you can use plot.legend.labels[seriesIndex] or plot.series[seriesIndex].label
+                            //return '<b><span style="color:black;font-weight:bold">Año: </span>'+'<span style="color:blue;font-weight:bold">'+plot.legend.labels[seriesIndex]+'</span><br/>' +'<span style="color:black;font-weight:bold">Mes: </span>'+'<span style="color:blue;font-weight:bold">'+ plot.series[seriesIndex].data[pointIndex][0]+'</span><br/><span style="color:black;font-weight:bold">Ingresos: $'+'<span style="color:blue;font-weight:bold">'+plot.series[seriesIndex].data[pointIndex][1]+'</span>';
+                       
+                            return '<table>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Año: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+plot.legend.labels[seriesIndex]+'</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Mes: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+ plot.series[seriesIndex].data[pointIndex][0]+'</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Ingresos: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">$'+plot.series[seriesIndex].data[pointIndex][1]+'</td>' +
+                                '</tr>' +
+                                '</table>';
+
+                        
+                        
+                        
                         }
-                        ,highlighter: {
-                            show: true,
-                            showMarker:true,
-                            tooltipAxes: 'xy',
-                            yvalues: 12,
-                            formatString:'<table class="jqplot-highlighter"> \<tr><td>Mes:</td><td>%s</td></tr> \
-          <tr><td>Ingresos:</td><td>%s</td></tr> \
-          </table>'
-                        },
+                    },
                         
                         cursor: {
                             show: true,
-                            followMouse:true
+                           
 
                         }
                     });
