@@ -235,8 +235,8 @@ html,body {
 .jumbotron {
     align-content: center;
     margin-top: 30px;
-    width: 1138px;
-    height: 200px;
+    width: 1200px;
+    height: 300px;
     opacity: 1;
     background-color: rgba(147,206,222,1);
 }

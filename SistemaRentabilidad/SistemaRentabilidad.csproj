@@ -411,6 +411,16 @@
     <Content Include="Content\Images\Monto.jpg" />
     <Content Include="Content\Images\ObservacionesGrales.jpg" />
     <Content Include="Content\Images\Observación.jpg" />
+    <Content Include="Content\Images\portadaimg\danica.png" />
+    <Content Include="Content\Images\portadaimg\donyeyo.jpg" />
+    <Content Include="Content\Images\portadaimg\elnoble.jpg" />
+    <Content Include="Content\Images\portadaimg\emeth.jpg" />
+    <Content Include="Content\Images\portadaimg\logo-Vienissima.png" />
+    <Content Include="Content\Images\portadaimg\paty.jpg" />
+    <Content Include="Content\Images\portadaimg\piamontesa.png" />
+    <Content Include="Content\Images\portadaimg\pozo.png" />
+    <Content Include="Content\Images\portadaimg\tregar.png" />
+    <Content Include="Content\Images\portadaimg\vanoli.jpg" />
     <Content Include="Content\Images\Tipo.jpg" />
     <Content Include="Content\Images\x.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
