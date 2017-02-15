@@ -43,8 +43,11 @@
                 <div class="col-lg-1"></div>
                 <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
                 <div class="col-lg-1"></div>
-                <input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()"  value='Generar' class="btn btn-success col-lg-1"/>
-
+                <input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1">
+                    <a href="@Url.Action("HelpStatistics","Statistics")" id="ocultar" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+                </div>
             </div>
             <br/>
             <div class="text-center">
@@ -54,11 +57,29 @@
         </div>
  }
 
-       
-    
-    
-        <div style="padding-left: 200px" id="ajaxBeginFormResult" ></div>
-   
+
+
+
+<div style="padding-left: 200px" id="ajaxBeginFormResult"></div>
+
+<div class="modal fade" id="myModal" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 165%; left: -33%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -104,6 +125,25 @@
 <script type="text/javascript" language="javascript" src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
 <script type="text/javascript" language="javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
 <script>
+    $("body").on("click", "a.dialog-window", null, function (e) {
+        e.preventDefault();
+
+        var $link = $(this); // Reference to <a/> link
+        var title = $link.text(); //this is title to fetch in htnl
+        $('#myModal.modal-title').html(title);
+
+        var url = $(this).attr('href');
+        if (url.indexOf('#') == 0) {
+            $('#myModal').modal('show');
+        }
+        else {
+            $.get(url, function (data) {
+                $('#myModal .te').html(data);
+                $('#myModal').modal();
+            }).success(function () { $('input:text:visible:first').focus(); });
+        }
+    });
+
     $(document).ready(function() {
         
         $('.selectpicker').selectpicker({
@@ -167,7 +207,9 @@
         if (dif > 10) {
             $('#spanOrdenFechas').text("Disculpe, sólo puede haber diez (10) años de diferencia entre el inicio y el fin.");
             event.preventDefault();
-        } 
+        }
+
+        $('#ocultar').addClass('hidden');
     }
 
 

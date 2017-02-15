@@ -133,6 +133,11 @@ namespace SistemaRentabilidad.Controllers
             return View();
         }
 
+        public ActionResult HelpEdit()
+        {
+            return View();
+        }
+
 
 
         public ActionResult CreateWorksheet()
