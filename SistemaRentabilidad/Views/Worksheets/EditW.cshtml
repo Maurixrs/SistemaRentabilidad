@@ -4,11 +4,16 @@
     ViewBag.Title = "Editar Planilla";
 }
 <style>
-   textarea{max-width: 100%;resize: none;line-height: 1.08}
-     .totalView{border: none;background: khaki;font-weight: bold}
+    .montocentrado{text-align: center;}
+     textarea{max-width: 100%;resize: none;line-height: 1.08}
+    .totalView{border: none;background: khaki;font-weight: bold}
     .full {
         background-size: contain;
     }
+    .inputForm{border-color:lightgrey}
+
+    .inputForm3{border-color:#3498db}
+
 
     #resumentabla td {
         line-height: 15px;
@@ -154,8 +159,8 @@
                         Observación
                     </th>
 
-                    <th class="text-left">
-                        Monto
+                    <th class="text-center">
+                        Monto <i>($)</i>
                     </th>
                     <th class="text-center">
                         Tipo
@@ -165,15 +170,15 @@
             <tbody id="nueva">
                 <tr>
                     <td class="text-left ">
-                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm fc" id="ndescription" placeholder="" style="max-width: 100%;resize: none"></textarea>
+                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc" id="ndescription" placeholder="" style="max-width: 100%;resize: none"></textarea>
                         <span class="text-danger" style="display: block"></span>
                     </td>
                     <td class="text-left ">
-                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm fc" id="ncomment" placeholder="" style="max-width: 100%;resize: none"></textarea>
+                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc" id="ncomment" placeholder="" style="max-width: 100%;resize: none"></textarea>
                         <span class="text-danger" style="display: block"></span>
                     </td>
                     <td class="">
-                        <input type="number" class="panel-info form-control-sm inputForm" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+                       <input type="number" class="panel-info form-control-sm inputForm inputForm3 montocentrado" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
                         <span class="text-danger" style="display: block"></span>
                     </td>
                     <td>
@@ -245,12 +250,13 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td class="text-left">
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
-                        <span class="text-danger" id="@("spaniteming_Amount"+@item.IdSheet)" style="display: block"></span>
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        <span class="text-danger" id="@("spaniteming_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red;"  href="#" id="@item.IdSheet" onclick="borrarfilaing(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)"><span class="glyphicon glyphicon-remove"></span></a>
+</td>
                 </tr>}
         }
     </tbody>
@@ -301,12 +307,13 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
-                        <span class="text-danger" id="@("spanitemcos_Amount"+@item.IdSheet)" style="display: block"></span>
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        <span class="text-danger" id="@("spanitemcos_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilacos(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilacos(this)"><span class="glyphicon glyphicon-remove"></span></a>
+
                 </tr>
             }
         }
@@ -356,12 +363,13 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info" })
-                        <span class="text-danger" id="@("spanitemgas_Amount"+@item.IdSheet)" style="display: block"></span>
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        <span class="text-danger" id="@("spanitemgas_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilagas(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilagas(this)"><span class="glyphicon glyphicon-remove"></span></a>
+
                 </tr>
             }
         }
@@ -414,12 +422,13 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments" ,@class= "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)" })
-                        <span class="text-danger" id="@("spanitemotr_Amount"+@item.IdSheet)" style="display: block"></span>
+                        @Html.TextBoxFor(modelItem => item.Amount, new {@id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)",@class= "inputForm panel-info montocentrado" })
+                        <span class="text-danger" id="@("spanitemotr_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red" href="#" id="@item.IdSheet" onclick="borrarfilaotr(this)">X</a></td>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilaotr(this)"><span class="glyphicon glyphicon-remove"></span></a>
+
                 </tr>
             }
         }
@@ -902,8 +911,8 @@
                     var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
                     $rowi.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
                     $rowi.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowi.append($('<td></td>').html(val.Amount));
-                    var $removei = $('<a style="color:red" href="#">X</a>');
+                    $rowi.append($('<td class="montocentrado"></td>').html(val.Amount));
+                    var $removei = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                     //CALCULO TOTAL ing
                     ting = 0;
                     $.each(toting, function() { ting += parseFloat(this) || 0; });
@@ -946,8 +955,8 @@
                     var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
                     $rowc.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
                     $rowc.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowc.append($('<td></td>').html(val.Amount));
-                    var $removec = $('<a style="color:red" href="#">X</a>');
+                    $rowc.append($('<td class="montocentrado"></td>').html(val.Amount));
+                    var $removec = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                     //CALCULO TOTAL cos
                     tcos = 0;
                     $.each(totcos, function() { tcos += parseFloat(this) || 0; });
@@ -990,8 +999,8 @@
                     var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
                     $rowg.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
                     $rowg.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowg.append($('<td></td>').html(val.Amount));
-                    var $removeg = $('<a style="color:red" href="#">X</a>');
+                    $rowg.append($('<td class="montocentrado"></td>').html(val.Amount));
+                    var $removeg =$('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                     //CALCULO TOTAL gas
                     tgas = 0;
                     $.each(totgas, function() { tgas += parseFloat(this) || 0; });
@@ -1034,8 +1043,8 @@
                     var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
                     $rowo.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
                     $rowo.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowo.append($('<td></td>').html(val.Amount));
-                    var $removeo = $('<a style="color:red" href="#">X</a>');
+                    $rowo.append($('<td class="montocentrado"></td>').html(val.Amount));
+                    var $removeo = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
                     //CALCULO TOTAL otr
                     totr = 0;
                     $.each(tototr, function() { totr += parseFloat(this) || 0; });
