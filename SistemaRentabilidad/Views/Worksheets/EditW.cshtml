@@ -502,23 +502,18 @@
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script>
         $(document).ready(function() {
-            
+
 
             $('textarea').each(function() {
                 autosize(this);
                 this.style.display = '';
-
-                // Call the update method to recalculate the size:
                 autosize.update(this);
             });
-           
+
         });
 
 
         $("#mostrar").click(function() {
-            //$(this).text(function(i, text) {
-            //    return text === "mostrar" ? "Nueva linea" : "mostrar";
-            //});
             $("#mostrar").hide();
             $("#nuevalinea").toggle("slow");
 
@@ -565,6 +560,15 @@
                 $('#span' + a).html('');
             };
         }
+        function valdescb(x) {
+            if (x.value.trim() == "" || x.value == null) {
+
+                $(x).siblings('span.text-danger').html('Requerido.');
+
+            } else {
+                $(x).siblings('span.text-danger').html('');
+            };
+        }
 
         function valamou(x) {
             var a = x.id;
@@ -579,31 +583,39 @@
                 }
             };
         }
+        function valamoub(x) {
+            if (x.value.trim() == "" || x.value == null) {
+                $(x).siblings('span.text-danger').html('Requerido.');
+
+            } else {
+                if (x.value.trim() == 0) {
+                    $(x).siblings('span.text-danger').html('Debe ser mayor a 0.');
+                } else {
+                    $(x).siblings('span.text-danger').html('');
+                }
+            };
+        }
 
         function calcing() {
             ting = 0;
-            $.each(toting, function() { ting += parseFloat(this) || 0; });
             $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
             document.getElementById("Totali").value = ting.toFixed(2);
         }
 
         function calccos() {
             tcos = 0;
-            $.each(totcos, function() { tcos += parseFloat(this) || 0; });
             $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
             document.getElementById("Totalc").value = tcos.toFixed(2);
         }
 
         function calcgas() {
             tgas = 0;
-            $.each(totgas, function() { tgas += parseFloat(this) || 0; });
             $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
             document.getElementById("Totalg").value = tgas.toFixed(2);
         }
 
         function calcotr() {
             totr = 0;
-            $.each(tototr, function() { totr += parseFloat(this) || 0; });
             $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
             document.getElementById("Totalo").value = totr.toFixed(2);
         }
@@ -708,21 +720,29 @@
         function calculogral() {
             arraysamountsedit();
             tgral = 0;
-            $.each(toting, function() { tgral += parseFloat(this) || 0; });
             $.each(itemsiamounts, function() { tgral += parseFloat(this) || 0; });
-            $.each(tototr, function() { tgral += parseFloat(this) || 0; });
             $.each(itemsoamounts, function() { tgral += parseFloat(this) || 0; });
-            $.each(totgas, function() { tgral -= parseFloat(this) || 0; });
             $.each(itemsgamounts, function() { tgral -= parseFloat(this) || 0; });
-            $.each(totcos, function() { tgral -= parseFloat(this) || 0; });
             $.each(itemscamounts, function() { tgral -= parseFloat(this) || 0; });
             document.getElementById("TotalAmount").value = tgral.toFixed(2);
         }
 
-
         function borrarfilaing(row) {
             var a = row.id;
             toastr.warning("-" + $('#iteming_SheetDescription' + a).val() + "-<br/>Eliminado.", "Ingreso:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+
+        function borrarfilaingb(row) {
+            var a = $(row).closest('td').siblings(':first-child').text();
+
+            toastr.warning("-" + a + "-<br/>Eliminado.", "Ingreso:");
             row.closest('tr').remove();
             arraysamountsedit();
             calcing();
@@ -743,10 +763,32 @@
             calcotr();
             calculogral();
         }
+        function borrarfilacosb(row) {
+            var a = $(row).closest('td').siblings(':first-child').text();
+            toastr.warning("-" + a + "-<br/>Eliminado.", "Costo:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
 
         function borrarfilagas(row) {
             var a = row.id;
             toastr.warning("-" + $('#itemgas_SheetDescription' + a).val() + "-<br/>Eliminado.", "Gasto:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+        function borrarfilagasb(row) {
+            var a = $(row).closest('td').siblings(':first-child').text();
+            toastr.warning("-" + a + "-<br/>Eliminado.", "Gasto:");
             row.closest('tr').remove();
             arraysamountsedit();
             calcing();
@@ -767,7 +809,19 @@
             calcotr();
             calculogral();
         }
+        function borrarfilaotrb(row) {
+            var a = $(row).closest('td').siblings(':first-child').text();
 
+            toastr.warning("-" + a + "-<br/>Eliminado.", "Otro ingreso:");
+            row.closest('tr').remove();
+            arraysamountsedit();
+            calcing();
+            calccos();
+            calcgas();
+            calcotr();
+            calculogral();
+        }
+        
 
         function acting(a) { tipo = "ing"; }
 
@@ -776,6 +830,101 @@
         function actgas(a) { tipo = "gas"; }
 
         function actotr(a) { tipo = "otr"; }
+
+        function renewi() {
+            orderItemsi = [];
+            orderItemsidescriptions = [];
+            orderItemsicomments = [];
+            orderItemsiamounts = [];
+
+            $("textarea[id='ing_SheetDescriptionz']").map(function() { orderItemsidescriptions.push((this.value)) });
+            $("textarea[id='ing_Commentsz']").map(function() { orderItemsicomments.push((this.value)) });
+            $("input[id='ing_Amountz']").map(function() { orderItemsiamounts.push(parseFloat(this.value)) });
+
+            for (i = 0; i < orderItemsidescriptions.length; i++) {
+
+                orderItemsi.push({
+                    SheetDescription: orderItemsidescriptions[i],
+                    Comments: orderItemsicomments[i],
+                    Amount: orderItemsiamounts[i],
+                    SheetType: 0
+
+                });
+            }
+         
+        }
+        function renewc() {
+        
+
+            orderItemsc = [];
+            orderItemscdescriptions = [];
+            orderItemsccomments = [];
+            orderItemscamounts = [];
+
+            $("textarea[id='cos_SheetDescriptionz']").map(function() { orderItemscdescriptions.push((this.value)) });
+            $("textarea[id='cos_Commentsz']").map(function() { orderItemsccomments.push((this.value)) });
+            $("input[id='cos_Amountz']").map(function() { orderItemscamounts.push(parseFloat(this.value)) });
+
+            for (i = 0; i < orderItemscdescriptions.length; i++) {
+
+                orderItemsc.push({
+                    SheetDescription: orderItemscdescriptions[i],
+                    Comments: orderItemsccomments[i],
+                    Amount: orderItemscamounts[i],
+                    SheetType: 1
+
+                });
+            }
+          
+        }
+
+        function renewg() {
+            orderItemsg = [];
+            orderItemsgdescriptions = [];
+            orderItemsgcomments = [];
+            orderItemsgamounts = [];
+
+            $("textarea[id='gas_SheetDescriptionz']").map(function() { orderItemsgdescriptions.push((this.value)) });
+            $("textarea[id='gas_Commentsz']").map(function() { orderItemsgcomments.push((this.value)) });
+            $("input[id='gas_Amountz']").map(function() { orderItemsgamounts.push(parseFloat(this.value)) });
+          
+            for (i = 0; i < orderItemsgdescriptions.length; i++) {
+
+                orderItemsg.push({
+                    SheetDescription: orderItemsgdescriptions[i],
+                    Comments: orderItemsgcomments[i],
+                    Amount: orderItemsgamounts[i],
+                    SheetType: 2
+
+                });
+            }
+        
+        }
+
+        function renewo() {
+            orderItemso = [];
+            orderItemsodescriptions = [];
+            orderItemsocomments = [];
+            orderItemsoamounts = [];
+
+            $("textarea[id='otr_SheetDescriptionz']").map(function() { orderItemsodescriptions.push((this.value)) });
+            $("textarea[id='otr_Commentsz']").map(function() { orderItemsocomments.push((this.value)) });
+            $("input[id='otr_Amountz']").map(function() { orderItemsoamounts.push(parseFloat(this.value)) });
+          
+            for (i = 0; i < orderItemsodescriptions.length; i++) {
+
+                orderItemso.push({
+                    SheetDescription: orderItemsodescriptions[i],
+                    Comments: orderItemsocomments[i],
+                    Amount: orderItemsoamounts[i],
+                    SheetType: 3
+
+                });
+            }
+        }
+
+
+
 
         $(document).ready(function() {
             valf = 0;
@@ -801,7 +950,7 @@
         ///////////////////////
         $('#addn').click(function() {
             arraysamountsedit();
-
+           
 
             var isValidItem = true;
 
@@ -834,6 +983,7 @@
                 var Comments = $('#ncomment').val().trim();
 
                 if (tipo == "ing") {
+                    renewi();
                     var SheetType = 0;
                     orderItemsi.push({
                         SheetDescription: SheetDescription,
@@ -841,13 +991,12 @@
                         Comments: Comments,
                         SheetType: SheetType
                     });
-                    toting.push(
-                        parseFloat(Amount)
-                    );
+                  
                     toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Ingreso:");
                     ingreso();
                 };
                 if (tipo == "cos") {
+                    renewc();
                     var SheetType = 1;
                     orderItemsc.push({
                         SheetDescription: SheetDescription,
@@ -855,13 +1004,12 @@
                         Comments: Comments,
                         SheetType: SheetType
                     });
-                    totcos.push(
-                        parseFloat(Amount)
-                    );
+                  
                     toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Costo:");
                     costo();
                 };
                 if (tipo == "gas") {
+                    renewg();
                     var SheetType = 2;
                     orderItemsg.push({
                         SheetDescription: SheetDescription,
@@ -869,13 +1017,12 @@
                         Comments: Comments,
                         SheetType: SheetType
                     });
-                    totgas.push(
-                        parseFloat(Amount)
-                    );
+                   
                     toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Gasto:");
                     gasto();
                 };
                 if (tipo == "otr") {
+                    renewo();
                     var SheetType = 3;
                     orderItemso.push({
                         SheetDescription: SheetDescription,
@@ -883,9 +1030,7 @@
                         Comments: Comments,
                         SheetType: SheetType
                     });
-                    tototr.push(
-                        parseFloat(Amount)
-                    );
+                   
                     toastr.info("-" + SheetDescription + "-<br/>Agregado.", "Otro ingreso:");
                     otro();
                 };
@@ -908,31 +1053,26 @@
             if (orderItemsi.length > 0) {
                 $('#orderItemsi').html('<span class="text-danger"></span>');
                 $.each(orderItemsi, function(i, val) {
-                    var $rowi = $('<tr class="elimi"  style="background-color: white"></tr>');
-                    $rowi.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                    $rowi.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowi.append($('<td class="montocentrado"></td>').html(val.Amount));
-                    var $removei = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
-                    //CALCULO TOTAL ing
-                    ting = 0;
-                    $.each(toting, function() { ting += parseFloat(this) || 0; });
-                    $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
-                    document.getElementById("Totali").value = ting.toFixed(2);
-                    //FIN CALCULO TOTAL ing
-                    //calculo total gral
-                    calculogral();
-                    //fin calculo total gral
+                    var $rowi = $('<tr class="elimi"></tr>');
+
+                    $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td style="width: 40%"><textarea id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td><input id="ing_Amountz" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+
+                    var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                  
+              
                     $removei.click(function(e) {
-                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Ingreso:");
                         e.preventDefault();
                         orderItemsi.splice(i, 1);
-                        toting.splice(i, 1);
+                        renewi();
+
                         ingreso();
                         //CALCULO TOTAL ing
-                        ting = 0;
-                        $.each(toting, function() { ting += parseFloat(this) || 0; });
-                        $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
-                        document.getElementById("Totali").value = ting.toFixed(2);
+                        arraysamountsedit();
+                        calcing();
+                     
+                     
                         //FIN CALCULO TOTAL ing
                         //calculo total gral
                         calculogral();
@@ -940,6 +1080,14 @@
                     });
                     $rowi.append($('<td style="width:2%"></td>').append($removei));
                     $('#ingresotabla > tbody:last').append($rowi);
+                    //CALCULO TOTAL ing
+                    arraysamountsedit();
+                    calcing();
+                    
+                    //FIN CALCULO TOTAL ing
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
                 });
             } else {
                 $('#orderItemsi').html('');
@@ -953,30 +1101,22 @@
                 $('#orderItemsc').html('<span class="text-danger"></span>');
                 $.each(orderItemsc, function(i, val) {
                     var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
-                    $rowc.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                    $rowc.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowc.append($('<td class="montocentrado"></td>').html(val.Amount));
-                    var $removec = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
-                    //CALCULO TOTAL cos
-                    tcos = 0;
-                    $.each(totcos, function() { tcos += parseFloat(this) || 0; });
-                    $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
-                    document.getElementById("Totalc").value = tcos.toFixed(2);
-                    //FIN CALCULO TOTAL cos
-                    //calculo total gral
-                    calculogral();
-                    //fin calculo total gral
+
+                    $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td style="width: 40%"><textarea id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td><input id="cos_Amountz" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                     $removec.click(function(e) {
-                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Costo:");
                         e.preventDefault();
                         orderItemsc.splice(i, 1);
-                        totcos.splice(i, 1);
+                        renewc();
+
                         costo();
                         //CALCULO TOTAL cos
-                        tcos = 0;
-                        $.each(totcos, function() { tcos += parseFloat(this) || 0; });
-                        $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
-                        document.getElementById("Totalc").value = tcos.toFixed(2);
+                        arraysamountsedit();
+                      
+                        calccos();
+                    
                         //FIN CALCULO TOTAL cos
                         //calculo total gral
                         calculogral();
@@ -984,6 +1124,15 @@
                     });
                     $rowc.append($('<td style="width: 2%"></td>').append($removec));
                     $('#costotabla > tbody:last').append($rowc);
+                    //CALCULO TOTAL cos
+                    arraysamountsedit();
+                  
+                    calccos();
+                  
+                    //FIN CALCULO TOTAL cos
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
                 });
             } else {
                 $('#orderItemsc').html('');
@@ -997,30 +1146,27 @@
                 $('#orderItemsg').html('<span class="text-danger"></span>');
                 $.each(orderItemsg, function(i, val) {
                     var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
-                    $rowg.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                    $rowg.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowg.append($('<td class="montocentrado"></td>').html(val.Amount));
-                    var $removeg =$('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
-                    //CALCULO TOTAL gas
-                    tgas = 0;
-                    $.each(totgas, function() { tgas += parseFloat(this) || 0; });
-                    $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
-                    document.getElementById("Totalg").value = tgas.toFixed(2);
-                    //FIN CALCULO TOTAL gas
-                    //calculo total gral
-                    calculogral();
-                    //fin calculo total gral
+                    $rowg.append($('<td style="width: 40%"><textarea id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td style="width: 40%"><textarea id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td><input id="gas_Amountz" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+
+                    var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+
+
+                  
+                   
+                  
                     $removeg.click(function(e) {
-                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Gasto:");
                         e.preventDefault();
                         orderItemsg.splice(i, 1);
-                        totgas.splice(i, 1);
+                        renewg();
+
                         gasto();
                         //CALCULO TOTAL gas
-                        tgas = 0;
-                        $.each(totgas, function() { tgas += parseFloat(this) || 0; });
-                        $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
-                        document.getElementById("Totalg").value = tgas.toFixed(2);
+                        arraysamountsedit();
+                      
+                        calcgas();
+                       
                         //FIN CALCULO TOTAL gas
                         //calculo total gral
                         calculogral();
@@ -1028,6 +1174,15 @@
                     });
                     $rowg.append($('<td style="width: 2%"></td>').append($removeg));
                     $('#gastotabla > tbody:last').append($rowg);
+                    //CALCULO TOTAL gas
+                    arraysamountsedit();
+                  
+                    calcgas();
+                  
+                    //FIN CALCULO TOTAL gas
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
                 });
             } else {
                 $('#orderItemsg').html('');
@@ -1041,31 +1196,26 @@
                 $('#orderItemso').html('<span class="text-danger"></span>');
                 $.each(orderItemso, function(i, val) {
                     var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
-                    $rowo.append($('<td style="width: 40%"></td>').html(val.SheetDescription));
-                    $rowo.append($('<td style="width: 40%"></td>').html(val.Comments));
-                    $rowo.append($('<td class="montocentrado"></td>').html(val.Amount));
-                    var $removeo = $('<a style="color:red; width: 37px;text-align:center;vertical-align: -webkit-baseline-middle;" href="#"><span class="glyphicon glyphicon-remove"></span></a>');
-                    //CALCULO TOTAL otr
-                    totr = 0;
-                    $.each(tototr, function() { totr += parseFloat(this) || 0; });
-                    $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
-                    document.getElementById("Totalo").value = totr.toFixed(2);
-                    //FIN CALCULO TOTAL otr
-                    //calculo total gral
-                    calculogral();
-                    //fin calculo total gral
+                   
+                    $rowo.append($('<td style="width: 40%"><textarea id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td style="width: 40%"><textarea id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td><input id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+
+                    var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                
+               
+                  
 
                     $removeo.click(function(e) {
-                        toastr.warning("-" + val.SheetDescription + "-<br/>Eliminado.", "Otro ingreso:");
                         e.preventDefault();
                         orderItemso.splice(i, 1);
-                        tototr.splice(i, 1);
+                        renewo();
+
                         otro();
                         //CALCULO TOTAL otr
-                        totr = 0;
-                        $.each(tototr, function() { totr += parseFloat(this) || 0; });
-                        $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
-                        document.getElementById("Totalo").value = totr.toFixed(2);
+                        arraysamountsedit();
+                    
+                        calcotr();
                         //FIN CALCULO TOTAL otr
                         //calculo total gral
                         calculogral();
@@ -1073,6 +1223,14 @@
                     });
                     $rowo.append($('<td style="width: 2%"></td>').append($removeo));
                     $('#otrotabla > tbody:last').append($rowo);
+                    //CALCULO TOTAL otr
+                    arraysamountsedit();
+                 
+                    calcotr();
+                    //FIN CALCULO TOTAL otr
+                    //calculo total gral
+                    calculogral();
+                    //fin calculo total gral
 
                 });
             } else {
@@ -1095,6 +1253,7 @@
                 var b = a.replace(/\D/g, '');
                 if (this.value.trim() == "" || this.value == null) {
                     $('#spaniteming_SheetDescription' + b).html('Requerido');
+
                     required = true;
                 } else {
                     $('#spaniteming_SheetDescription' + b).html('');
@@ -1149,10 +1308,11 @@
                     required = true;
                 } else {
                     if (this.value.trim() == 0) {
-                        $('#spaniteming_Amount' + b).html('Debe ser mayor a 0');
+                        $('#spaniteming_Amount' + b).html('Debe ser mayor a 0.');
                         required = true;
                     } else {
                         $('#spaniteming_Amount' + b).html('');
+
                     }
                 }
             });
@@ -1162,13 +1322,16 @@
                 var b = a.replace(/\D/g, '');
                 if (this.value.trim() == "" || this.value == null) {
                     $('#spanitemcos_Amount' + b).html('Requerido');
+
                     required = true;
                 } else {
                     if (this.value.trim() == 0) {
-                        $('#spanitemcos_Amount' + b).html('Debe ser mayor a 0');
+                        $('#spanitemcos_Amount' + b).html('Debe ser mayor a 0.');
+
                         required = true;
                     } else {
                         $('#spanitemcos_Amount' + b).html('');
+
                     }
                 }
             });
@@ -1178,13 +1341,16 @@
                 var b = a.replace(/\D/g, '');
                 if (this.value.trim() == "" || this.value == null) {
                     $('#spanitemgas_Amount' + b).html('Requerido');
+
                     required = true;
                 } else {
                     if (this.value.trim() == 0) {
-                        $('#spanitemgas_Amount' + b).html('Debe ser mayor a 0');
+                        $('#spanitemgas_Amount' + b).html('Debe ser mayor a 0.');
+
                         required = true;
                     } else {
                         $('#spanitemgas_Amount' + b).html('');
+
                     }
                 }
             });
@@ -1193,14 +1359,17 @@
 
                 var b = a.replace(/\D/g, '');
                 if (this.value.trim() == "" || this.value == null) {
-                    $('#spanitemotr_Amount' + b).html('Requerido');
+                    $('#spanitemotr_Amount' + b).html('Requerido.');
+
                     required = true;
                 } else {
                     if (this.value.trim() == 0) {
-                        $('#spanitemotr_Amount' + b).html('Debe ser mayor a 0');
+                        $('#spanitemotr_Amount' + b).html('Debe ser mayor a 0.');
+
                         required = true;
                     } else {
                         $('#spanitemotr_Amount' + b).html('');
+
                     }
                 }
             });
@@ -1221,58 +1390,54 @@
                     if (result1) {
 
                         arraysedit();
-
-
-                        orderItems = $.merge(itemsi, orderItemsi);
-                        orderItems = $.merge(orderItems, itemsc);
-                        orderItems = $.merge(orderItems, orderItemsc);
+                        orderItems = $.merge(itemsi, itemsc);
                         orderItems = $.merge(orderItems, itemsg);
-                        orderItems = $.merge(orderItems, orderItemsg);
                         orderItems = $.merge(orderItems, itemso);
-                        orderItems = $.merge(orderItems, orderItemso);
+                       
+
 
 
                         var data = {
                             IdWorkSheet: @Model.IdWorksheet,
-                            Date: $('#Date').val().trim(),
-                            Comments: $('#Comments').val().trim(),
-                            Sheets: orderItems,
-                            Totali: $('#Totali').val().trim(),
-                            Totalc: $('#Totalc').val().trim(),
-                            Totalg: $('#Totalg').val().trim(),
-                            Totalo: $('#Totalo').val().trim(),
-                            TotalAmount: $('#TotalAmount').val().trim()
-                        }
-                        $.ajax({
-                            url: '@Url.Action("EditW", "Worksheets")',
-                            type: "POST",
-                            data: JSON.stringify(data),
-                            dataType: "JSON",
-                            contentType: "application/json",
-                            success: function(d) {
-                                //check is successfully save to database
-                                if (d.status == true) {
+                                        Date: $('#Date').val().trim(),
+                                        Comments: $('#Comments').val().trim(),
+                                        Sheets: orderItems,
+                                        Totali: $('#Totali').val().trim(),
+                                        Totalc: $('#Totalc').val().trim(),
+                                        Totalg: $('#Totalg').val().trim(),
+                                        Totalo: $('#Totalo').val().trim(),
+                                        TotalAmount: $('#TotalAmount').val().trim()
+                                    }
+                                    $.ajax({
+                                        url: '@Url.Action("EditW", "Worksheets")',
+                                        type: "POST",
+                                        data: JSON.stringify(data),
+                                        dataType: "JSON",
+                                        contentType: "application/json",
+                                        success: function(d) {
+                                            //check is successfully save to database
+                                            if (d.status == true) {
 
-                                    var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
-                                    window.location.href = url;
-                                } else {
-                                    alert('Failed');
+                                                var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
+                                                window.location.href = url;
+                                            } else {
+                                                alert('Failed');
+                                            }
+                                            $('#submit').val('Save');
+                                        },
+                                        error: function() {
+                                            alert('Error. Please try again.');
+                                            $('#submit').val('Save');
+                                        }
+                                    });
                                 }
-                                $('#submit').val('Save');
-                            },
-                            error: function() {
-                                alert('Error. Please try again.');
-                                $('#submit').val('Save');
-                            }
-                        });
-                    }
 
 
-                });
-            }
+                            });
+                        }
 
 
-        });
+                    });
 
 
     </script>
