@@ -83,7 +83,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     </td>
     <td class="text-center fondoBlanco" >
-        <input type="month" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()"/>
+        <input type="month" class="panel-info form-control inputForm2 fc" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()" style="text-transform: capitalize"/>
         <span class="text-danger" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -163,7 +163,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalingresotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalingresotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden; border-left: hidden;">
@@ -196,7 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalcostotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalcostotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -229,7 +229,7 @@ input[type=number]::-webkit-outer-spin-button {
     </tbody>
 
 </table>
-<table id="totalgastotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalgastotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
@@ -262,7 +262,7 @@ input[type=number]::-webkit-outer-spin-button {
         </tr>
     </tbody>
 </table>
-<table id="totalotrotabla" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="totalotrotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
     <thead>
         <tr class="text-center" style="background: none">
             <th class="text-left" style="width: 40%; border-bottom: hidden; border-top: hidden;border-left:hidden">
