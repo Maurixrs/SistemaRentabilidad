@@ -24,7 +24,11 @@ namespace SistemaRentabilidad
                        "~/Scripts/ordenFechas.js",
                        "~/Scripts/cargar.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js",
-                       "~/Scripts/autosize.js"
+                       "~/Scripts/autosize.js",
+                       "~/Scripts/bootstrap-select.min.js",
+                       "~/Scripts/i18n/defaults-ar_AR.min.js"
+                       
+
 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -38,6 +42,8 @@ namespace SistemaRentabilidad
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flaty.css",
+                      "~/Content/bootstrap-select.css",
+                      "~/Content/bootstrap-select.css.map",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/content/toastr.css",
                       "~/Content/site.css"));

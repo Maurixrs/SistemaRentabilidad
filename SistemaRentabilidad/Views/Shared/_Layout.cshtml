@@ -43,7 +43,7 @@
                                
                             </ul>
                         </li>
-                        <li class="dropdown" style="left: auto">
+                        @*<li class="dropdown" style="left: auto">
                             <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Estadísticas<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="download">
                                 <li style="font-weight: bold;">@Html.ActionLink("Ingresos", "Incomes", "Statistics")</li>
@@ -53,7 +53,8 @@
                                 <li style="font-weight: bold;">@Html.ActionLink("Total Ingresos", "TotIncomes", "Statistics")</li>
                                 <li style="font-weight: bold;">@Html.ActionLink("Total mensual", "TotMonthly", "Statistics")</li>
                             </ul>
-                        </li>
+                        </li>*@
+                        <li class="hvr-underline-from-center">@Html.ActionLink("Estadísticas", "Index", "Statistics")</li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
                         @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
                             <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@

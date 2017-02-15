@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Estadísticas";
+}
+<head>
+    <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
+    <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
+</head>
+
+<h2 class="text-center">Estadísticas</h2>
+<br />
+
+    @using (Ajax.BeginForm("_Graphic", "Statistics",
+        new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "ajaxBeginFormResult",
+            OnSuccess = "OnSuccess"
+        },
+    new { id = "FormName" }))
+
+
+    {
+    @Html.AntiForgeryToken()
+        <div class="hidden-print">
+            @*<div class="row">
+                <div class="col-lg-1"></div>
+                <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
+            </div>*@
+            <div class="row form-horizontal">
+                <div class="col-lg-3">
+                    <select class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo">
+                        <option value="Ingresos">Ingresos</option>
+                        <option value="Gastos">Gastos</option>
+                        <option value="Costos">Costos</option>
+                        <option value="OtrosIng">Otros ingresos</option>
+                        <option value="TotIng">Total ingresos</option>
+                        <option value="TotMens">Total mensual</option>
+                    </select>
+                </div>
+                
+                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="1900" data-rule-menor="true" placeholder="año inicio"/>
+                <div class="col-lg-1"></div>
+                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="1900" placeholder="año fin"/>
+                <div class="col-lg-1"></div>
+                <input type='submit' onclick="ordenFechas()" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>
+
+            </div>
+            <br/>
+            <div class="text-center">
+                <span id="spanOrdenFechas" class="text-danger"></span>
+            </div>
+
+        </div>
+ }
+
+       
+    
+    
+        <div style="padding-left: 200px" id="ajaxBeginFormResult" ></div>
+   
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="margin-left: -30%; margin-right: -30%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Historial Planes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>*@
+            @*<button type="submit" class="btn btn-primary">Save changes</button>*@
+            @*</div>*@
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="margin-left: -30%; margin-right: -30%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Historial Planes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>*@
+            @*<button type="submit" class="btn btn-primary">Save changes</button>*@
+            @*</div>*@
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<script type="text/javascript" language="javascript" src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
+<script type="text/javascript" language="javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
+<script>
+    $(document).ready(function() {
+        
+        $('.selectpicker').selectpicker({
+            size: 6,
+            style: 'btn-info'
+        });
+
+
+        $("body").on("click", "a.dialog-window2", null, function (e) {
+            e.preventDefault();
+            jQuery.noConflict();
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal2 .modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal2').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal2 .te').html(data);
+                    $('#myModal2').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
+        $("body").on("click", "a.dialog-window4", null, function (e) {
+            e.preventDefault();
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal4 .modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal4').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal4 .te').html(data);
+                    $('#myModal4').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
+
+
+
+
+
+
+
+
+    });
+
+
+</script>
+
+
