@@ -344,20 +344,34 @@ input[type=number]::-webkit-outer-spin-button {
 
 <br/>
 <div class="text-center">
+    <a href="@Url.Action("HelpCreate", "Worksheets")" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
     <button type="button" id="submit" class="btn btn-success  btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
     </button>
-    @*<button type="button" id="imprimir" class="btn btn-success btn-md " value="Guardar">
-        Guardar e Imprimir
-        <span class="glyphicon glyphicon-floppy-disk"></span>
-    </button>*@
-
 
 </div>
 
 
-<br />
+<br/>
+
+<div class="modal fade" id="myModal" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%; left: -25%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -377,29 +391,48 @@ input[type=number]::-webkit-outer-spin-button {
 
 
     <script>
+        $("body").on("click", "a.dialog-window", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal .te').html(data);
+                    $('#myModal').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
         function valfecha() {
-                       if ($('#wdate').val().trim() == '') {
-                                $('#wdate').siblings('span.text-danger').html('Requerido');
-                           } else {
-                           //$('#wdate').siblings('span.text-danger').html('');
-                           var options3 = {};
-                           options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-                           options3.type = "GET";
-                           options3.data = { "fecha": $("#wdate").val() };
-                           options3.dataType = "json";
-                            options3.success = function (data) {
-                                    if (data) {
-                                        $('#wdate').siblings('span.text-danger').html('Período existente.');
-                                        valf = 1;
-                                    } else {
-                                        $('#wdate').siblings('span.text-danger').html('');
-                                        valf = 0;
-                                    };
+            if ($('#wdate').val().trim() == '') {
+                $('#wdate').siblings('span.text-danger').html('Requerido');
+            } else {
+                //$('#wdate').siblings('span.text-danger').html('');
+                var options3 = {};
+                options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+                options3.type = "GET";
+                options3.data = { "fecha": $("#wdate").val() };
+                options3.dataType = "json";
+                options3.success = function (data) {
+                    if (data) {
+                        $('#wdate').siblings('span.text-danger').html('Período existente.');
+                        valf = 1;
+                    } else {
+                        $('#wdate').siblings('span.text-danger').html('');
+                        valf = 0;
+                    };
             
-                            };
-                        $.ajax(options3);
-                    }
-               }
+                };
+                $.ajax(options3);
+            }
+        }
 
         function calculogral() {
             tgral = 0;

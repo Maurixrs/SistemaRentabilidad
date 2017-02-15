@@ -128,6 +128,11 @@ namespace SistemaRentabilidad.Controllers
             return new JsonResult { Data = new { status = status,num=ws.IdWorksheet } };
         }
 
+        public ActionResult HelpCreate()
+        {
+            return View();
+        }
+
 
 
         public ActionResult CreateWorksheet()
