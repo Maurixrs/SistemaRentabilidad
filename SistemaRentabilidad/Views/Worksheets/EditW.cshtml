@@ -4,8 +4,9 @@
     ViewBag.Title = "Editar Planilla";
 }
 <style>
-    .montocentrado{text-align: center;}
-     textarea{max-width: 100%;resize: none;line-height: 1.08}
+    .glyphicon-remove{cursor: pointer;}
+     .montocentrado{text-align: center;}
+    textarea{max-width: 100%;resize: none;line-height: 1.08}
     .totalView{border: none;background: khaki;font-weight: bold}
     .full {
         background-size: contain;
@@ -255,7 +256,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilaing(this)"><span class="glyphicon glyphicon-remove"></span></a>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" id="@item.IdSheet" onclick="borrarfilaing(this)"><span class="glyphicon glyphicon-remove"></span></a>
 </td>
                 </tr>}
         }
@@ -312,7 +313,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilacos(this)"><span class="glyphicon glyphicon-remove"></span></a>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  id="@item.IdSheet" onclick="borrarfilacos(this)"><span class="glyphicon glyphicon-remove"></span></a>
 
                 </tr>
             }
@@ -368,7 +369,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilagas(this)"><span class="glyphicon glyphicon-remove"></span></a>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" id="@item.IdSheet" onclick="borrarfilagas(this)"><span class="glyphicon glyphicon-remove"></span></a>
 
                 </tr>
             }
@@ -427,7 +428,7 @@
 
 
                     </td>
-                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#" id="@item.IdSheet" onclick="borrarfilaotr(this)"><span class="glyphicon glyphicon-remove"></span></a>
+                    <td style="width:2%"><a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" id="@item.IdSheet" onclick="borrarfilaotr(this)"><span class="glyphicon glyphicon-remove"></span></a>
 
                 </tr>
             }
@@ -1059,7 +1060,7 @@
                     $rowi.append($('<td style="width: 40%"><textarea id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowi.append($('<td><input id="ing_Amountz" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
-                    var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                    var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                   
               
                     $removei.click(function(e) {
@@ -1105,7 +1106,7 @@
                     $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td style="width: 40%"><textarea id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td><input id="cos_Amountz" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
-                    var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                    var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                     $removec.click(function(e) {
                         e.preventDefault();
                         orderItemsc.splice(i, 1);
@@ -1150,7 +1151,7 @@
                     $rowg.append($('<td style="width: 40%"><textarea id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowg.append($('<td><input id="gas_Amountz" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
-                    var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                    var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
 
                   
@@ -1201,7 +1202,7 @@
                     $rowo.append($('<td style="width: 40%"><textarea id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowo.append($('<td><input id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
-                    var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;" href="#"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                    var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                 
                
                   
