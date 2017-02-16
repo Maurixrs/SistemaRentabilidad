@@ -29,7 +29,7 @@
             </div>*@
             <div class="row form-horizontal">
                 <div class="col-lg-3">
-                    <select  class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo" required="required">
+                    <select id="select"  class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo" required="required">
                         <option value="Ingresos">Ingresos</option>
                         <option value="Gastos">Gastos</option>
                         <option value="Costos">Costos</option>
@@ -209,7 +209,9 @@
             event.preventDefault();
         }
 
-        $('#ocultar').addClass('hidden');
+        if ($('#select').val() != '' & dif < 11 & fin > inicio) {
+            $('#ocultar').addClass('hidden');
+        }
     }
 
 
