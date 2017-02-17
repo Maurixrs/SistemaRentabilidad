@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity;
+@using SistemaRentabilidad.Controllers
 <!DOCTYPE html>
 
 <html>
@@ -40,24 +41,23 @@
                             <ul class="dropdown-menu" aria-labelledby="download">
                                 <li style="font-weight: bold;">@Html.ActionLink("Listado", "Index", "Worksheets")</li>
                                 <li style="font-weight: bold;">@Html.ActionLink("Nueva", "CreateWorksheet", "Worksheets")</li>
-                               
+
                             </ul>
                         </li>
-                        @*<li class="dropdown" style="left: auto">
-                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Estadísticas<span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="download">
-                                <li style="font-weight: bold;">@Html.ActionLink("Ingresos", "Incomes", "Statistics")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Gastos", "Expenses", "Statistics")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Costos", "Costs", "Statistics")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Otros Ingresos", "OIncomes", "Statistics")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Total Ingresos", "TotIncomes", "Statistics")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Total mensual", "TotMonthly", "Statistics")</li>
-                            </ul>
-                        </li>*@
+
                         <li class="hvr-underline-from-center">@Html.ActionLink("Estadísticas", "Index", "Statistics")</li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                        @*<li>@Html.ActionLink("Nueva Carga", "Create", "Sheets")</li>
-                            <li>@Html.ActionLink("Nuevo Informe", "Create", "Worksheets")</li>*@
+
+                        <li class="">
+                            @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
+                            {
+                                <div style="display: inline-flex;margin-top:15px">
+                                    <input type="month" class="panel-info form-control inputForm2 fc" onchange="valfechaf()" style="width: 200px" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize;height: 31px" />
+                                    &nbsp;
+                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />
+                                </div>
+                            }
+                        </li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -134,4 +134,39 @@
             }
         }
 </style>
+<script>
+    function valfechaf() {      
+        if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
+            $('#buscarf').addClass("disabled");
+            $("#buscarf").prop("disabled", true);
+            $('#buscarf').val("Buscar");
+            $('#buscarf').removeClass("btn-warning");
 
+        };
+
+          var options3 = {};
+          options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+          options3.type = "GET";
+          options3.data = { "fecha": $("#fdate").val() };
+          options3.dataType = "json";
+          options3.success = function (data) {
+              if (data) {
+                  $('#buscarf').val("Buscar");
+                  $('#buscarf').removeClass("btn-warning");
+                  $('#buscarf').removeClass("disabled");
+                  $("#buscarf").removeAttr("disabled");
+                 
+                
+
+
+              } else {
+                  $('#buscarf').val("Periodo inexistente.");
+                  $('#buscarf').addClass("btn-warning");
+                  $('#buscarf').addClass("disabled");
+                  $("#buscarf").prop("disabled", true);
+              };
+
+          };
+          $.ajax(options3);
+      
+  }</script>
