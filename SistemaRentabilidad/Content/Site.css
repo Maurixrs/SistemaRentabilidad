@@ -28,6 +28,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.formatList {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
 .tipos{ border-color: darkslategray;border-width: 1px;border-style: dotted}
 .full {
     color: rgba(0, 0, 0, 0.91);

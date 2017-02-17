@@ -9,8 +9,8 @@
 
 
 <h2 class="text-center">Estadísticas</h2>
-<hr />
-
+<hr style="margin-top:-7px; />
+<div style="margin-top:-15px;">
     @using (Ajax.BeginForm("_Graphic", "Statistics",
         new AjaxOptions
         {
@@ -29,8 +29,16 @@
                 <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
             </div>*@
             <div class="row form-horizontal">
+             
+                <div class="col-lg-1"> <legend>Desde:</legend></div>
+                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
+               
+                <div class="col-lg-1" > <legend>Hasta:</legend></div>
+                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
+                <div class="col-lg-1"></div>
+
                 <div class="col-lg-3">
-                    <select id="select"  class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo" required="required">
+                    <select id="select" class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo..." required="required">
                         <option value="Ingresos">Ingresos</option>
                         <option value="Gastos">Gastos</option>
                         <option value="Costos">Costos</option>
@@ -39,11 +47,7 @@
                         <option value="TotMens">Total mensual</option>
                     </select>
                 </div>
-                
-                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
-                <div class="col-lg-1"></div>
-                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
-                <div class="col-lg-1"></div>
+
                 <input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>
                 <div class="col-lg-1"></div>
                 
@@ -59,7 +63,7 @@
 
 
 
-<div style="padding-left: 200px" id="ajaxBeginFormResult"></div>
+<div class="text-center"  id="ajaxBeginFormResult"></div>
 
 <div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -77,6 +81,7 @@
 
     </div>
 
+</div>
 </div>
 
 

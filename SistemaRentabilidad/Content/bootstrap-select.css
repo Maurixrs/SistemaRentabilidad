@@ -8,13 +8,14 @@
 select.bs-select-hidden,
 select.selectpicker {
   display: none !important;
+  
 }
 .bootstrap-select {
   width: 220px \0;
   /*IE9 and below*/
 }
 .bootstrap-select > .dropdown-toggle {
-  width: 100%;
+  width: 80%;
   padding-right: 25px;
   z-index: 1;
 }

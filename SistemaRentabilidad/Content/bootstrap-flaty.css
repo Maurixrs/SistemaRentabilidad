@@ -1110,7 +1110,7 @@ a {
 a:hover,
 a:focus {
   color: blue;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
@@ -3077,8 +3077,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default:hover {
   color: #ffffff;
-  background-color: #285091;
-  border-color: #285091;
+  background-color: #164187;
+  border-color: #164187;
 }
 .btn-default:active,
 .btn-default.active,
@@ -3451,7 +3451,9 @@ fieldset[disabled] .btn-link:focus {
   padding: 6px 9px;
   font-size: 13px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 4px;
+  
+
 }
 .btn-xs,
 .btn-group-xs > .btn {
