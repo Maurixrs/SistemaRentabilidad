@@ -10,101 +10,144 @@
 
 </head>
 <style>
-     legend {
-         margin-bottom: 2px;
-         background: khaki;
-         font-size: inherit;
-     }
-    .full{background-size: contain}
-    #resumentabla td {border-color: darkgrey;background: white;
+    legend {
+        margin-bottom: 2px;
+        background: khaki;
+        font-size: inherit;
+    }
+
+    .full {
+        background-size: contain;
+    }
+
+    #resumentabla td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #nueva td {border-color: darkgrey;background: white;
+    #nueva td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #ingresotabla td {border-color: darkgrey;background: white;
-        line-height: 15px;
-
-    }
-
-    #encabezadostabla td {border-color: darkgrey;
+    #ingresotabla td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #costotabla td {border-color: darkgrey;background: white;
+    #encabezadostabla td {
+        border-color: darkgrey;
         line-height: 15px;
     }
 
-    #gastotabla td {border-color: darkgrey;background: white;
+    #costotabla td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #otrotabla td {border-color: darkgrey;background: white;
+    #gastotabla td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #ingresotabla th {border-color: darkgrey;background: white;
+    #otrotabla td {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #costotabla th {border-color: darkgrey;background: white;
+    #ingresotabla th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #gastotabla th {border-color: darkgrey;background: white;
+    #costotabla th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #otrotabla th {border-color: darkgrey;background: white;
+    #gastotabla th {
+        border-color: darkgrey;
+        background: white;
+        line-height: 15px;
+    }
+
+    #otrotabla th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
 
-    #titulotabla th {border-color: darkgrey;background: darkkhaki;
-        
+    #titulotabla th {
+        border-color: darkgrey;
+        background: darkkhaki;
     }
-    #titulotabla td {border-color: darkgrey;background: white;
-        
+
+    #titulotabla td {
+        border-color: darkgrey;
+        background: white;
     }
-    #nueva th {border-color: darkgrey;background: white;
+
+    #nueva th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #resumentabla th {border-color: darkgrey;background: white;
+    #resumentabla th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #otrosub th {border-color: darkgrey;background: white;
+    #otrosub th {
+        border-color: darkgrey;
+        background: white;
         line-height: 15px;
     }
 
-    #encabezadostabla th {border-color: darkgrey;
+    #encabezadostabla th {
+        border-color: darkgrey;
         line-height: 15px;
     }
 
-    #totalingresotabla th {border-color: darkgrey;
+    #totalingresotabla th {
+        border-color: darkgrey;
         line-height: 15px;
     }
 
-    #totalgastotabla th {border-color: darkgrey;
+    #totalgastotabla th {
+        border-color: darkgrey;
         line-height: 15px;
     }
 
-    #totalcostotabla th {border-color: darkgrey;
+    #totalcostotabla th {
+        border-color: darkgrey;
         line-height: 15px;
     }
 
-    #totalotrotabla th {border-color: darkgrey;
+    #totalotrotabla th {
+        border-color: darkgrey;
         line-height: 15px;
     }
-    .tipos{    font-size: medium;
+
+    .tipos {
+        font-size: medium;
         font-weight: bold;
-        font-style: italic}
+        font-style: italic;
+    }
 
 
-    .table {border-color: darkgrey;
+    .table {
+        border-color: darkgrey;
         margin-bottom: 0px;
     }
 </style>
@@ -177,9 +220,9 @@
         Ingresos
     </legend>
 
-    <table id="ingresotabla" class="table">
+    <table id="ingresotabla" class="table table-condensed table-bordered ">
 
-        <tbody >
+        <tbody id="ingreso">
 
 
 
@@ -189,35 +232,15 @@
                 {
 
                     <tr>
-                        <td style="width: 40%;" >
-                           @if (item.SheetDescription.Length >= 50)
-                           {
-                             <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
-                           }
-
-                           else
-                           {
-                               @Html.DisplayFor(modelItem => item.SheetDescription)
-                           }
+                        <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
 
                         </td>
                         <td style="width: 40%;">
-
-                            @if (item.Comments.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.Comments)
-                            }
-
-
-                           
+                            @Html.DisplayFor(modelItem => item.Comments)
                         </td>
-                        <td class="montocentrado" style="width: 40%;">
+                        <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
 
 
@@ -265,30 +288,12 @@
 
                     <tr>
                         <td style="width: 40%;">
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
-                            @if (item.SheetDescription.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.SheetDescription)
-                            }
-
-                         
 
                         </td>
                         <td style="width: 40%;">
-                            @if (item.Comments.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.Comments)
-                            }
+                            @Html.DisplayFor(modelItem => item.Comments)
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
@@ -337,29 +342,11 @@
                 {
                     <tr>
                         <td style="width: 40%;">
-                            @if (item.SheetDescription.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.SheetDescription)
-                            }
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
                         </td>
                         <td style="width: 40%;">
-                            @if (item.Comments.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.Comments)
-                            }
-
-
+                            @Html.DisplayFor(modelItem => item.Comments)
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
@@ -408,35 +395,12 @@
 
                     <tr>
                         <td style="width: 40%;">
-
-                            @if (item.SheetDescription.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.SheetDescription)
-                            }
-
-
-
+                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
 
                         </td>
                         <td style="width: 40%;">
-                            @if (item.Comments.Length >= 50)
-                            {
-                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
-                            }
-
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.Comments)
-                            }
-
-
-
+                            @Html.DisplayFor(modelItem => item.Comments)
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
@@ -511,7 +475,7 @@
         Imprimir&nbsp;<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
     </a>
     <a href="@Url.Action("Delete", "Worksheets", new {id = Model.IdWorksheet, details = true})" class="btn btn-danger dialog-window">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-    
+
 </div>
 @*<a href="@Url.Action("Delete","Worksheets", new { id = Model.IdWorksheet})" data-form-method="post" class="btn btn-danger">Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>*@
 <div class="modal fade" id="myModal" role="dialog"
@@ -532,7 +496,7 @@
 
 </div>
 @section scripts{
-<script src="@Url.Content("~/Scripts/printThis.js")"></script>
+    <script src="@Url.Content("~/Scripts/printThis.js")"></script>
     <script>
     $(document).ready(function () {
         $("body").on("click", "a.dialog-window", null, function (e) {
@@ -557,11 +521,10 @@
 
     //function imprimir1() {
     //    $("#imp1").printThis({
-            
+
 
     //    });
     //}
-</script>
+    </script>
 }
-
 
