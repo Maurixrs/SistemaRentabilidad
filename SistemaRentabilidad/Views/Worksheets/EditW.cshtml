@@ -107,7 +107,6 @@
 @Html.HiddenFor(model => model.IdWorksheet)
 
 
-<div class="text-right" style="margin-top:8px"><a href="@Url.Action("HelpEdit","Worksheets")" class="dialog-window btn btn-info btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></div>
 <br/>
 @*<legend style="margin-bottom: 2px;">
         Planilla: @Html.DisplayFor(model => model.IdWorksheet)
@@ -498,16 +497,16 @@
 
 </div>
 
-<div class="modal fade" id="myModal" role="dialog"
+<div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 180%; left: -40%">
+        <div class="modal-content" style="width: 190%; left: -45%">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title text-center">Ayuda</h4>
             </div>
             <div class="modal-body">
-                <div class="te">Espere...</div>
+                @Html.Action("HelpEdit","Worksheets")
             </div>
 
         </div>
@@ -524,25 +523,7 @@
             this.style.display = '';
             autosize.update(this);
         });}
-
-        $("body").on("click", "a.dialog-window", null, function (e) {
-            e.preventDefault();
-
-            var $link = $(this); // Reference to <a/> link
-            var title = $link.text(); //this is title to fetch in htnl
-            $('#myModal.modal-title').html(title);
-
-            var url = $(this).attr('href');
-            if (url.indexOf('#') == 0) {
-                $('#myModal').modal('show');
-            }
-            else {
-                $.get(url, function (data) {
-                    $('#myModal .te').html(data);
-                    $('#myModal').modal();
-                }).success(function () { $('input:text:visible:first').focus(); });
-            }
-        });
+        
 
         $(document).ready(function() {
 

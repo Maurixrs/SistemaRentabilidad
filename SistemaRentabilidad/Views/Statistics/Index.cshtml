@@ -6,11 +6,9 @@
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
 </head>
-<div class="text-right" style="margin-top: 8px">
-    <a href="@Url.Action("HelpStatistics","Statistics")" class="btn btn-info dialog-window btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> 
-</div>
 
-<h2 class="text-center" style="margin-top: 3px">Estadísticas</h2>
+
+<h2 class="text-center">Estadísticas</h2>
 <hr />
 
     @using (Ajax.BeginForm("_Graphic", "Statistics",
@@ -63,7 +61,7 @@
 
 <div style="padding-left: 200px" id="ajaxBeginFormResult"></div>
 
-<div class="modal fade" id="myModal" role="dialog"
+<div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 165%; left: -33%">
@@ -72,7 +70,7 @@
                 <h4 class="modal-title text-center">Ayuda</h4>
             </div>
             <div class="modal-body">
-                <div class="te">Espere...</div>
+                @Html.Action("HelpStatistics","Statistics")
             </div>
 
         </div>
