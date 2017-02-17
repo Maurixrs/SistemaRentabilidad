@@ -26,6 +26,7 @@
 
     #ingresotabla td {border-color: darkgrey;background: white;
         line-height: 15px;
+
     }
 
     #encabezadostabla td {border-color: darkgrey;
@@ -176,9 +177,9 @@
         Ingresos
     </legend>
 
-    <table id="ingresotabla" class="table table-condensed table-bordered ">
+    <table id="ingresotabla" class="table">
 
-        <tbody id="ingreso">
+        <tbody >
 
 
 
@@ -188,15 +189,35 @@
                 {
 
                     <tr>
-                        <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.SheetDescription)
+                        <td style="width: 40%;" >
+                           @if (item.SheetDescription.Length >= 50)
+                           {
+                             <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
+                           }
+
+                           else
+                           {
+                               @Html.DisplayFor(modelItem => item.SheetDescription)
+                           }
 
 
                         </td>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.Comments)
+
+                            @if (item.Comments.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            }
+
+
+                           
                         </td>
-                        <td class="montocentrado">
+                        <td class="montocentrado" style="width: 40%;">
                             @Html.DisplayFor(modelItem => item.Amount)
 
 
@@ -244,12 +265,30 @@
 
                     <tr>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.SheetDescription)
 
+                            @if (item.SheetDescription.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.SheetDescription)
+                            }
+
+                         
 
                         </td>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.Comments)
+                            @if (item.Comments.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            }
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
@@ -298,11 +337,29 @@
                 {
                     <tr>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.SheetDescription)
+                            @if (item.SheetDescription.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.SheetDescription)
+                            }
 
                         </td>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.Comments)
+                            @if (item.Comments.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            }
+
+
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
@@ -351,12 +408,35 @@
 
                     <tr>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.SheetDescription)
+
+                            @if (item.SheetDescription.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden;">@Html.DisplayFor(modelItem => item.SheetDescription)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.SheetDescription)
+                            }
+
+
+
 
 
                         </td>
                         <td style="width: 40%;">
-                            @Html.DisplayFor(modelItem => item.Comments)
+                            @if (item.Comments.Length >= 50)
+                            {
+                                <textarea readonly style="overflow:hidden">@Html.DisplayFor(modelItem => item.Comments)</textarea>
+                            }
+
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            }
+
+
+
                         </td>
                         <td class="montocentrado">
                             @Html.DisplayFor(modelItem => item.Amount)
