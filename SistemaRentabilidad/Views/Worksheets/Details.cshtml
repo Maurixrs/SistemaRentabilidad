@@ -438,11 +438,11 @@
     <legend class="tipos text-center thStyleGradient2 bordesRedond ">
         Resumen
     </legend>
-    <table class="table table-condensed   table-bordered ">
+    <table class="table table-condensed   table-bordered " style="table-layout: fixed">
 
         <thead>
             <tr class="text-center thStyleGradient3 tipos">
-                <td class="text-left">
+                <td style="width: 80%" class="text-left">
                     Observaciones
                 </td>
                 <td class="text-center">
@@ -452,7 +452,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td style="width: 80%">
                     @Html.DisplayFor(model => model.Comments)
 
 
