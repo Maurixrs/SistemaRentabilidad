@@ -91,21 +91,27 @@
 
 @section scripts
 {
-      <script>
-          $(document).ready(function () {            
-              
-              ////Grilla automatica//
-              $("#tabla").DataTable({
-                  order: [[0, "desc"]], "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],
-                 
-                  "language": {
-                      "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
-                  }
-              });
+    <script>
+        
 
-              if ($('#msg').val() == 1) {
-                  toastr.success("Planilla eliminada exitosamente.");
-              }
-          })
-</script>
+
+
+
+
+        $(document).ready(function () {            
+              
+            ////Grilla automatica//
+            $("#tabla").DataTable({
+                order: [[0, "desc"]], "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],
+                 
+                "language": {
+                    "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+                }
+            });
+
+            if ($('#msg').val() == 1) {
+                toastr.success("Planilla eliminada exitosamente.");
+            }
+        })
+    </script>
 }
