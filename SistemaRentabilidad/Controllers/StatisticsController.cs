@@ -29,9 +29,12 @@ namespace SistemaRentabilidad.Controllers
         public ActionResult _Graphic(int fecha1, int fecha2, string selectedStat)
         {
             IList<Worksheet> WsList = _repository.FindAllE();
+
             var ys = fecha2 - fecha1;
             var incomes = new List<decimal> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             var q = 0;
+
+            IList<Worksheet> oclist=new List<Worksheet>();
             for (int i = 0; i < ys; i++)
             {
                 incomes.Add(0);
@@ -168,7 +171,7 @@ namespace SistemaRentabilidad.Controllers
             ViewBag.incomes = JsonConvert.SerializeObject(incomes);
             ViewBag.years = fecha1;
             ViewBag.ys = ys;
-            return View();
+            return View(WsList);
 
 
         }

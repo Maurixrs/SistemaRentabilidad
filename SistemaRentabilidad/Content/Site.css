@@ -3,6 +3,13 @@
     padding-bottom: 20px;
 }
 
+    .mes {
+    text-transform:capitalize;
+    background: none;
+    border: none;
+    width:110px;
+    }
+   
 hr {
     color: grey;
     border-color: grey;
