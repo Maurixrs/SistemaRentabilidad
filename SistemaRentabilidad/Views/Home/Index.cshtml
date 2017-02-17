@@ -1,13 +1,17 @@
 ﻿@{
     ViewBag.Title = "Inicio";
 }
+<div class="text-right" style="margin-top: 8px">
+    <a href="@Url.Action("HelpHome", "Home")" class="dialog-window btn btn-info btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+</div>
 
 <div class="text-center jumbotron sombra_externa sombra_fija sombra_radial text-center thStyleGradient2 bordesRedond ">
-    <h3><b>¡Bienvenido al Sistema de Rentabilidad!</b></h3>
+    <h3><b>¡Bienvenido al Sistema de Rentabilidad!</b>
+    </h3>
     <h4>
         "Elgordo.com Distribuciones"
         <br/>
-        <br />
+        <br/>
         <img src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
         <img src='@Url.Content("~/Content/Images/portadaimg/paty.jpg")'>
         <img src='@Url.Content("~/Content/Images/portadaimg/donyeyo.jpg")'>
@@ -20,6 +24,47 @@
         <img src='@Url.Content("~/Content/Images/portadaimg/logo-Vienissima.png")'>
     </h4>
 </div>
+
+<div class="modal fade" id="myModal" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        $("body").on("click", "a.dialog-window", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal .te').html(data);
+                    $('#myModal').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+    </script>
+}
 
 
 <style>

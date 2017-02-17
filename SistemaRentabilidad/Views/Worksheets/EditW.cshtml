@@ -106,11 +106,9 @@
 </style>
 @Html.HiddenFor(model => model.IdWorksheet)
 
-<h2 class="text-center">Editar Planilla</h2>
 
-@*///////////////////////////*@
-<hr style="margin-top: 10px;margin-bottom: 10px;" />
-
+<div class="text-right" style="margin-top:8px"><a href="@Url.Action("HelpEdit","Worksheets")" class="dialog-window btn btn-info btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></div>
+<br/>
 @*<legend style="margin-bottom: 2px;">
         Planilla: @Html.DisplayFor(model => model.IdWorksheet)
     </legend>*@
@@ -491,8 +489,7 @@
 
 <hr style="color: grey" />
 <div class="text-center">
-    <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true">&nbsp;Volver</span></a>
-    <a href="@Url.Action("HelpEdit", "Worksheets")" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+    <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true"></span>&nbsp;Volver</a>
     <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>

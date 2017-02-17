@@ -6,9 +6,12 @@
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
 </head>
+<div class="text-right" style="margin-top: 8px">
+    <a href="@Url.Action("HelpStatistics","Statistics")" class="btn btn-info dialog-window btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> 
+</div>
 
-<h2 class="text-center">Estadísticas</h2>
-<br />
+<h2 class="text-center" style="margin-top: 3px">Estadísticas</h2>
+<hr />
 
     @using (Ajax.BeginForm("_Graphic", "Statistics",
         new AjaxOptions
@@ -45,9 +48,7 @@
                 <div class="col-lg-1"></div>
                 <input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>
                 <div class="col-lg-1"></div>
-                <div class="col-lg-1">
-                    <a href="@Url.Action("HelpStatistics","Statistics")" id="ocultar" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
-                </div>
+                
             </div>
             <br/>
             <div class="text-center">
@@ -209,9 +210,9 @@
             event.preventDefault();
         }
 
-        if ($('#select').val() != '' & dif < 11 & fin >= inicio) {
-            $('#ocultar').addClass('hidden');
-        }
+        //if ($('#select').val() != '' & dif < 11 & fin >= inicio) {
+        //    $('#ocultar').addClass('hidden');
+        //}
     }
 
 

@@ -8,44 +8,44 @@
 </head>
 
 <style>
-        textarea{max-width: 100%;resize: none;line-height: 1.08}
+    textarea {max-width: 100%;resize: none;line-height: 1.08}
 
-     input[type=number]::-webkit-inner-spin-button, 
-     input[type=number]::-webkit-outer-spin-button { 
-         -webkit-appearance: none;
-         -moz-appearance: none;
-         appearance: none;
-         margin: 0; 
-     }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
 
-    .tipos{
+    .tipos {
         font-size: medium;
         font-weight: bold;
         font-style: italic}
-    .fc{    padding: 3px;height: 22px}
-     
-    #resumentabla td{line-height: 15px}
+    .fc {padding: 3px;height: 22px}
 
-    #nueva td{line-height: 15px}
-    #ingresotabla td{line-height: 15px}
-    #encabezadostabla td{line-height: 15px}
+    #resumentabla td { line-height: 15px }
 
-    #costotabla td{line-height: 15px}
-    #gastotabla td{line-height: 15px}
-    #otrotabla td{line-height: 15px}
-    #ingresotabla th{line-height: 15px}
+    #nueva td { line-height: 15px }
+    #ingresotabla td { line-height: 15px }
+    #encabezadostabla td { line-height: 15px }
 
-    #costotabla th{line-height: 15px}
-    #gastotabla th{line-height: 15px}
-    #otrotabla th{line-height: 15px}
-    #nueva th{line-height: 15px}
-    #resumentabla th{line-height: 15px}
-    #otrosub th{line-height: 15px}
-    #encabezadostabla th{line-height: 15px}
-    #totalingresotabla th{line-height: 15px}
-    #totalgastotabla th{line-height: 15px}
-    #totalcostotabla th{line-height: 15px}
-    #totalotrotabla th{line-height: 15px}
+    #costotabla td { line-height: 15px }
+    #gastotabla td { line-height: 15px }
+    #otrotabla td { line-height: 15px }
+    #ingresotabla th { line-height: 15px }
+
+    #costotabla th { line-height: 15px }
+    #gastotabla th { line-height: 15px }
+    #otrotabla th { line-height: 15px }
+    #nueva th { line-height: 15px }
+    #resumentabla th { line-height: 15px }
+    #otrosub th { line-height: 15px }
+    #encabezadostabla th { line-height: 15px }
+    #totalingresotabla th { line-height: 15px }
+    #totalgastotabla th { line-height: 15px }
+    #totalcostotabla th { line-height: 15px }
+    #totalotrotabla th { line-height: 15px }
 
 
 
@@ -53,10 +53,15 @@
         margin-bottom: 0px;
     }
 </style>
+<div class="text-right" style="margin-top: 8px">
+    <a href="@Url.Action("HelpCreate", "Worksheets")" class="dialog-window btn btn-info btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+</div>
+
+<br/>
 
 
 @*///////////////////////////*@
-<br/>
+
 
 
 <table id="titulotabla" class="table table-bordered chica">
@@ -346,7 +351,7 @@
 
 <br/>
 <div class="text-center">
-    <a href="@Url.Action("HelpCreate", "Worksheets")" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+    @*<a href="@Url.Action("HelpCreate", "Worksheets")" class="btn btn-info dialog-window">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>*@
     <button type="button" id="submit" class="btn btn-success  btn-md" value="Guardar">
         Guardar
         <span class="glyphicon glyphicon-floppy-disk"></span>
@@ -374,13 +379,6 @@
     </div>
 
 </div>
-
-
-
-
-
-
-
 
 @section Scripts{
 

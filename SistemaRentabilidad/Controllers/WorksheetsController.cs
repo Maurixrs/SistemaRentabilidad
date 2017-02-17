@@ -29,6 +29,12 @@ namespace SistemaRentabilidad.Controllers
             WsVMList = Mapper.Map<IList<Worksheet>, IList<WsVM>>(WsList);            
             return View(WsVMList);
         }
+
+        public ActionResult HelpIndex()
+        {
+            return View();
+        }
+
         public ActionResult FindW(DateTime fdate)
         {
             var id = db.Worksheet.ToList().Find(f => f.Date.Year == fdate.Year & f.Date.Month == fdate.Month).IdWorksheet;
