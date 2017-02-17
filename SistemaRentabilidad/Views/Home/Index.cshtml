@@ -1,10 +1,6 @@
 ﻿@{
     ViewBag.Title = "Inicio";
 }
-<div class="text-right" style="margin-top: 8px">
-    <a href="@Url.Action("HelpHome", "Home")" class="dialog-window btn btn-info btn-xs">Ayuda&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
-</div>
-
 <div class="text-center jumbotron sombra_externa sombra_fija sombra_radial text-center thStyleGradient2 bordesRedond ">
     <h3><b>¡Bienvenido al Sistema de Rentabilidad!</b>
     </h3>
@@ -25,24 +21,25 @@
     </h4>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center">Ayuda</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <div class="te">Espere...</div>
+                ...
+                @Html.Action("HelpHome", "Home")
             </div>
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
-
     </div>
-
 </div>
-
 @section scripts{
     <script>
         $("body").on("click", "a.dialog-window", null, function (e) {
