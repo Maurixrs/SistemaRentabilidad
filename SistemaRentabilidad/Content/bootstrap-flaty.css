@@ -2271,6 +2271,7 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 21px;
+  table-layout:fixed
   
 }
 .table > thead > tr > th,
@@ -6882,6 +6883,7 @@ table-bordered > tbody > tr > td,
 table-bordered > tfoot > tr > td,
 .table-bordered > tfoot > tr > td {
   border: 1px solid rgba(0, 0, 0, 0.5);
+  overflow-wrap: break-word
 }
 .form-control,
 input {
