@@ -393,6 +393,8 @@
     <Content Include="Content\Images\bg_bolt.png" />
     <Content Include="Content\Images\bg_main.jpg" />
     <Content Include="Content\Images\bg_main2.png" />
+    <Content Include="Content\Images\BotonAyuda.jpg" />
+    <Content Include="Content\Images\BotonesDetails.jpg" />
     <Content Include="Content\Images\BotonesIndex.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />
     <Content Include="Content\Images\CamposEdit.jpg" />

@@ -426,10 +426,33 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color text-center">
-            <a href="@Url.Action("Index","Worksheets")" class="btn btn-default"><span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>&nbsp;Volver</a>
-            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default"><span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>&nbsp;Volver</a>
+            <input type="submit" value="Eliminar" class="btn btn-danger"/>
 
         </div>
     }
+</div>
+
+<div id="GSCCModal" class="modal fade" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 80%; right: -10%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-center" style="color:red">IMPORTANTE</h3>
+                <div class="text-center">
+                    <text>Al eliminar una Planilla no será posible recuperarla.</text>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 

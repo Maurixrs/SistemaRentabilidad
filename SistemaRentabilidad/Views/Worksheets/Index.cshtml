@@ -62,7 +62,7 @@
         </tbody>
     </table>
 </div>
-<div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
+<div id="GSCCModal" class="modal fade" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 180%; left: -40%">
@@ -71,9 +71,11 @@
                 <h4 class="modal-title text-center">Ayuda</h4>
             </div>
             <div class="modal-body">
-                @Html.Action("HelpIndex","Worksheets")
+                @Html.Action("HelpIndex", "Worksheets")
             </div>
-
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
         </div>
 
     </div>

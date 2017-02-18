@@ -25,14 +25,17 @@
 <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Ayuda</h4>
             </div>
             <div class="modal-body">
                 @Html.Action("HelpHome", "Home")
             </div>
-           
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+            </div>
         </div>
     </div>
 </div>
