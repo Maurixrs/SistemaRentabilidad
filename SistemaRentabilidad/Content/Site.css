@@ -88,6 +88,7 @@ html,body {
                 padding-left: 20px;
                 padding-right: 20px;
             }
+           
         }
 
 .backgroundStyle {
@@ -251,10 +252,10 @@ html,body {
 .jumbotron {
     align-content: center;
     margin-top: 30px;
-    width: 1200px;
-    height: 300px;
+    width: 100%;
     opacity: 1;
     background-color: rgba(147,206,222,1);
+      
 }
 
 .thStyle {
