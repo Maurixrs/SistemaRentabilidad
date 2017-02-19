@@ -409,6 +409,7 @@
     <Content Include="Content\Images\fon 7.jpg" />
     <Content Include="Content\Images\fon 8.jpg" />
     <Content Include="Content\Images\fon 9.jpg" />
+    <Content Include="Content\Images\GraficoEstadisticas.jpg" />
     <Content Include="Content\Images\Guardar.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
@@ -419,6 +420,7 @@
     <Content Include="Content\Images\ObservacionesGrales.jpg" />
     <Content Include="Content\Images\Observación.jpg" />
     <Content Include="Content\Images\Paginación.jpg" />
+    <Content Include="Content\Images\PlanillasIncidentes.jpg" />
     <Content Include="Content\Images\portadaimg\danica.png" />
     <Content Include="Content\Images\portadaimg\donyeyo.jpg" />
     <Content Include="Content\Images\portadaimg\elnoble.jpg" />
