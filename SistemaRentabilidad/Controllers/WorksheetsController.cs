@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Newtonsoft.Json;
 using SistemaRentabilidad.Context;
 using SistemaRentabilidad.Models;
 using SistemaRentabilidad.Repositories;
@@ -76,8 +77,13 @@ namespace SistemaRentabilidad.Controllers
             {
                 return HttpNotFound();
             }
-         
-            
+
+            List<string> lines = new List<string>();
+            foreach (var x in db.SheetLines)
+            {
+                lines.Add(x.LineDescription);
+            }
+            ViewBag.lines = JsonConvert.SerializeObject(lines);
 
             return View(wsVm);
         }
@@ -161,9 +167,15 @@ namespace SistemaRentabilidad.Controllers
             {
                 nsheet = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
             }
+            List<string> lines = new List<string>();
+
+            foreach (var x in db.SheetLines)
+            {
+                lines.Add(x.LineDescription);
+            }
 
             ViewBag.nsheet = nsheet + 1;
-
+            ViewBag.lines = JsonConvert.SerializeObject(lines);
             return View();
         }
 
@@ -194,7 +206,17 @@ namespace SistemaRentabilidad.Controllers
 
                 foreach (var i in O.Sheets)
                 {
-                   
+                    var exline = db.SheetLines.ToList().Exists(f => f.LineDescription == i.SheetDescription & f.SheetType== i.SheetType);
+
+                    if (!exline)
+                    {var newline=new SheetLine();
+                        newline.LineDescription = i.SheetDescription;
+                        newline.SheetType = i.SheetType;
+                        db.SheetLines.Add(newline);
+                        db.SaveChanges();
+                    }
+
+
 
                     Sheet sh = new Sheet();
                     sh.SheetDescription = i.SheetDescription;
@@ -239,7 +261,18 @@ namespace SistemaRentabilidad.Controllers
 
             return View(wsVm);
         }
+        public JsonResult GetLines()
+        {
 
+            List<string> lines = new List<string>();
+
+            foreach (var x in db.SheetLines)
+            {
+                lines.Add(x.LineDescription);
+            }
+
+            return Json(lines, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult ExistePlanilla(DateTime fecha)
         {
             

@@ -25,9 +25,10 @@ namespace SistemaRentabilidad
                        "~/Scripts/cargar.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/autosize.js",
-                       "~/Scripts/bootstrap-select.min.js",
+                       "~/Scripts/bootstrap-select.min.js", "~/Scripts/awesomplete.js",
+
                        "~/Scripts/i18n/defaults-ar_AR.min.js"
-                       
+
 
 ));
 
@@ -41,7 +42,7 @@ namespace SistemaRentabilidad
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-flaty.css",
+                      "~/Content/bootstrap-flaty.css", "~/Content/css/awesomplete.css",
                       "~/Content/bootstrap-select.css",
                       "~/Content/bootstrap-select.css.map",
                       "~/Content/datatables/css/datatables.bootstrap.css",

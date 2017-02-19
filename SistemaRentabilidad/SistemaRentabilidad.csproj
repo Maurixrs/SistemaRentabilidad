@@ -240,6 +240,7 @@
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\awesomplete.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -483,6 +484,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\autosize.js" />
     <Content Include="Scripts\autosize.min.js" />
+    <Content Include="Scripts\awesomplete.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-select.js" />
@@ -498,6 +500,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\cargar.js" />
+    <Content Include="Scripts\createwjs.js" />
     <Content Include="Scripts\DataTables\spanish.json" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />

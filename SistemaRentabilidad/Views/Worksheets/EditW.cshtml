@@ -168,7 +168,7 @@
             <tbody id="nueva">
                 <tr>
                     <td class="text-left ">
-                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc" id="ndescription" placeholder="" style="max-width: 100%;resize: none"></textarea>
+                        <textarea type="text" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc sug" id="ndescription" placeholder="" style="max-width: 100%;resize: none"></textarea>
                         <span class="text-danger" style="display: block"></span>
                     </td>
                     <td class="text-left ">
@@ -239,7 +239,7 @@
 
                 <tr>
                     <td class="text-left" style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sug", @rows = '1' })
                         <span class="text-danger" id="@("spaniteming_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
@@ -296,7 +296,7 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sug", @rows = '1' })
                         <span class="text-danger" id="@("spanitemcos_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
@@ -353,7 +353,7 @@
             {
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sug", @rows = '1' })
                         <span class="text-danger" id="@("spanitemgas_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
                     </td>
@@ -411,7 +411,7 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)",@class= "panel-info form-control-sm  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)",@class= "panel-info form-control-sm  inputForm fc sug", @rows = '1' })
                         <span class="text-danger" id="@("spanitemotr_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
@@ -522,16 +522,13 @@
             autosize(this);
             this.style.display = '';
             autosize.update(this);
+            isug();
         });}
         
 
-        $(document).ready(function() {
+        
 
-
-            itextarea();
-
-        });
-
+        
 
         $("#mostrar").click(function() {
             $("#mostrar").hide();
@@ -944,9 +941,25 @@
         }
 
 
+        function isug() {
+           
+            $.each($(".sug"), function() {
+                new Awesomplete(this, {
+                    list: linesarray
+                });
 
+            });
+        }
 
         $(document).ready(function() {
+            lines = @Html.Raw(ViewBag.lines);
+            linesarray = [];
+            $.each(lines, function(index, value) {
+                linesarray.push(value);
+
+            });
+            isug();
+            itextarea();
             valf = 0;
             tipo = "ing";
 
@@ -961,7 +974,7 @@
             totgas = [];
             tototr = [];
             arraysamountsedit();
-
+           
 
         });
 
@@ -1075,7 +1088,7 @@
                 $.each(orderItemsi, function(i, val) {
                     var $rowi = $('<tr class="elimi"></tr>');
 
-                    $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowi.append($('<td style="width: 40%"><textarea id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowi.append($('<td><input id="ing_Amountz" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
@@ -1109,6 +1122,8 @@
                     itextarea();
                     calculogral();
                     //fin calculo total gral
+                    isug();
+
                 });
             } else {
                 $('#orderItemsi').html('');
@@ -1123,7 +1138,7 @@
                 $.each(orderItemsc, function(i, val) {
                     var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
 
-                    $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td style="width: 40%"><textarea id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td><input id="cos_Amountz" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
                     var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
@@ -1155,6 +1170,8 @@
                     itextarea();
                     calculogral();
                     //fin calculo total gral
+                    isug();
+
                 });
             } else {
                 $('#orderItemsc').html('');
@@ -1168,7 +1185,7 @@
                 $('#orderItemsg').html('<span class="text-danger"></span>');
                 $.each(orderItemsg, function(i, val) {
                     var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
-                    $rowg.append($('<td style="width: 40%"><textarea id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td style="width: 40%"><textarea id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowg.append($('<td style="width: 40%"><textarea id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowg.append($('<td><input id="gas_Amountz" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
@@ -1206,6 +1223,8 @@
                     calculogral();
                     //fin calculo total gral
                     itextarea();
+                    isug();
+
                 });
             } else {
                 $('#orderItemsg').html('');
@@ -1220,7 +1239,7 @@
                 $.each(orderItemso, function(i, val) {
                     var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
                    
-                    $rowo.append($('<td style="width: 40%"><textarea id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td style="width: 40%"><textarea id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowo.append($('<td style="width: 40%"><textarea id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowo.append($('<td><input id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
@@ -1255,6 +1274,7 @@
                     //calculo total gral
                     calculogral();
                     //fin calculo total gral
+                    isug();
 
                 });
             } else {

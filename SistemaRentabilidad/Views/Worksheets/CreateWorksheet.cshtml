@@ -120,7 +120,7 @@
     </thead>
     <tbody id="nueva">
     <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc " id="ndescription" placeholder="" style="max-width: 100%"></textarea>
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc sug" id="ndescription" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center fina">
@@ -384,11 +384,10 @@
 
 
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
-
-
-
     <script>
-        $("body").on("click", "a.dialog-window", null, function (e) {
+
+
+        $("body").on("click", "a.dialog-window", null, function(e) {
             e.preventDefault();
 
             var $link = $(this); // Reference to <a/> link
@@ -398,12 +397,11 @@
             var url = $(this).attr('href');
             if (url.indexOf('#') == 0) {
                 $('#myModal').modal('show');
-            }
-            else {
-                $.get(url, function (data) {
+            } else {
+                $.get(url, function(data) {
                     $('#myModal .te').html(data);
                     $('#myModal').modal();
-                }).success(function () { $('input:text:visible:first').focus(); });
+                }).success(function() { $('input:text:visible:first').focus(); });
             }
         });
 
@@ -417,7 +415,7 @@
                 options3.type = "GET";
                 options3.data = { "fecha": $("#wdate").val() };
                 options3.dataType = "json";
-                options3.success = function (data) {
+                options3.success = function(data) {
                     if (data) {
                         $('#wdate').siblings('span.text-danger').html('Período existente.');
                         valf = 1;
@@ -425,18 +423,20 @@
                         $('#wdate').siblings('span.text-danger').html('');
                         valf = 0;
                     };
-            
+
                 };
                 $.ajax(options3);
             }
         }
 
-        function itextarea(){$('textarea').each(function() {
-            autosize(this);
-            this.style.display = '';
-            autosize.update(this);
-        });}
-      
+        function itextarea() {
+            $('textarea').each(function() {
+                autosize(this);
+                this.style.display = '';
+                autosize.update(this);
+            });
+        }
+
         function valdescb(x) {
             if (x.value.trim() == "" || x.value == null) {
 
@@ -447,7 +447,7 @@
             };
         }
 
-      
+
         function valamoub(x) {
             if (x.value.trim() == "" || x.value == null) {
                 $(x).siblings('span.text-danger').html('Requerido.');
@@ -462,7 +462,6 @@
         }
 
 
-
         function arraysamountsedit() {
             itemsi = [];
             itemsiamounts = [];
@@ -473,10 +472,10 @@
             itemso = [];
             itemsoamounts = [];
 
-            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
-            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
-            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
-            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
+            $("input[name='ing_Amount']").map(function() { itemsiamounts.push(parseFloat(this.value)) });
+            $("input[name='cos_Amount']").map(function() { itemscamounts.push(parseFloat(this.value)) });
+            $("input[name='gas_Amount']").map(function() { itemsgamounts.push(parseFloat(this.value)) });
+            $("input[name='otr_Amount']").map(function() { itemsoamounts.push(parseFloat(this.value)) });
 
         }
 
@@ -500,21 +499,21 @@
             itemsodescriptions = [];
             itemsocomments = [];
             itemsoamounts = [];
-            $("textarea[name='ing_SheetDescription']").map(function () { itemsidescriptions.push((this.value)) });
-            $("textarea[name='ing_Comments']").map(function () { itemsicomments.push((this.value)) });
-            $("input[name='ing_Amount']").map(function () { itemsiamounts.push(parseFloat(this.value)) });
+            $("textarea[name='ing_SheetDescription']").map(function() { itemsidescriptions.push((this.value)) });
+            $("textarea[name='ing_Comments']").map(function() { itemsicomments.push((this.value)) });
+            $("input[name='ing_Amount']").map(function() { itemsiamounts.push(parseFloat(this.value)) });
 
-            $("textarea[name='cos_SheetDescription']").map(function () { itemscdescriptions.push((this.value)) });
-            $("textarea[name='cos_Comments']").map(function () { itemsccomments.push((this.value)) });
-            $("input[name='cos_Amount']").map(function () { itemscamounts.push(parseFloat(this.value)) });
+            $("textarea[name='cos_SheetDescription']").map(function() { itemscdescriptions.push((this.value)) });
+            $("textarea[name='cos_Comments']").map(function() { itemsccomments.push((this.value)) });
+            $("input[name='cos_Amount']").map(function() { itemscamounts.push(parseFloat(this.value)) });
 
-            $("textarea[name='gas_SheetDescription']").map(function () { itemsgdescriptions.push((this.value)) });
-            $("textarea[name='gas_Comments']").map(function () { itemsgcomments.push((this.value)) });
-            $("input[name='gas_Amount']").map(function () { itemsgamounts.push(parseFloat(this.value)) });
+            $("textarea[name='gas_SheetDescription']").map(function() { itemsgdescriptions.push((this.value)) });
+            $("textarea[name='gas_Comments']").map(function() { itemsgcomments.push((this.value)) });
+            $("input[name='gas_Amount']").map(function() { itemsgamounts.push(parseFloat(this.value)) });
 
-            $("textarea[name='otr_SheetDescription']").map(function () { itemsodescriptions.push((this.value)) });
-            $("textarea[name='otr_Comments']").map(function () { itemsocomments.push((this.value)) });
-            $("input[name='otr_Amount']").map(function () { itemsoamounts.push(parseFloat(this.value)) });
+            $("textarea[name='otr_SheetDescription']").map(function() { itemsodescriptions.push((this.value)) });
+            $("textarea[name='otr_Comments']").map(function() { itemsocomments.push((this.value)) });
+            $("input[name='otr_Amount']").map(function() { itemsoamounts.push(parseFloat(this.value)) });
 
 
             for (i = 0; i < itemsidescriptions.length; i++) {
@@ -562,26 +561,26 @@
 
         function calcing() {
             ting = 0;
-            $.each(itemsiamounts, function () { ting += parseFloat(this) || 0; });
+            $.each(itemsiamounts, function() { ting += parseFloat(this) || 0; });
             $('#toting').html(ting.toFixed(2));
         }
 
         function calccos() {
             tcos = 0;
-            $.each(itemscamounts, function () { tcos += parseFloat(this) || 0; });
+            $.each(itemscamounts, function() { tcos += parseFloat(this) || 0; });
             $('#totcos').html(tcos.toFixed(2));
 
         }
 
         function calcgas() {
             tgas = 0;
-            $.each(itemsgamounts, function () { tgas += parseFloat(this) || 0; });
+            $.each(itemsgamounts, function() { tgas += parseFloat(this) || 0; });
             $('#totgas').html(tgas.toFixed(2));
         }
 
         function calcotr() {
             totr = 0;
-            $.each(itemsoamounts, function () { totr += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
             $('#tototr').html(totr.toFixed(2));
 
         }
@@ -589,13 +588,13 @@
         function calculogral() {
             arraysamountsedit();
             tgral = 0;
-            $.each(itemsiamounts, function () { tgral += parseFloat(this) || 0; });
-            $.each(itemsoamounts, function () { tgral += parseFloat(this) || 0; });
-            $.each(itemsgamounts, function () { tgral -= parseFloat(this) || 0; });
-            $.each(itemscamounts, function () { tgral -= parseFloat(this) || 0; });
+            $.each(itemsiamounts, function() { tgral += parseFloat(this) || 0; });
+            $.each(itemsoamounts, function() { tgral += parseFloat(this) || 0; });
+            $.each(itemsgamounts, function() { tgral -= parseFloat(this) || 0; });
+            $.each(itemscamounts, function() { tgral -= parseFloat(this) || 0; });
             document.getElementById("wtotal").value = tgral.toFixed(2);
         }
-     
+
 
         function borrarfilaingb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();
@@ -610,7 +609,7 @@
             calculogral();
         }
 
-    
+
         function borrarfilacosb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();
             toastr.warning("-" + a + "-<br/>Eliminado.", "Costo:");
@@ -623,7 +622,7 @@
             calculogral();
         }
 
-     
+
         function borrarfilagasb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();
             toastr.warning("-" + a + "-<br/>Eliminado.", "Gasto:");
@@ -635,7 +634,7 @@
             calcotr();
             calculogral();
         }
-     
+
         function borrarfilaotrb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();
 
@@ -648,16 +647,16 @@
             calcotr();
             calculogral();
         }
-   
+
         function renewi() {
             orderItemsi = [];
             orderItemsidescriptions = [];
             orderItemsicomments = [];
             orderItemsiamounts = [];
 
-            $("textarea[id='ing_SheetDescriptionz']").map(function () { orderItemsidescriptions.push((this.value)) });
-            $("textarea[id='ing_Commentsz']").map(function () { orderItemsicomments.push((this.value)) });
-            $("input[id='ing_Amountz']").map(function () { orderItemsiamounts.push(parseFloat(this.value)) });
+            $("textarea[id='ing_SheetDescriptionz']").map(function() { orderItemsidescriptions.push((this.value)) });
+            $("textarea[id='ing_Commentsz']").map(function() { orderItemsicomments.push((this.value)) });
+            $("input[id='ing_Amountz']").map(function() { orderItemsiamounts.push(parseFloat(this.value)) });
 
             for (i = 0; i < orderItemsidescriptions.length; i++) {
 
@@ -671,6 +670,7 @@
             }
 
         }
+
         function renewc() {
 
 
@@ -679,9 +679,9 @@
             orderItemsccomments = [];
             orderItemscamounts = [];
 
-            $("textarea[id='cos_SheetDescriptionz']").map(function () { orderItemscdescriptions.push((this.value)) });
-            $("textarea[id='cos_Commentsz']").map(function () { orderItemsccomments.push((this.value)) });
-            $("input[id='cos_Amountz']").map(function () { orderItemscamounts.push(parseFloat(this.value)) });
+            $("textarea[id='cos_SheetDescriptionz']").map(function() { orderItemscdescriptions.push((this.value)) });
+            $("textarea[id='cos_Commentsz']").map(function() { orderItemsccomments.push((this.value)) });
+            $("input[id='cos_Amountz']").map(function() { orderItemscamounts.push(parseFloat(this.value)) });
 
             for (i = 0; i < orderItemscdescriptions.length; i++) {
 
@@ -702,9 +702,9 @@
             orderItemsgcomments = [];
             orderItemsgamounts = [];
 
-            $("textarea[id='gas_SheetDescriptionz']").map(function () { orderItemsgdescriptions.push((this.value)) });
-            $("textarea[id='gas_Commentsz']").map(function () { orderItemsgcomments.push((this.value)) });
-            $("input[id='gas_Amountz']").map(function () { orderItemsgamounts.push(parseFloat(this.value)) });
+            $("textarea[id='gas_SheetDescriptionz']").map(function() { orderItemsgdescriptions.push((this.value)) });
+            $("textarea[id='gas_Commentsz']").map(function() { orderItemsgcomments.push((this.value)) });
+            $("input[id='gas_Amountz']").map(function() { orderItemsgamounts.push(parseFloat(this.value)) });
 
             for (i = 0; i < orderItemsgdescriptions.length; i++) {
 
@@ -725,9 +725,9 @@
             orderItemsocomments = [];
             orderItemsoamounts = [];
 
-            $("textarea[id='otr_SheetDescriptionz']").map(function () { orderItemsodescriptions.push((this.value)) });
-            $("textarea[id='otr_Commentsz']").map(function () { orderItemsocomments.push((this.value)) });
-            $("input[id='otr_Amountz']").map(function () { orderItemsoamounts.push(parseFloat(this.value)) });
+            $("textarea[id='otr_SheetDescriptionz']").map(function() { orderItemsodescriptions.push((this.value)) });
+            $("textarea[id='otr_Commentsz']").map(function() { orderItemsocomments.push((this.value)) });
+            $("input[id='otr_Amountz']").map(function() { orderItemsoamounts.push(parseFloat(this.value)) });
 
             for (i = 0; i < orderItemsodescriptions.length; i++) {
 
@@ -750,10 +750,28 @@
 
         function actotr(a) { tipo = "otr"; }
 
-        $(document).ready(function () {
+        function isug() {
+
+            $.each($(".sug"), function() {
+                new Awesomplete(this, {
+                    list: linesarray
+                });
+
+            });
+        }
+
+        $(document).ready(function() {
             valfecha();
             itextarea();
-        
+            lines = @Html.Raw(ViewBag.lines);
+            linesarray = [];
+            $.each(lines, function(index, value) {
+                linesarray.push(value);
+
+            });
+
+            isug();
+
             tipo = "ing";
 
             orderItems = [];
@@ -883,7 +901,7 @@
                     $('#wdate').siblings('span.text-danger').html('');
                 }
 
-                $("textarea[name='ing_SheetDescription']").map(function () {
+                $("textarea[name='ing_SheetDescription']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -897,7 +915,7 @@
 
                 });
 
-                $("textarea[name='cos_SheetDescription']").map(function () {
+                $("textarea[name='cos_SheetDescription']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -910,7 +928,7 @@
 
                 });
 
-                $("textarea[name='gas_SheetDescription']").map(function () {
+                $("textarea[name='gas_SheetDescription']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -923,7 +941,7 @@
 
                 });
 
-                $("textarea[name='otr_SheetDescription']").map(function () {
+                $("textarea[name='otr_SheetDescription']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -935,7 +953,7 @@
                     }
 
                 });
-                $("input[name='ing_Amount']").map(function () {
+                $("input[name='ing_Amount']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -952,7 +970,7 @@
                         }
                     }
                 });
-                $("input[name='cos_Amount']").map(function () {
+                $("input[name='cos_Amount']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -971,7 +989,7 @@
                         }
                     }
                 });
-                $("input[name='gas_Amount']").map(function () {
+                $("input[name='gas_Amount']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -990,7 +1008,7 @@
                         }
                     }
                 });
-                $("input[name='otr_Amount']").map(function () {
+                $("input[name='otr_Amount']").map(function() {
                     var a = this.id;
 
                     var b = a.replace(/\D/g, '');
@@ -1084,17 +1102,17 @@
                 $('.elimi').remove();
                 if (orderItemsi.length > 0) {
                     $('#orderItemsi').html('<span class="text-danger"></span>');
-                    $.each(orderItemsi, function (i, val) {
+                    $.each(orderItemsi, function(i, val) {
                         var $rowi = $('<tr class="elimi"></tr>');
 
-                        $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
+                        $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
                         $rowi.append($('<td style="width: 40%"><textarea id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
                         $rowi.append($('<td><input id="ing_Amountz" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
 
-                        $removei.click(function (e) {
+                        $removei.click(function(e) {
                             e.preventDefault();
                             orderItemsi.splice(i, 1);
                             renewi();
@@ -1121,6 +1139,8 @@
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
+                        isug();
+
                     });
                 } else {
                     $('#orderItemsi').html('');
@@ -1132,14 +1152,14 @@
                 $('.elimc').remove();
                 if (orderItemsc.length > 0) {
                     $('#orderItemsc').html('<span class="text-danger"></span>');
-                    $.each(orderItemsc, function (i, val) {
+                    $.each(orderItemsc, function(i, val) {
                         var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
 
-                        $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
+                        $rowc.append($('<td style="width: 40%"><textarea id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
                         $rowc.append($('<td style="width: 40%"><textarea id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
                         $rowc.append($('<td><input id="cos_Amountz" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
                         var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
-                        $removec.click(function (e) {
+                        $removec.click(function(e) {
                             e.preventDefault();
                             orderItemsc.splice(i, 1);
                             renewc();
@@ -1179,19 +1199,16 @@
                 $('.elimg').remove();
                 if (orderItemsg.length > 0) {
                     $('#orderItemsg').html('<span class="text-danger"></span>');
-                    $.each(orderItemsg, function (i, val) {
+                    $.each(orderItemsg, function(i, val) {
                         var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
-                        $rowg.append($('<td style="width: 40%"><textarea id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
+                        $rowg.append($('<td style="width: 40%"><textarea id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
                         $rowg.append($('<td style="width: 40%"><textarea id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
                         $rowg.append($('<td><input id="gas_Amountz" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
 
-
-
-
-                        $removeg.click(function (e) {
+                        $removeg.click(function(e) {
                             e.preventDefault();
                             orderItemsg.splice(i, 1);
                             renewg();
@@ -1220,6 +1237,8 @@
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
+                        isug();
+
                     });
                 } else {
                     $('#orderItemsg').html('');
@@ -1231,19 +1250,17 @@
                 $('.elimo').remove();
                 if (orderItemso.length > 0) {
                     $('#orderItemso').html('<span class="text-danger"></span>');
-                    $.each(orderItemso, function (i, val) {
+                    $.each(orderItemso, function(i, val) {
                         var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
 
-                        $rowo.append($('<td style="width: 40%"><textarea id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
+                        $rowo.append($('<td style="width: 40%"><textarea id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sug" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
                         $rowo.append($('<td style="width: 40%"><textarea id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
                         $rowo.append($('<td><input id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
 
-
-
-                        $removeo.click(function (e) {
+                        $removeo.click(function(e) {
                             e.preventDefault();
                             orderItemso.splice(i, 1);
                             renewo();
@@ -1270,6 +1287,8 @@
                         //calculo total gral
                         calculogral();
                         //fin calculo total gral
+                        isug();
+
 
                     });
                 } else {
@@ -1279,7 +1298,6 @@
 
             //////fin funciones agregar ing cos gas otr///////
             //////////////////////////
-
 
 
         });

@@ -13,5 +13,8 @@ namespace SistemaRentabilidad.Models
 
         public string LineDescription { get; set; }
 
+        public virtual SheetType SheetType { get; set; }
+
+
     }
 }
