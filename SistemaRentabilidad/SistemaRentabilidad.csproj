@@ -220,16 +220,7 @@
     <Compile Include="Controllers\WorksheetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702050302375_InitialCreate.cs" />
-    <Compile Include="Migrations\201702050302375_InitialCreate.Designer.cs">
-      <DependentUpon>201702050302375_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702211210067_attri.cs" />
-    <Compile Include="Migrations\201702211210067_attri.Designer.cs">
-      <DependentUpon>201702211210067_attri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    </Compile>   
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Sheet.cs" />
     <Compile Include="Models\SheetLine.cs" />
@@ -861,14 +852,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702050302375_InitialCreate.resx">
-      <DependentUpon>201702050302375_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702211210067_attri.resx">
-      <DependentUpon>201702211210067_attri.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

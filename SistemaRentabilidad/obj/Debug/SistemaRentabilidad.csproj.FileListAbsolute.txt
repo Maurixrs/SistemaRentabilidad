@@ -358,6 +358,3 @@ E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.xml
 E:\Godesa\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.dll
 E:\Godesa\SistemaRentabilidad\SistemaRentabilidad\bin\AutoMapper.xml
 E:\Godesa\SistemaRentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.csprojResolveAssemblyReference.cache
-E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.Migrations.InitialCreate.resources
-E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.csproj.GenerateResource.Cache
-E:\Proyectos\SistemaRentabilidad\SistemaRentabilidad\obj\Debug\SistemaRentabilidad.Migrations.attri.resources
