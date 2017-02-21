@@ -182,15 +182,15 @@
     </thead>
     <tbody id="nueva">
     <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc sug" id="ndescription" placeholder="" style="max-width: 100%"></textarea>
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc sug" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
         <span class="text-danger" style="display: block"></span>
     </td>
     <td class="fina">
-        <input type="number" min="0" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller;height: 31px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+        <input type="text" min="0" max="9999999999" maxlength="10" class="panel-info form-control inputForm2 fc montocentrado"  style="width: 100px; font-size: smaller;height: 31px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
         <span class="text-danger" style="display: block"></span>
     </td>
     <td>
@@ -388,7 +388,7 @@
     <tbody>
         <tr>
             <td>
-                <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
+                <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" maxlength="140" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
 
             </td>
             <td>
@@ -1217,9 +1217,9 @@
                     $.each(orderItemsi, function(i, val) {
                         var $rowi = $('<tr class="elimi"></tr>');
 
-                        $rowi.append($('<td style="width: 40%"><textarea id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugi" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
-                        $rowi.append($('<td style="width: 40%"><textarea id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
-                        $rowi.append($('<td><input id="ing_Amountz" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                        $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugi" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
+                        $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
+                        $rowi.append($('<td><input id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 

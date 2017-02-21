@@ -26,7 +26,7 @@ namespace SistemaRentabilidad
                         "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/autosize.js",
                        "~/Scripts/bootstrap-select.min.js", "~/Scripts/awesomplete.js",
-
+                       "~/Scripts/maxlength.js",
                        "~/Scripts/i18n/defaults-ar_AR.min.js"
 
 

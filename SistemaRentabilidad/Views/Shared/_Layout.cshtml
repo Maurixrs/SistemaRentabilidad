@@ -51,11 +51,12 @@
                         <li class="">
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
-                                <div style="display: inline-flex;margin-top:15px">
-                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" style="width: 200px" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize;height: 31px" />
+                                <div style="display: inline-flex; margin-top: 15px">
+                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px"/>
                                     &nbsp;
-                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />
+                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"/>
                                 </div>
+                                
                             }
                         </li>
                     </ul>
