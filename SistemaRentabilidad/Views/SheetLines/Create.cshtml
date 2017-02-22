@@ -17,8 +17,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" }, @onchange = "SugExistente()" })
                 @Html.ValidationMessageFor(model => model.LineDescription, "", new { @class = "text-danger" })
+                <span class="text-danger" id="spansugerencia" style="display: block"></span>
             </div>
         </div>
 
@@ -41,3 +42,31 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts{
+    <script>
+    var IsValidItem = true;
+    function SugExistente() {
+        if ($('#LineDescription').val() != '') {
+            var options = {};
+            options.url = '@Url.Action("ExisteSug", "SheetLines")';
+            options.type = "GET";
+            options.data = { "s": $("#LineDescription").val() };
+            options.dataType = "json";
+            options.success = function (data) {
+                if (data) {
+                    $('#spansugerencia').text("Sugerencia existente");
+                    IsValidItem = false;
+                } else {
+                    $('#spansugerencia').text("");
+                    IsValidItem = true;
+                };
+
+            };
+            $.ajax(options);
+        }
+    }
+
+
+</script>
+}

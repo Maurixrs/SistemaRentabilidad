@@ -4,36 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LineDescription)
+<h2 class="text-center">Sugerencias</h2>
+<hr/>
+<a href="@Url.Action("Create", "SheetLines")" class="btn-sm btn-success hvr-glow">Nueva sugerencia</a>
+<br/><br/>
+<table id="tabla" class="table table-bordered">
+    <thead>
+    <tr style="background-color: #2c3e50;">
+        <th style="color:white">
+            Sugerencia
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SheetType)
+        <th style="color:white">
+            Tipo de Transacción
         </th>
-        <th></th>
+        <th class="text-center" style="color: white">
+            Opciones
+        </th>
     </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LineDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SheetType)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Edit", "Edit", new {id = item.IdSheetLine}) |
+                @Html.ActionLink("Details", "Details", new {id = item.IdSheetLine}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.IdSheetLine})
+            </td>
+        </tr>
+    }
+    </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LineDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SheetType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdSheetLine }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdSheetLine }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdSheetLine })
-        </td>
-    </tr>
-}
 
 </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $("#tabla").DataTable({
+                order: [[0, "desc"]],
+
+                "language": {
+                    "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+                }
+            });
+        })
+    </script>
+}
