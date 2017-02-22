@@ -157,6 +157,17 @@ namespace SistemaRentabilidad.Controllers
 
                 foreach (var i in O.Sheets)
                 {
+                    var exline = db.SheetLines.ToList().Exists(f => f.LineDescription == i.SheetDescription & f.SheetType == i.SheetType);
+
+                    if (!exline)
+                    {
+                        var newline = new SheetLine();
+                        newline.LineDescription = i.SheetDescription;
+                        newline.SheetType = i.SheetType;
+                        db.SheetLines.Add(newline);
+                        db.SaveChanges();
+                    }
+
                     Sheet sh = new Sheet();
                     sh.SheetDescription = i.SheetDescription;
                     sh.Amount = i.Amount;

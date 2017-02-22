@@ -44,15 +44,22 @@
 
                             </ul>
                         </li>
-
                         <li class="hvr-underline-from-center">@Html.ActionLink("Estadísticas", "Index", "Statistics")</li>
+                        <li class="dropdown" style="left: auto">
+                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Sugerencias<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="download">
+                                <li style="font-weight: bold;">@Html.ActionLink("Listado", "Index", "SheetLines")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Nueva", "Create", "SheetLines")</li>
+
+                            </ul>
+                        </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
                         <li class="">
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
                                 <div style="display: inline-flex; margin-top: 15px">
-                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px"/>
+                                    <input type="month" class="panel-info form-control inputForm2 no-spin " onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate"  name="fdate"  style="text-transform: capitalize; height: 31px"/>
                                     &nbsp;
                                     <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"/>
                                 </div>
@@ -111,8 +118,11 @@
             height: 100%;
             /* The html and body elements cannot have any padding or margin. */
         }
+    .no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 
-        /* Wrapper for page content to push down footer */
+   /* Wrapper for page content to push down footer */
         #wrap {
             min-height: 100%;
             height: auto !important;
@@ -120,8 +130,7 @@
             /* Negative indent footer by it's height */
             margin: 0 auto -30px;
         }
-
-        /* Set the fixed height of the footer here */
+      
         #push,
         #footer {
             height: 30px;
