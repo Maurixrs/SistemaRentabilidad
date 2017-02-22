@@ -126,10 +126,10 @@ namespace SistemaRentabilidad.Controllers
             base.Dispose(disposing);
         }
 
-        public JsonResult ExisteSug(SheetLine s)
+        public JsonResult ExisteSug(string sd, SheetLine st)
         {
 
-            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == s.LineDescription & f.SheetType == s.SheetType);
+            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == sd & f.SheetType == st.SheetType);
 
             return Json(existe, JsonRequestBehavior.AllowGet);
         }
