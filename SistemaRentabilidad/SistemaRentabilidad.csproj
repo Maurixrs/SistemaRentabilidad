@@ -843,8 +843,6 @@
     <Content Include="Views\Worksheets\HelpIndex.cshtml" />
     <Content Include="Views\Worksheets\HelpEdit.cshtml" />
     <Content Include="Views\SheetLines\Index.cshtml" />
-    <Content Include="Views\SheetLines\Details.cshtml" />
-    <Content Include="Views\SheetLines\Create.cshtml" />
     <Content Include="Views\SheetLines\Edit.cshtml" />
     <Content Include="Views\SheetLines\Delete.cshtml" />
   </ItemGroup>

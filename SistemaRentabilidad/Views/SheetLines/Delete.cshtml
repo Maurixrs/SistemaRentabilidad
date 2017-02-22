@@ -6,35 +6,15 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h4 class="text-center text-danger">¿Seguro de eliminar @Model.LineDescription de la lista de sugerencias?</h4>
 <div>
-    <h4>SheetLine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LineDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LineDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SheetType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SheetType)
-        </dd>
-
-    </dl>
-
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <input type="submit" value="Delete" class="btn btn-danger"/>
+
         </div>
     }
 </div>

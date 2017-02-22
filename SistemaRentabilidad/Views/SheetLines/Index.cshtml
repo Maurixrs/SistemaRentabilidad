@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SistemaRentabilidad.Models.SheetLine>
+﻿@using SistemaRentabilidad.Models
+@model IEnumerable<SistemaRentabilidad.Models.SheetLine>
 
 @{
     ViewBag.Title = "Index";
@@ -6,18 +7,19 @@
 
 <h2 class="text-center">Sugerencias</h2>
 <hr/>
-<a href="@Url.Action("Create", "SheetLines")" class="btn-sm btn-success hvr-glow">Nueva sugerencia</a>
-<br/><br/>
+@*<a href="@Url.Action("Create", "SheetLines")" class="btn-sm btn-success hvr-glow">Nueva sugerencia</a>
+<br/><br/>*@
 <table id="tabla" class="table table-bordered">
     <thead>
     <tr style="background-color: #2c3e50;">
-        <th style="color:white">
-            Sugerencia
-        </th>
-        <th style="color:white">
+        <th style="color: white; width: 150px">
             Tipo de Transacción
         </th>
-        <th class="text-center" style="color: white">
+        <th style="color: white">
+            Sugerencia
+        </th>
+
+        <th class="text-center" style="color: white; width: 100px">
             Opciones
         </th>
     </tr>
@@ -26,16 +28,29 @@
     @foreach (var item in Model)
     {
         <tr>
+
+            @if (item.SheetType == SheetType.OtroIngreso)
+            {
+                <td>
+                    <text>Otro Ingreso</text>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.SheetType)
+                </td>
+            }
+
             <td>
                 @Html.DisplayFor(modelItem => item.LineDescription)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SheetType)
-            </td>
+
             <td class="text-center">
-                @Html.ActionLink("Edit", "Edit", new {id = item.IdSheetLine}) |
-                @Html.ActionLink("Details", "Details", new {id = item.IdSheetLine}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.IdSheetLine})
+                <a href="@Url.Action("Edit", "SheetLines", new {id = item.IdSheetLine})" class="btn btn-success btn-xs dialog-window"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                &nbsp;
+                <a href="@Url.Action("Delete", "SheetLines", new {id = item.IdSheetLine})" class="btn btn-danger btn-xs dialog-window2"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
             </td>
         </tr>
     }
@@ -44,16 +59,90 @@
 
 </table>
 
+<div class="modal fade" id="myModal" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Editar Sugerencia</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Eliminar Sugerencia</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 @section scripts{
     <script>
         $(document).ready(function() {
             $("#tabla").DataTable({
-                order: [[0, "desc"]],
+                order: [[0, "asc"]],
 
                 "language": {
                     "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
                 }
             });
-        })
+        });
+
+        $("body").on("click", "a.dialog-window", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal .te').html(data);
+                    $('#myModal').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
+        $("body").on("click", "a.dialog-window2", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal2.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal2').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal2 .te').html(data);
+                    $('#myModal2').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
     </script>
 }

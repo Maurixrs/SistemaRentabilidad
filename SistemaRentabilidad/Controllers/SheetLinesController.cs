@@ -37,28 +37,7 @@ namespace SistemaRentabilidad.Controllers
             return View(sheetLine);
         }
 
-        // GET: SheetLines/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SheetLines/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdSheetLine,LineDescription")] SheetLine sheetLine)
-        {
-            if (ModelState.IsValid)
-            {
-                db.SheetLines.Add(sheetLine);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(sheetLine);
-        }
+        
 
         // GET: SheetLines/Edit/5
         public ActionResult Edit(int? id)
@@ -80,7 +59,7 @@ namespace SistemaRentabilidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdSheetLine,LineDescription")] SheetLine sheetLine)
+        public ActionResult Edit([Bind(Include = "IdSheetLine,LineDescription,SheetType")] SheetLine sheetLine)
         {
             if (ModelState.IsValid)
             {
@@ -126,17 +105,10 @@ namespace SistemaRentabilidad.Controllers
             base.Dispose(disposing);
         }
 
-        public JsonResult ExisteSug(string sd, SheetLine st)
+        public JsonResult ExisteSugEdit(string sd, string st, int si)
         {
 
-            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == sd & f.SheetType == st.SheetType);
-
-            return Json(existe, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult ExisteSugEdit(SheetLine s)
-        {
-
-            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == s.LineDescription & f.SheetType == s.SheetType & f.IdSheetLine != s.IdSheetLine);
+            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == sd & f.SheetType.ToString() == st & f.IdSheetLine != si);
 
             return Json(existe, JsonRequestBehavior.AllowGet);
         }
