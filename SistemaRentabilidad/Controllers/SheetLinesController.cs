@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -124,5 +125,21 @@ namespace SistemaRentabilidad.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult ExisteSug(SheetLine s)
+        {
+
+            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == s.LineDescription & f.SheetType == s.SheetType);
+
+            return Json(existe, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ExisteSugEdit(SheetLine s)
+        {
+
+            var existe = db.SheetLines.ToList().Exists(f => f.LineDescription == s.LineDescription & f.SheetType == s.SheetType & f.IdSheetLine != s.IdSheetLine);
+
+            return Json(existe, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
