@@ -6,10 +6,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SheetLine</h4>
         <hr />
@@ -17,16 +17,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LineDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control" }, @onchange = "SugExistente()" })
+                @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control", @onchange = "esug()" } })
                 @Html.ValidationMessageFor(model => model.LineDescription, "", new { @class = "text-danger" })
-                <span class="text-danger" id="spansugerencia" style="display: block"></span>
+                <span class="text-danger" id="spansug" style="display: block"></span>
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.SheetType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.SheetType, htmlAttributes: new { @class = "form-control" })
+                @Html.EnumDropDownListFor(model => model.SheetType, htmlAttributes: new { @class = "form-control", @onchange = "esug()" })
                 @Html.ValidationMessageFor(model => model.SheetType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,31 +43,37 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section Scripts{
 
-@section scripts{
     <script>
-    var IsValidItem = true;
-    function SugExistente() {
-        if ($('#LineDescription').val() != '') {
-            var options = {};
-            options.url = '@Url.Action("ExisteSug", "SheetLines")';
-            options.type = "GET";
-            options.data = { "s": $("#LineDescription").val() };
-            options.dataType = "json";
-            options.success = function (data) {
+
+
+        function esug() {
+            s = [];
+            s.push({
+                SheetType: $("#SheetType").val()
+            });
+
+            var options3 = {};
+            options3.url = '@Url.Action("ExisteSug", "SheetLines")';
+            options3.type = "GET";
+            options3.data = {"sd": $("#LineDescription").val(), "st": s },
+            options3.dataType = "json";
+            options3.success = function (data) {
                 if (data) {
-                    $('#spansugerencia').text("Sugerencia existente");
-                    IsValidItem = false;
+                    $('#spansug').html('Sugerencia existente.');
+                    vals = 1;
                 } else {
-                    $('#spansugerencia').text("");
-                    IsValidItem = true;
+                    $('#spansug').html('');
+                    vals = 0;
                 };
 
             };
-            $.ajax(options);
+            $.ajax(options3);
         }
-    }
 
 
-</script>
+    </script>
+
+
 }
