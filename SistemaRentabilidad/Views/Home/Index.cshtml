@@ -4,27 +4,57 @@
 
 
 
+<body>
 
 
-<div class="text-center jumbotron sombra_externa sombra_fija sombra_radial text-center thStyleGradient2 bordesRedond ">
-    <h3><b>¡Bienvenido al Sistema de Rentabilidad!</b>
-    </h3>
-    <h4>
-        <p class="fontMarca">Elgordo.com Distribuciones</p>
-        <br/>
-        <br/>
-        <img src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/paty.jpg")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/donyeyo.jpg")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/piamontesa.png")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/danica.png")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/elnoble.jpg")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/vanoli.jpg")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/pozo.png")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/emeth.jpg")'>
-        <img src='@Url.Content("~/Content/Images/portadaimg/logo-Vienissima.png")'>
-    </h4>
-</div>
+    <div class="text-center jumbotron sombra_externa sombra_fija sombra_radial text-center thStyleGradient2 bordesRedond ">
+        <h3>
+            <b>¡Bienvenido al Sistema de Rentabilidad!</b>
+        </h3>
+        <h4>
+            <p class="fontMarca">Elgordo.com Distribuciones</p>
+            <br />
+            <br />
+            <img src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/paty.jpg")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/donyeyo.jpg")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/piamontesa.png")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/danica.png")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/elnoble.jpg")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/vanoli.jpg")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/pozo.png")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/emeth.jpg")'>
+            <img src='@Url.Content("~/Content/Images/portadaimg/logo-Vienissima.png")'>
+        </h4>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">Acceso rápido</h3>
+        </div>
+    </div>
+        
+            <div class="row">
+                <div class="col-lg-6">
+                    @{
+                        if (@ViewBag.lastws > 0)
+                        {
+                            <a href="@Url.Action("EditW", "Worksheets", new {id = @ViewBag.lastws})" class="btn btn-lg btn-block btn-default "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-lg btn-block btn-default disabled "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+                        }
+                    }
+                </div>
+                <div class="col-lg-6">
+                    <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn btn-lg btn-block btn-default"><span class="glyphicon glyphicon-plus"></span> Crear nueva planilla</a>
+                </div>
+            </div>
+        
+    
+
+</body>
 
 
 <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

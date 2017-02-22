@@ -4,15 +4,29 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SistemaRentabilidad.Context;
 
 namespace SistemaRentabilidad.Controllers
 {
     [Authorize(Users = "urdirom-dist@hotmail.com")]
     public class HomeController : Controller
     {
+        private ContextSR db = new ContextSR();
+
         [AllowAnonymous]
         public ActionResult Index()
         {
+            try
+            {
+                @ViewBag.lastws = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
+            }
+            catch (Exception)
+            {
+
+                @ViewBag.lastws = 0;
+            }
+                
+            
             return View();
         }
 

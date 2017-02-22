@@ -1,4 +1,5 @@
-﻿
+﻿       
+    
 @{
     ViewBag.Title = "Nueva Planilla";
 }
@@ -164,39 +165,28 @@
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
-        <tr class="text-center thStyleGradient3">
-            <th class="text-center" style="width: 40%">
-                Descripción
-            </th>
-            <th class="text-center" style="width: 40%">
-                Observación
-            </th>
+    <tr class="text-center thStyleGradient3">
+        <th class="text-center">
+            Tipo
+        </th>
+        <th class="text-center" style="width: 40%">
+            Transacción
+        </th>
+        <th class="text-center" style="width: 40%">
+            Observación
+        </th>
 
-            <th class="text-center">
-                Monto<i>($)</i>
-            </th>
-            <th class="text-center">
-                Tipo
-            </th>
-        </tr>
+        <th class="text-center">
+            Monto<i>($)</i>
+        </th>
+
+    </tr>
     </thead>
     <tbody id="nueva">
-    <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc sug" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="fina">
-        <input type="text" min="0" max="9999999999" maxlength="10" class="panel-info form-control inputForm2 fc montocentrado"  style="width: 100px; font-size: smaller;height: 31px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
-        <span class="text-danger" style="display: block"></span>
-    </td>
     <td>
         <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
             <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
-                <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
             </label>
             <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
                 <input type="radio" name="options" value="cos" autocomplete="off">Costo
@@ -209,8 +199,20 @@
             </label>
         </div>
     </td>
+    <td class="text-center fina">
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc sug" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
+        <span class="text-danger" style="display: block"></span>
+    </td>
+    <td class="text-center fina">
+        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
+        <span class="text-danger" style="display: block"></span>
+    </td>
     <td class="fina">
-        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
+        <input type="text" min="0" max="9999999999" maxlength="10" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller; height: 31px" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+        <span class="text-danger" style="display: block"></span>
+    </td>
+    <td class="fina">
+        <button type="button" onkeypress="gotoButtons()" id="addn" class="btn btn-success btn-xs add" value="nueva"/>
         <span class="glyphicon glyphicon-plus"></span>
     </td>
     </tbody>
@@ -659,6 +661,11 @@
             calculogral();
         }
 
+        function gotoButtons() 
+        {
+            
+                $("#buttonsType").focus();
+            }
 
         function borrarfilacosb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();

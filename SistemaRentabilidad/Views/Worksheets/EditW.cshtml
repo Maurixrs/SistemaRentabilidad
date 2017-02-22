@@ -170,57 +170,58 @@
         </a>
         <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 10px">
             <thead>
-                <tr class="text-left" style="background: gainsboro">
-                    <th class="text-left" style="width: 40%">
-                        Descripción
-                    </th>
-                    <th class="text-left" style="width: 40%">
-                        Observación
-                    </th>
+            <tr class="text-left" style="background: gainsboro">
+                <th class="text-center">
+                    Tipo
+                </th>
+                <th class="text-left" style="width: 40%">
+                    Descripción
+                </th>
+                <th class="text-left" style="width: 40%">
+                    Observación
+                </th>
 
-                    <th class="text-center">
-                        Monto <i>($)</i>
-                    </th>
-                    <th class="text-center">
-                        Tipo
-                    </th>
-                </tr>
+                <th class="text-center">
+                    Monto <i>($)</i>
+                </th>
+
+            </tr>
             </thead>
             <tbody id="nueva">
-                <tr>
-                    <td class="text-left ">
-                        <textarea type="text" maxlength="140" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc sug" id="ndescription" placeholder="" style="max-width: 100%;resize: none"></textarea>
-                        <span class="text-danger" style="display: block"></span>
-                    </td>
-                    <td class="text-left ">
-                        <textarea type="text" rows='1' maxlength="140" class="panel-info form-control-sm  inputForm inputForm3 fc" id="ncomment" placeholder="" style="max-width: 100%;resize: none"></textarea>
-                        <span class="text-danger" style="display: block"></span>
-                    </td>
-                    <td class="">
-                        <input type="text" maxlength="10" class="panel-info form-control-sm inputForm inputForm3 montocentrado" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
-                        <span class="text-danger" style="display: block"></span>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
-                            <label class="btn btn-info btn-xs active styleButton" value="ing" onclick="acting(this)">
-                                <input type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
-                            </label>
-                            <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
-                                <input type="radio" name="options" value="cos" autocomplete="off">Costo
-                            </label>
-                            <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
-                                <input type="radio" name="options" value="gas" autocomplete="off">Gasto
-                            </label>
-                            <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
-                                <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
-                            </label>
-                        </div>
-                    </td>
-                    <td class="">
-                        <button type="button" id="addn" class="btn btn-success btn-xs add" value="nueva" />
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
+                        <label class="btn btn-info btn-xs active styleButton" value="ing" onclick="acting(this)">
+                            <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                        </label>
+                        <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
+                            <input type="radio" name="options" value="cos" autocomplete="off">Costo
+                        </label>
+                        <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
+                            <input type="radio" name="options" value="gas" autocomplete="off">Gasto
+                        </label>
+                        <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
+                            <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
+                        </label>
+                    </div>
+                </td>
+                <td class="text-left ">
+                    <textarea type="text" maxlength="140" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc sug" id="ndescription" placeholder="" style="max-width: 100%; resize: none"></textarea>
+                    <span class="text-danger" style="display: block"></span>
+                </td>
+                <td class="text-left ">
+                    <textarea type="text" rows='1' maxlength="140" class="panel-info form-control-sm  inputForm inputForm3 fc" id="ncomment" placeholder="" style="max-width: 100%; resize: none"></textarea>
+                    <span class="text-danger" style="display: block"></span>
+                </td>
+                <td class="">
+                    <input type="text" maxlength="10" class="panel-info form-control-sm inputForm inputForm3 montocentrado" style="width: 100px" value="1" id="namount" onkeypress="solonumerosptocoma();"/>
+                    <span class="text-danger" style="display: block"></span>
+                </td>
+                <td class="">
+                    <button type="button" onkeypress="gotoButtons()" id="addn" class="btn btn-success btn-xs add" value="nueva"/>
+                    <span class="glyphicon glyphicon-plus"></span>
+                </td>
+            </tr>
             </tbody>
 
         </table>
@@ -509,16 +510,18 @@
 </table>
 
 <hr style="color: grey" />
-<div class="text-center">
-    <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true"></span>&nbsp;Volver</a>
-    <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
-        Guardar
-        <span class="glyphicon glyphicon-floppy-disk"></span>
-    </button>
+<div class="row">
+    <div class="col-lg-5"><a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true"></span>&nbsp;Volver</a></div>
+    <div class="col-lg-5">
+        <button type="button" id="guardar" class="btn btn-success btn-md" value="Guardar">
+            Guardar
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
+    </div>
 
 
 </div>
-
+<br />
 <div id="GSCCModal" class="modal fade" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -654,6 +657,11 @@
                 totr = 0;
                 $.each(itemsoamounts, function() { totr += parseFloat(this) || 0; });
                 document.getElementById("Totalo").value = totr.toFixed(2);
+            }
+
+            function gotoButtons() {
+            
+                $("#buttonsType").focus();
             }
 
             function arraysamountsedit() {
