@@ -395,7 +395,6 @@
     <Content Include="Content\Images\bg_main.jpg" />
     <Content Include="Content\Images\bg_main2.png" />
     <Content Include="Content\Images\BotonAyuda.jpg" />
-    <Content Include="Content\Images\BotonesDetails.jpg" />
     <Content Include="Content\Images\BotonesIndex.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />
     <Content Include="Content\Images\CamposEdit.jpg" />
@@ -411,7 +410,6 @@
     <Content Include="Content\Images\fon 8.jpg" />
     <Content Include="Content\Images\fon 9.jpg" />
     <Content Include="Content\Images\GraficoEstadisticas.jpg" />
-    <Content Include="Content\Images\Guardar.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
     <Content Include="Content\Images\maxresdefault.jpg" />
