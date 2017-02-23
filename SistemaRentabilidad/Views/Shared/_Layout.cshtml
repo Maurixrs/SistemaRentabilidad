@@ -56,23 +56,39 @@
                         </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
-                        <li class="">
+                        @*<li class="">
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
                                 <div style="display: inline-flex; margin-top: 15px">
-                                    <input type="month" class="panel-info form-control inputForm2 no-spin " onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate"  name="fdate"  style="text-transform: capitalize; height: 31px"/>
+                                    <input type="month" class="panel-info form-control no-spin " onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate"  name="fdate"  style="text-transform: capitalize; height: 31px"/>
                                     &nbsp;
                                     <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"/>
                                 </div>
                                 
                             }
+                        </li>*@
+                 
+                        <li class="navbar-form navbar-left">
+
+                            @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
+                            {
+                                <div class="input-group">
+                                    <input type="month" class="form-control no-spin " onchange="valfechaf()" id="fdate" name="fdate" />
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" value='Buscar' id="buscarf" disabled="true">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>}
+
                         </li>
+                       
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
-        <div class="container body-content ">
+        <div class="container body-content upBody">
             @RenderBody()
             
         </div>

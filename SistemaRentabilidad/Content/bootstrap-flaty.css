@@ -3311,20 +3311,21 @@ fieldset[disabled] .btn-info.focus {
 .btn-warning:focus,
 .btn-warning.focus {
   color: #ffffff;
-  background-color: #c87f0a;
-  border-color: #7f5006;
+  background-color: #f29c13;
+  border-color: #cc8310;
 }
 .btn-warning:hover {
   color: #ffffff;
   background-color: #c87f0a;
   border-color: #be780a;
+
 }
 .btn-warning:active,
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
   color: #ffffff;
-  background-color: #c87f0a;
-  border-color: #be780a;
+  background-color: #f29c13;
+  border-color: #cc8310;
 }
 .btn-warning:active:hover,
 .btn-warning.active:hover,
