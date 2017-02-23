@@ -241,6 +241,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\awesomplete.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -432,6 +433,7 @@
     <Content Include="Content\Images\RegistrosMostrados.jpg" />
     <Content Include="Content\Images\Tipo.jpg" />
     <Content Include="Content\Images\x.jpg" />
+    <Content Include="Content\MonthPicker.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -780,6 +782,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\maxlength.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MonthPicker.js" />
     <Content Include="Scripts\ordenFechas.js" />
     <Content Include="Scripts\pace.js" />
     <Content Include="Scripts\printThis.js" />

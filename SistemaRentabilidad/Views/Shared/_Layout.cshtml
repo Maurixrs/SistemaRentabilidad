@@ -3,18 +3,19 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
 
+
+    
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -22,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
 
 </head>
+
 <body class="full" background='@Url.Content("~/Content/Images/fon 1.jpg")'>
     <div id="wrap">
         <div class="navbar navbar-default navbar-fixed-top">
@@ -112,48 +114,52 @@
 <style>
         /* Sticky footer styles
     -------------------------------------------------- */
-        html,
-        body {
-            height: 100%;
-            /* The html and body elements cannot have any padding or margin. */
-        }
-    .no-spin::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
+    html,
+    body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+    }
+   
+    /* Wrapper for page content to push down footer */
+    #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -30px;
+    }
 
-   /* Wrapper for page content to push down footer */
-        #wrap {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            /* Negative indent footer by it's height */
-            margin: 0 auto -30px;
-        }
-      
-        #push,
-        #footer {
-            height: 30px;
-        }
+    #push,
+    #footer {
+        height: 30px;
+    }
 
+    #footer {
+        background-color: transparent;
+    }
+    @@media screen and (max-width: 767px) {
+        .ayuda {
+            display: none;
+        }
+    }
+    /* Lastly, apply responsive CSS fixes as necessary */
+    @@media (max-width: 767px) {
         #footer {
-            background-color: transparent;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
-        @@media screen and (max-width: 767px){ 
-  .ayuda{
-    display:none;
-  }
-}
-        /* Lastly, apply responsive CSS fixes as necessary */
-        @@media (max-width: 767px) {
-            #footer {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
+    }
 </style>
+
+
 <script>
+  
+    //$('#fdate').MonthPicker({ShowIcon: false });
+    //$('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
+    //$('input[type="month"]').addClass('date').attr('type', 'text');
+
     function valfechaf() {      
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
@@ -163,29 +169,30 @@
 
         };
 
-          var options3 = {};
-          options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-          options3.type = "GET";
-          options3.data = { "fecha": $("#fdate").val() };
-          options3.dataType = "json";
-          options3.success = function (data) {
-              if (data) {
-                  $('#buscarf').val("Buscar");
-                  $('#buscarf').removeClass("btn-warning");
-                  $('#buscarf').removeClass("disabled");
-                  $("#buscarf").removeAttr("disabled");
+        var options3 = {};
+        options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+        options3.type = "GET";
+        options3.data = { "fecha": $("#fdate").val() };
+        options3.dataType = "json";
+        options3.success = function (data) {
+            if (data) {
+                $('#buscarf').val("Buscar");
+                $('#buscarf').removeClass("btn-warning");
+                $('#buscarf').removeClass("disabled");
+                $("#buscarf").removeAttr("disabled");
                  
                 
 
 
-              } else {
-                  $('#buscarf').val("Periodo inexistente.");
-                  $('#buscarf').addClass("btn-warning");
-                  $('#buscarf').addClass("disabled");
-                  $("#buscarf").prop("disabled", true);
-              };
+            } else {
+                $('#buscarf').val("Periodo inexistente.");
+                $('#buscarf').addClass("btn-warning");
+                $('#buscarf').addClass("disabled");
+                $("#buscarf").prop("disabled", true);
+            };
 
-          };
-          $.ajax(options3);
+        };
+        $.ajax(options3);
       
-  }</script>
+    }
+</script>
