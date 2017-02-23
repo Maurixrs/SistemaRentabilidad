@@ -9,13 +9,16 @@
 
 
 <h4 class="text-center text-danger">¿Seguro de eliminar @Model.LineDescription de la lista de sugerencias?</h4>
+<h5 class="text-center">No volverá a aparecer en la lista de transacciones sugeridas al crear o editar Planillas.</h5>
+
+<hr style="background-color: #e5e5e5; border-color: #e5e5e5; color: #e5e5e5"/>
 <div>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color text-center">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            <input type="submit" value="Delete" class="btn btn-danger"/>
+            <input type="submit" value="Eliminar" class="btn btn-danger"/>
 
         </div>
     }
