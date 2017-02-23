@@ -73,10 +73,10 @@
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
                                 <div class="input-group">
-                                    <input type="month" class="form-control no-spin " onchange="valfechaf()" id="fdate" name="fdate" />
+                                    <input type="month" class="form-control no-spin" onchange="valfechaf()" id="fdate" name="fdate" />
                                     <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" value='Buscar' id="buscarf" disabled="true">
-                                            <i class="glyphicon glyphicon-search"></i>
+                                        <button class="btn btn-default" type="submit" value='Buscar' id="buscarf">
+                                            <i class="glyphicon glyphicon-search disabled"></i>
                                         </button>
                                     </div>
                                 </div>}
@@ -171,10 +171,15 @@
 
 
 <script>
-  
-    //$('#fdate').MonthPicker({ShowIcon: false });
-    //$('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
-    //$('input[type="month"]').addClass('date').attr('type', 'text');
+
+    $('#fdate').MonthPicker({ShowIcon: false });
+    $('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
+    $('input[type="month"]').addClass('date').attr('type', 'text');
+
+
+
+
+
 
     function valfechaf() {      
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
@@ -191,6 +196,7 @@
         options3.data = { "fecha": $("#fdate").val() };
         options3.dataType = "json";
         options3.success = function (data) {
+            console.log(data);
             if (data) {
                 $('#buscarf').val("Buscar");
                 $('#buscarf').removeClass("btn-warning");
@@ -211,4 +217,9 @@
         $.ajax(options3);
       
     }
+
+
+
+
+
 </script>
