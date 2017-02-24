@@ -73,10 +73,11 @@
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
                                 <div class="input-group">
-                                    <input type="month" class="form-control no-spin" onchange="valfechaf()" id="fdate" name="fdate" />
+                                    <input type="month" class="form-control no-spin formatInputDate" onchange="valfechaf()" id="fdate" name="fdate" placeholder="Date" />
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit" value='Buscar' id="buscarf">
-                                            <i class="glyphicon glyphicon-search disabled"></i>
+                                            <i class="glyphicon glyphicon-search disabled" style="top:-3px;"></i>
+
                                         </button>
                                     </div>
                                 </div>}
@@ -172,9 +173,10 @@
 
 <script>
 
-    $('#fdate').MonthPicker({ShowIcon: false });
-    $('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
-    $('input[type="month"]').addClass('date').attr('type', 'text');
+    //$('#fdate').MonthPicker({ShowIcon: false });
+    //$('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
+    //$('input[type="month"]').addClass('date').attr('type', 'text');
+
 
 
 
@@ -199,7 +201,7 @@
             console.log(data);
             if (data) {
                 $('#buscarf').val("Buscar");
-                $('#buscarf').removeClass("btn-warning");
+             // $('#buscarf').removeClass("btn-warning");
                 $('#buscarf').removeClass("disabled");
                 $("#buscarf").removeAttr("disabled");
                  
@@ -207,10 +209,11 @@
 
 
             } else {
-                $('#buscarf').val("Periodo inexistente.");
+               // $('#buscarf').val("Periodo inexistente.");
                 $('#buscarf').addClass("btn-warning");
-                $('#buscarf').addClass("disabled");
-                $("#buscarf").prop("disabled", true);
+              //  $('#buscarf').addClass("disabled");
+              //  $("#buscarf").prop("disabled", true);
+                alert("Periodo Inexistente. Intente Nuevamente")
             };
 
         };
@@ -222,4 +225,17 @@
 
 
 
+</script>
+
+
+<script>
+Modernizr.load({
+  test: Modernizr.inputtypes.date,
+ 
+  complete: function () {
+    $('input[type=month]').datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+  }
+});
 </script>

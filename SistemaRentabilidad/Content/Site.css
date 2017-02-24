@@ -53,6 +53,31 @@ textarea {
        
 }
 
+#buscarf {
+ height:35px;
+ margin-top:5px;
+ text-align:center;
+}
+
+
+
+/*input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
+}*/
+
+
+.formatInputDate {
+
+    text-transform: capitalize; 
+    height: 35px;
+    margin-top:5px;
+   
+}
+
 
 .tipos{ border-color: darkslategray;border-width: 1px;border-style: dotted}
 .full {
@@ -443,3 +468,19 @@ font-size:65px;
 
 }
 
+input[type="month"]::-webkit-calendar-picker-indicator {
+  color: #114664;
+  margin-left:20px;
+
+}
+input[type="month"]:after {
+  content: "";
+  color: #555;
+  padding-right: 2px;
+ 
+}
+input[type="month"]::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: -7px;
+}
