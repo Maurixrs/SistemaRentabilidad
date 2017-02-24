@@ -161,6 +161,14 @@
 
     <link href="/Content/site.css" rel="stylesheet">
 </head>
+@if (TempData["mimsg"] != null)
+{
+    {
+        <input id="msg" style="display: none" value="@TempData["mimsg"]" />
+
+    }
+
+}
 <div id="imp1" style="margin-top:-17px;">
     <br />
 
@@ -220,7 +228,7 @@
             <thead>
                 <tr class="text-center thStyleGradient3">
                     <th class="text-left" style="width: 40%;">
-                        Descripción
+                        Transacción
                     </th>
                     <th class="text-left" style="width: 40%">
                         Observación
@@ -572,7 +580,11 @@
 @section scripts{
     <script src="@Url.Content("~/Scripts/printThis.js")"></script>
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
+            if ($('#msg').val() == 1) {
+                toastr.success("Planilla guardada correctamente.");
+            }
+
         $("body").on("click", "a.dialog-window", null, function (e) {
             e.preventDefault();
 

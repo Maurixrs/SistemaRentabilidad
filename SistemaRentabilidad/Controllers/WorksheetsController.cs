@@ -62,7 +62,7 @@ namespace SistemaRentabilidad.Controllers
         public ActionResult DetailsLast()
         {
             var id = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
-
+            TempData["mimsg"] = 1;
             return RedirectToAction("Details", new { id = id });
         }
         public ActionResult EditW(int? id)

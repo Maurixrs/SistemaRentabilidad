@@ -158,10 +158,8 @@
 
 </table>
 
-<br />
-
-<legend class="text-center thStyleGradient2 " style="margin-bottom: 2px;">
-    <h4><b>Nueva entrada</b></h4>
+<legend class="text-center thStyleGradient2 " style="font-size: larger;margin-bottom: 0px;margin-top: 5px;">
+    <b>Nueva entrada</b>
 </legend>
 <table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
     <thead>
@@ -492,7 +490,6 @@
         }
 
 
-
         function valdescb(x) {
             if (x.value.trim() == "" || x.value == null) {
 
@@ -665,11 +662,10 @@
             calculogral();
         }
 
-        function gotoButtons()
-        {
+        function gotoButtons() {
 
-                $("#buttonsType").focus();
-            }
+            $("#buttonsType").focus();
+        }
 
         function borrarfilacosb(row) {
             var a = $(row).closest('td').siblings(':first-child').text();
@@ -758,7 +754,6 @@
         }
 
 
-
         function renewg() {
             orderItemsg = [];
             orderItemsgdescriptions = [];
@@ -815,40 +810,55 @@
 
         function isug() {
 
-            $.each($(".sug"), function()
-            {
+            $.each($(".sug"), function() {
 
-                if($(this).hasClass("awe")==false){$(this).addClass("awe"); new Awesomplete(this, {
-                    list: linesarray});}
+                if ($(this).hasClass("awe") == false) {
+                    $(this).addClass("awe");
+                    new Awesomplete(this, {
+                        list: linesarray
+                    });
+                }
             });
-            $.each($(".sugi"), function()
-            {
+            $.each($(".sugi"), function() {
 
-                if($(this).hasClass("awe")==false){$(this).addClass("awe"); new Awesomplete(this, {
-                    list: linesiarray});}
+                if ($(this).hasClass("awe") == false) {
+                    $(this).addClass("awe");
+                    new Awesomplete(this, {
+                        list: linesiarray
+                    });
+                }
             });
-            $.each($(".sugc"), function()
-            {
+            $.each($(".sugc"), function() {
 
-                if($(this).hasClass("awe")==false){$(this).addClass("awe"); new Awesomplete(this, {
-                    list: linescarray});}
+                if ($(this).hasClass("awe") == false) {
+                    $(this).addClass("awe");
+                    new Awesomplete(this, {
+                        list: linescarray
+                    });
+                }
             });
-            $.each($(".sugg"), function()
-            {
+            $.each($(".sugg"), function() {
 
-                if($(this).hasClass("awe")==false){$(this).addClass("awe"); new Awesomplete(this, {
-                    list: linesgarray});}
+                if ($(this).hasClass("awe") == false) {
+                    $(this).addClass("awe");
+                    new Awesomplete(this, {
+                        list: linesgarray
+                    });
+                }
             });
-            $.each($(".sugo"), function()
-            {
+            $.each($(".sugo"), function() {
 
-                if($(this).hasClass("awe")==false){$(this).addClass("awe"); new Awesomplete(this, {
-                    list: linesoarray});}
+                if ($(this).hasClass("awe") == false) {
+                    $(this).addClass("awe");
+                    new Awesomplete(this, {
+                        list: linesoarray
+                    });
+                }
             });
-
 
 
         }
+
         function itextarea() {
             $('textarea').each(function() {
                 autosize(this);
@@ -858,6 +868,7 @@
             isug();
 
         }
+
         $(document).ready(function() {
             lines = @Html.Raw(ViewBag.lines);
             linesi = @Html.Raw(ViewBag.linesi);
@@ -872,29 +883,27 @@
             $.each(lines, function(index, value) {
                 linesarray.push(value);
 
-            }); $.each(linesi, function(index, value) {
+            });
+            $.each(linesi, function(index, value) {
                 linesiarray.push(value);
 
-            }); $.each(linesc, function(index, value) {
+            });
+            $.each(linesc, function(index, value) {
                 linescarray.push(value);
 
-            }); $.each(linesg, function(index, value) {
+            });
+            $.each(linesg, function(index, value) {
                 linesgarray.push(value);
 
-            }); $.each(lineso, function(index, value) {
+            });
+            $.each(lineso, function(index, value) {
                 linesoarray.push(value);
 
             });
 
 
-
-
-
-
-
             valfecha();
             itextarea();
-
 
 
             tipo = "ing";
@@ -1173,6 +1182,8 @@
                 if (valf == 1) {
                     isAllValid = false;
                     toastr["error"]("El período ingresado ya existe.");
+                    $('#wdate').siblings('span.text-danger').html('Período existente.');
+
                 }
 
                 if (isAllValid == false) {
@@ -1180,39 +1191,45 @@
                 }
                 //Save if valid
                 if (isAllValid) {
-                    var data = {
-                        Date: $('#wdate').val().trim(),
-                        Comments: $('#wcomments').val().trim(),
-                        Sheets: orderItems,
-                        Totali: $('#toting').html().trim(),
-                        Totalc: $('#totcos').html().trim(),
-                        Totalg: $('#totgas').html().trim(),
-                        Totalo: $('#tototr').html().trim(),
-                        TotalAmount: $('#wtotal').val().trim()
-                    }
+                    bootbox.confirm("** Está por guardar la planilla, ¿Desea continuar?", function(result1) {
 
-                    $(this).val('Please wait...');
-
-                    $.ajax({
-                        url: '@Url.Action("CreateWorksheet", "Worksheets")',
-                        type: "POST",
-                        data: JSON.stringify(data),
-                        dataType: "JSON",
-                        contentType: "application/json",
-                        success: function(d) {
-                            //check is successfully save to database
-                            if (d.status == true) {
-
-                                var url = '@Url.Action("DetailsLast", "Worksheets")';
-                                window.location.href = url;
-                            } else {
-                                bootbox.alert(d.mensaje);
+                        if (result1) {
+                            var data = {
+                                Date: $('#wdate').val().trim(),
+                                Comments: $('#wcomments').val().trim(),
+                                Sheets: orderItems,
+                                Totali: $('#toting').html().trim(),
+                                Totalc: $('#totcos').html().trim(),
+                                Totalg: $('#totgas').html().trim(),
+                                Totalo: $('#tototr').html().trim(),
+                                TotalAmount: $('#wtotal').val().trim()
                             }
-                            $('#submit').val('Save');
-                        },
-                        error: function() {
-                            alert('Error. Please try again.');
-                            $('#submit').val('Save');
+
+                            $(this).val('Please wait...');
+
+                            $.ajax({
+                                url: '@Url.Action("CreateWorksheet", "Worksheets")',
+                                type: "POST",
+                                data: JSON.stringify(data),
+                                dataType: "JSON",
+                                contentType: "application/json",
+                                success: function(d) {
+                                    //check is successfully save to database
+                                    if (d.status == true) {
+
+                                        var url = '@Url.Action("DetailsLast", "Worksheets")';
+                                        window.location.href = url;
+                                    } else {
+                                        bootbox.alert(d.mensaje);
+                                    }
+                                    $('#submit').val('Save');
+                                },
+                                error: function() {
+                                    alert('Error. Please try again.');
+                                    $('#submit').val('Save');
+                                }
+                            });
+
                         }
                     });
                 }
