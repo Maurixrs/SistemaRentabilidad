@@ -175,7 +175,7 @@
                         Tipo
                     </th>
                     <th class="text-left" style="width: 40%">
-                        Descripción
+                        Transacción
                     </th>
                     <th class="text-left" style="width: 40%">
                         Observación
@@ -207,7 +207,7 @@
                     </td>
                     <td class="text-left ">
                         <textarea type="text" maxlength="140" rows='1' class="panel-info form-control-sm  inputForm inputForm3 fc sug" id="ndescription" placeholder="" style="max-width: 100%; resize: none"></textarea>
-                        <span class="text-danger" style="display: block"></span>
+                        <span class="text-danger" id="spanndescription" style="display: block"></span>
                     </td>
                     <td class="text-left ">
                         <textarea type="text" rows='1' maxlength="140" class="panel-info form-control-sm  inputForm inputForm3 fc" id="ncomment" placeholder="" style="max-width: 100%; resize: none"></textarea>
@@ -235,7 +235,7 @@
 
         <tr class="text-left" style="border-radius: 3px; font-weight: bold; background: gainsboro">
             <th class="text-left" style="width: 40%">
-                Descripción
+                Transacción
             </th>
             <th class="text-left" style="width: 40%">
                 Observación
@@ -270,7 +270,7 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td class="text-left">
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado",@type="number" })
                         <span class="text-danger" id="@("spaniteming_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -328,7 +328,7 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemcos_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -384,7 +384,7 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemgas_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -443,7 +443,7 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemotr_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -540,8 +540,7 @@
     </div>
 
 </div>
-<div id="divlista">
-</div>
+
 
 @section Scripts{
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
@@ -603,10 +602,10 @@
         function valdescb(x) {
             if (x.value.trim() == "" || x.value == null) {
 
-                $(x).siblings('span.text-danger').html('Requerido.');
+                $(x).closest('td').find('.text-danger').html('Requerido.');
 
             } else {
-                $(x).siblings('span.text-danger').html('');
+                $(x).closest('td').find('.text-danger').html('');
             };
         }
 
@@ -1070,9 +1069,9 @@
             //Check validation of order item
             if ($('#ndescription').val().trim() == '') {
                 isValidItem = false;
-                $('#ndescription').siblings('span.text-danger').html('Requerido');
+                $('#spanndescription').html('Requerido');
             } else {
-                $('#ndescription').siblings('span.text-danger').html('');
+                $('#spanndescription').html('');
             }
 
             if ($('#namount').val().trim() == '') {
@@ -1170,7 +1169,7 @@
 
                     $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugi awesomplete" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowi.append($('<td><input id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td><input type="number" id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcing();calculogral();valamoub(this)",  oninput = "calcing();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
@@ -1219,7 +1218,7 @@
 
                     $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowc.append($('<td><input id="cos_Amountz" maxlength="10" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td><input type="number" id="cos_Amountz" maxlength="10" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calccos();calculogral();valamoub(this)",  oninput = "calccos();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
                     var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                     $removec.click(function(e) {
                         e.preventDefault();
@@ -1265,7 +1264,7 @@
                     var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
                     $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugg" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowg.append($('<td><input id="gas_Amountz" maxlength="10" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td><input type="number" id="gas_Amountz" maxlength="10" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcgas();calculogral();valamoub(this)",  oninput = "calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
@@ -1318,7 +1317,7 @@
 
                     $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugo" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowo.append($('<td><input id="otr_Amountz" maxlength="10" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td><input type="number" id="otr_Amountz" maxlength="10" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "calcotr();calculogral();valamoub(this)",  oninput = "calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 

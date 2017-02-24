@@ -56,19 +56,18 @@
                         </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
-                        @*<li class="">
+                        <li class="">
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
-                                <div style="display: inline-flex; margin-top: 15px">
-                                    <input type="month" class="panel-info form-control no-spin " onchange="valfechaf()" style="width: 200px; height: 35px;" id="fdate"  name="fdate"  style="text-transform: capitalize; height: 31px"/>
+                                <div style="display: inline-flex;margin-top:15px">
+                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px;width: 200px" />
                                     &nbsp;
-                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"/>
+                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />
                                 </div>
-                                
                             }
-                        </li>*@
+                        </li>
                  
-                        <li class="navbar-form navbar-left">
+                        @*<li class="navbar-form navbar-left">
 
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
@@ -82,7 +81,7 @@
                                     </div>
                                 </div>}
 
-                        </li>
+                        </li>*@
                        
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -172,18 +171,7 @@
 
 
 <script>
-
-    //$('#fdate').MonthPicker({ShowIcon: false });
-    //$('input[type=month]').MonthPicker().css('backgroundColor', 'lightyellow');
-    //$('input[type="month"]').addClass('date').attr('type', 'text');
-
-
-
-
-
-
-
-    function valfechaf() {      
+  function valfechaf() {
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
             $("#buscarf").prop("disabled", true);
@@ -192,36 +180,28 @@
 
         };
 
-        var options3 = {};
-        options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-        options3.type = "GET";
-        options3.data = { "fecha": $("#fdate").val() };
-        options3.dataType = "json";
-        options3.success = function (data) {
-            console.log(data);
-            if (data) {
-                $('#buscarf').val("Buscar");
-             // $('#buscarf').removeClass("btn-warning");
-                $('#buscarf').removeClass("disabled");
-                $("#buscarf").removeAttr("disabled");
-                 
-                
+          var options3 = {};
+          options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+          options3.type = "GET";
+          options3.data = { "fecha": $("#fdate").val() };
+          options3.dataType = "json";
+          options3.success = function (data) {
+              if (data) {
+                  $('#buscarf').val("Buscar");
+                  $('#buscarf').removeClass("btn-warning");
+                  $('#buscarf').removeClass("disabled");
+                  $("#buscarf").removeAttr("disabled");
+              } else {
+                  $('#buscarf').val("Periodo inexistente.");
+                  $('#buscarf').addClass("btn-warning");
+                  $('#buscarf').addClass("disabled");
+                  $("#buscarf").prop("disabled", true);
+              };
 
+          };
+          $.ajax(options3);
 
-            } else {
-               // $('#buscarf').val("Periodo inexistente.");
-                $('#buscarf').addClass("btn-warning");
-              //  $('#buscarf').addClass("disabled");
-              //  $("#buscarf").prop("disabled", true);
-                alert("Periodo Inexistente. Intente Nuevamente")
-            };
-
-        };
-        $.ajax(options3);
-      
-    }
-
-
+  }
 
 
 

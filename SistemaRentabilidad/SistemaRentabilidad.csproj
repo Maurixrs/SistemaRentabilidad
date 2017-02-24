@@ -501,7 +501,6 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\cargar.js" />
-    <Content Include="Scripts\createwjs.js" />
     <Content Include="Scripts\DataTables\spanish.json" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
