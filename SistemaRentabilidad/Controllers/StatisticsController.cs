@@ -76,7 +76,7 @@ namespace SistemaRentabilidad.Controllers
                                            select t;
                         foreach (var item in FilteredList)
                         {
-                            incomes[(item.Date.Month - 1) + (12 * q)] = item.TotalAmount;
+                            incomes[(item.Date.Month - 1) + (12 * q)] = item.Totalg;
                         }
 
                         q++;
@@ -93,7 +93,7 @@ namespace SistemaRentabilidad.Controllers
                                            select t;
                         foreach (var item in FilteredList)
                         {
-                            incomes[(item.Date.Month - 1) + (12 * q)] = item.TotalAmount;
+                            incomes[(item.Date.Month - 1) + (12 * q)] = item.Totalc;
                         }
 
                         q++;
