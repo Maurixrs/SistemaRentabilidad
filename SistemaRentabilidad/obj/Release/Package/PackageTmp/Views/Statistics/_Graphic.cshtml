@@ -1,0 +1,296 @@
+﻿@using SistemaRentabilidad.Models
+@model IEnumerable<SistemaRentabilidad.Models.Worksheet>
+@{
+    Layout = null;
+}
+<div id="ajaxBeginFormResult">
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Scripts/jqPlot/jquery.jqplot.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/themes/base/jquery-ui.css" />
+        <style>
+            .jqplot-table-legend {
+                font-size: large;
+            }
+        </style>
+        <input id="typeStat" value="@ViewBag.typeStat" style="display:none"></input>
+        @*<link rel="stylesheet" type="text/css" ref="@(Url.Content("/Scripts/jqPlot/jquery.jqplot.css"))" />
+            <link rel="stylesheet" type="text/css" ref="@(Url.Content("/Content/themes/base/jquery-ui.css"))" />*@
+    </head>
+<div id="seleccion">
+    <div class="text-center">
+        @*<h4>Desde: @ViewBag.initDate&nbsp;-&nbsp;Hasta: @ViewBag.endDate&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>*@
+        <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
+        </div>
+    </div>
+
+    <br/>
+    <div class="hidden-print text-center">
+        <a class="btn btn-warning btn-sm hidden-print" onclick="window.print('#seleccion');">
+            Imprimir&nbsp;<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+        </a>
+    </div>
+    <br/>
+</div>
+<div class="hidden-print">
+    <h3 style="margin: 3px">Planillas incidentes:</h3><hr style="border-style: dotted; margin: 0px; margin-bottom: 10px; border-width: 1px"/>
+    <table class="table  table-bordered" id="tabla">
+        <thead>
+        <tr style="background-color: #2c3e50;">
+            <th class="text-center" style="color: white">
+                Período
+            </th>
+
+            <th class="text-center" style="color: white">
+                Monto Total
+            </th>
+
+            <th style="color: white; width: 120px" class="text-center">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Date.Year >= ViewBag.initDate & item.Date.Year <= ViewBag.endDate)
+            {
+                <tr>
+                    <td class="text-center formatList">
+
+                        <span style="display: none">@item.Date.ToString("yyyy/MM/dd") + @System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month);</span>
+                        @{
+                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
+                            @Html.EditorFor(model => month, new {htmlAttributes = new {@class = "mes", @readonly = "readonly"}})
+                        }
+
+                    </td>
+
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Details", "Worksheets", new {id = item.IdWorksheet})" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("EditW", "Worksheets", new {id = item.IdWorksheet})" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("Delete", "Worksheets", new {id = item.IdWorksheet, details = false})" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
+                </tr>
+            }
+
+        }
+        </tbody>
+    </table>
+
+    <div id="GSCCModal" class="modal fade" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 150%; left: -25%">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center">Ayuda</h4>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center" style="margin-top: 1px">El gráfico representa las transacciones a lo largo del año.</h3>
+                    <div>
+                        <h4 class="text-center">Las transacciones se muestran en función del monto por período del año.</h4>
+                        <img src="@Url.Content("~/Content/Images/GraficoEstadisticas.jpg")" style="width: 70%"/>
+                        <br/>
+                        <h4 class="text-center">A la derecha del gráfico se indican los colores de representación del año evaluado.</h4>
+                        <br/>
+                        <h4 class="text-center">Debajo encontraremos la lista de Planillas que fueron tomadas en el reporte realizado</h4>
+                        <img src="@Url.Content("~/Content/Images/PlanillasIncidentes.jpg")" style="width: 80%"/>
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/jquery.jqplot.min.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.barRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pieRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.categoryAxisRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.pointLabels.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.highlighter.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.cursor.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/jqPlot/plugins/jqplot.ohlcRenderer.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/jquery.datatables.js")'></script>
+    <script language="javascript" type="text/javascript" src='@Url.Content("~/Scripts/datatables/datatables.bootstrap.js")'></script>
+
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")'></script>
+
+
+    <script>
+
+        $(document).ready(function() {
+            $("#tabla").DataTable({
+                order: [[0, "desc"]], "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],
+
+                "language": {
+                    "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+                }
+            });
+
+
+            $("body").on("click", "a.dialog-window4", null, function(e) {
+                e.preventDefault();
+                jQuery.noConflict();
+                var $link = $(this); // Reference to <a/> link
+                var title = $link.text(); //this is title to fetch in htnl
+                $('#myModal4 .modal-title').html(title);
+
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#myModal4').modal('show');
+                } else {
+                    $.get(url, function(data) {
+                        $('#myModal4 .te').html(data);
+                        $('#myModal4').modal();
+                    }).success(function() { $('input:text:visible:first').focus(); });
+                }
+            });
+
+
+            $('#mitabla_length').addClass('hidden-print');
+            $('#mitabla_filter').addClass('hidden-print');
+            $('#mitabla_info').addClass('hidden-print');
+            $('#mitabla_paginate').addClass('hidden-print');
+            $('#mitabla1_length').addClass('hidden-print');
+            $('#mitabla1_filter').addClass('hidden-print');
+            $('#mitabla1_info').addClass('hidden-print');
+            $('#mitabla1_paginate').addClass('hidden-print');
+            var year1=@ViewBag.initDate;
+            var year2=@ViewBag.endDate;
+            var tipo = $('#typeStat').val();
+            var final = [];
+            var incomes = @Html.Raw(ViewBag.incomes);
+            var labels = [];
+            for (var i = 0; i <=@ViewBag.ys; i++) {
+                labels.push((year1 + i).toString());
+            }
+
+
+            $.each(incomes, function(index, value) {
+                if(value==0){incomes[index]=null}
+            });
+
+            var count = 1;
+            var item = [];
+
+
+            $.each(incomes, function(index, value) {
+                if (count <= 12) {
+                    item.push(value);
+                } else {
+                    final.push(item);
+                    item = [];
+                    count = 1;
+                    item.push(value);
+
+                }
+                count++;
+            });
+            final.push(item);
+
+
+
+
+
+            var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+
+            plot2 = $.jqplot('grafico2', final, {
+                title: tipo +" desde "+ year1.toString()+" hasta "+year2.toString(),
+                seriesDefaults: {
+
+                    pointLabels: { show: true,hideZeros: true},
+                    breakOnNull:true
+                },  legend: {
+                    show: true,
+                    placement: 'outsideGrid',
+                    labels: labels,
+                    location: 'ne'
+                },
+
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: ticks
+                    }, yaxis: {tickOptions: {
+                        formatString: "$%'d"
+                    },
+                        min:0
+
+                    }
+                },highlighter: { show: true,
+                    // you can have anything here
+                    tooltipFormatString: '<b><i><span style="color:red;">%.2f</span></i></b>',
+                    tooltipContentEditor: function (str, seriesIndex, pointIndex, plot) {
+                        //the str is the ready string from tooltipFormatString
+                        //depending on how do you give the series to the chart you can use plot.legend.labels[seriesIndex] or plot.series[seriesIndex].label
+                        //return '<b><span style="color:black;font-weight:bold">Año: </span>'+'<span style="color:blue;font-weight:bold">'+plot.legend.labels[seriesIndex]+'</span><br/>' +'<span style="color:black;font-weight:bold">Mes: </span>'+'<span style="color:blue;font-weight:bold">'+ plot.series[seriesIndex].data[pointIndex][0]+'</span><br/><span style="color:black;font-weight:bold">Ingresos: $'+'<span style="color:blue;font-weight:bold">'+plot.series[seriesIndex].data[pointIndex][1]+'</span>';
+
+                        return '<table>' +
+                            '<tr>' +
+                            '<td style="color:black;font-weight:bold;text-align:center">Año: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+plot.legend.labels[seriesIndex]+'</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td style="color:black;font-weight:bold;text-align:center">Mes: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+ plot.series[seriesIndex].data[pointIndex][0]+'</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td style="color:black;font-weight:bold;text-align:center">Ingresos: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">$'+plot.series[seriesIndex].data[pointIndex][1]+'</td>' +
+                            '</tr>' +
+                            '</table>';
+
+
+
+
+                    }
+                },
+
+                cursor: {
+                    show: true,
+
+
+                }
+            });
+
+
+        });
+
+        $("#mitabla").DataTable({
+            "language": {
+                "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+            }
+        });
+        $("#mitabla1").DataTable({
+            "language": {
+                "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+            }
+        });
+
+        function printData() {
+            var divToPrint = document.getElementById("seleccion");
+            newWin = window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
+        }
+
+        $("#ocultargrafico").click(function() {
+            $(this).text(function(i, text) {
+                return text === "Ocultar" ? "Mostrar" : "Ocultar";
+            });
+
+            $("#grafico2").toggle("slow");
+        });
+    </script>
+
+
+</div>
+

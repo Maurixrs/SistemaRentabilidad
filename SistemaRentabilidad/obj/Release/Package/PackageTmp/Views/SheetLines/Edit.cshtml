@@ -1,0 +1,88 @@
+﻿@model SistemaRentabilidad.Models.SheetLine
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Edit","SheetLines",null,FormMethod.Post,new {id = "editSug"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdSheetLine)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LineDescription, "Sugerencia",htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.LineDescription, new { htmlAttributes = new { @class = "form-control", @onchange = "esug()" } })
+                @Html.ValidationMessageFor(model => model.LineDescription, "", new { @class = "text-danger" })
+                <span class="text-danger" id="spansug" style="display: block"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SheetType, "Tipo", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EnumDropDownListFor(model => model.SheetType, htmlAttributes: new { @class = "form-control", @onchange = "esug()" })
+                @Html.ValidationMessageFor(model => model.SheetType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr/>
+        <div class="form-actions no-color text-center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">
+                Guardar&nbsp;<span class="glyphicon glyphicon-floppy-disk"></span>
+            </button>
+            @*<input type="submit" value="Guardar" class="btn btn-success" />*@
+        </div>
+    </div>
+}
+
+
+
+
+    <script>
+
+
+        function esug() {
+            var a = "";
+            if($("#SheetType").val()==0){a="Ingreso"};
+            if($("#SheetType").val()==1){a="Costo"};
+            if($("#SheetType").val()==2){a="Gasto"};
+            if($("#SheetType").val()==3){a="OtroIngreso"};
+
+
+
+            var options3 = {};
+            options3.url = '@Url.Action("ExisteSugEdit", "SheetLines")';
+            options3.type = "GET";
+            options3.data = {"sd": $("#LineDescription").val(), "st": a,"si":@Model.IdSheetLine },
+            options3.dataType = "json";
+            options3.success = function (data) {
+                if (data) {
+                    $('#spansug').html('Sugerencia existente.');
+                    vals = 1;
+                } else {
+                    $('#spansug').html('');
+                    vals = 0;
+                };
+
+            };
+            $.ajax(options3);
+        }
+
+        $('#editSug').submit(function(e) {
+            var x = this;
+            e.preventDefault();
+
+            if (vals == 0) {
+                x.submit();
+            }
+        })
+
+
+    </script>
+
+

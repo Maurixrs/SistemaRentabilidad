@@ -1,0 +1,29 @@
+﻿@model SistemaRentabilidad.ViewModels.WsVM
+
+@{
+    Layout=null;
+}
+
+<h3 class="text-center text-danger">¿Está seguro de eliminar esta Planilla?</h3>
+<h4 class="text-center">Esta acción no podrá deshacerse.</h4>
+
+<br/>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger" style="margin-left: 35px">
+                Eliminar&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+            @*<input type="submit" value="Eliminar" class="btn btn-danger" />*@
+
+        </div>
+    }
+</div>
+
+
+
