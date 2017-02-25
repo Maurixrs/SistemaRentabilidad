@@ -38,17 +38,17 @@
                     @{
                         if (@ViewBag.lastws > 0)
                         {
-                            <a href="@Url.Action("EditW", "Worksheets", new {id = @ViewBag.lastws})" class="btn btn-lg btn-block btn-default "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+                            <a href="@Url.Action("EditW", "Worksheets", new {id = @ViewBag.lastws})" class="btn btn-lg btn-block btn-default ">Editar última planilla &nbsp;<span class="glyphicon glyphicon-pencil"></span></a>
 
                         }
                         else
                         {
-                            <a class="btn btn-lg btn-block btn-default disabled "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+                            <a class="btn btn-lg btn-block btn-default disabled ">Editar última planilla &nbsp;<span class="glyphicon glyphicon-pencil"></span></a>
                         }
                     }
                 </div>
                 <div class="col-lg-6">
-                    <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn btn-lg btn-block btn-default"><span class="glyphicon glyphicon-plus"></span> Crear nueva planilla</a>
+                    <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn btn-lg btn-block btn-default">Crear nueva planilla &nbsp;<span class="glyphicon glyphicon-list-alt"></span></a>
                 </div>
             </div>
         

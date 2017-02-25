@@ -62,7 +62,8 @@
                                 <div style="display: inline-flex;margin-top:15px">
                                     <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px;width: 200px" />
                                     &nbsp;
-                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />
+                                    <button type="submit" disabled="true" class="btn btn-info btn-xs disabled" id="buscarf">Buscar &nbsp;<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    @*<input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />*@
                                 </div>
                             }
                         </li>
@@ -175,7 +176,7 @@
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
             $("#buscarf").prop("disabled", true);
-            $('#buscarf').val("Buscar");
+            $('#buscarf').val("Buscar&nbsp");
             $('#buscarf').removeClass("btn-warning");
 
         };
