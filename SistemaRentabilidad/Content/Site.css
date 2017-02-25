@@ -40,11 +40,6 @@ hr {
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 .formatList {
     
@@ -409,10 +404,12 @@ td.dataContainer {
 }
 
 .totalView {
-    border: double;
-    background-color: beige;
+    
     text-align: center;
     border: 1px solid #000000;
+    border: none;
+    background: khaki;
+    font-weight: bold;
 }
 
 
