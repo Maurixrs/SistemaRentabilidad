@@ -186,7 +186,7 @@
     </thead>
     <tbody id="nueva">
     <td>
-        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline">
+        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline-block">
             <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
                 <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
             </label>
@@ -398,7 +398,7 @@
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
                 Observaciones
             </td>
-            <td class="text-left" style="border-radius: 3px; width: 200px; font-weight: bold">
+            <td class="text-center" style="border-radius: 3px; width: 200px; font-weight: bold">
                 Total
             </td>
         </tr>
@@ -409,7 +409,7 @@
                 <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc" maxlength="140" style="max-width: 100%" id="wcomments" placeholder=""></textarea>
 
             </td>
-            <td>
+            <td style="background: khaki;">
                 <input readonly="readonly" type="text" class="panel-info text-center totalView" value="0.00" id="wtotal" placeholder="" style="font-weight: bold" />
                 <span class="text-danger" style="display: block"></span>
             </td>
@@ -1418,7 +1418,7 @@
 
                         $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "form-control-sm inputForm fc sugo" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger"></span></td>'));
                         $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_Commentsz" Name="otr_Comments" rows="1" class= "form-control-sm inputForm fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
-                        $rowo.append($('<td><input type="number" id="otr_Amountz" maxlength="10" Name="otr_Amount" rows="1" class= "form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "maxvalue(this);calcotr();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcotr();calculogral();valamoub(this); onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                        $rowo.append($('<td><input type="number" id="otr_Amountz" maxlength="10" Name="otr_Amount" rows="1" class= "form-control-sm inputForm fc montocentrado" value="' + val.Amount + '"onkeyup = "maxvalue(this);calculogral();calcotr();valamoub(this)",  oninput = "maxvalue(this);calculogral();calcotr();valamoub(this); onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
