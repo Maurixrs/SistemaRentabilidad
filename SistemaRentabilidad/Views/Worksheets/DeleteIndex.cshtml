@@ -165,7 +165,7 @@
 <table class="table table-condensed table-bordered ">
     <thead >
         <tr class="text-center tipos thStyleGradient2 bordesRedond">
-            <th class="text-center" >
+            <th class="text-center" style="width: 50%" >
                 Planilla
             </th>
             <th class="text-center" >
@@ -426,17 +426,16 @@
         @Html.AntiForgeryToken()
 
         <div class="text-center row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-4 text-left">
                 <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true"></span>&nbsp; Volver</a>
-          
-
-                <button type="submit" value="Eliminar" class="btn btn-danger">Eliminar &nbsp;
-                    <span class="glyphicon glyphicon-trash"></span> 
-                </button>
-
-              
             </div>
-
+            <div class="col-lg-4 text-center">
+                <button type="submit" value="Eliminar" class="btn btn-danger">
+                    Eliminar &nbsp;
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </div>
+            <div class="col-lg-4"></div>
         </div>
 
         @*<div class="form-actions no-color text-center">
