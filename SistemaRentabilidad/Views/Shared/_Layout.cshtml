@@ -5,20 +5,18 @@
 <html>
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
 
+    @Styles.Render("~/Styles/css")
 
-    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @Scripts.Render("~/bundles/modernizr")
 
-    @Scripts.Render("~/bundles/modernizr")
-
-</head>
+    </head>
 
 <body class="full" background='@Url.Content("~/Content/Images/fon 1.jpg")'>
     <div id="wrap">
@@ -64,21 +62,7 @@
                             }
                         </li>
 
-                        @*<li class="navbar-form navbar-left">
-
-                                @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
-                                {
-                                    <div class="input-group">
-                                        <input type="month" class="form-control no-spin formatInputDate" onchange="valfechaf()" id="fdate" name="fdate" placeholder="Date" />
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit" value='Buscar' id="buscarf">
-                                                <i class="glyphicon glyphicon-search disabled" style="top:-3px;"></i>
-
-                                            </button>
-                                        </div>
-                                    </div>}
-
-                            </li>*@
+                     
 
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -86,14 +70,15 @@
             </div>
         </div>
         <div class="container body-content upBody">
+
             @RenderBody()
 
         </div>
-
-
-
-        @Styles.Render("~/Styles/css")
         @Scripts.Render("~/js")
+
+
+
+
         @RenderSection("scripts", required: false)
 
 
@@ -124,14 +109,15 @@
 </html>
 
 <style>
-
-        /* Sticky footer styles
+    center{display: none !important;}
+     #loadOverlay{display: none;}
+    /* Sticky footer styles
     -------------------------------------------------- */
-     html,
-     body {
-         height: 100%;
-         /* The html and body elements cannot have any padding or margin. */
-     }
+    html,
+    body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+    }
    
     /* Wrapper for page content to push down footer */
     #wrap {
@@ -164,11 +150,16 @@
             padding-right: 20px;
         }
     }
+    .progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
 </style>
 
 
 <script>
-  function valfechaf() {
+  
+    function valfechaf() {
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
             $("#buscarf").prop("disabled", true);
@@ -177,29 +168,28 @@
 
         };
 
-          var options3 = {};
-          options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-          options3.type = "GET";
-          options3.data = { "fecha": $("#fdate").val() };
-          options3.dataType = "json";
-          options3.success = function (data) {
-              if (data) {
-                  $('#buscarf').html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>');
-                  $('#buscarf').removeClass("btn-warning");
-                  $('#buscarf').removeClass("disabled");
-                  $("#buscarf").removeAttr("disabled");
-              } else {
-                  $('#buscarf').html("Periodo inexistente.");
-                  $('#buscarf').addClass("btn-warning");
-                  $('#buscarf').addClass("disabled");
-                  $("#buscarf").prop("disabled", true);
-              };
+        var options3 = {};
+        options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+        options3.type = "GET";
+        options3.data = { "fecha": $("#fdate").val() };
+        options3.dataType = "json";
+        options3.success = function (data) {
+            if (data) {
+                $('#buscarf').html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>');
+                $('#buscarf').removeClass("btn-warning");
+                $('#buscarf').removeClass("disabled");
+                $("#buscarf").removeAttr("disabled");
+            } else {
+                $('#buscarf').html("Periodo inexistente.");
+                $('#buscarf').addClass("btn-warning");
+                $('#buscarf').addClass("disabled");
+                $("#buscarf").prop("disabled", true);
+            };
 
-          };
-          $.ajax(options3);
+        };
+        $.ajax(options3);
 
-  }
-
+    }
 
 
 </script>

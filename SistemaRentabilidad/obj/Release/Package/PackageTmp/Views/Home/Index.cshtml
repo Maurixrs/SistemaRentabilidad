@@ -12,7 +12,7 @@
             <b>¡Bienvenido al Sistema de Rentabilidad!</b>
         </h3>
         <h4>
-            <p class="fontMarca">Elgordo.com Distribuciones</p>
+            <p class="fontMarca">"elGordo.com Distribuciones"</p>
             <br />
             <br />
             <img src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
@@ -38,17 +38,17 @@
                     @{
                         if (@ViewBag.lastws > 0)
                         {
-                            <a href="@Url.Action("EditW", "Worksheets", new {id = @ViewBag.lastws})" class="btn btn-lg btn-block btn-default "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+                            <a href="@Url.Action("EditW", "Worksheets", new {id = @ViewBag.lastws})" class="btn btn-lg btn-block btn-default ">Editar última planilla <span class="glyphicon glyphicon-pencil"></span></a>
 
                         }
                         else
                         {
-                            <a class="btn btn-lg btn-block btn-default disabled "><span class="glyphicon glyphicon-pencil"></span> Editar última planilla</a>
+                            <a class="btn btn-lg btn-block btn-default disabled ">Editar última planilla <span class="glyphicon glyphicon-pencil"></span></a>
                         }
                     }
                 </div>
                 <div class="col-lg-6">
-                    <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn btn-lg btn-block btn-default"><span class="glyphicon glyphicon-plus"></span> Crear nueva planilla</a>
+                    <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn btn-lg btn-block btn-default">Crear nueva planilla <span class="glyphicon glyphicon-file"></span> </a>
                 </div>
             </div>
         
@@ -77,14 +77,20 @@
 
 
 <style>
-    img {
-        border-radius: 183px 183px 183px 183px!important;
--moz-border-radius: 183px 183px 183px 183px!important;
--webkit-border-radius: 183px 183px 183px 183px!important;
-border: 2px solid #000000!important;
-        width: 100px!important;
-        height: 100px!important;
+        @@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
+.fontMarca {
+    font-family: 'Kaushan Script', cursive;
+   
+}
+     img {
+         border-radius: 183px 183px 183px 183px!important;
+         -moz-border-radius: 183px 183px 183px 183px!important;
+         -webkit-border-radius: 183px 183px 183px 183px!important;
+         border: 2px solid #000000!important;
+         width: 100px!important;
+         height: 100px!important;
         
         
-    }
+     }
 </style>

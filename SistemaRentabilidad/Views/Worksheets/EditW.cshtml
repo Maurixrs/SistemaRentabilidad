@@ -23,10 +23,7 @@
     line-height: 1.08 !important;
     }
 
-    .full {
-    background-size: contain !important;
-    }
-
+    
     .inputForm {
     border-color: lightgrey !important;
     }
@@ -172,9 +169,9 @@
             <button id="ocultar" class="hidden-print btn btn-xs hvr-bubble-left positionOcultar">&nbsp;&nbsp; Ocultar</button>
 
         </a>
-        <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 2px">
+        <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 2px; background: transparent;border-right: none">
             <thead>
-                <tr class="text-center thStyleGradient3">
+                <tr class="text-center thStyleGradient3"  style="border-right: none">
                     <th class="text-center">
                         Tipo
                     </th>
@@ -221,7 +218,7 @@
                         <input type="number" class="panel-info form-control-sm inputForm inputForm3 montocentrado" style="width: 100px" value="1" id="namount" oninput="javascript:if (this.value > 9999999999) this.value = 9999999999;" onkeypress="solonumerosptocoma();" />
                         <span class="text-danger" style="display: block"></span>
                     </td>
-                    <td class="">
+                    <td style="border: none">
                         <button type="button" onkeypress="gotoButtons()" id="addn" class="btn btn-success btn-xs add" value="nueva" />
                         <span class="glyphicon glyphicon-plus"></span>
                     </td>
@@ -231,7 +228,7 @@
         </table>
     </div>
 </div>
-<hr style="margin-top: 2px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
+<hr style="margin-top: 0px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
 
 
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">

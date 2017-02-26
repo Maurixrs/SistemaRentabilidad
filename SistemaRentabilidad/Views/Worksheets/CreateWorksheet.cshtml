@@ -116,7 +116,8 @@
     }
 
 
-
+    .btn-group-justified {
+    display: inline!important;}
     .table {
         margin-bottom: 0px!important;
     }
@@ -167,7 +168,7 @@
 <legend class="text-center thStyleGradient2 " style="font-size: larger;margin-bottom: 0px;margin-top: 5px;">
     <b>Nueva entrada</b>
 </legend>
-<table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px">
+<table id="nueva" class="table table-condensed table-bordered chica" style="margin-bottom: 10px; background: transparent;border-right: none">
     <thead>
         <tr class="text-center thStyleGradient3">
             <th class="text-center">
@@ -187,40 +188,42 @@
         </tr>
     </thead>
     <tbody id="nueva">
-    <td>
-        <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline-block">
-            <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
-                <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
-            </label>
-            <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
-                <input type="radio" name="options" value="cos" autocomplete="off">Costo
-            </label>
-            <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
-                <input type="radio" name="options" value="gas" autocomplete="off">Gasto
-            </label>
-            <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
-                <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
-            </label>
-        </div>
-    </td>
-    <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
-        <span class="text-danger" id="spanndescription" style="display: block"></span>
-    </td>
-    <td class="text-center fina">
-        <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc nuev" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="fina">
-        <input type="number" min="0" max="9999999999" maxlength="10" oninput="maxvalue(this);" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller; height: 31px;border-width: 1px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
-        <span class="text-danger" style="display: block"></span>
-    </td>
-    <td class="fina">
-        <button type="button" onkeypress="gotoButtons()" id="addn" class="btn btn-success btn-xs add" value="nueva" />
-        <span class="glyphicon glyphicon-plus"></span>
-    </td>
+        <tr style="border-right: none">
+            <td>
+                <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline-block">
+                    <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
+                        <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                    </label>
+                    <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
+                        <input type="radio" name="options" value="cos" autocomplete="off">Costo
+                    </label>
+                    <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
+                        <input type="radio" name="options" value="gas" autocomplete="off">Gasto
+                    </label>
+                    <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
+                        <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
+                    </label>
+                </div>
+            </td>
+            <td class="text-center fina">
+                <textarea type="text" rows='1' class="panel-info form-control inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
+                <span class="text-danger" id="spanndescription" style="display: block"></span>
+            </td>
+            <td class="text-center fina">
+                <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc nuev" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
+                <span class="text-danger" style="display: block"></span>
+            </td>
+            <td class="fina">
+                <input type="number" min="0" max="9999999999" maxlength="10" oninput="maxvalue(this);" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller; height: 31px; border-width: 1px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+                <span class="text-danger" style="display: block"></span>
+            </td>
+            <td class="fina" style="border: none">
+                <button type="button" onkeypress="gotoButtons()" id="addn" class="btn btn-success btn-xs add" value="nueva" />
+                <span class="glyphicon glyphicon-plus"></span>
+            </td>
+        </tr>
     </tbody>
-
+    
 </table>
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
     <thead>

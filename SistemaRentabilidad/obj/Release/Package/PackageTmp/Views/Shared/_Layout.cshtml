@@ -5,22 +5,18 @@
 <html>
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
 
+    @Styles.Render("~/Styles/css")
 
-    
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @Scripts.Render("~/bundles/modernizr")
 
-    @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" type="text/css" href="~/Content/hover.css">
-    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
-
-</head>
+    </head>
 
 <body class="full" background='@Url.Content("~/Content/Images/fon 1.jpg")'>
     <div id="wrap">
@@ -60,26 +56,13 @@
                                 <div style="display: inline-flex;margin-top:15px">
                                     <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px;width: 200px" />
                                     &nbsp;
-                                    <input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />
+                                    <button type="submit" id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    @*<input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />*@
                                 </div>
                             }
                         </li>
 
-                        @*<li class="navbar-form navbar-left">
-
-                                @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
-                                {
-                                    <div class="input-group">
-                                        <input type="month" class="form-control no-spin formatInputDate" onchange="valfechaf()" id="fdate" name="fdate" placeholder="Date" />
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-default" type="submit" value='Buscar' id="buscarf">
-                                                <i class="glyphicon glyphicon-search disabled" style="top:-3px;"></i>
-
-                                            </button>
-                                        </div>
-                                    </div>}
-
-                            </li>*@
+                     
 
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -87,14 +70,15 @@
             </div>
         </div>
         <div class="container body-content upBody">
+
             @RenderBody()
 
         </div>
-
-
-
-        @Styles.Render("~/Styles/css")
         @Scripts.Render("~/js")
+
+
+
+
         @RenderSection("scripts", required: false)
 
 
@@ -118,14 +102,16 @@
 <div class="navbar-xs navbar-inverse navbar-fixed-top hidden-print" style="background: none; border: none; padding-bottom: 0px">
     <div id="contacthide" class="container text-right" style="width: 150px;height: 20px;margin-right: 0px">
         <p style="margin-top: 60px;">
-          <div class="btn btn-info btn-xs" style="border-radius: 3px" data-toggle="modal" data-target="#GSCCModal"><span class="ayuda">Ayuda&nbsp;</span><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div> 
+          <div class="btn btn-info btn-xs" style="border-radius: 3px" data-toggle="modal" data-target="#GSCCModal"><span class="ayuda">Ayuda </span><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div> 
         </p>
     </div>
 </div>}
 </html>
 
 <style>
-        /* Sticky footer styles
+    center{display: none !important;}
+     #loadOverlay{display: none;}
+    /* Sticky footer styles
     -------------------------------------------------- */
     html,
     body {
@@ -164,42 +150,46 @@
             padding-right: 20px;
         }
     }
+    .progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
 </style>
 
 
 <script>
-  function valfechaf() {
+  
+    function valfechaf() {
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
             $("#buscarf").prop("disabled", true);
-            $('#buscarf').val("Buscar");
+            $('#buscarf').html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>');
             $('#buscarf').removeClass("btn-warning");
 
         };
 
-          var options3 = {};
-          options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
-          options3.type = "GET";
-          options3.data = { "fecha": $("#fdate").val() };
-          options3.dataType = "json";
-          options3.success = function (data) {
-              if (data) {
-                  $('#buscarf').val("Buscar");
-                  $('#buscarf').removeClass("btn-warning");
-                  $('#buscarf').removeClass("disabled");
-                  $("#buscarf").removeAttr("disabled");
-              } else {
-                  $('#buscarf').val("Periodo inexistente.");
-                  $('#buscarf').addClass("btn-warning");
-                  $('#buscarf').addClass("disabled");
-                  $("#buscarf").prop("disabled", true);
-              };
+        var options3 = {};
+        options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
+        options3.type = "GET";
+        options3.data = { "fecha": $("#fdate").val() };
+        options3.dataType = "json";
+        options3.success = function (data) {
+            if (data) {
+                $('#buscarf').html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>');
+                $('#buscarf').removeClass("btn-warning");
+                $('#buscarf').removeClass("disabled");
+                $("#buscarf").removeAttr("disabled");
+            } else {
+                $('#buscarf').html("Periodo inexistente.");
+                $('#buscarf').addClass("btn-warning");
+                $('#buscarf').addClass("disabled");
+                $("#buscarf").prop("disabled", true);
+            };
 
-          };
-          $.ajax(options3);
+        };
+        $.ajax(options3);
 
-  }
-
+    }
 
 
 </script>

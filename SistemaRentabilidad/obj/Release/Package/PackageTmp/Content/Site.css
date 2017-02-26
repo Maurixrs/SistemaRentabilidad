@@ -26,10 +26,10 @@ body {
 hr {
     color: grey;
     border-color: grey;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     margin-top: 5px
 }
-    .montocentrado{text-align: center;}
+    .montocentrado{ text-align: center !important;}
     .tottable{background: none}
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -362,11 +362,16 @@ html,body {
 
 
 .jumbotron {
-    align-content: center;
-    margin-top: 30px;
-    width: 100%;
-    opacity: 1;
-    background-color: rgba(147,206,222,1);
+    align-content: center!important;
+    margin-top: 30px!important;
+    width: 100%!important;
+    opacity: 1!important;
+    background-color: rgba(147,206,222,1)!important;
+        padding-left: 3%!important;
+    padding-right: 3%!important;
+    padding-top: 2%!important;
+    padding-bottom: 6%!important;
+   
       
 }
 
