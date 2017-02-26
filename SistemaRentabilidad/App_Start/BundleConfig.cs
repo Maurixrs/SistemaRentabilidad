@@ -78,7 +78,7 @@ namespace SistemaRentabilidad
                       "~/Content/bootstrap-select.css.map",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/content/toastr.css",
-                       "~/Content/css/jquery-ui.min.css", "~/Content/Site.css"));
+                       "~/Content/css/jquery-ui.min.css", "~/Content/Site.css", "~/Content/hover.css"));
 
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap-flaty.css", "~/Content/css/awesomplete.css",
