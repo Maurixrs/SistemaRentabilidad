@@ -15,6 +15,14 @@
    </style>
 </head>
 
+@if (TempData["mimsg"] != null)
+{
+    {
+        <input id="msg" style="display: none" value="@TempData["mimsg"]" />
+
+    }
+
+}
 <h2 class="text-center">Lista de Planillas</h2>
 <hr/>
 <div>
@@ -81,26 +89,16 @@
 
 </div>
 
-@if (TempData["mimsg"] != null)
-{
-    {
-        <input id="msg" style="display: none" value="@TempData["mimsg"]" />
 
-    }
-
-}
 
 @section scripts
 {
     <script>
-        
-
-
-
-
 
         $(document).ready(function () {            
-              
+            if ($('#msg').val() == 2) {
+                toastr.success("Edición realizada correctamente.");
+            }
             ////Grilla automatica//
             $("#tabla").DataTable({
                 order: [[0, "desc"]], "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],

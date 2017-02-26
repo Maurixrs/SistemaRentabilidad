@@ -1542,7 +1542,7 @@
 
                                 if (d.status == true) {
 
-                                    var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
+                                    var url = '@Url.Action("Index", "Worksheets", new {x = 2})';
                                     window.location.href = url;
                                 } else {
                                     bootbox.alert(d.mensaje);

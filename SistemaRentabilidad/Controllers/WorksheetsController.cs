@@ -23,8 +23,11 @@ namespace SistemaRentabilidad.Controllers
         private ContextSR db = new ContextSR();
 
         // GET: Worksheets
-        public ActionResult Index()
+        public ActionResult Index(int? x)
         {
+            if (x != null) { TempData["mimsg"] = 2; return RedirectToAction("Index");
+            }
+
             IList<WsVM> WsVMList = new List<WsVM>();
             IList<Worksheet> WsList = _repository.FindAllE();
             WsVMList = Mapper.Map<IList<Worksheet>, IList<WsVM>>(WsList);
