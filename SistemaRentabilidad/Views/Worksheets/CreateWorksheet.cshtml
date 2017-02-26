@@ -6,35 +6,19 @@
 <head>
 
     <style>
-        textarea {
-            max-width: 100% !important;
-            resize: none !important;
-            line-height: 1.08 !important;
-            border-width: 1px !important;
-        }
+       
 
         legend {
             margin-bottom: 2px !important;
             font-size: inherit !important;
         }
 
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-            margin: 0 !important;
-        }
-
-        .tipos {
-            font-size: medium !important;
-            font-weight: bold !important;
-            font-style: italic !important;
-        }
-
-        .fc {
-            padding: 3px !important;
-            height: 22px !important;
+      
+         textarea {
+            max-width: 100% !important;
+            resize: none !important;
+            line-height: 1.08 !important;
+            border-width: 1px !important;
         }
 
         #resumentabla td {
@@ -113,10 +97,23 @@
             line-height: 15px !important;
         }
 
-
+          input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            margin: 0 !important;
+        }
         .btn-group-justified {
             display: inline !important;
         }
+          .tipos {
+            font-size: medium !important;
+            font-weight: bold !important;
+            font-style: italic !important;
+        }
+
+       
 
         .table {
             margin-bottom: 0px !important;
@@ -137,14 +134,14 @@
     <thead class="tableStyle">
 
 
-        <tr class="text-center thStyleGradient2 ">
+        <tr class="text-center tipos thStyleGradient2 bordesRedond">
 
 
-            <th class="text-center col-lg-6">
+            <th class="text-center col-lg-6" style="padding: 2px">
                 Planilla
             </th>
 
-            <th class="text-center col-lg-6">
+            <th class="text-center col-lg-6" style="padding: 2px">
                 Periodo
             </th>
         </tr>
@@ -157,8 +154,8 @@
         <span class="text-danger" style="display: block"></span>
 
     </td>
-    <td class="text-center fondoBlanco">
-        <input type="month" class="panel-info inputForm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()" style="text-transform: capitalize; height: 31px; text-align: center" />
+    <td class="text-center fondoBlanco" style="padding-bottom: 0px;">
+        <input type="month" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center" />
         <span class="text-danger text-center" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -207,15 +204,15 @@
                 </div>
             </td>
             <td class="text-center fina">
-                <textarea type="text" rows='1' class="panel-info form-control inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
+                <textarea type="text" rows='1' class="panel-info form-control-sm inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
                 <span class="text-danger" id="spanndescription" style="display: block"></span>
             </td>
             <td class="text-center fina">
-                <textarea type="text" rows='1' class="panel-info form-control inputForm2 fc nuev" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
+                <textarea type="text" rows='1' class="panel-info form-control-sm inputForm inputForm3 fc nuev" maxlength="140" id="ncomment" placeholder="" style="max-width: 100%"></textarea>
                 <span class="text-danger" style="display: block"></span>
             </td>
             <td class="fina">
-                <input type="number" min="0" max="9999999999" maxlength="10" oninput="maxvalue(this);" class="panel-info form-control inputForm2 fc montocentrado" style="width: 100px; font-size: smaller; height: 31px; border-width: 1px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
+                <input type="number" min="0" max="9999999999" maxlength="10" oninput="maxvalue(this);" class="panel-info form-control-sm inputForm inputForm3 fc montocentrado" style="width: 100px; font-size: smaller; height: 22px; border-width: 1px" value="1" id="namount" onkeypress="solonumerosptocoma();" />
                 <span class="text-danger" style="display: block"></span>
             </td>
             <td class="fina" style="border: none">
