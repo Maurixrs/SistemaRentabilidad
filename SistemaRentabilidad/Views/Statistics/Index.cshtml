@@ -3,39 +3,41 @@
     ViewBag.Title = "Estadísticas";
 }
 <head>
-    <style>.btn-info { color: whitesmoke !important; }</style>
-    <script type="text/javascript" language="javascript" src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
-    <script type="text/javascript" language="javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
+    <style>
+        .btn-info {
+            color: whitesmoke !important;
+        }
+    </style>
 </head>
 
 
 <h2 class="text-center">Estadísticas</h2>
-<hr/>
-<div >
+<hr />
+<div>
     @using (Ajax.BeginForm("_Graphic", "Statistics",
-        new AjaxOptions
-        {
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "ajaxBeginFormResult",
-            OnSuccess = "OnSuccess"
-        },
-    new { id = "FormName" }))
+                new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "ajaxBeginFormResult",
+                    OnSuccess = "OnSuccess"
+                },
+            new { id = "FormName" }))
 
 
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
         <div class="hidden-print">
             @*<div class="row">
-                <div class="col-lg-1"></div>
-                <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
-            </div>*@
+                    <div class="col-lg-1"></div>
+                    <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
+                </div>*@
             <div class="row form-horizontal">
-             
+
                 <div class="col-lg-1"> <legend>Desde:</legend></div>
-                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
-               
-                <div class="col-lg-1" > <legend>Hasta:</legend></div>
-                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
+                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio" />
+
+                <div class="col-lg-1"> <legend>Hasta:</legend></div>
+                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin" />
                 <div class="col-lg-1"></div>
 
                 <div class="col-lg-3">
@@ -54,76 +56,76 @@
                 </button>
                 @*<input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>*@
                 <div class="col-lg-1"></div>
-                
+
             </div>
             <div class="text-center">
                 <span id="spanOrdenFechas" class="text-danger"></span>
             </div>
 
         </div>
- }
+    }
 
 
 
 
-<div class="text-center"  id="ajaxBeginFormResult"></div>
+    <div class="text-center" id="ajaxBeginFormResult"></div>
 
-<div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 165%; left: -33%">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center">Ayuda</h4>
-            </div>
-            <div class="modal-body">
-                <h4 class="text-center">Utilice esta sección para visualizar las transacciones realizadas en un período determinado</h4>
-                
-                
-                <br/>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <h5>Ingrese el período que desea obtener el reporte colocando en el primer casillero el año desde donde desea realizar el reporte, y en el segundo el año de finalización.</h5>
+    <div id="GSCCModal" class="modal fade" id="myModal" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 165%; left: -33%">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center">Ayuda</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center">Utilice esta sección para visualizar las transacciones realizadas en un período determinado</h4>
+
+
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <h5>Ingrese el período que desea obtener el reporte colocando en el primer casillero el año desde donde desea realizar el reporte, y en el segundo el año de finalización.</h5>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <img src="@Url.Content("~/Content/Images/InicioFin.jpg")" />
+                        </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <img src="@Url.Content("~/Content/Images/InicioFin.jpg")"/>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <h5>Seleccione sobre que valores de Planillas desea obtener el reporte.</h5>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <img src="@Url.Content("~/Content/Images/SelectType.jpg")" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <h5>Luego, solo haga click sobre el botón "Generar".</h5>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                            <div class="btn btn-success">Generar <span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
+                        </div>
                     </div>
                 </div>
-                <br/>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <h5>Seleccione sobre que valores de Planillas desea obtener el reporte.</h5>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <img src="@Url.Content("~/Content/Images/SelectType.jpg")"/>
-                    </div>
+                <div class="modal-footer" style="text-align: center">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
                 </div>
-                <br/>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <h5>Luego, solo haga click sobre el botón "Generar".</h5>
-                    </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-4">
-                        <div class="btn btn-success">Generar <span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer" style="text-align: center">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
             </div>
 
         </div>
 
     </div>
-
-</div>
 </div>
 
 
@@ -168,7 +170,8 @@
     <!-- /.modal-dialog -->
 </div>
 
-
+<script type="text/javascript" language="javascript" src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
+<script type="text/javascript" language="javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
 <script>
         $("body").on("click", "a.dialog-window", null, function (e) {
         e.preventDefault();
@@ -190,7 +193,7 @@
     });
 
     $(document).ready(function() {
-        
+
         $('.selectpicker').selectpicker({
             size: 6,
             style: 'btn-info'
@@ -248,7 +251,7 @@
         var inicio = parseInt($('#from').val());
         var fin = parseInt($('#to').val());
         var dif = fin - inicio;
-       
+
         if (dif > 10) {
             $('#spanOrdenFechas').text("Disculpe, sólo puede haber diez (10) años de diferencia entre el inicio y el fin.");
             event.preventDefault();
@@ -260,6 +263,5 @@
     }
 
 
-  </script>
-
+</script>
 
