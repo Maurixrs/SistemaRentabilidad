@@ -124,7 +124,7 @@
     }
 
     .table {
-    border-color: darkgrey !important;
+    border-color: #252627 !important;
     margin-bottom: 0px !important;
     }
     </style>
@@ -228,7 +228,6 @@
         </table>
     </div>
 </div>
-<hr style="margin-top: 0px; margin-bottom: 5px; border-style: inset; border-width: thin;" />
 
 
 <table id="encabezadostabla" class="table table-condensed table-bordered " style="margin-bottom: 2px">
@@ -1543,7 +1542,7 @@
 
                                 if (d.status == true) {
 
-                                    var url = '@Url.Action("Details", "Worksheets", new {id = Model.IdWorksheet})';
+                                    var url = '@Url.Action("Index", "Worksheets", new {x = 2})';
                                     window.location.href = url;
                                 } else {
                                     bootbox.alert(d.mensaje);

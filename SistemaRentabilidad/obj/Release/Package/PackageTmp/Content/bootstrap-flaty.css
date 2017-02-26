@@ -2322,7 +2322,7 @@ th {
   padding: 4px;
 }
 .table-bordered {
-  border: 2px solid darkgrey;
+  border: 2px solid #252627;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,

@@ -9,13 +9,64 @@
     @Styles.Render("~/Styles/css")
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         @Scripts.Render("~/bundles/modernizr")
 
+    <style>
+        .table-bordered{border:1.5px!important;}
+         center {
+             display: none !important;
+         }
+
+        #loadOverlay {
+            display: none;
+        }
+        /* Sticky footer styles
+        -------------------------------------------------- */
+        html,
+        body {
+            height: 100%;
+            /* The html and body elements cannot have any padding or margin. */
+        }
+
+        /* Wrapper for page content to push down footer */
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            /* Negative indent footer by it's height */
+            margin: 0 auto -30px;
+        }
+
+        #push,
+        #footer {
+            height: 30px;
+        }
+
+        #footer {
+            background-color: transparent;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .ayuda {
+                display: none;
+            }
+        }
+        /* Lastly, apply responsive CSS fixes as necessary */
+        @@media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+    </style>
     </head>
 
 <body class="full" background='@Url.Content("~/Content/Images/fon 1.jpg")'>
@@ -108,53 +159,6 @@
 </div>}
 </html>
 
-<style>
-    center{display: none !important;}
-     #loadOverlay{display: none;}
-    /* Sticky footer styles
-    -------------------------------------------------- */
-    html,
-    body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-    }
-   
-    /* Wrapper for page content to push down footer */
-    #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -30px;
-    }
-
-    #push,
-    #footer {
-        height: 30px;
-    }
-
-    #footer {
-        background-color: transparent;
-    }
-    @@media screen and (max-width: 767px) {
-        .ayuda {
-            display: none;
-        }
-    }
-    /* Lastly, apply responsive CSS fixes as necessary */
-    @@media (max-width: 767px) {
-        #footer {
-            margin-left: -20px;
-            margin-right: -20px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-    .progress.active .progress-bar {
-    -webkit-transition: none !important;
-    transition: none !important;
-}
-</style>
 
 
 <script>
