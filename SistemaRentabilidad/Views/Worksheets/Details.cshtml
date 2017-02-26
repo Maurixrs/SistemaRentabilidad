@@ -4,162 +4,158 @@
 }
 
 <head>
-    <LINK REL="stylesheet" TYPE="text/css" HREF="~/Content/hover.css">
-    <LINK REL="stylesheet" TYPE="text/css" HREF="~/Content/Site.css">
+   
+    <style>
+        .table {
+            table-layout: fixed !important;
+        }
 
+        legend {
+            margin-bottom: 2px !important;
+            font-size: inherit !important;
+        }
+
+        .full {
+            background-size: contain !important;
+        }
+
+        #resumentabla td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #nueva td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #ingresotabla td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #encabezadostabla td {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        #costotabla td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #gastotabla td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #otrotabla td {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #ingresotabla th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #costotabla th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #gastotabla th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #otrotabla th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+
+        #titulotabla th {
+            border-color: #252627 !important;
+            background: darkkhaki !important;
+        }
+
+        #titulotabla td {
+            border-color: #252627 !important;
+            background: white !important;
+        }
+
+        #nueva th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #resumentabla th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #otrosub th {
+            border-color: #252627 !important;
+            background: white !important;
+            line-height: 15px !important;
+        }
+
+        #encabezadostabla th {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        #totalingresotabla th {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        #totalgastotabla th {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        #totalcostotabla th {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        #totalotrotabla th {
+            border-color: #252627 !important;
+            line-height: 15px !important;
+        }
+
+        .tipos {
+            font-size: medium !important;
+            font-weight: bold !important;
+            font-style: italic !important;
+        }
+
+
+        .table {
+            border-color: #252627 !important;
+            margin-bottom: 0px !important;
+        }
+    </style>
 
 </head>
-<style>
-    .table {
- table-layout:fixed!important;
-  
-}
-     legend {
-         margin-bottom: 2px!important;
-         font-size: inherit!important;
-     }
 
-    .full {
-        background-size: contain!important;
-    }
-
-    #resumentabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #nueva td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #ingresotabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #encabezadostabla td {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    #costotabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #gastotabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #otrotabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #ingresotabla th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #costotabla th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #gastotabla th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #otrotabla th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-
-    #titulotabla th {
-        border-color: darkgrey!important;
-        background: darkkhaki!important;
-    }
-
-    #titulotabla td {
-        border-color: darkgrey!important;
-        background: white!important;
-    }
-
-    #nueva th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #resumentabla th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #otrosub th {
-        border-color: darkgrey!important;
-        background: white!important;
-        line-height: 15px!important;
-    }
-
-    #encabezadostabla th {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    #totalingresotabla th {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    #totalgastotabla th {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    #totalcostotabla th {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    #totalotrotabla th {
-        border-color: darkgrey!important;
-        line-height: 15px!important;
-    }
-
-    .tipos {
-        font-size: medium!important;
-        font-weight: bold!important;
-        font-style: italic!important;
-    }
-
-
-    .table {
-        border-color: darkgrey!important;
-        margin-bottom: 0px!important;
-    }
-</style>
 @Html.HiddenFor(model => model.IdWorksheet)
 
-<head>
 
-    <link href="/Content/site.css" rel="stylesheet">
-</head>
 @if (TempData["mimsg"] != null)
 {
     {

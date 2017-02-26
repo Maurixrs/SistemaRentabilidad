@@ -3,125 +3,126 @@
 @{
     ViewBag.Title = "Nueva Planilla";
 }
+<head>
+
+    <style>
+        textarea {
+            max-width: 100% !important;
+            resize: none !important;
+            line-height: 1.08 !important;
+            border-width: 1px !important;
+        }
+
+        legend {
+            margin-bottom: 2px !important;
+            font-size: inherit !important;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            margin: 0 !important;
+        }
+
+        .tipos {
+            font-size: medium !important;
+            font-weight: bold !important;
+            font-style: italic !important;
+        }
+
+        .fc {
+            padding: 3px !important;
+            height: 22px !important;
+        }
+
+        #resumentabla td {
+            line-height: 15px !important;
+        }
+
+        #nueva td {
+            line-height: 15px !important;
+        }
+
+        #ingresotabla td {
+            line-height: 15px !important;
+        }
+
+        #encabezadostabla td {
+            line-height: 15px !important;
+        }
+
+        #costotabla td {
+            line-height: 15px !important;
+        }
+
+        #gastotabla td {
+            line-height: 15px !important;
+        }
+
+        #otrotabla td {
+            line-height: 15px !important;
+        }
+
+        #ingresotabla th {
+            line-height: 15px !important;
+        }
+
+        #costotabla th {
+            line-height: 15px !important;
+        }
+
+        #gastotabla th {
+            line-height: 15px !important;
+        }
+
+        #otrotabla th {
+            line-height: 15px !important;
+        }
+
+        #nueva th {
+            line-height: 15px !important;
+        }
+
+        #resumentabla th {
+            line-height: 15px !important;
+        }
+
+        #otrosub th {
+            line-height: 15px !important;
+        }
+
+        #encabezadostabla th {
+            line-height: 15px !important;
+        }
+
+        #totalingresotabla th {
+            line-height: 15px !important;
+        }
+
+        #totalgastotabla th {
+            line-height: 15px !important;
+        }
+
+        #totalcostotabla th {
+            line-height: 15px !important;
+        }
+
+        #totalotrotabla th {
+            line-height: 15px !important;
+        }
 
 
+        .btn-group-justified {
+            display: inline !important;
+        }
 
-<style>
-    textarea {
-        max-width: 100%!important;
-        resize: none!important;
-        line-height: 1.08!important;
-        border-width: 1px!important;
-    }
+        .table {
+            margin-bottom: 0px !important;
+        }
+    </style></head>
 
-    legend {
-        margin-bottom: 2px!important;
-         font-size: inherit!important;
-    }
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none!important;
-        -moz-appearance: none!important;
-        appearance: none!important;
-        margin: 0!important;
-        
-    }
-
-    .tipos {
-        font-size: medium!important;
-        font-weight: bold!important;
-        font-style: italic!important;
-    }
-
-    .fc {
-        padding: 3px!important;
-        height: 22px!important;
-    }
-
-    #resumentabla td {
-        line-height: 15px!important;
-    }
-
-    #nueva td {
-        line-height: 15px!important;
-    }
-
-    #ingresotabla td {
-        line-height: 15px!important;
-    }
-
-    #encabezadostabla td {
-        line-height: 15px!important;
-    }
-
-    #costotabla td {
-        line-height: 15px!important;
-    }
-
-    #gastotabla td {
-        line-height: 15px!important;
-    }
-
-    #otrotabla td {
-        line-height: 15px!important;
-    }
-
-    #ingresotabla th {
-        line-height: 15px!important;
-    }
-
-    #costotabla th {
-        line-height: 15px!important;
-    }
-
-    #gastotabla th {
-        line-height: 15px!important;
-    }
-
-    #otrotabla th {
-        line-height: 15px!important;
-    }
-
-    #nueva th {
-        line-height: 15px!important;
-    }
-
-    #resumentabla th {
-        line-height: 15px!important;
-    }
-
-    #otrosub th {
-        line-height: 15px!important;
-    }
-
-    #encabezadostabla th {
-        line-height: 15px!important;
-    }
-
-    #totalingresotabla th {
-        line-height: 15px!important;
-    }
-
-    #totalgastotabla th {
-        line-height: 15px!important;
-    }
-
-    #totalcostotabla th {
-        line-height: 15px!important;
-    }
-
-    #totalotrotabla th {
-        line-height: 15px!important;
-    }
-
-
-    .btn-group-justified {
-    display: inline!important;}
-    .table {
-        margin-bottom: 0px!important;
-    }
-</style>
 
 
 <h2 class="text-center">Nueva Planilla</h2>
@@ -247,7 +248,7 @@
 
 <table id="ingresotabla" class="table table-condensed table-bordered chica">
 
-    <tbody id="ingreso"></tbody>
+    <tbody id="ingreso"><tr></tr></tbody>
 
 </table>
 <table id="totalingresotabla" class="table table-condensed table-bordered chica tottable" style="margin-bottom: 10px">
