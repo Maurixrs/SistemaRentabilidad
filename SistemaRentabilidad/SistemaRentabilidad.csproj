@@ -394,15 +394,21 @@
     <Content Include="Content\Images\BotonesIndex.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />
     <Content Include="Content\Images\CamposEdit.jpg" />
+    <Content Include="Content\Images\DescIngresos.jpg" />
     <Content Include="Content\Images\fon 1.jpg" />
+    <Content Include="Content\Images\Generar.jpg" />
     <Content Include="Content\Images\GraficoEstadisticas.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
+    <Content Include="Content\Images\InicioFin.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
     <Content Include="Content\Images\maxresdefault.jpg" />
     <Content Include="Content\Images\Monto.jpg" />
+    <Content Include="Content\Images\MontoIngresos.jpg" />
     <Content Include="Content\Images\MostrarRegistros.jpg" />
+    <Content Include="Content\Images\NuevaLínea.jpg" />
     <Content Include="Content\Images\ObservacionesGrales.jpg" />
     <Content Include="Content\Images\Observación.jpg" />
+    <Content Include="Content\Images\ObsIngresos.jpg" />
     <Content Include="Content\Images\Paginación.jpg" />
     <Content Include="Content\Images\PlanillasIncidentes.jpg" />
     <Content Include="Content\Images\portadaimg\danica.png" />
@@ -416,6 +422,7 @@
     <Content Include="Content\Images\portadaimg\tregar.png" />
     <Content Include="Content\Images\portadaimg\vanoli.jpg" />
     <Content Include="Content\Images\RegistrosMostrados.jpg" />
+    <Content Include="Content\Images\SelectType.jpg" />
     <Content Include="Content\Images\Sugerenciasindex.jpg" />
     <Content Include="Content\Images\Tipo.jpg" />
     <Content Include="Content\Images\TransaccionCreate.jpg" />
@@ -488,6 +495,7 @@
     <Content Include="Scripts\DataTables\spanish.json" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <None Include="Properties\PublishProfiles\sisrent.pubxml" />
     <None Include="Properties\PublishProfiles\SR2.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -828,6 +836,7 @@
     <Content Include="Views\SheetLines\Index.cshtml" />
     <Content Include="Views\SheetLines\Edit.cshtml" />
     <Content Include="Views\SheetLines\Delete.cshtml" />
+    <Content Include="Views\Statistics\HelpStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

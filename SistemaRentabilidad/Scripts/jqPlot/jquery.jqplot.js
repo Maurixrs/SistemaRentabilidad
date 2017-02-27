@@ -3960,7 +3960,7 @@
         darkgoldenrod: 'rgb(184, 134, 11)',
         darkgray: 'rgb(169, 169, 169)',
         darkgreen: 'rgb( 0, 100, 0)',
-        #252627: 'rgb(169, 169, 169)',
+        darkgrey: 'rgb(169, 169, 169)',
         darkkhaki: 'rgb(189, 183, 107)',
         darkmagenta: 'rgb(139, 0, 139)',
         darkolivegreen: 'rgb( 85, 107, 47)',

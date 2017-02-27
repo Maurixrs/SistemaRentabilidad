@@ -298,7 +298,7 @@ if (!document.createElement('canvas').getContext) {
     darkgoldenrod: '#B8860B',
     darkgray: '#A9A9A9',
     darkgreen: '#006400',
-    #252627: '#A9A9A9',
+    darkgrey: '#A9A9A9',
     darkkhaki: '#BDB76B',
     darkmagenta: '#8B008B',
     darkolivegreen: '#556B2F',
