@@ -81,21 +81,58 @@
         <div id="GSCCModal" class="modal fade" role="dialog"
              aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content" style="width: 150%; left: -25%">
+                <div class="modal-content" style="width: 165%; left: -33%">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title text-center">Ayuda</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 class="text-center" style="margin-top: 1px">El gráfico representa las transacciones a lo largo del año.</h3>
+                        
                         <div>
+                            <h4 class="text-center">Utilice esta sección para visualizar las transacciones realizadas en un período determinado</h4>
+
+
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4">
+                                    <h5 class="text-left">Ingrese el período que desea obtener el reporte colocando en el primer casillero el año desde donde desea realizar el reporte, y en el segundo el año de finalización.</h5>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4" style="margin-left: -5%">
+                                    <img src="@Url.Content("~/Content/Images/InicioFin.jpg")" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4">
+                                    <h5 class="text-left">Seleccione sobre que valores de Planillas desea obtener el reporte.</h5>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4" style="margin-left: -8%">
+                                    <img src="@Url.Content("~/Content/Images/SelectType.jpg")" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4">
+                                    <h5 class="text-left">Luego, solo haga click sobre el botón "Generar".</h5>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4" style="margin-left: -14%">
+                                    <div class="btn btn-success">Generar <span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
+                                </div>
+                            </div>
+                            <h4 class="text-center" style="margin-top: 12px">El gráfico representa las transacciones a lo largo del año.</h4>
                             <h4 class="text-center">Las transacciones se muestran en función del monto por período del año.</h4>
-                            <img src="@Url.Content("~/Content/Images/GraficoEstadisticas.jpg")" style="width: 70%" />
-                            <br />
+                            <img src="@Url.Content("~/Content/Images/GraficoEstadisticas.jpg")" style="width: 70%"/>
+                            <br/>
                             <h4 class="text-center">A la derecha del gráfico se indican los colores de representación del año evaluado.</h4>
-                            <br />
+                            <br/>
                             <h4 class="text-center">Debajo encontraremos la lista de Planillas que fueron tomadas en el reporte realizado</h4>
-                            <img src="@Url.Content("~/Content/Images/PlanillasIncidentes.jpg")" style="width: 80%" />
+                            <img src="@Url.Content("~/Content/Images/PlanillasIncidentes.jpg")" style="width: 80%"/>
                         </div>
                     </div>
                     <div class="modal-footer" style="text-align: center">
