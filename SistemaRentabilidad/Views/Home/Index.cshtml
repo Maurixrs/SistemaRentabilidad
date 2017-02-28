@@ -15,16 +15,16 @@
             <p class="fontMarca">"elGordo.com Distribuciones"</p>
             <br />
             <br />
-            <img src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/paty.jpg")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/donyeyo.jpg")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/piamontesa.png")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/danica.png")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/elnoble.jpg")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/vanoli.jpg")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/pozo.png")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/emeth.jpg")'>
-            <img src='@Url.Content("~/Content/Images/portadaimg/logo-Vienissima.png")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/tregar.png")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/paty.jpg")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/donyeyo.jpg")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/piamontesa.png")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/danica.png")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/elnoble.jpg")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/vanoli.jpg")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/pozo.png")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/emeth.jpg")'>
+            <img class="home" src='@Url.Content("~/Content/Images/portadaimg/logo-Vienissima.png")'>
         </h4>
     </div>
     @*<div class="panel panel-primary">
@@ -58,8 +58,8 @@
 
 
 <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 160%; left: -30%">
+    <div class="modal-dialog" style="width: 100%">
+        <div class="modal-content" style="width: 80%; left: 10%">
             <div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
                 <h4 class="modal-title" id="myModalLabel">Ayuda</h4>
@@ -68,7 +68,7 @@
                 @Html.Action("HelpHome", "Home")
             </div>
             <div class="modal-footer" style="text-align: center">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
             </div>
         </div>
@@ -83,7 +83,7 @@
     font-family: 'Kaushan Script', cursive;
    
 }
-     img {
+     .home {
          border-radius: 183px 183px 183px 183px!important;
          -moz-border-radius: 183px 183px 183px 183px!important;
          -webkit-border-radius: 183px 183px 183px 183px!important;
