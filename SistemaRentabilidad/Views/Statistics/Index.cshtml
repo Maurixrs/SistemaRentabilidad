@@ -29,14 +29,6 @@
                 <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
             </div>*@
             <div class="row form-horizontal">
-             
-                <div class="col-lg-1"> <legend>Desde:</legend></div>
-                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
-               
-                <div class="col-lg-1" > <legend>Hasta:</legend></div>
-                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
-                <div class="col-lg-1"></div>
-
                 <div class="col-lg-3">
                     <select id="select" class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo..." required="required">
                         <option value="Ingresos">Ingresos</option>
@@ -47,6 +39,14 @@
                         <option value="TotMens">Total mensual</option>
                     </select>
                 </div>
+                <div class="col-lg-1"> <h4>Desde:</h4></div>
+                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
+               
+                <div class="col-lg-1" > <h4>Hasta:</h4></div>
+                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
+                <div class="col-lg-1"></div>
+
+                
 
                 <button type="submit" onclick="ordenFechas(); maxTen()" onfocus="cargar()" class="btn btn-success col-lg-1 text-center">
                     Generar&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
