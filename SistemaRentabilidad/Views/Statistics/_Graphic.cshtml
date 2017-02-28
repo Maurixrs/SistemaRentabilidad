@@ -25,7 +25,7 @@
     <div id="seleccion">
         <div class="text-center">
             @*<h4>Desde: @ViewBag.initDate&nbsp;-&nbsp;Hasta: @ViewBag.endDate&nbsp;&nbsp;&nbsp;<button id="ocultargrafico" class="hidden-print btn btn-default btn-sm">Ocultar</button></h4>*@
-            <div id="grafico2" style="width: 850px; height: 400px; display: inline-block">
+            <div id="grafico2" style="width: 100%; height: 400px; display: inline-block">
             </div>
         </div>
 
@@ -231,68 +231,77 @@
 
 
 
+            var ticks = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
 
+            var renderGraph = function() {
+                plot2 = $.jqplot('grafico2', final, {
+                    title: tipo +" desde "+ year1.toString()+" hasta "+year2.toString(),
+                    seriesDefaults: {
 
-            var ticks = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-
-
-            plot2 = $.jqplot('grafico2', final, {
-                title: tipo +" desde "+ year1.toString()+" hasta "+year2.toString(),
-                seriesDefaults: {
-
-                    pointLabels: { show: true,hideZeros: true},
-                    breakOnNull:true
-                },  legend: {
-                    show: true,
-                    placement: 'outsideGrid',
-                    labels: labels,
-                    location: 'ne'
-                },
-
-                axes: {
-                    xaxis: {
-                        renderer: $.jqplot.CategoryAxisRenderer,
-                        ticks: ticks
-                    }, yaxis: {tickOptions: {
-                        formatString: "$%'d"
+                        pointLabels: { show: true,hideZeros: true},
+                        breakOnNull:true
+                    },  legend: {
+                        show: true,
+                        placement: 'outsideGrid',
+                        labels: labels,
+                        location: 'ne'
                     },
-                        min:0
+
+                    axes: {
+                        xaxis: {
+                            renderer: $.jqplot.CategoryAxisRenderer,
+                            ticks: ticks
+                        }, yaxis: {tickOptions: {
+                            formatString: "$%'d"
+                        },
+                            min:0
+
+                        }
+                    },highlighter: { show: true,
+                        // you can have anything here
+                        tooltipFormatString: '<b><i><span style="color:red;">%.2f</span></i></b>',
+                        tooltipContentEditor: function (str, seriesIndex, pointIndex, plot) {
+                            //the str is the ready string from tooltipFormatString
+                            //depending on how do you give the series to the chart you can use plot.legend.labels[seriesIndex] or plot.series[seriesIndex].label
+                            //return '<b><span style="color:black;font-weight:bold">Año: </span>'+'<span style="color:blue;font-weight:bold">'+plot.legend.labels[seriesIndex]+'</span><br/>' +'<span style="color:black;font-weight:bold">Mes: </span>'+'<span style="color:blue;font-weight:bold">'+ plot.series[seriesIndex].data[pointIndex][0]+'</span><br/><span style="color:black;font-weight:bold">Ingresos: $'+'<span style="color:blue;font-weight:bold">'+plot.series[seriesIndex].data[pointIndex][1]+'</span>';
+
+                            return '<table>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Año: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+plot.legend.labels[seriesIndex]+'</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Mes: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+ plot.series[seriesIndex].data[pointIndex][0]+'</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td style="color:black;font-weight:bold;text-align:center">Ingresos: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">$'+plot.series[seriesIndex].data[pointIndex][1]+'</td>' +
+                                '</tr>' +
+                                '</table>';
+
+
+
+
+                        }
+                    },
+
+                    cursor: {
+                        show: true,
+
 
                     }
-                },highlighter: { show: true,
-                    // you can have anything here
-                    tooltipFormatString: '<b><i><span style="color:red;">%.2f</span></i></b>',
-                    tooltipContentEditor: function (str, seriesIndex, pointIndex, plot) {
-                        //the str is the ready string from tooltipFormatString
-                        //depending on how do you give the series to the chart you can use plot.legend.labels[seriesIndex] or plot.series[seriesIndex].label
-                        //return '<b><span style="color:black;font-weight:bold">Año: </span>'+'<span style="color:blue;font-weight:bold">'+plot.legend.labels[seriesIndex]+'</span><br/>' +'<span style="color:black;font-weight:bold">Mes: </span>'+'<span style="color:blue;font-weight:bold">'+ plot.series[seriesIndex].data[pointIndex][0]+'</span><br/><span style="color:black;font-weight:bold">Ingresos: $'+'<span style="color:blue;font-weight:bold">'+plot.series[seriesIndex].data[pointIndex][1]+'</span>';
+                });}
+            renderGraph();
 
-                        return '<table>' +
-                            '<tr>' +
-                            '<td style="color:black;font-weight:bold;text-align:center">Año: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+plot.legend.labels[seriesIndex]+'</td>' +
-                            '</tr>' +
-                            '<tr>' +
-                            '<td style="color:black;font-weight:bold;text-align:center">Mes: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">'+ plot.series[seriesIndex].data[pointIndex][0]+'</td>' +
-                            '</tr>' +
-                            '<tr>' +
-                            '<td style="color:black;font-weight:bold;text-align:center">Ingresos: </td>'+'<td style="color:blue;font-weight:bold;text-align:right">$'+plot.series[seriesIndex].data[pointIndex][1]+'</td>' +
-                            '</tr>' +
-                            '</table>';
+            var resizeGraph = function() {
+                if (plot2)
+                    plot2.destroy();
+                renderGraph();
+            }
 
-
-
-
-                    }
-                },
-
-                cursor: {
-                    show: true,
-
-
-                }
+            $(window).resize(function() {
+                resizeGraph();
             });
 
-
+           
         });
        
 
