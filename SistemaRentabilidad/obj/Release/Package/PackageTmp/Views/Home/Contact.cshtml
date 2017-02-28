@@ -3,40 +3,43 @@
     ViewBag.Title = "Contacto";
 }
 @*<style>.full{background-size: contain}</style>*@
+<head>
+    <style>
+        #contacthide {
+            Display: none !important;
+        }
+
+        #footer {
+            Display: none !important;
+        }
+    </style>
+</head>
 
 <div class="text-center">
-    <img src="~/Content/Images/logogodesa.png">
-    <br/>
-    <h4 class="text-center">Nuestro trabajo es facilitar el tuyo</h4>
-    <h3>Programadores</h3>
+    <img src="~/Content/Images/logogodesa.png" style="margin-top: 15px">
+    <br />
+    <h3 class="text-center" style="margin-top: 10px">Nuestro trabajo es facilitar el tuyo</h3>
+    <h4 style="margin-top: 19px">Programadores</h4>
     <p>Lencina, Jorge Eduardo</p>
     <p>Ponce, Mario Leonardo Nicolás</p>
     <p>Reyes, Mauricio Omar</p>
     <p>Sosa Fachinotti, Gabriel Hernán</p>
 
-    <h3>Oficina</h3>
+    <h4>Oficina</h4>
     <address>
-        Brown 1337 - 1º piso - Resistencia, Chaco, Argentina <br/>
-        <h3>Teléfonos</h3>
+        Brown 1337 - 1º piso - Resistencia, Chaco, Argentina <br />
+        <h4>Teléfonos</h4>
 
         <abbr title="Telefono">Cel:</abbr>
 
         +54 3625 194000
-        <br/>
+        <br />
         <abbr title="Telefono">Cel:</abbr>
         +54 3777 544623
     </address>
     <address>
-        <strong>E-Mail:</strong> <a href="mailto:godesasolutions@gmail.com">godesasolutions@gmail.com</a><br/>
+        <strong>E-Mail:</strong> <a href="mailto:godesasolutions@gmail.com">godesasolutions@gmail.com</a><br />
     </address>
 
     <h5>Gracias por elegirnos y recuerde que todo nuestro personal se encuentra a su entera disposición. </h5>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#contacthide').addClass('hidden');
-    })
-</script>
-
-

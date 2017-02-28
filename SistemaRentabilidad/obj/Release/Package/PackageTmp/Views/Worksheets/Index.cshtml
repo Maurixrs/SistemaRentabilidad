@@ -5,14 +5,13 @@
 }
 <head>
     <style>
-    .mes {
-    text-transform:capitalize!important;
-    background: none!important;
-    border: none!important;
-    width:150px!important;
-    }
-    
-   </style>
+        .mes {
+            text-transform: capitalize !important;
+            background: none !important;
+            border: none !important;
+            width: 150px !important;
+        }
+    </style>
 </head>
 
 @if (TempData["mimsg"] != null)
@@ -24,22 +23,42 @@
 
 }
 <h2 class="text-center">Lista de Planillas</h2>
-<hr/>
+<hr />
+
 <div>
-    <a href="@Url.Action("CreateWorksheet","Worksheets")" class="btn-sm btn-success hvr-glow" style="margin-bottom: 5px">Nueva Planilla &nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
-   
-    <table class="table  table-bordered" id="tabla">
+    <div style="width: 100%;display: flex">
+        <div style="width: 50%;text-align: left;">
+            <a href="@Url.Action("CreateWorksheet", "Worksheets")" class="btn-sm btn-success hvr-glow" style="margin-bottom: 5px;">Nueva Planilla &nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+        </div>
+        <div style="width: 50%;text-align: right;">
+            <a id="tis" class="btn btn-default btn-sm hvr-glow" style="margin-bottom: 5px;background-color: #6c7175;border: none"><span id="iclista" class="glyphicon glyphicon-th-list" style="font-size: medium; line-height: 0.5;"></span> <span id="dlista"> Detallado</span></a>
+        </div>
+    </div>
+
+    <table class="table table-bordered" id="tabla">
         <thead>
             <tr style="background-color: #2c3e50;">
-                <th class="text-center" style="color:white">
+                <th class="text-center" style="color: white">
                     Período
                 </th>
-
-                <th class="text-center" style="color:white">
-                    Monto Total
+                <th class="text-center" style="color: white">
+                    Ingresos <i>($)</i>
+                </th>
+                <th class="text-center" style="color: white">
+                    Costos <i>($)</i>
+                </th>
+                <th class="text-center" style="color: white">
+                    Gastos <i>($)</i>
+                </th>
+                <th class="text-center" style="color: white">
+                    Otros Ing. <i>($)</i>
                 </th>
 
-                <th style="color:white; width:120px" class="text-center">Opciones</th>
+                <th class="text-center" style="color: white">
+                    Monto Total <i>($)</i>
+                </th>
+
+                <th style="color: white; width: 120px" class="text-center">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -48,19 +67,30 @@
                 <tr>
                     <td class="text-center formatList">
 
-                        <span style="display: none">@item.Date.ToString("yyyy/MM/dd") + @System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month);</span>
+                        <span style="display: none">@item.Date.ToString("yyyy/MM/dd") + @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Date.Month));</span>
                         @{
                             var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(item.Date.Month) + " " + item.Date.Year;
                             @Html.EditorFor(model => month, new { htmlAttributes = new { @class = "mes", @readonly = "readonly" } })
                         }
 
                     </td>
-
                     <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Totali)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Totalc)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Totalg)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Totalo)
+                    </td>
+                    <td class="text-center" style="font-style: italic; font-weight: bolder;}">
                         @Html.DisplayFor(modelItem => item.TotalAmount)
                     </td>
                     <td class="text-center">
-                        <a href="@Url.Action("Details","Worksheets", new { id = item.IdWorksheet })" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("Details", "Worksheets", new {id = item.IdWorksheet})" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
                         <a href="@Url.Action("EditW", "Worksheets", new {id = item.IdWorksheet})" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                         <a href="@Url.Action("Delete", "Worksheets", new {id = item.IdWorksheet, details = false})" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </td>
@@ -95,18 +125,44 @@
 {
     <script>
 
-        $(document).ready(function () {            
+
+        $(document).ready(function() {
             if ($('#msg').val() == 2) {
                 toastr.success("Edición realizada correctamente.");
             }
-            ////Grilla automatica//
-            $("#tabla").DataTable({
-                order: [[0, "desc"]], "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],
-                 
+            var table = $('#tabla').DataTable({
+                order: [[0, "desc"]],
+                "lengthMenu": [[12, 24, 36, -1], [12, 24, 36, "Todas"]],
+
                 "language": {
                     "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
+                }, "columnDefs": [
+            {
+                "targets": [1,2,3,4],
+                "visible": false, "searchable": false
+
+            },{ orderable: false, targets: [6] }
+                ]
+
+            });
+
+            $('#tis').on('click', function (e) {
+                if ($("#dlista").html() == " Detallado") {
+                    $("#dlista").html(" Simple");
+                    $("#iclista").removeClass("glyphicon-th-list");
+                    $("#iclista").addClass("glyphicon-th-large");
+                } else {
+                    $("#dlista").html(" Detallado"); $("#iclista").removeClass("glyphicon-th-large");
+                    $("#iclista").addClass("glyphicon-th-list");
+                }
+
+                e.preventDefault();
+                for (var i = 1; i < 5; i++) {
+                    var column = table.column(i);
+                    column.visible(!column.visible());
                 }
             });
+
 
             if ($('#msg').val() == 1) {
                 toastr.success("Planilla eliminada exitosamente.");

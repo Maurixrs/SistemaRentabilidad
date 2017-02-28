@@ -7,6 +7,11 @@
     .glyphicon-remove {
     cursor: pointer !important;
     }
+    .withoutborders {
+           border-left: none;
+           border-right: none;
+           border-top: none;
+       }
 
     legend {
     margin-bottom: 2px !important;
@@ -261,16 +266,16 @@
 
                 <tr>
                     <td class="text-left" style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sugi", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "iteming_SheetDescription" + @item.IdSheet, Name = "ing_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm withoutborders fc sugi", @rows = '1' })
                         <span class="text-danger" id="@("spaniteming_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
                     <td class="text-left" style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "panel-info form-control-sm  inputForm withoutborders fc", @rows = '1' })
                     </td>
                     <td class="text-left">
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado",@type="number" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm withoutborders panel-info montocentrado", @type="number" })
                         <span class="text-danger" id="@("spaniteming_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -495,7 +500,7 @@
     <tbody>
         <tr>
             <td>
-                @Html.TextAreaFor(model => model.Comments, new { @class = "panel-info form-control-sm  inputForm fc", @rows = '1', @maxlength = "140" })
+                @Html.TextAreaFor(model => model.Comments, new { @class = "panel-info form-control-sm  inputForm withoutborders fc", @rows = '1', @maxlength = "140" })
 
 
             </td>
@@ -523,8 +528,8 @@
 </div>
 <div id="GSCCModal" class="modal fade" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 190%; left: -45%">
+    <div class="modal-dialog" style="width:100%">
+        <div class="modal-content" style="width: 84%; left: 8%">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title text-center">Ayuda</h4>
@@ -532,7 +537,9 @@
             <div class="modal-body">
                 @Html.Action("HelpEdit", "Worksheets")
             </div>
-
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
         </div>
 
     </div>
@@ -1170,9 +1177,9 @@
                 $.each(orderItemsi, function(i, val) {
                     var $rowi = $('<tr class="elimi"></tr>');
 
-                    $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugi awesomplete" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
-                    $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowi.append($('<td><input type="number" id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calculogral();calcing();valamoub(this)",  oninput = "maxvalue(this);calculogral();calcing();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugi awesomplete" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowi.append($('<td><input type="number" id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= "panel-info form-control-sm inputForm withoutborders fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calculogral();calcing();valamoub(this)",  oninput = "maxvalue(this);calculogral();calcing();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
@@ -1219,9 +1226,9 @@
                 $.each(orderItemsc, function(i, val) {
                     var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
 
-                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
-                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowc.append($('<td><input type="number" id="cos_Amountz" maxlength="10" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calculogral();calccos();valamoub(this)",  oninput = "maxvalue(this);calculogral();calccos();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td><input type="number" id="cos_Amountz" maxlength="10" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calculogral();calccos();valamoub(this)",  oninput = "maxvalue(this);calculogral();calccos();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
                     var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                     $removec.click(function(e) {
                         e.preventDefault();
@@ -1265,9 +1272,9 @@
                 $('#orderItemsg').html('<span class="text-danger"></span>');
                 $.each(orderItemsg, function(i, val) {
                     var $rowg = $('<tr class="elimg"  style="background-color: white"></tr>');
-                    $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugg" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
-                    $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowg.append($('<td><input type="number" id="gas_Amountz" maxlength="10" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calcgas();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_SheetDescriptionz" Name="gas_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugg" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td style="width: 40%"><textarea maxlength="140" id="gas_Commentsz" Name="gas_Comments" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowg.append($('<td><input type="number" id="gas_Amountz" maxlength="10" Name="gas_Amount" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calcgas();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcgas();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removeg = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilagasb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
@@ -1318,9 +1325,9 @@
                 $.each(orderItemso, function(i, val) {
                     var $rowo = $('<tr class="elimo"  style="background-color: white"></tr>');
 
-                    $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm fc sugo" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
-                    $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
-                    $rowo.append($('<td><input type="number" id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calcotr();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_SheetDescriptionz"  Name="otr_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugo" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td style="width: 40%"><textarea maxlength="140" id="otr_Commentsz" Name="otr_Comments" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
+                    $rowo.append($('<td><input type="number" id="otr_Amountz" Name="otr_Amount" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calcotr();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcotr();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                     var $removeo = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaotrb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
 
@@ -1507,7 +1514,18 @@
             } else {
 
 
-                bootbox.confirm("** Está por confirmar la edición, ¿Desea continuar?", function(result1) {
+                bootbox.confirm({message:"** Está por confirmar la edición, ¿Desea continuar?", 
+                    buttons: {
+                        confirm: {
+                            label: 'Aceptar',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Cancelar',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback:function(result1) {
 
                     if (result1) {
 
@@ -1557,7 +1575,7 @@
                     }
 
 
-                });
+                }});
             }
 
 
