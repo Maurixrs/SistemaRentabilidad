@@ -68,13 +68,15 @@
              .ayuda {
                 display: none;
             }
-          
+       
         }
 
         .progress.active .progress-bar {
             -webkit-transition: none !important;
             transition: none !important;
         }
+        .hvr-bubble-float-right:before {border-color: transparent transparent transparent cornflowerblue;}
+         .hvr-bubble-float-left:before {border-color: transparent grey transparent transparent;}
     </style>
     </head>
 
@@ -110,24 +112,32 @@
                             </ul>
                         </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        <li id="mo" class="hvr-underline-from-center"><a class="hvr-bubble-float-right"><span class="glyphicon glyphicon-search "></span></a></li>
+                        <li id="ocu" class="hvr-underline-from-center" style="display: none"><a class="hvr-bubble-float-left"><span class="glyphicon glyphicon-remove"></span></a></li>
+                        <li id="nu" style="display: none">
 
-                        <li class="">
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
-                                <div style="display: inline-flex;margin-top:15px">
-                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 31px;width: 200px" />
+                                <div style="display: inline-flex; margin-top: 15px">
+                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 25px; font-size: small; font-style: italic; width: 90%; padding-left: 0px; padding-right: 0px;" />
                                     &nbsp;
                                     <button type="submit" id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                     @*<input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />*@
+
+
                                 </div>
                             }
+
+
+
+
                         </li>
 
-                     
 
                     </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
+
+                @Html.Partial("_LoginPartial")
+            </div>
             </div>
         </div>
         <div class="container body-content upBody">
@@ -172,7 +182,17 @@
 
 
 <script>
-  
+    $("#mo").click(function () {
+        $("#mo").hide();
+        $("#ocu").toggle("slow");
+        $("#nu").toggle("slow");
+
+    });
+    $("#ocu").click(function () {
+        $("#nu").toggle("slow");
+        $("#ocu").toggle("slow");
+        $("#mo").toggle("slow");
+    });
     function valfechaf() {
         if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
             $('#buscarf').addClass("disabled");
