@@ -1514,7 +1514,18 @@
             } else {
 
 
-                bootbox.confirm("** Está por confirmar la edición, ¿Desea continuar?", function(result1) {
+                bootbox.confirm({message:"** Está por confirmar la edición, ¿Desea continuar?", 
+                    buttons: {
+                        confirm: {
+                            label: 'Aceptar',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'Cancelar',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback:function(result1) {
 
                     if (result1) {
 
@@ -1564,7 +1575,7 @@
                     }
 
 
-                });
+                }});
             }
 
 
