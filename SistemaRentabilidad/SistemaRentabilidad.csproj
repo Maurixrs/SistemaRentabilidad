@@ -391,7 +391,6 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\hover.css" />
     <Content Include="Content\Images\BotonAyuda.jpg" />
-    <Content Include="Content\Images\BotonesIndex.jpg" />
     <Content Include="Content\Images\BuscadorHome.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />
     <Content Include="Content\Images\CamposEdit.jpg" />
@@ -835,7 +834,6 @@
     <Content Include="Views\SheetLines\Index.cshtml" />
     <Content Include="Views\SheetLines\Edit.cshtml" />
     <Content Include="Views\SheetLines\Delete.cshtml" />
-    <Content Include="Views\Statistics\HelpStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
