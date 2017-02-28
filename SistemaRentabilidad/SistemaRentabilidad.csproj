@@ -392,10 +392,10 @@
     <Content Include="Content\hover.css" />
     <Content Include="Content\Images\BotonAyuda.jpg" />
     <Content Include="Content\Images\BotonesIndex.jpg" />
+    <Content Include="Content\Images\BuscadorHome.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />
     <Content Include="Content\Images\CamposEdit.jpg" />
     <Content Include="Content\Images\DescIngresos.jpg" />
-    <Content Include="Content\Images\Fecha.jpg" />
     <Content Include="Content\Images\fon 1.jpg" />
     <Content Include="Content\Images\GraficoEstadisticas.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
