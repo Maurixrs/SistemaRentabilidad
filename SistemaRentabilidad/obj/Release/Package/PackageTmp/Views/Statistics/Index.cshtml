@@ -5,6 +5,7 @@
 <head>
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
+    <style>.bootstrap-select{width: 100%!important}</style>
 </head>
 
 
@@ -29,8 +30,8 @@
                 <h3 class="col-lg-4" style="margin-top: 0px">Ingrese rango de fechas</h3>
             </div>*@
             <div class="row form-horizontal">
-                <div class="col-lg-3">
-                    <select id="select" class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo..." required="required">
+                <div class="col-sm-3" style="display: flex">
+                    <select id="select" class="selectpicker show-tick" name="selectedStat" title="Seleccione tipo..." required="required" style="width: 100%">
                         <option value="Ingresos">Ingresos</option>
                         <option value="Gastos">Gastos</option>
                         <option value="Costos">Costos</option>
@@ -39,20 +40,22 @@
                         <option value="TotMens">Total mensual</option>
                     </select>
                 </div>
-                <div class="col-lg-1"> <h4>Desde:</h4></div>
-                <input id='from' class="col-lg-1 form-control" style="width: 200px" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio"/>
+                <div class="col-sm-1" style="padding-right: 0px"> <h4>Desde:</h4></div>
+                <div class="col-sm-2"><input id='from' class="form-control" style="width: 100%" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio" />
+ </div>
+
+                <div class="col-sm-1" style="padding-right: 0px"> <h4>Hasta:</h4>
+                </div>
+                <div class="col-sm-2"><input id='to' type="number" class="form-control" style="width: 100%" name='fecha2' max="2999" min="2000" placeholder="año fin" />
+</div>
+
+                <div class="col-sm-2"><button type="submit" onclick="ordenFechas(); maxTen()" onfocus="cargar()" class="btn btn-success text-center" style="width: 100%">
+    Generar&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+</button></div>
+
                
-                <div class="col-lg-1" > <h4>Hasta:</h4></div>
-                <input id='to' type="number" class="col-lg-1 form-control" style="width: 200px" name='fecha2' max="2999" min="2000" placeholder="año fin"/>
-                <div class="col-lg-1"></div>
-
-                
-
-                <button type="submit" onclick="ordenFechas(); maxTen()" onfocus="cargar()" class="btn btn-success col-lg-1 text-center">
-                    Generar&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                </button>
                 @*<input type='submit' onclick="ordenFechas(); maxTen();" onfocus="cargar()" value='Generar' class="btn btn-success col-lg-1"/>*@
-                <div class="col-lg-1"></div>
+                <div class="col-sm-1"></div>
                 
             </div>
             <div class="text-center">

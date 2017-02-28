@@ -29,7 +29,9 @@ hr {
     margin-bottom: 8px;
     margin-top: 5px
 }
-    .montocentrado{ text-align: center !important;}
+    .montocentrado{ text-align: center !important;
+        
+    }
     .tottable{background: none}
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -419,6 +421,15 @@ td.dataContainer {
     border: 1px solid #000000;
     border: none;
     background: transparent;
+    font-weight: bold;
+}
+
+.totalViewKhaki {
+    
+    text-align: center;
+    border: 1px solid #000000;
+    border: none;
+    background: khaki;
     font-weight: bold;
 }
 

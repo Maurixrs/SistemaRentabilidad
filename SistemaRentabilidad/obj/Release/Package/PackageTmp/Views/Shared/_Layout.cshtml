@@ -61,6 +61,15 @@
                 padding-right: 20px;
             }
         }
+         @@media (max-width: 1200px) {
+            .navbar-fixed-top {
+               font-size: smaller
+            }
+             .ayuda {
+                display: none;
+            }
+          
+        }
 
         .progress.active .progress-bar {
             -webkit-transition: none !important;
@@ -93,9 +102,10 @@
                         </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Estadísticas", "Index", "Statistics")</li>
                         <li class="dropdown" style="left: auto">
-                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Sugerencias<span class="caret"></span></a>
+                            <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Configuración<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="download">
-                                <li style="font-weight: bold;">@Html.ActionLink("Listado", "Index", "SheetLines")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Editar sugerencias", "Index", "SheetLines")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Cambiar contraseña", "Index", "Manage")</li>
 
                             </ul>
                         </li>
