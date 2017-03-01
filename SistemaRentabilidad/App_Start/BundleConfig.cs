@@ -29,7 +29,7 @@ namespace SistemaRentabilidad
                         "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/autosize.js",
                        "~/Scripts/bootstrap-select.min.js", "~/Scripts/awesomplete.js",
-                       "~/Scripts/maxlength.js",
+                       "~/Scripts/maxlength.js","~/Scripts/bootstrap-datepicker.js","~/Scripts/Locale/bootstrap-datepicker.es.min.js",
                        "~/Scripts/i18n/defaults-ar_AR.min.js"
         };
             scriptBundle.Include(scriptArray);
@@ -78,7 +78,7 @@ namespace SistemaRentabilidad
                       "~/Content/bootstrap-select.css.map",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/content/toastr.css",
-                       "~/Content/css/jquery-ui.min.css", "~/Content/Site.css", "~/Content/hover.css"));
+                       "~/Content/css/jquery-ui.min.css", "~/Content/Site.css", "~/Content/hover.css", "~/Content/bootstrap-datepicker.css"));
 
             //bundles.Add(new StyleBundle("~/Content/css").Include(
             //          "~/Content/bootstrap-flaty.css", "~/Content/css/awesomplete.css",

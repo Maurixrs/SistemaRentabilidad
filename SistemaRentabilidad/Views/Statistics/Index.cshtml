@@ -5,7 +5,10 @@
 <head>
     <script type="text/javascript" src='@Url.Content("/Scripts/jquery-1.12.4.min.js")'></script>
     <script type="text/javascript" src='@Url.Content("/Scripts/bootstrap.min.js")'></script>
-    <style>.bootstrap-select{width: 100%!important}</style>
+    <style>.bootstrap-select{width: 100%!important}
+    @@media (max-width: 767px) {
+        .izq{text-align: left!important;}
+            }</style>
 </head>
 
 
@@ -40,11 +43,11 @@
                         <option value="TotMens">Total mensual</option>
                     </select>
                 </div>
-                <div class="col-sm-1" style="padding-right: 0px"> <h4 class="text-right">Desde:</h4></div>
+                <div class="col-sm-1" style="padding-right: 0px"> <h4 class="text-right izq">Desde:</h4></div>
                 <div class="col-sm-2"><input id='from' class="form-control text-left" style="width: 100%" type="number" required name='fecha1' max="2999" min="2000" data-rule-menor="true" placeholder="año inicio" />
  </div>
 
-                <div class="col-sm-1" style="padding-right: 0px"> <h4 class="text-right">Hasta:</h4>
+                <div class="col-sm-1" style="padding-right: 0px"> <h4 class="text-right izq">Hasta:</h4>
                 </div>
                 <div class="col-sm-2"><input id='to' type="number" class="form-control text-left" style="width: 100%" name='fecha2' max="2999" min="2000" placeholder="año fin" />
 </div>

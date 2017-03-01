@@ -12,6 +12,7 @@ using SistemaRentabilidad.Models;
 
 namespace SistemaRentabilidad.Controllers
 {
+    [Authorize(Users = "urdirom-dist@hotmail.com")]
     public class SheetLinesController : Controller
     {
         private ContextSR db = new ContextSR();

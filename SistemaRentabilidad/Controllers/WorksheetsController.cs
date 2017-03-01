@@ -25,7 +25,7 @@ namespace SistemaRentabilidad.Controllers
         // GET: Worksheets
         public ActionResult Index(int? x)
         {
-            if (x != null) { TempData["mimsg"] = 2; return RedirectToAction("Index");
+            if (x != null) { TempData["mimsg"] = x; return RedirectToAction("Index");
             }
 
             IList<WsVM> WsVMList = new List<WsVM>();

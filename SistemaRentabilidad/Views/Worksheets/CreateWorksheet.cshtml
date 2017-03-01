@@ -159,7 +159,7 @@
 
     </td>
     <td class="text-center fondoBlanco" style="padding-bottom: 0px;">
-        <input type="month" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" value="@DateTime.Now.ToString("yyyy-MM")" placeholder="dd/mm/aaaa" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center" />
+        <input type="text" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" value="@DateTime.Now.ToString("MMMM/yyyy")" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center;width: auto" />
         <span class="text-danger text-center" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -897,6 +897,18 @@
         }
 
         $(document).ready(function() {
+            $('#wdate').datepicker({
+                format: "MM/yyyy",
+                startView: 1,
+                minViewMode: 1,
+                maxViewMode: 2,
+                todayBtn: "linked",
+                clearBtn: true,
+                language: "es",
+                autoclose: true,todayHighlight: true
+
+            });
+   
             lines = @Html.Raw(ViewBag.lines);
             linesi = @Html.Raw(ViewBag.linesi);
             linesc = @Html.Raw(ViewBag.linesc);
@@ -1222,7 +1234,7 @@
                 }
                 //Save if valid
                 if (isAllValid) {
-                    bootbox.confirm({message:"** Está por guardar la planilla, ¿Desea continuar?", 
+                    bootbox.confirm({message:"** Está por guardar la planilla, ¿Desea continuar?",
                     buttons: {
                         confirm: {
                                 label: 'Aceptar',
@@ -1259,7 +1271,7 @@
                                     //check is successfully save to database
                                     if (d.status == true) {
 
-                                        var url = '@Url.Action("Index", "Worksheets")';
+                                    var url = '@Url.Action("Index", "Worksheets", new {x = 0})';
                                         window.location.href = url;
                                     } else {
                                         bootbox.alert(d.mensaje);

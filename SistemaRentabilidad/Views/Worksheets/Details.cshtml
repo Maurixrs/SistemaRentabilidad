@@ -581,9 +581,7 @@
     <script src="@Url.Content("~/Scripts/printThis.js")"></script>
     <script>
         $(document).ready(function () {
-            if ($('#msg').val() == 1) {
-                toastr.success("Planilla guardada correctamente.");
-            }
+          
 
         $("body").on("click", "a.dialog-window", null, function (e) {
             e.preventDefault();
