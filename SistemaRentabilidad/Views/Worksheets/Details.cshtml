@@ -156,6 +156,12 @@
             border-color: #252627 !important;
             margin-bottom: 0px !important;
         }
+        @@media screen and (max-width: 767px) {
+            .imprimir {
+                display: none;
+            }
+        }
+
     </style>
 
 </head>
@@ -175,7 +181,7 @@
    <h2 class="text-center">Detalle de Planilla</h2>
     <div class="col-lg-12 text-right hidden-print" style="margin-top:-40px; margin-left: 15px">
         <a class="btn-sm btn-warning text-right hvr-glow" style="cursor: pointer; margin-top: 9px" id="impcomprobante" onclick="print();">
-            Imprimir &nbsp;<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+            <span class="imprimir">Imprimir &nbsp;</span><span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 
 
         </a>
