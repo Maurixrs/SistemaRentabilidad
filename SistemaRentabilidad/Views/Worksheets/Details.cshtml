@@ -10,6 +10,13 @@
             table-layout: fixed !important;
         }
 
+        .mes {
+            text-transform: capitalize !important;
+            background: none !important;
+            border: none !important;
+            width: 150px !important;
+        }
+
         legend {
             margin-bottom: 2px !important;
             font-size: inherit !important;
@@ -202,11 +209,11 @@
                     </td>
                     <td class="text-center">
                         @{
-                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(Model.Date.Month).ToUpper();
+                            var month = System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.GetMonthName(Model.Date.Month) + " " + Model.Date.Year ;
 
 
-                            @Html.DisplayFor(model => month)
-                            <text> &nbsp;</text>; @Model.Date.Year;
+                            @Html.EditorFor(model => month, new { htmlAttributes = new {@class="mes", @readonly = "readonly" } })
+                            
 
                         }
                     </td>

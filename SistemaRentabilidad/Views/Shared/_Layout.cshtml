@@ -8,15 +8,18 @@
 
     @Styles.Render("~/Styles/css")
 
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Scripts.Render("~/bundles/modernizr")
 
     <style>
-        .table-bordered{border:1.5px!important;}
-         center {
-             display: none !important;
-         }
+        .table-bordered {
+            border: 1.5px !important;
+        }
+
+        center {
+            display: none !important;
+        }
 
         #loadOverlay {
             display: none;
@@ -61,30 +64,49 @@
                 padding-right: 20px;
             }
         }
-         @@media (max-width: 1200px) {
+
+        @@media (max-width: 1200px) {
             .navbar-fixed-top {
-               font-size: smaller
+                font-size: smaller;
             }
-             .ayuda {
+
+            .ayuda {
                 display: none;
             }
-       
         }
-          @@media (max-width: 767px) {
+
+        @@media (max-width: 767px) {
             .navbar-fixed-top {
-               font-size: inherit
+                font-size: inherit;
             }
-           
+
+            #ocu {
+                display: none !important;
+            }
+
+            #mo {
+                display: none !important;
+            }
+
+            #nu {
+                display: initial !important;
+            }
         }
 
         .progress.active .progress-bar {
             -webkit-transition: none !important;
             transition: none !important;
         }
-        .hvr-bubble-float-right:before {border-color: transparent transparent transparent cornflowerblue;}
-         .hvr-bubble-float-left:before {border-color: transparent grey transparent transparent;}
+
+        .hvr-bubble-float-right:before {
+            border-color: transparent transparent transparent cornflowerblue;
+        }
+
+        .hvr-bubble-float-left:before {
+            border-color: transparent grey transparent transparent;
+        }
     </style>
-    </head>
+</head>
 
 <body class="full" background='@Url.Content("~/Content/Images/fon 1.jpg")'>
     <div id="wrap">
@@ -96,8 +118,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="@Url.Action("Index","Home", new {area = ""})" class="navbar-brand hvr-bounce-in">Inicio <span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
-                    @*@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })*@
+                    @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -113,20 +134,20 @@
                         <li class="dropdown" style="left: auto">
                             <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Configuración<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="download">
-                                <li style="font-weight: bold;">@Html.ActionLink("Administrar sugerencias", "Index", "SheetLines")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Editar sugerencias", "Index", "SheetLines")</li>
                                 <li style="font-weight: bold;">@Html.ActionLink("Cambiar contraseña", "Index", "Manage")</li>
 
                             </ul>
                         </li>
                         <li class="hvr-underline-from-center">@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                        <li id="mo" class="hvr-underline-from-center"><a class="hvr-bubble-float-right"><span class="glyphicon glyphicon-search "></span></a></li>
+                        <li id="mo" class="hvr-underline-from-center"><a class="hvr-bubble-float-right "><span class="glyphicon glyphicon-search "></span></a></li>
                         <li id="ocu" class="hvr-underline-from-center" style="display: none"><a class="hvr-bubble-float-left"><span class="glyphicon glyphicon-remove"></span></a></li>
                         <li id="nu" style="display: none">
 
                             @using (Html.BeginForm("FindW", "Worksheets", FormMethod.Post, new { id = "buscarplanilla" }))
                             {
                                 <div style="display: inline-flex; margin-top: 15px">
-                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 25px; font-size: small; font-style: italic; width: 90%; padding-left: 0px; padding-right: 0px;" />
+                                    <input type="month" class="panel-info form-control inputForm2" onchange="valfechaf()" id="fdate" name="fdate" placeholder="mm/aaaa" style="text-transform: capitalize; height: 25px; font-size: small; font-style: italic; width: 90%; padding-left: 0px; padding-right: 0px;; padding-top: 2px; padding-bottom: 2px;min-width: 172px" />
                                     &nbsp;
                                     <button type="submit" id="buscarf" disabled="true" class="btn btn-info btn-xs disabled"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                     @*<input type='submit' value='Buscar' id="buscarf" disabled="true" class="btn btn-info btn-xs disabled" />*@
@@ -143,8 +164,8 @@
 
                     </ul>
 
-                @Html.Partial("_LoginPartial")
-            </div>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
         <div class="container body-content upBody">
@@ -176,14 +197,15 @@
 
 
 
-@if (User.Identity.Name == "urdirom-dist@hotmail.com") { 
-<div class="navbar-xs navbar-inverse navbar-fixed-top hidden-print" style="background: none; border: none; padding-bottom: 0px">
-    <div id="contacthide" class="container text-right" style="width: 150px;height: 20px;margin-right: 0px">
-        <p style="margin-top: 60px;">
-          <div class="btn btn-info btn-xs" style="border-radius: 3px" data-toggle="modal" data-target="#GSCCModal"><span class="ayuda">Ayuda </span><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div> 
-        </p>
-    </div>
-</div>}
+@if (User.Identity.Name == "urdirom-dist@hotmail.com")
+{
+    <div class="navbar-xs navbar-inverse navbar-fixed-top hidden-print" style="background: none; border: none; padding-bottom: 0px">
+        <div id="contacthide" class="container text-right" style="width: 150px;height: 20px;margin-right: 0px">
+            <p style="margin-top: 60px;">
+                <div class="btn btn-info btn-xs" style="border-radius: 3px" data-toggle="modal" data-target="#GSCCModal"><span class="ayuda">Ayuda </span><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div>
+            </p>
+        </div>
+    </div>}
 </html>
 
 
