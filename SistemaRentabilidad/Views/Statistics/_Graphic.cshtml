@@ -11,12 +11,13 @@
             .jqplot-table-legend {
                 font-size: large;
             }
+
             .mes {
-                text-transform:capitalize!important;
-                background: none!important;
-                border: none!important;
-                width:150px!important;
-                }
+                text-transform: capitalize !important;
+                background: none !important;
+                border: none !important;
+                width: 150px !important;
+            }
         </style>
         <input id="typeStat" value="@ViewBag.typeStat" style="display:none"></input>
         @*<link rel="stylesheet" type="text/css" ref="@(Url.Content("/Scripts/jqPlot/jquery.jqplot.css"))" />
@@ -82,11 +83,11 @@
             <div class="modal-dialog" style="width: 100%">
                 <div class="modal-content" style="width: 70%; left: 15%">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: xx-large">&times;</button>
                         <h4 class="modal-title text-center">Ayuda</h4>
                     </div>
                     <div class="modal-body">
-                        
+
                         <div>
                             <h4 class="text-center">Utilice esta sección para visualizar las transacciones realizadas en un período determinado</h4>
 
@@ -112,7 +113,7 @@
                                     <div><img src="@Url.Content("~/Content/Images/InicioFin.jpg")" style="width: 100%" /></div>
                                 </div>
                             </div>
-                            
+
                             <hr style="border-color: #e5e5e5" />
                             <div class="row">
                                 <div class="col-lg-1"></div>
@@ -127,12 +128,12 @@
                             <hr style="border-color: #e5e5e5" />
                             <h4 class="text-center" style="margin-top: 12px">El gráfico representa las transacciones a lo largo del año.</h4>
                             <h4 class="text-center">Las transacciones se muestran en función del monto por período del año.</h4>
-                            <img src="@Url.Content("~/Content/Images/GraficoEstadisticas.jpg")" style="width: 70%"/>
-                            <br/>
+                            <img src="@Url.Content("~/Content/Images/GraficoEstadisticas.jpg")" style="width: 70%" />
+                            <br />
                             <h4 class="text-center">A la derecha del gráfico se indican los colores de representación del año evaluado.</h4>
                             <hr style="border-color: #e5e5e5" />
                             <h4 class="text-center">Debajo encontraremos la lista de Planillas que fueron tomadas en el reporte realizado</h4>
-                            <img src="@Url.Content("~/Content/Images/PlanillasIncidentes.jpg")" style="width: 80%"/>
+                            <img src="@Url.Content("~/Content/Images/PlanillasIncidentes.jpg")" style="width: 80%" />
                         </div>
                     </div>
                     <div class="modal-footer" style="text-align: center">
@@ -171,11 +172,11 @@
                 "language": {
                     "url": '@Url.Content("~/Scripts/DataTables/spanish.json")'
                 }, "columnDefs": [
-            
+
                 { orderable: false, targets: [2] }
                 ]
             });
-
+            $("#loader").hide();
 
             $("body").on("click", "a.dialog-window4", null, function(e) {
                 e.preventDefault();
@@ -196,7 +197,7 @@
             });
 
 
-           
+
             var year1=@ViewBag.initDate;
             var year2=@ViewBag.endDate;
             var tipo = $('#typeStat').val();
@@ -302,9 +303,9 @@
                 resizeGraph();
             });
 
-           
+
         });
-       
+
 
         function printData() {
             var divToPrint = document.getElementById("seleccion");
@@ -314,7 +315,7 @@
             newWin.close();
         }
 
-       
+
     </script>
 
 

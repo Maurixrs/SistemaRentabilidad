@@ -398,6 +398,7 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\hover.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\BotonAyuda.jpg" />
     <Content Include="Content\Images\BuscadorHome.jpg" />
     <Content Include="Content\Images\BuscarRegistro.jpg" />

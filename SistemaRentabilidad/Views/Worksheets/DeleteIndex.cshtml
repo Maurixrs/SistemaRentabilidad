@@ -425,24 +425,18 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="text-center row">
-            <div class="col-lg-2 text-left">
+        <div style="width: 100%; display: flex">
+            <div style="width: 25%; text-align: left">
                 <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default btn-md"><span class="glyphicon glyphicon-hand-left " aria-hidden="true"></span>&nbsp; Volver</a>
-
             </div>
-            <div class="col-lg-8 text-center">
+            <div style="width: 50%; text-align: center">
                 <button type="submit" value="Eliminar" class="btn btn-danger">
                     Eliminar <span class="glyphicon glyphicon-trash"></span>
                 </button>
             </div>
-            <div class="col-lg-2"></div>
+            <div style="width: 25%"></div>
         </div>
 
-        @*<div class="form-actions no-color text-center">
-            <a href="@Url.Action("Index", "Worksheets")" class="btn btn-default"><span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>&nbsp;Volver</a>
-            <input type="submit" value="Eliminar" class="btn btn-danger"/>
-
-        </div>*@
     }
 </div>
 
@@ -451,7 +445,7 @@
     <div class="modal-dialog">
         <div class="modal-content" style="width: 80%; right: -10%">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: xx-large">&times;</button>
                 <h4 class="modal-title text-center">Ayuda</h4>
             </div>
             <div class="modal-body">
