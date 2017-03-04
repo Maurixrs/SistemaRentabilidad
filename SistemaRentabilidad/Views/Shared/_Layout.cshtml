@@ -25,8 +25,15 @@
             display: none;
         }
 
-        #loader {
+          #loader {
             display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba( 255, 255, 255, .8 ) url("/Content/Images/ajax-loader.gif") 50% 50% no-repeat;
         }
         /* Sticky footer styles
         -------------------------------------------------- */
@@ -177,6 +184,7 @@
         <div class="container body-content upBody">
 
             @RenderBody()
+            <div id="loader" class="text-center" style="display: none"></div>
 
         </div>
         @Scripts.Render("~/js")

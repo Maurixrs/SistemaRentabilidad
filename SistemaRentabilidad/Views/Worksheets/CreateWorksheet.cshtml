@@ -1268,6 +1268,7 @@
                             }
 
                             $(this).val('Please wait...');
+                            $("#loader").show();
 
                             $.ajax({
                                 url: '@Url.Action("CreateWorksheet", "Worksheets")',
@@ -1278,10 +1279,11 @@
                                 success: function(d) {
                                     //check is successfully save to database
                                     if (d.status == true) {
-
-                                    var url = '@Url.Action("Index", "Worksheets", new {x = 0})';
+                                        var url = '@Url.Action("Index", "Worksheets", new {x = 0})';
                                         window.location.href = url;
                                     } else {
+                                        $("#loader").hide();
+
                                         bootbox.alert(d.mensaje);
                                     }
                                     $('#submit').val('Save');

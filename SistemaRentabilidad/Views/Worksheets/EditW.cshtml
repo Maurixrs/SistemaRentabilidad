@@ -1545,6 +1545,7 @@
                     callback:function(result1) {
 
                     if (result1) {
+                        $("#loader").show();
 
                         arraysedit();
                         orderItems = $.merge(itemsi, itemsc);
@@ -1585,7 +1586,9 @@
                                 $('#submit').val('Save');
                             },
                             error: function() {
-                                alert('Error. Please try again.');
+                                $("#loader").hide();
+
+                                alert('Error. Intentelo nuevamente.');
                                 $('#submit').val('Save');
                             }
                         });
