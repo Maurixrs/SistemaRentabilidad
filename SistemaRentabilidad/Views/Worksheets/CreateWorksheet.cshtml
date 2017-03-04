@@ -6,11 +6,18 @@
 <head>
 
     <style>
-       .withoutborders {
-           border-left: none;
-           border-right: none;
-           border-top: none;
-       }
+         /*@@media (max-width: 767px) {
+
+               .sugn {
+                display: none !important;
+            }
+        }*/
+         .bootstrap-select{width: auto !important;}
+        .withoutborders {
+            border-left: none;
+            border-right: none;
+            border-top: none;
+        }
 
         legend {
             margin-bottom: 2px !important;
@@ -18,7 +25,7 @@
         }
 
       
-         textarea {
+        textarea {
             max-width: 100% !important;
             resize: none !important;
             line-height: 1.08 !important;
@@ -101,7 +108,7 @@
             line-height: 15px !important;
         }
 
-          input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none !important;
             -moz-appearance: none !important;
@@ -111,7 +118,7 @@
         .btn-group-justified {
             display: inline !important;
         }
-          .tipos {
+        .tipos {
             font-size: medium !important;
             font-weight: bold !important;
             font-style: italic !important;
@@ -179,7 +186,7 @@
             <th class="text-center" style="width: 40%">
                 Transacción
             </th>
-            <th class="text-center" style="width: 40%">
+            <th class="text-center sugn" style="width: 40%">
                 Observación
             </th>
 
@@ -192,20 +199,13 @@
     <tbody id="nueva">
         <tr style="border-right: none">
             <td>
-                <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline-block">
-                    <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
-                        <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
-                    </label>
-                    <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
-                        <input type="radio" name="options" value="cos" autocomplete="off">Costo
-                    </label>
-                    <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
-                        <input type="radio" name="options" value="gas" autocomplete="off">Gasto
-                    </label>
-                    <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
-                        <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
-                    </label>
-                </div>
+                <select id="select" class="selectpicker show-tick btn-group-xs" name="selectedStat" style="width: auto">
+                    <option value="ing">Ingreso</option>
+                    <option value="cos">Costo</option>
+                    <option value="gas">Gasto</option>
+                    <option value="otr">Otro ingreso</option>
+                
+                </select>
             </td>
             <td class="text-center fina">
                 <textarea type="text" rows='1' placeholder="Cuenta (ejemplo: pago de impuestos)" class="panel-info form-control-sm inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
@@ -231,9 +231,9 @@
     <thead>
         <tr class="text-center thStyleGradient3">
             <th class="text-left" style="width: 40%">
-                Transacción
+                Transacción @*<span class="btn btn-xs" onclick="mostrar()">*</span>*@
             </th>
-            <th class="text-left" style="width: 40%">
+            <th class="text-left sugn" style="width: 40%">
                 Observación
             </th>
             <th class="text-center" style="width: 20%">
@@ -403,7 +403,7 @@
     <thead class="tableStyle">
         <tr class="text-center thStyleGradient3">
             <td class="text-left" style="border-radius: 3px; font-weight: bold">
-                Observaciones
+                Obs. Grales.
             </td>
             <td class="text-center" style="border-radius: 3px; width: 200px; font-weight: bold">
                 Total
@@ -473,7 +473,7 @@
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script src="@Url.Content("~/Scripts/maxvalue.js")"></script>
     <script>
-
+        function mostrar() {$( ".sugn" ).toggle();}
 
         $("body").on("click", "a.dialog-window", null, function(e) {
             e.preventDefault();
@@ -899,6 +899,24 @@
         }
 
         $(document).ready(function() {
+            
+
+
+
+            $('.selectpicker').selectpicker({
+                size: 4,
+                style: 'btn-info'
+            });
+            $('.selectpicker').on('changed.bs.select', function () {
+                if(this.value=="ing"){acting();}
+                else{ if(this.value=="cos"){actcos();}
+                else{if(this.value=="gas"){actgas();}
+                else{if(this.value=="otr"){actotr();}
+}
+                }}
+              
+            });
+
             $('#wdate').datepicker({
                 format: "MM/yyyy",
                 startView: 1,
@@ -1312,7 +1330,7 @@
                         var $rowi = $('<tr class="elimi"></tr>');
 
                         $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_SheetDescriptionz" Name="ing_SheetDescription" rows="1" class= "form-control-sm inputForm withoutborders fc sugi" value="' + val.SheetDescription + '" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">' + val.SheetDescription + '</textarea><span class="text-danger" ></span></td>'));
-                        $rowi.append($('<td style="width: 40%"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "form-control-sm inputForm withoutborders fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
+                        $rowi.append($('<td style="width: 40%" class="sugn"><textarea maxlength="140" id="ing_Commentsz" Name="ing_Comments" rows="1" class= "form-control-sm inputForm withoutborders fc" value="' + val.Comments + '">' + val.Comments + '</textarea><span class="text-danger"></span></td>'));
                         $rowi.append($('<td><input type="number" id="ing_Amountz" maxlength="10" Name="ing_Amount"  rows="1" class= " form-control-sm inputForm withoutborders fc montocentrado" value="' + val.Amount + '"onkeyup = "maxvalue(this);calcing();calculogral();valamoub(this)",  oninput = "maxvalue(this);calcing();calculogral();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
 
                         var $removei = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
