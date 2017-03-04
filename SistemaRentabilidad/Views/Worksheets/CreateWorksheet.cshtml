@@ -159,7 +159,7 @@
 
     </td>
     <td class="text-center fondoBlanco" style="padding-bottom: 0px;">
-        <input type="text" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" value="@DateTime.Now.ToString("MMMM/yyyy")" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center;width: auto" />
+        <input type="text" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" @*value="@DateTime.Now.ToString("MMMM/yyyy")"*@ @*value="@DateTime.Now.ToString("yyyy-MM")"*@ placeholder="Mes/Año" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center;width: auto" />
         <span class="text-danger text-center" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -493,9 +493,10 @@
             }
         });
 
-        function valfecha() {
+       function valfecha() {
             if ($('#wdate').val().trim() == '') {
-                $('#wdate').siblings('span.text-danger').html('Requerido');
+                $('#spanwdate').html('Requerido');
+                valf = 2;
             } else {
                 //$('#wdate').siblings('span.text-danger').html('');
                 var options3 = {};
@@ -505,10 +506,10 @@
                 options3.dataType = "json";
                 options3.success = function(data) {
                     if (data) {
-                        $('#wdate').siblings('span.text-danger').html('Período existente.');
+                        $('#spanwdate').html('Período existente.');
                         valf = 1;
                     } else {
-                        $('#wdate').siblings('span.text-danger').html('');
+                        $('#spanwdate').html('');
                         valf = 0;
                     };
 
@@ -908,8 +909,8 @@
                 language: "es",
                 autoclose: true,todayHighlight: true
 
-            });
-   
+            }).datepicker("setDate", "0");
+
             lines = @Html.Raw(ViewBag.lines);
             linesi = @Html.Raw(ViewBag.linesi);
             linesc = @Html.Raw(ViewBag.linesc);
@@ -1073,10 +1074,10 @@
                 //}
 
                 if ($('#wdate').val().trim() == '') {
-                    $('#wdate').siblings('span.text-danger').html('Requerido');
+                    $('#spanwdate').html('Requerido');
                     isAllValid = false;
                 } else {
-                    $('#wdate').siblings('span.text-danger').html('');
+                    $('#spanwdate').html('');
                 }
 
                 $("textarea[name='ing_SheetDescription']").map(function() {
@@ -1229,6 +1230,12 @@
                     $('#wdate').siblings('span.text-danger').html('Período existente.');
 
                 }
+                if (valf == 2) {
+                    isAllValid = false;
+                    toastr["error"]("Periodo requerido.");
+                    $('#spanwdate').html('Requerido');
+
+                }
 
                 if (isAllValid == false) {
                     toastr["error"]("Uno o más campos son incorrectos.", "Error al guardar");
@@ -1243,7 +1250,7 @@
                         },
                         cancel: {
                             label: 'Cancelar',
-                            className: 'btn-danger'
+                            className: 'btn-default'
                         }
                     },
                         callback:function(result1) {
