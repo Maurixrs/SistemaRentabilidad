@@ -275,7 +275,7 @@
                         @Html.TextAreaFor(modelItem => item.Comments, new { @id = "iteming_Comments" + @item.IdSheet, Name = "ing_Comments", @class = "panel-info form-control-sm  inputForm withoutborders fc", @rows = '1' })
                     </td>
                     <td class="text-left">
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "calcing();calculogral();valamou(this)", @oninput = "calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm withoutborders panel-info montocentrado", @type="number" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "iteming_Amount" + @item.IdSheet, Name = "ing_Amount", @onkeyup = "maxvalue(this);calcing();calculogral();valamou(this)", @oninput = "maxvalue(this);calcing();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm withoutborders panel-info montocentrado", @type="number" })
                         <span class="text-danger" id="@("spaniteming_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -324,16 +324,16 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm withoutborders fc sugc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemcos_SheetDescription" + @item.IdSheet, Name = "cos_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sugc", @rows = '1' })
                         <span class="text-danger" id="@("spanitemcos_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments", @class = "panel-info form-control-sm withoutborders  inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemcos_Comments" + @item.IdSheet, Name = "cos_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "calccos();calculogral();valamou(this)", @oninput = "calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info withoutborders montocentrado", @type = "number" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemcos_Amount" + @item.IdSheet, Name = "cos_Amount", @onkeyup = "maxvalue(this);calccos();calculogral();valamou(this)", @oninput = "maxvalue(this);calccos();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemcos_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -381,15 +381,15 @@
             {
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm withoutborders inputForm fc sugg", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemgas_SheetDescription" + @item.IdSheet, Name = "gas_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sugg", @rows = '1' })
                         <span class="text-danger" id="@("spanitemgas_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
                     </td>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments", @class = "panel-info form-control-sm withoutborders inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemgas_Comments" + @item.IdSheet, Name = "gas_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "calcgas();calculogral();valamou(this)", @oninput = "calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info withoutborders montocentrado", @type = "number" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemgas_Amount" + @item.IdSheet, Name = "gas_Amount", @onkeyup = "maxvalue(this);calcgas();calculogral();valamou(this)", @oninput = "maxvalue(this);calcgas();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemgas_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -439,16 +439,16 @@
 
                 <tr>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm withoutborders inputForm fc sugo", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.SheetDescription, new { @id = "itemotr_SheetDescription" + @item.IdSheet, Name = "otr_SheetDescription", @onkeyup = "valdesc(this)", @oninput = "valdesc(this)", @onkeypress = "valdesc(this)", @class = "panel-info form-control-sm  inputForm fc sugo", @rows = '1' })
                         <span class="text-danger" id="@("spanitemotr_SheetDescription"+@item.IdSheet)" style="display: block"></span>
 
 
                     </td>
                     <td style="width: 40%;">
-                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments", @class = "panel-info form-control-sm withoutborders inputForm fc", @rows = '1' })
+                        @Html.TextAreaFor(modelItem => item.Comments, new { @id = "itemotr_Comments" + @item.IdSheet, Name = "otr_Comments", @class = "panel-info form-control-sm  inputForm fc", @rows = '1' })
                     </td>
                     <td>
-                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "calcotr();calculogral();valamou(this)", @oninput = "calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm withoutborders panel-info montocentrado", @type = "number" })
+                        @Html.TextBoxFor(modelItem => item.Amount, new { @id = "itemotr_Amount" + @item.IdSheet, Name = "otr_Amount", @onkeyup = "maxvalue(this);calcotr();calculogral();valamou(this)", @oninput = "maxvalue(this);calcotr();calculogral();valamou(this)", @onkeypress = "solonumerosptocoma();valamou(this)", @class = "inputForm panel-info montocentrado", @type = "number" })
                         <span class="text-danger" id="@("spanitemotr_Amount" + @item.IdSheet)" style="display: block"></span>
 
 
@@ -1241,12 +1241,12 @@
             if (orderItemsc.length > 0) {
                 $('#orderItemsc').html('<span class="text-danger"></span>');
                 $.each(orderItemsc, function(i, val) {
-                    var $rowc = $('<tr class="elimc"></tr>');
+                    var $rowc = $('<tr class="elimc"  style="background-color: white"></tr>');
 
-                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugc awesomplete" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
+                    $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_SheetDescriptionz" Name="cos_SheetDescription" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc sugc" value="'+val.SheetDescription+'" onkeyup = "valdescb(this)" oninput = "valdescb(this)" onkeypress = "valdescb(this)">'+val.SheetDescription+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td style="width: 40%"><textarea maxlength="140" id="cos_Commentsz"  Name="cos_Comments" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc" value="'+val.Comments+'">'+val.Comments+'</textarea><span class="text-danger"></span></td>'));
                     $rowc.append($('<td><input type="number" id="cos_Amountz" maxlength="10" Name="cos_Amount" rows="1" class= "panel-info form-control-sm inputForm withoutborders fc montocentrado" value="'+val.Amount+'"onkeyup = "maxvalue(this);calculogral();calccos();valamoub(this)",  oninput = "maxvalue(this);calculogral();calccos();valamoub(this)" onkeypress = "solonumerosptocoma();valamoub(this)"><span class="text-danger"></span></td>'));
-                    var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"  onclick="borrarfilaingb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
+                    var $removec = $('<a style="color:red; width: 37px; text-align: center;vertical-align: -webkit-baseline-middle;"   onclick="borrarfilacosb(this)"><span class="glyphicon glyphicon-remove"></span></a>');
                     $removec.click(function(e) {
                         e.preventDefault();
                         orderItemsc.splice(i, 1);
