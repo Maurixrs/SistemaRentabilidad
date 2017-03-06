@@ -21,6 +21,7 @@ namespace SistemaRentabilidad
                        "~/Scripts/datatables/jquery.datatables.js",
                        "~/Scripts/datatables/datatables.bootstrap.js",
                        "~/Scripts/bootstrap.min.js",
+                       "~/Scripts/traducirmes.js",
                        "~/Scripts/respond.js",
                        "~/Scripts/bootbox.js",
                        "~/Scripts/toastr.js",
@@ -29,7 +30,7 @@ namespace SistemaRentabilidad
                         "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/autosize.js",
                        "~/Scripts/bootstrap-select.min.js", "~/Scripts/awesomplete.js",
-                       "~/Scripts/maxlength.js","~/Scripts/bootstrap-datepicker.js","~/Scripts/Locale/bootstrap-datepicker.es.min.js",
+                       "~/Scripts/maxlength.js","~/Scripts/bootstrap-datepicker.js","~/Scripts/locales/bootstrap-datepicker.es.min.js",
                        "~/Scripts/i18n/defaults-ar_AR.min.js"
         };
             scriptBundle.Include(scriptArray);

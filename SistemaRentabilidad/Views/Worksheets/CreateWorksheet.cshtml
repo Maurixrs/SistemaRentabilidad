@@ -493,8 +493,9 @@
             }
         });
 
-       function valfecha() {
-            if ($('#wdate').val().trim() == '') {
+        function valfecha() {
+            var periodo = traducirmes($('#wdate').val());
+            if (periodo == ''| periodo == null) {
                 $('#spanwdate').html('Requerido');
                 valf = 2;
             } else {
@@ -502,7 +503,7 @@
                 var options3 = {};
                 options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
                 options3.type = "GET";
-                options3.data = { "fecha": $("#wdate").val() };
+                options3.data = { "fecha": periodo };
                 options3.dataType = "json";
                 options3.success = function(data) {
                     if (data) {

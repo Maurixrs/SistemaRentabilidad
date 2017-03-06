@@ -236,8 +236,13 @@
         $("#ocu").toggle("slow");
         $("#mo").toggle("slow");
     });
+
+    
+
     function valfechaf() {
-        if ($('#fdate').val() == "" | $('#buscarf').val() == null) {
+       var periodo = traducirmes($('#fdate').val());
+       if (periodo == "" | periodo == null) {
+            
             $('#buscarf').addClass("disabled");
             $("#buscarf").prop("disabled", true);
             $('#buscarf').html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>');
@@ -248,7 +253,7 @@
         var options3 = {};
         options3.url = '@Url.Action("ExistePlanilla", "Worksheets")';
         options3.type = "GET";
-        options3.data = { "fecha": $("#fdate").val() };
+        options3.data = { "fecha": periodo };
         options3.dataType = "json";
         options3.success = function (data) {
             if (data) {

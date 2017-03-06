@@ -158,7 +158,7 @@
             </td>
             <td class="text-center inputForm2 ">
                 @*@Html.TextBoxFor(model => model.Date.ToString("Y"), new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()", @class = "inputForm2 panel-info" })*@
-                <input id="Date" name="Date" type="text" onkeyup="valwd()" oninput="valwd()" onkeypress="valwd()" onchange="valwd()" class="inputForm panel-info" value="@Model.Date.ToString("MMMM/yyyy")" style="text-align: center;text-transform: capitalize" />
+                <input id="Date" name="Date" type="text"  onkeyup="valwd()" oninput="valwd()" onkeypress="valwd()" onchange="valwd()" class="inputForm panel-info" value="@Model.Date.ToString("MMMM/yyyy")" style="text-align: center;text-transform: capitalize" />
                 <span id="wdate" class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -555,6 +555,7 @@
     <script>
 
         $( document ).ready(function() {
+            
             $(".fc").attr('maxlength', "140");
             $(".montocentrado").attr('maxlength', "10");
       
@@ -588,14 +589,15 @@
 
         function valwd() {
 
-            if ($('#Date').val().trim() == '') {
+            var periodo = traducirmes($('#Date').val());
+            if (periodo == ''| periodo == null) {
                 $('#wdate').html('Requerido');
                 valf = 1;
             } else {
                 var options3 = {};
                 options3.url = '@Url.Action("ExistePlanillaEdit", "Worksheets")';
                 options3.type = "GET";
-                options3.data = { "fecha": $("#Date").val(), "idp": @Model.IdWorksheet };
+                options3.data = { "fecha": periodo, "idp": @Model.IdWorksheet };
                 options3.dataType = "json";
                 options3.success = function(data) {
                     if (data) {
@@ -1600,7 +1602,7 @@
 
 
         });
-
+        
 
     </script>
 
