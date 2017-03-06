@@ -199,13 +199,20 @@
     <tbody id="nueva">
         <tr style="border-right: none">
             <td>
-                <select id="select" class="selectpicker show-tick btn-group-xs" name="selectedStat" style="width: auto">
-                    <option value="ing">Ingreso</option>
-                    <option value="cos">Costo</option>
-                    <option value="gas">Gasto</option>
-                    <option value="otr">Otro ingreso</option>
-                
-                </select>
+                <div class="btn-group btn-group-justified" data-toggle="buttons" style="display: inline-block">
+                    <label class="btn btn-info btn-xs active" value="ing" onclick="acting(this)">
+                        <input id="buttonsType" type="radio" name="options" value="ing" onclick="acttipo(this)" autocomplete="off" checked>Ingreso
+                    </label>
+                    <label class="btn btn-info btn-xs" value="cos" onclick="actcos(this)">
+                        <input type="radio" name="options" value="cos" autocomplete="off">Costo
+                    </label>
+                    <label class="btn btn-info btn-xs" value="gas" onclick="actgas(this)">
+                        <input type="radio" name="options" value="gas" autocomplete="off">Gasto
+                    </label>
+                    <label class="btn btn-info btn-xs" value="otr" onclick="actotr(this)">
+                        <input type="radio" name="options" value="otr" autocomplete="off">Otro ing.
+                    </label>
+                </div>
             </td>
             <td class="text-center fina">
                 <textarea type="text" rows='1' placeholder="Cuenta (ejemplo: pago de impuestos)" class="panel-info form-control-sm inputForm inputForm3  fc sug nuev" id="ndescription" maxlength="140" placeholder="" style="max-width: 100%"></textarea>
