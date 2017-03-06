@@ -86,7 +86,7 @@ namespace SistemaRentabilidad.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Hubo un error al ingresar sus datos, inténtelo nuevamente.");
                     return View(model);
             }
         }
