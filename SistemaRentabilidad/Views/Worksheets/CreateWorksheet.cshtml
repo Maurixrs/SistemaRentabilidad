@@ -17,6 +17,7 @@
             border-left: none;
             border-right: none;
             border-top: none;
+            border-bottom-color: mediumseagreen !important;
         }
 
         legend {
@@ -166,7 +167,7 @@
 
     </td>
     <td class="text-center fondoBlanco" style="padding-bottom: 0px;">
-        <input type="text" class="panel-info inputForm inputForm3 form-control-sm" id="wdate" @*value="@DateTime.Now.ToString("MMMM/yyyy")"*@ @*value="@DateTime.Now.ToString("yyyy-MM")"*@ placeholder="Mes/Año" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center;width: auto" />
+        <input type="text" class="withoutborders  form-control-sm" id="wdate" @*value="@DateTime.Now.ToString("MMMM/yyyy")"*@ @*value="@DateTime.Now.ToString("yyyy-MM")"*@ placeholder="Mes/Año" onchange="valfecha()" style="text-transform: capitalize; height: 25px; text-align: center;width: auto" />
         <span class="text-danger text-center" id="spanwdate" style="display: block"></span>
     </td>
 
@@ -1245,7 +1246,7 @@
                     //    message: "Es necesario agregar al menos una línea para guardar la planilla. ",
                     //    backdrop: true
                     //});
-                    toastr["error"]("Es necesario agregar al menos una entrada para guardar la planilla. ");
+                    toastr["error"]("Es necesario agregar al menos una transacción para guardar la planilla. ");
                     valfecha();
                     isAllValid = false;
 
@@ -1276,7 +1277,7 @@
                         },
                         cancel: {
                             label: 'Cancelar',
-                            className: 'btn-default'
+                            className: 'btn-danger'
                         }
                     },
                         callback:function(result1) {

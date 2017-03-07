@@ -11,6 +11,8 @@
            border-left: none;
            border-right: none;
            border-top: none;
+        border-bottom-color: mediumseagreen;
+           
        }
 
     legend {
@@ -30,7 +32,7 @@
 
     
     .inputForm {
-    border-color: lightgrey !important;
+    border-color: mediumseagreen !important;
     }
 
     .inputForm3 {
@@ -158,7 +160,7 @@
             </td>
             <td class="text-center inputForm2 ">
                 @*@Html.TextBoxFor(model => model.Date.ToString("Y"), new { @onkeyup = "valwd()", @oninput = "valwd()", @onkeypress = "valwd()", @class = "inputForm2 panel-info" })*@
-                <input id="Date" name="Date" type="text"  onkeyup="valwd()" oninput="valwd()" onkeypress="valwd()" onchange="valwd()" class="inputForm panel-info" value="@Model.Date.ToString("MMMM/yyyy")" style="text-align: center;text-transform: capitalize" />
+                <input id="Date" name="Date" type="text" readonly="readonly" onchange="valwd()" class="withoutborders form-control-sm" value="@Model.Date.ToString("MMMM/yyyy")" style="text-align: center;text-transform: capitalize" />
                 <span id="wdate" class="text-danger" style="display: block"></span>
             </td>
         </tr>
@@ -168,10 +170,10 @@
 </table>
 <hr style="margin-top: 2px; margin-bottom: 5px; border-style: dashed" />
 <div style="display: inline-block">
-    <button id="mostrar" class="hidden-print btn btn-default btn-sm hvr-bubble-right">Agregar transacción&nbsp;&nbsp;</button>
+    <button id="mostrar" class="hidden-print btn btn-primary btn-sm hvr-bubble-right">Agregar transacción&nbsp;&nbsp;</button>
     <div id="nuevalinea" style="display: none">
         <a style="margin-bottom: 2px; background: #89bad3">
-            <button id="ocultar" class="hidden-print btn btn-xs hvr-bubble-left positionOcultar">&nbsp;&nbsp; Ocultar</button>
+            <button id="ocultar" class="hidden-print btn btn-xs btn-primary hvr-bubble-left positionOcultar">&nbsp;&nbsp; Ocultar</button>
 
         </a>
         <table id="nueva" class="table table-condensed table-bordered " style="margin-bottom: 2px; background: transparent;border-right: none">
@@ -553,7 +555,7 @@
     <script src="@Url.Content("~/Scripts/solonumerosptocoma.js")"></script>
     <script src="@Url.Content("~/Scripts/maxvalue.js")"></script>
     <script>
-
+        var sinrequerido = false;
         $( document ).ready(function() {
             
             $(".fc").attr('maxlength', "140");
@@ -571,7 +573,7 @@
 
             });
         
-        
+           
         
         });
 
@@ -586,10 +588,12 @@
             $("#mostrar").toggle("slow");
         });
 
-
+        
         function valwd() {
 
+            if (sinrequerido) {
             var periodo = traducirmes($('#Date').val());
+            console.log(periodo);
             if (periodo == ''| periodo == null) {
                 $('#wdate').html('Requerido');
                 valf = 1;
@@ -612,8 +616,11 @@
                 $.ajax(options3);
             }
 
+            }else {
+                sinrequerido = true;
 
-        }
+            }}
+        
 
         function valdesc(x) {
             var a = x.id;
@@ -1527,6 +1534,12 @@
                 toastr["error"]("El período ingresado ya existe.");
             }
 
+            //if (itemsi.length == 0 & itemsc.length == 0 & itemsg.length == 0 & itemso.length == 0) {
+            //    required = true;
+
+            //    toastr["error"]("Es necesario agregar al menos una transacción para guardar la planilla. ");
+            //}
+
             if (required) {
                 toastr["error"]("Uno o más campos son incorrectos.","Error al guardar");
 
@@ -1545,6 +1558,7 @@
                         }
                     },
                     callback:function(result1) {
+                       
 
                     if (result1) {
                         $("#loader").show();
@@ -1553,9 +1567,12 @@
                         orderItems = $.merge(itemsi, itemsc);
                         orderItems = $.merge(orderItems, itemsg);
                         orderItems = $.merge(orderItems, itemso);
-
-
-
+                        
+                        if (orderItems.length == 0 ) {
+                            $("#loader").hide();
+                            toastr["error"]("Es necesario agregar al menos una transacción para guardar la planilla. ");
+                        }
+                        else{
 
                         var data = {
                             IdWorkSheet: @Model.IdWorksheet,
@@ -1585,19 +1602,20 @@
                                 } else {
                                     bootbox.alert(d.mensaje);
                                 }
-                                $('#submit').val('Save');
+                                
+                                //$('#submit').val('Save');
                             },
                             error: function() {
                                 $("#loader").hide();
 
-                                alert('Error. Intentelo nuevamente.');
-                                $('#submit').val('Save');
+                                toastr["error"]("Es necesario agregar al menos una entrada para guardar la planilla. ");
+                                
                             }
                         });
                     }
 
 
-                }});
+                        }}});
             }
 
 
