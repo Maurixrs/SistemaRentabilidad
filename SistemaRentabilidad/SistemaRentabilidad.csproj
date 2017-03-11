@@ -217,6 +217,7 @@
     <Compile Include="Controllers\SheetLinesController.cs" />
     <Compile Include="Controllers\SheetsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\WorksheetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +226,7 @@
     <Compile Include="Models\Sheet.cs" />
     <Compile Include="Models\SheetLine.cs" />
     <Compile Include="Models\SheetType.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Worksheet.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -921,6 +923,12 @@
     <Content Include="Views\SheetLines\Index.cshtml" />
     <Content Include="Views\SheetLines\Edit.cshtml" />
     <Content Include="Views\SheetLines\Delete.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Transactions\Delete.cshtml" />
+    <Content Include="Views\Transactions\Details.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\Worksheets\CreateWs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

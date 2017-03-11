@@ -21,6 +21,8 @@ namespace SistemaRentabilidad.Context
 
             public System.Data.Entity.DbSet<SistemaRentabilidad.Models.SheetLine> SheetLines { get; set; }
 
+            public System.Data.Entity.DbSet<SistemaRentabilidad.Models.Transaction> Transactions { get; set; }
+
 
 
     }
