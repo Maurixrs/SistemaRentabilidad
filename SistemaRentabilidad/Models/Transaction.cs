@@ -11,7 +11,7 @@ namespace SistemaRentabilidad.Models
         [Key]
         public int IdTransaction { get; set; }
 
-        public string TransactionDescriptioon { get; set; }
+        public string TransactionDescription { get; set; }
 
         public SheetType SheetType { get; set; }
     }
