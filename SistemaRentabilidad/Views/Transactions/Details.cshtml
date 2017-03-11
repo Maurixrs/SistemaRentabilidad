@@ -1,0 +1,34 @@
+﻿@model SistemaRentabilidad.Models.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SheetType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SheetType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTransaction }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
