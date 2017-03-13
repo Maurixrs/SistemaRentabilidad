@@ -249,6 +249,67 @@ namespace SistemaRentabilidad.Controllers
             return View();
         }
 
+        public ActionResult CreateWs()
+        {
+            var nsheet = 0;
+            if (db.Worksheet != null & db.Worksheet.Count() != 0)
+            {
+                nsheet = db.Worksheet.ToList().LastOrDefault().IdWorksheet;
+            }
+
+            List<Sheet> sheets = new List<Sheet>();
+
+            foreach (var i in db.Transactions)
+            {
+                Sheet sheet = new Sheet();
+                sheet.SheetDescription = i.TransactionDescription;
+                sheet.SheetType = i.SheetType;
+                sheet.Amount = 0;
+                sheet.Comments = String.Empty;
+                
+                sheets.Add(sheet);
+            }
+
+            List<string> lines = new List<string>();
+            List<string> linesi = new List<string>();
+            List<string> linesc = new List<string>();
+            List<string> linesg = new List<string>();
+            List<string> lineso = new List<string>();
+
+            foreach (var x in db.SheetLines)
+            {
+                if (x.SheetType == SheetType.Ingreso)
+                { linesi.Add(x.LineDescription); }
+                else
+                {
+                    if (x.SheetType == SheetType.Costo)
+                    { linesc.Add(x.LineDescription); }
+                    else
+                    {
+                        if (x.SheetType == SheetType.Gasto)
+                        { linesg.Add(x.LineDescription); }
+                        else
+                        {
+                            if (x.SheetType == SheetType.OtroIngreso)
+                            { lineso.Add(x.LineDescription); }
+                        }
+                    }
+
+                }
+
+                lines.Add(x.LineDescription);
+            }
+
+            ViewBag.nsheet = nsheet + 1;
+            ViewBag.lines = JsonConvert.SerializeObject(lines);
+            ViewBag.linesi = JsonConvert.SerializeObject(linesi);
+            ViewBag.linesc = JsonConvert.SerializeObject(linesc);
+            ViewBag.linesg = JsonConvert.SerializeObject(linesg);
+            ViewBag.lineso = JsonConvert.SerializeObject(lineso);
+
+            return View(sheets);
+        }
+
         [HttpPost]
         public JsonResult CreateWorksheet(WsVM O)
         {
