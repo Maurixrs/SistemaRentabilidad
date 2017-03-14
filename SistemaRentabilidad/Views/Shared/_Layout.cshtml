@@ -129,6 +129,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    @*<a href="@Url.Action("Index", "Home")">Inicio</a>*@
                     @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand hvr-bounce-in" })
                 </div>
                 <div class="navbar-collapse collapse">
@@ -137,7 +138,7 @@
                             <a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#" id="download">Planillas<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="download">
                                 <li style="font-weight: bold;">@Html.ActionLink("Listado", "Index", "Worksheets")</li>
-                                <li style="font-weight: bold;">@Html.ActionLink("Nueva", "CreateWorksheet", "Worksheets")</li>
+                                <li style="font-weight: bold;">@Html.ActionLink("Nueva", "CreateWs", "Worksheets")</li>
 
                             </ul>
                         </li>

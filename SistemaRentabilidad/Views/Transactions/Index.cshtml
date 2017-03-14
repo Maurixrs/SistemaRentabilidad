@@ -1,39 +1,171 @@
-﻿@model IEnumerable<SistemaRentabilidad.Models.Transaction>
+﻿@using SistemaRentabilidad.Models
+@model IEnumerable<SistemaRentabilidad.Models.Transaction>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Lista de Transacciones Predefinidas</h2>
+<hr/>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TransactionDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SheetType)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    <a href="@Url.Action("Create", "Transactions")" class="btn-sm btn-success hvr-glow dialog-window">Agregar Transacción &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TransactionDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SheetType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdTransaction }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdTransaction }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdTransaction })
-        </td>
+<table class="table table-bordered display" cellspacing="0" width="100%" style="margin-top: 1%">
+    <thead>
+    <tr style="background-color: #2c3e50;">
+        <th style="color: white; width: 15%">
+            Tipo
+        </th>
+        <th style="color: white">
+            Transacción
+        </th>
+        <th class="text-center" style="color: white; width: 10%">
+            Opciones
+        </th>
     </tr>
-}
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.SheetType == SheetType.OtroIngreso)
+                {
+                    <text>Otro Ingreso</text>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.SheetType)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDescription)
+            </td>
+            <td class="text-center">
+                <a href="@Url.Action("Edit", "Transactions", new { id = item.IdTransaction})" class="btn-sm btn-success dialog-window2"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                <a href="@Url.Action("Delete", "Transactions", new { id = item.IdTransaction})" class="btn-sm btn-danger dialog-window3"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+            </td>
+        </tr>
+    }
+    </tbody>
 
 </table>
+
+<div class="modal fade" id="myModal" role="dialog" style="margin-top: 5%"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%">
+        <div class="modal-content" style="width: 42%; left: 29%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: xx-large">&times;</button>
+                <h4 class="modal-title text-center">Nueva Transacción</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog" style="margin-top: 5%"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%">
+        <div class="modal-content" style="width: 42%; left: 29%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: xx-large">&times;</button>
+                <h4 class="modal-title text-center">Editar Transacción</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal3" role="dialog" style="margin-top: 5%"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%">
+        <div class="modal-content" style="width: 45%; left: 27%">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: xx-large">&times;</button>
+                <h4 class="modal-title text-center">Eliminar Transacción</h4>
+            </div>
+            <div class="modal-body">
+                <div class="te">Espere...</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        $("body").on("click", "a.dialog-window", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal .te').html(data);
+                    $('#myModal').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
+        $("body").on("click", "a.dialog-window2", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal2.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal2').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal2 .te').html(data);
+                    $('#myModal2').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+
+        $("body").on("click", "a.dialog-window3", null, function (e) {
+            e.preventDefault();
+
+            var $link = $(this); // Reference to <a/> link
+            var title = $link.text(); //this is title to fetch in htnl
+            $('#myModal3.modal-title').html(title);
+
+            var url = $(this).attr('href');
+            if (url.indexOf('#') == 0) {
+                $('#myModal3').modal('show');
+            }
+            else {
+                $.get(url, function (data) {
+                    $('#myModal3 .te').html(data);
+                    $('#myModal3').modal();
+                }).success(function () { $('input:text:visible:first').focus(); });
+            }
+        });
+    </script>
+}

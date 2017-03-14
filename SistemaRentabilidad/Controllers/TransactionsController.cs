@@ -18,7 +18,7 @@ namespace SistemaRentabilidad.Controllers
         // GET: Transactions
         public ActionResult Index()
         {
-            return View(db.Transactions.ToList());
+            return View(db.Transactions.ToList().OrderBy(p => Tuple.Create(p.SheetType, p.TransactionDescription)));
         }
 
         // GET: Transactions/Details/5

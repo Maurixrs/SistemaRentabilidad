@@ -1462,8 +1462,8 @@
                     $('#spaniteming_Amount' + b).html('Requerido');
                     required = true;
                 } else {
-                    if (this.value.trim() == 0) {
-                        $('#spaniteming_Amount' + b).html('Debe ser mayor a 0.');
+                    if (this.value.trim() < 0) {
+                        $('#spaniteming_Amount' + b).html('No puede ser menor a 0.');
                         required = true;
                     } else {
                         $('#spaniteming_Amount' + b).html('');
@@ -1480,8 +1480,8 @@
 
                     required = true;
                 } else {
-                    if (this.value.trim() == 0) {
-                        $('#spanitemcos_Amount' + b).html('Debe ser mayor a 0.');
+                    if (this.value.trim() < 0) {
+                        $('#spanitemcos_Amount' + b).html('No puede ser menor a 0.');
 
                         required = true;
                     } else {
@@ -1499,8 +1499,8 @@
 
                     required = true;
                 } else {
-                    if (this.value.trim() == 0) {
-                        $('#spanitemgas_Amount' + b).html('Debe ser mayor a 0.');
+                    if (this.value.trim() < 0) {
+                        $('#spanitemgas_Amount' + b).html('No puede ser menor a 0.');
 
                         required = true;
                     } else {
@@ -1518,8 +1518,8 @@
 
                     required = true;
                 } else {
-                    if (this.value.trim() == 0) {
-                        $('#spanitemotr_Amount' + b).html('Debe ser mayor a 0.');
+                    if (this.value.trim() < 0) {
+                        $('#spanitemotr_Amount' + b).html('No puede ser menor a 0.');
 
                         required = true;
                     } else {
