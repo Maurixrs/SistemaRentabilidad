@@ -647,8 +647,8 @@
                 $('#span' + a).html('Requerido.');
 
             } else {
-                if (x.value.trim() == 0) {
-                    $('#span' + a).html('Debe ser mayor a 0.');
+                if (x.value.trim() < 0) {
+                    $('#span' + a).html('No puede ser menor a 0.');
                 } else {
                     $('#span' + a).html('');
                 }
@@ -659,8 +659,8 @@
                 $(x).siblings('span.text-danger').html('Requerido.');
 
             } else {
-                if (x.value.trim() == 0) {
-                    $(x).siblings('span.text-danger').html('Debe ser mayor a 0.');
+                if (x.value.trim() < 0) {
+                    $(x).siblings('span.text-danger').html('No puede ser menor a 0.');
                 } else {
                     $(x).siblings('span.text-danger').html('');
                 }
@@ -1110,9 +1110,9 @@
                 isValidItem = false;
                 $('#namount').siblings('span.text-danger').html('Requerido');
             } else {
-                if ($('#namount').val().trim() == 0) {
+                if ($('#namount').val().trim() < 0) {
                     isValidItem = false;
-                    $('#namount').siblings('span.text-danger').html('Debe ser mayor a 0');
+                    $('#namount').siblings('span.text-danger').html('No puede ser menor a 0.');
                 } else {
                     $('#namount').siblings('span.text-danger').html('');
                 }

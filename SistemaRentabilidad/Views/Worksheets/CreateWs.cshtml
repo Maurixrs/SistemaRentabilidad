@@ -652,7 +652,7 @@
                 $(x).siblings('span.text-danger').html('Requerido.');
 
             } else {
-                if (x.value.trim() == 0) {
+                if (x.value.trim() < 0) {
                     $(x).siblings('span.text-danger').html('Debe ser mayor a 0.');
                 } else {
                     $(x).siblings('span.text-danger').html('');
@@ -1017,6 +1017,7 @@
         }
 
         $(document).ready(function() {
+            arraysamountsedit();
 
 
 
