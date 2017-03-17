@@ -410,11 +410,13 @@
     <Content Include="Content\Images\GraficoEstadisticas.jpg" />
     <Content Include="Content\Images\IMG_30319.jpg" />
     <Content Include="Content\Images\InicioFin.jpg" />
+    <Content Include="Content\Images\ListaTransacciones.jpg" />
     <Content Include="Content\Images\logogodesa.png" />
     <Content Include="Content\Images\maxresdefault.jpg" />
     <Content Include="Content\Images\Monto.jpg" />
     <Content Include="Content\Images\MontoIngresos.jpg" />
     <Content Include="Content\Images\MostrarRegistros.jpg" />
+    <Content Include="Content\Images\NuevaEntrada.jpg" />
     <Content Include="Content\Images\ObservacionesGrales.jpg" />
     <Content Include="Content\Images\Observación.jpg" />
     <Content Include="Content\Images\ObsIngresos.jpg" />
@@ -436,6 +438,7 @@
     <Content Include="Content\Images\Sugerenciasindex.jpg" />
     <Content Include="Content\Images\Tipo.jpg" />
     <Content Include="Content\Images\TransaccionCreate.jpg" />
+    <Content Include="Content\Images\Transacciones.jpg" />
     <Content Include="Content\Images\x.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
