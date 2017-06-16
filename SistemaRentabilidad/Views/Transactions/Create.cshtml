@@ -5,8 +5,9 @@
 }
 
 
-@using (Html.BeginForm()) 
-{
+@using (Html.BeginForm("Create", "Transactions", null, FormMethod.Post, new { id = "createTrans" }))
+
+    {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -19,7 +20,7 @@
                 @Html.ValidationMessageFor(model => model.TransactionDescription, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <span id="spanTrans" class="text-danger text-center"></span>
         <div class="form-group">
             @Html.LabelFor(model => model.SheetType, "Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -27,12 +28,54 @@
                 @Html.ValidationMessageFor(model => model.SheetType, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+       
         <div class="form-group">
             <div class="text-center">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-success">Guardar &nbsp;<span class="glyphicon glyphicon-floppy-disk"></span></button>
+                <button type="button" id="guardar" onclick="existeTransac()" class="btn btn-success">Guardar &nbsp;<span class="glyphicon glyphicon-floppy-disk"></span></button>
             </div>
         </div>
     </div>
 }
+
+
+<script>
+    function existeTransac() {
+        var a = "";
+        if($("#SheetType").val()==0){a="Ingreso"};
+        if($("#SheetType").val()==1){a="Costo"};
+        if($("#SheetType").val()==2){a="Gasto"};
+        if($("#SheetType").val()==3){a="OtroIngreso"};
+
+
+
+        var options3 = {};
+        options3.url = '@Url.Action("ExisteTrans", "Transactions")';
+        options3.type = "GET";
+        options3.data = { "transDesc": $("#TransactionDescription").val(), "transType": a },
+        options3.dataType = "json";
+        options3.success = function (data) {
+            if (data) {
+                $('#spanTrans').html('Acción no permitida, transacción existente');
+                e.preventDefault();
+            } else {
+                $('#spanTrans').html('');
+                $('#createTrans').submit();
+            };
+
+        };
+        $.ajax(options3);
+    }
+    //$('#createTrans').submit(function (e) {
+    //    var x = this;
+    //    if (vals == 1) {
+    //        e.preventDefault();
+    //    } else {
+    //        x.submit();
+    //    }
+       
+
+       
+    //});
+
+</script>    

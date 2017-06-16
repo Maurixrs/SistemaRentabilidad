@@ -11,6 +11,7 @@ using SistemaRentabilidad.Models;
 
 namespace SistemaRentabilidad.Controllers
 {
+    [Authorize(Users = "urdirom-dist@hotmail.com")]
     public class TransactionsController : Controller
     {
         private ContextSR db = new ContextSR();
@@ -116,6 +117,13 @@ namespace SistemaRentabilidad.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult ExisteTrans(string transDesc, string transType)
+        {
+
+            var existe = db.Transactions.ToList().Exists(f => f.TransactionDescription == transDesc & f.SheetType.ToString() == transType);
+
+            return Json(existe, JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
